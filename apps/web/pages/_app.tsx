@@ -1,18 +1,21 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import useDarkMode from '../app/use-dark-mode/use-dark-mode';
 import './styles.css';
 
-function CustomApp({ Component, pageProps }: AppProps) {
+function WebApp({ Component, pageProps }: AppProps) {
+  const isDarkMode = useDarkMode();
+
   return (
     <>
       <Head>
-        <title>Welcome to web!</title>
+        <title>Jason Ruesch</title>
       </Head>
-      <main className="app">
+      <main id="main" className={`h-full ${isDarkMode ? 'dark' : ''}`}>
         <Component {...pageProps} />
       </main>
     </>
   );
 }
 
-export default CustomApp;
+export default WebApp;
