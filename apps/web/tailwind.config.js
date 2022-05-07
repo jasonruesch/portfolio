@@ -5,13 +5,16 @@ const { join } = require('path');
 module.exports = {
   darkMode: 'class',
   content: [
-    join(__dirname, 'pages/**/*.{ts,tsx,html}'),
+    join(__dirname, 'pages/**/*.{js,ts,jsx,tsx}'),
+    join(__dirname, 'components/**/*.{js,ts,jsx,tsx}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      black: 'var(--color-black)',
+      white: 'var(--color-white)',
       background: 'var(--color-background)',
       foreground: 'var(--color-foreground)',
       primary: 'var(--color-primary)',

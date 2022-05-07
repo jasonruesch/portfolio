@@ -50,7 +50,7 @@
 
   /* Example themes */
 
-  .simple {
+  .theme-a {
     --color-background: white;
     --color-foreground: orange;
     --color-primary: blue;
@@ -61,7 +61,7 @@
     --color-logo-base: var(--color-foreground);
   }
 
-  .simple-dark {
+  .theme-a.dark {
     --color-background: black;
     --color-foreground: yellow;
     --color-primary: blue;
