@@ -27,7 +27,7 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       screens: {
-        sm: { raw: `(min-width: 640px) and (min-height: 640px)` },
+        md: { raw: `(min-width: 640px) and (min-height: 640px)` },
       },
     },
   },

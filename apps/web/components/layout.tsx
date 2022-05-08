@@ -28,7 +28,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         )}`}
       >
         <header>
-          <div className="relative mb-6 flex h-[150px] w-[150px] justify-center sm:mb-12 sm:h-[300px] sm:w-[300px]">
+          <div className="relative mb-6 flex h-[150px] w-[150px] justify-center md:mb-12 md:h-[300px] md:w-[300px]">
             <Image
               priority
               src="/images/profile.png"

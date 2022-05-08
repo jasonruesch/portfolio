@@ -4,7 +4,7 @@ export function Index() {
   return (
     <Layout>
       <div className="flex h-full items-center justify-center">
-        <div className="flex w-full max-w-screen-sm flex-col text-xl sm:text-3xl">
+        <div className="flex w-full max-w-screen-sm flex-col text-xl md:text-3xl">
           <svg
             className="order-2 w-full py-2"
             viewBox="0 0 2560 342"
