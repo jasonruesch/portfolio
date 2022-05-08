@@ -3,24 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    height: calc(100% + env(safe-area-inset-top));
-  }
-
-  body {
-    height: 100%;
-  }
-
-  #__next {
-    bottom: calc(0 - env(safe-area-inset-bottom));
-    height: 100%;
-    left: calc(0 - env(safe-area-inset-left));
-    position: absolute;
-    right: calc(0 - env(safe-area-inset-right));
-    top: calc(0 - env(safe-area-inset-top));
-    width: 100%;
-  }
-
   :root {
     /* Base colors (option tokens) */
     --color-black: #000000;
@@ -82,5 +64,15 @@
     --color-success: green;
     --color-logo-primary: var(--color-primary);
     --color-logo-base: var(--color-foreground);
+  }
+
+  html {
+    @apply bg-background;
+  }
+
+  html,
+  body,
+  #__next {
+    @apply h-full;
   }
 }

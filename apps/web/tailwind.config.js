@@ -24,11 +24,11 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       screens: {
-        md: {
-          raw: `(min-width: ${defaultTheme.screens.md}) and (min-height: ${defaultTheme.screens.md})`,
+        'sm-max-h': {
+          raw: `(max-height: ${defaultTheme.screens.sm})`,
         },
       },
     },
