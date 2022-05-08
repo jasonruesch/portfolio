@@ -6,6 +6,7 @@ import useDarkMode from '../app/use-dark-mode/use-dark-mode';
 export default function Layout({ children }: { children: React.ReactNode }) {
   const isDarkMode = useDarkMode();
   useEffect(() => {
+    // Add the 'dark' class to the highest level element in the DOM.
     document.querySelector('html').classList.toggle('dark', isDarkMode);
   });
 
@@ -13,14 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <Head>
         <title>Jason Ruesch</title>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link
-          rel="icon"
-          href={isDarkMode ? '/icon-dark.svg' : '/icon-light.svg'}
-          type="image/svg+xml"
-        />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="mask-icon" href="/mask-icon.svg" color="#888888"></link>
       </Head>
       <div className="sm-max-h:flex-row sm-max-h:justify-between flex h-full flex-col items-center justify-center gap-12 p-4 md:px-8">
         <header>
