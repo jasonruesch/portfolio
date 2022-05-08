@@ -1,11 +1,13 @@
-import cn from 'classnames';
 import Head from 'next/head';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useDarkMode from '../app/use-dark-mode/use-dark-mode';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const isDarkMode = useDarkMode();
+  useEffect(() => {
+    document.querySelector('html').classList.toggle('dark', isDarkMode);
+  });
 
   return (
     <>
@@ -20,15 +22,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
       </Head>
-      <div
-        className={`flex h-full flex-col items-center justify-center bg-background p-4 text-foreground ${cn(
-          {
-            dark: isDarkMode,
-          }
-        )}`}
-      >
+      <div className="sm-max-h:flex-row sm-max-h:justify-between flex h-full flex-col items-center justify-center gap-12 p-4 md:px-8">
         <header>
-          <div className="relative mb-6 flex h-[150px] w-[150px] justify-center sm:mb-12 sm:h-[300px] sm:w-[300px]">
+          <div className="relative h-[150px] w-[150px] md:h-[300px] md:w-[300px]">
             <Image
               priority
               src="/images/profile.png"
