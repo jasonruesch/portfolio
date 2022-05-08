@@ -3,10 +3,22 @@
 @tailwind utilities;
 
 @layer base {
-  html,
-  body,
-  #__next {
+  html {
+    height: calc(100% + env(safe-area-inset-top));
+  }
+
+  body {
     height: 100%;
+  }
+
+  #__next {
+    bottom: calc(0 - env(safe-area-inset-bottom));
+    height: 100%;
+    left: calc(0 - env(safe-area-inset-left));
+    position: absolute;
+    right: calc(0 - env(safe-area-inset-right));
+    top: calc(0 - env(safe-area-inset-top));
+    width: 100%;
   }
 
   :root {
