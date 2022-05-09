@@ -5,65 +5,78 @@
 @layer base {
   :root {
     /* Base colors (option tokens) */
-    --color-black: #000000;
-    --color-white: #ffffff;
 
-    /* Brand colors (option tokens) */
-    --color-fluorescent-blue: #18ffff;
-    --color-red: #e3392b;
-    --color-turquoise: #14e3e3;
-    --color-marigold: #e3a02b;
+    --color-black: #000000; /* Text: Light only */
+    --color-white: #ffffff; /* Text: Dark only */
+
+    /* Brand colors (option tokens) from Adobe Color (color.adobe.com)*/
+
+    --color-charcoal: #303030; /* Text: Light only */
+    --color-alabaster: #fafafa; /* Text: Dark only */
+
+    /* Color Harmony Rule: Custom */
+    --color-bright-turquoise: #14e3e3;
+    --color-grapefruit: #e3392b;
+    --color-bright-aqua: #18ffff; /* Text: Dark only */
+    --color-fire-bush: #e3a02b;
     --color-malachite: #09e368;
-    --color-charcoal: #303030;
-    --color-lotion: #fafafa;
+
+    /* Color Harmony Rule: Square */
+    --color-electric-purple: #ac30ff;
+    --color-mango-orange: #ff7d30;
+    --color-neon-yellow: #ddff0a; /* Dark only */
+
+    /* Color Harmony Rule: Double Split Complementary */
+    --color-bleu-de-france: #248cff;
+    --color-coral-red: #ff4130;
+    --color-cantaloupe: #ffb430; /* Text: Dark only */
+    --color-ocean-green: #0aff74; /* Text: Dark only */
 
     /* Theme colors (semantic tokens) */
-    --color-background: var(--color-lotion);
+
+    --color-background: var(--color-alabaster);
     --color-foreground: var(--color-charcoal);
-    --color-primary: var(--color-turquoise);
-    --color-accent: var(--color-marigold);
-    --color-warning: var(--color-red);
+    --color-primary: var(--color-bright-turquoise);
+    --color-accent: var(--color-fire-bush);
+    --color-warning: var(--color-grapefruit);
     --color-success: var(--color-malachite);
 
     /* Theme colors (component specific tokens) */
+
     --color-logo-primary: var(--color-primary);
     --color-logo-base: var(--color-foreground);
   }
 
   .dark {
-    /* Theme colors */
     --color-background: var(--color-charcoal);
     --color-foreground: var(--color-white);
-    --color-primary: var(--color-fluorescent-blue);
-    --color-accent: var(--color-marigold);
-    --color-warning: var(--color-red);
-    --color-success: var(--color-malachite);
+    --color-primary: var(--color-bright-aqua);
     --color-logo-primary: var(--color-primary);
     --color-logo-base: var(--color-foreground);
   }
 
-  /* Example themes */
-
-  .theme-a {
-    --color-background: white;
-    --color-foreground: orange;
-    --color-primary: blue;
-    --color-accent: violet;
-    --color-warning: red;
-    --color-success: green;
-    --color-logo-primary: var(--color-primary);
-    --color-logo-base: var(--color-foreground);
+  .theme-square {
+    --color-primary: var(--color-bright-cyan);
+    --color-accent: var(--color-electric-purple);
+    --color-warning: var(--color-mango-orange);
+    --color-success: var(--color-neon-yellow);
   }
 
-  .theme-a.dark {
-    --color-background: black;
-    --color-foreground: yellow;
-    --color-primary: blue;
-    --color-accent: violet;
-    --color-warning: red;
-    --color-success: green;
+  .theme-square.dark {
+    --color-primary: var(--color-bright-aqua);
     --color-logo-primary: var(--color-primary);
-    --color-logo-base: var(--color-foreground);
+  }
+
+  .theme-double-split-complementary {
+    --color-primary: var(--color-bleu-de-france);
+    --color-accent: var(--color-cantaloupse);
+    --color-warning: var(--color-coral-red);
+    --color-success: var(--color-ocean-green);
+  }
+
+  .theme-double-split-complementary.dark {
+    --color-primary: var(--color-bright-aqua);
+    --color-logo-primary: var(--color-primary);
   }
 
   html {
@@ -74,5 +87,7 @@
   body,
   #__next {
     @apply h-full;
+    @apply bg-background;
+    @apply text-foreground;
   }
 }
