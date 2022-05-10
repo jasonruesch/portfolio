@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Head>
       <div className="h-full">
         <header className="fixed flex w-full justify-end">
-          <ThemeSelector className="m-2 md:mx-4" />
+          <ThemeSelector className="m-4 md:mx-8" />
         </header>
         <main className="h-full p-4 md:px-8">{children}</main>
       </div>
