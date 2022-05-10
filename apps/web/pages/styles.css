@@ -8,6 +8,10 @@
 
     --color-black: #000000; /* Text: Light only */
     --color-white: #ffffff; /* Text: Dark only */
+    --color-dark-gray: #3d3d3d; /* Text: Light only */
+    --color-gray: #7d7d7d;
+    --color-light-gray: #bdbdbd;
+    --color-light-gray-15: rgba(189, 189, 189, 0.15);
 
     /* Brand colors (option tokens) from Adobe Color (color.adobe.com)*/
 

@@ -11,9 +11,13 @@ module.exports = {
   ],
   theme: {
     colors: {
+      black: 'var(--color-black)',
+      white: 'var(--color-white)',
+      'light-gray-15': 'var(--color-light-gray-15)',
+      'light-gray': 'var(--color-light-gray)',
+      gray: 'var(--color-gray)',
+      'dark-gray': 'var(--color-dark-gray)',
       brand: {
-        black: 'var(--color-black)',
-        white: 'var(--color-white)',
         charcoal: 'var(--color-charcoal)',
         alabaster: 'var(--color-alabaster)',
         'bright-aqua': 'var(--color-bright-aqua)',
