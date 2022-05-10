@@ -94,4 +94,8 @@
     @apply bg-background;
     @apply text-foreground;
   }
+
+  h1 {
+    @apply text-light-gray mb-4 text-3xl;
+  }
 }
