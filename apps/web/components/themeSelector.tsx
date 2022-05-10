@@ -16,9 +16,9 @@ export default function ThemeSelector({ className }: { className?: string }) {
   return (
     <Menu
       as="div"
-      className={`relative inline-block text-left leading-none ${
+      className={`relative inline-block text-left leading-3 ${className} ${
         disabled ? 'hidden' : ''
-      } ${className}`}
+      }`}
     >
       <label className="sr-only" id="theme-selector-label">
         Theme
