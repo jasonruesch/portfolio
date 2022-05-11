@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,20 +6,18 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import ThemeSelector from './themeSelector';
 
-const pageAnimation = (key) => ({
-  key,
-  initial: { y: '50%', opacity: 0 /*scale: 0.5*/ },
-  animate: { y: 0, opacity: 1 /*scale: 1*/ },
-  exit: { y: '50%', opacity: 0 },
-  transition: { ease: 'easeOut' },
-});
+const pageAnimation = {
+  initial: { opacity: 0, scale: 0.5 },
+  animate: { opacity: 1, scale: 1 },
+  exit: { opacity: 0, scale: 0.5 },
+  transition: { ease: 'easeInOut' },
+};
 
 export default function Layout({
   children,
   props,
 }: {
   children: React.ReactNode;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props?: {
     centerPage: boolean;
   };
@@ -34,7 +32,7 @@ export default function Layout({
       </Head>
       <div className="h-full">
         <header className="mx-4 flex h-14 items-center justify-between md:mx-8">
-          <div className={route === '/' ? 'flex-auto' : ''}>
+          <div className="flex-auto">
             <motion.div
               layoutId="logo"
               className={route === '/' ? 'hidden' : ''}
@@ -89,13 +87,7 @@ export default function Layout({
           </div>
           <div className="flex items-center justify-end gap-4">
             <Link href="/about">
-              <a
-                className={`hover:text-brand-bleu-de-france ${
-                  route === '/about' ? 'text-brand-bleu-de-france' : ''
-                }`}
-              >
-                About
-              </a>
+              <a className="hover:text-brand-bleu-de-france">About</a>
             </Link>
             <ThemeSelector />
           </div>
@@ -119,9 +111,7 @@ export default function Layout({
               />
             </motion.div>
           </div>
-          <AnimatePresence>
-            <motion.div {...pageAnimation(route)}>{children}</motion.div>
-          </AnimatePresence>
+          <motion.div {...pageAnimation}>{children}</motion.div>
         </main>
       </div>
     </>
