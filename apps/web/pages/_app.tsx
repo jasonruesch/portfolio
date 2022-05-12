@@ -17,6 +17,8 @@ function WebApp({ Component, pageProps, router }) {
     setIsHydrated(true);
   }, []);
 
+  const baseUrl = 'https://portfolio-git-feat-seo-jasonruesch.vercel.app';
+
   return (
     <>
       <Head>
@@ -28,8 +30,17 @@ function WebApp({ Component, pageProps, router }) {
         openGraph={{
           type: 'website',
           locale: 'en_US',
-          url: `https://jasonruesch.dev${router.route}`,
+          url: `${baseUrl}${router.route}`,
           site_name: 'Jason Ruesch',
+          images: [
+            {
+              url: `${baseUrl}/images/og-image-01.jpg`,
+              width: 1200,
+              height: 630,
+              alt: 'Jason Ruesch',
+              type: 'image/jpeg',
+            },
+          ],
         }}
         twitter={{
           handle: '@jasonruesch',
