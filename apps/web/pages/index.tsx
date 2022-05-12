@@ -1,9 +1,8 @@
 import Layout from '../components/layout';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Index = (props: any) => {
+const Index = () => {
   return (
-    <Layout props={{ centerPage: true }}>
+    <Layout centerPage={true}>
       <div className="sm-max-h:max-w-lg flex w-full flex-col gap-2 text-xl text-accent md:max-w-screen-sm md:text-3xl">
         <p className="order-1">
           Hi, I&apos;m <span className="sr-only">Jason Ruesch</span>
