@@ -17,7 +17,7 @@ function WebApp({ Component, pageProps, router }) {
     setIsHydrated(true);
   }, []);
 
-  const baseUrl = 'https://portfolio-git-feat-seo-jasonruesch.vercel.app';
+  const baseUrl = 'https://jasonruesch.dev';
 
   return (
     <>
