@@ -94,4 +94,8 @@
     @apply bg-background;
     @apply text-foreground;
   }
+
+  h1 {
+    @apply mb-4 text-3xl text-accent;
+  }
 }
