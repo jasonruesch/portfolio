@@ -2,6 +2,15 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const { createGlobPatternsForDependencies } = require('@nrwl/next/tailwind');
 const { join } = require('path');
 
+function withOpacityValue(variable) {
+  return ({ opacityValue }) => {
+    if (opacityValue === undefined) {
+      return `rgb(var(${variable}))`;
+    }
+    return `rgb(var(${variable}) / ${opacityValue})`;
+  };
+}
+
 module.exports = {
   darkMode: 'class',
   content: [
@@ -11,39 +20,45 @@ module.exports = {
   ],
   theme: {
     colors: {
-      black: 'var(--color-black)',
-      white: 'var(--color-white)',
-      'light-gray-15': 'var(--color-light-gray-15)',
-      'light-gray': 'var(--color-light-gray)',
-      gray: 'var(--color-gray)',
-      'dark-gray': 'var(--color-dark-gray)',
+      black: withOpacityValue('--color-black'),
+      white: withOpacityValue('--color-white'),
+      'light-gray': withOpacityValue('--color-light-gray'),
+      // Example of providing opacity value up front
+      // Note: Does not work with the "/opacity" syntax
+      'light-gray-15': withOpacityValue('--color-light-gray')({
+        opacityValue: '.15',
+      }),
+      // Another example of providing opacity value up front
+      'light-gray-30': 'rgb(var(--color-light-gray) / .3)',
+      gray: withOpacityValue('--color-gray'),
+      'dark-gray': withOpacityValue('--color-dark-gray'),
       brand: {
-        charcoal: 'var(--color-charcoal)',
-        alabaster: 'var(--color-alabaster)',
-        'bright-aqua': 'var(--color-bright-aqua)',
-        grapefruit: 'var(--color-grapefruit)',
-        'bright-turquoise': 'var(--color-bright-turquoise)',
-        'fire-bush': 'var(--color-fire-bush)',
-        malachite: 'var(--color-malachite)',
-        'bright-cyan': 'var(--color-bright-cyan)',
-        'electric-purple': 'var(--color-electric-purple)',
-        'mango-orange': 'var(--color-mango-orange)',
-        'neon-yellow': 'var(--color-neon-yellow)',
-        'bleu-de-france': 'var(--color-bleu-de-france)',
-        'coral-red': 'var(--color-coral-red)',
-        cantaloupe: 'var(--color-cantaloupe)',
-        'ocean-green': 'var(--color-ocean-green)',
+        charcoal: withOpacityValue('--color-charcoal'),
+        alabaster: withOpacityValue('--color-alabaster'),
+        'bright-aqua': withOpacityValue('--color-bright-aqua'),
+        grapefruit: withOpacityValue('--color-grapefruit'),
+        'bright-turquoise': withOpacityValue('--color-bright-turquoise'),
+        'fire-bush': withOpacityValue('--color-fire-bush'),
+        malachite: withOpacityValue('--color-malachite'),
+        'bright-cyan': withOpacityValue('--color-bright-cyan'),
+        'electric-purple': withOpacityValue('--color-electric-purple'),
+        'mango-orange': withOpacityValue('--color-mango-orange'),
+        'neon-yellow': withOpacityValue('--color-neon-yellow'),
+        'bleu-de-france': withOpacityValue('--color-bleu-de-france'),
+        'coral-red': withOpacityValue('--color-coral-red'),
+        cantaloupe: withOpacityValue('--color-cantaloupe'),
+        'ocean-green': withOpacityValue('--color-ocean-green'),
       },
       transparent: 'transparent',
       current: 'currentColor',
-      background: 'var(--color-background)',
-      foreground: 'var(--color-foreground)',
-      primary: 'var(--color-primary)',
-      accent: 'var(--color-accent)',
-      warning: 'var(--color-warning)',
-      success: 'var(--color-success)',
-      'logo-primary': 'var(--color-logo-primary)',
-      'logo-base': 'var(--color-logo-base)',
+      background: withOpacityValue('--color-background'),
+      foreground: withOpacityValue('--color-foreground'),
+      primary: withOpacityValue('--color-primary'),
+      accent: withOpacityValue('--color-accent'),
+      warning: withOpacityValue('--color-warning'),
+      success: withOpacityValue('--color-success'),
+      'logo-primary': withOpacityValue('--color-logo-primary'),
+      'logo-base': withOpacityValue('--color-logo-base'),
     },
     extend: {
       fontFamily: {

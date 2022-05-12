@@ -46,14 +46,14 @@ export default function ThemeSelector({ className }: { className?: string }) {
       >
         <Menu.Items
           as="ul"
-          className="dark:bg-dark-gray ring-light-gray-15 absolute top-full right-0 z-50 mt-2 w-36 overflow-hidden rounded-lg bg-background py-1 text-sm font-semibold shadow-lg ring-1 focus:outline-none dark:ring-0"
+          className="absolute top-full right-0 z-50 mt-2 w-36 overflow-hidden rounded-lg bg-background py-1 text-sm font-semibold shadow-lg ring-1 ring-light-gray/20 focus:outline-none dark:bg-dark-gray dark:ring-0"
           aria-labelledby="theme-selector-label"
         >
           <Menu.Item
             as="li"
             className={`flex cursor-pointer items-center py-1 px-2 ${
               theme === 'light' ? 'text-brand-bleu-de-france' : ''
-            } hover:bg-light-gray-15`}
+            } hover:bg-light-gray/20`}
             onClick={() => activateMode('light')}
           >
             <LightIcon
@@ -68,7 +68,7 @@ export default function ThemeSelector({ className }: { className?: string }) {
             as="li"
             className={`flex cursor-pointer items-center py-1 px-2 ${
               theme === 'dark' ? 'text-brand-bleu-de-france' : ''
-            } hover:bg-light-gray-15`}
+            } hover:bg-light-gray/20`}
             onClick={() => activateMode('dark')}
           >
             <DarkIcon
