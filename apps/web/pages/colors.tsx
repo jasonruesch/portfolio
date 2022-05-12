@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Colors = (props: any) => {
+const Colors = () => {
   return (
     <div className="p-4 text-sm md:px-8">
       <h1>Colors</h1>

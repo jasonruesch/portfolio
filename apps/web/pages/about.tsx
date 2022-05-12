@@ -1,7 +1,6 @@
 import Layout from '../components/layout';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const About = (props: any) => {
+const About = () => {
   return (
     <Layout>
       <div className="sm-max-h:max-w-lg w-full gap-2 md:max-w-screen-sm">
