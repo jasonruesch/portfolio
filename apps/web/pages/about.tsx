@@ -7,7 +7,7 @@ const About = () => {
         <h1>About me</h1>
         <p>
           My name is Jason Ruesch, and I enjoy creating software that looks
-          amazing and easy to use! I have a passion for learning new
+          amazing and is easy to use! I have a passion for learning new
           technologies and building things that are useful to others.
         </p>
         {/* 1. 2. 3. Accomplishements */}
