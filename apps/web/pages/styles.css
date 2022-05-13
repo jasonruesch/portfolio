@@ -6,35 +6,34 @@
   :root {
     /* Base colors (option tokens) */
 
-    --color-black: #000000; /* Text: Light only */
-    --color-white: #ffffff; /* Text: Dark only */
-    --color-dark-gray: #3d3d3d; /* Text: Light only */
-    --color-gray: #7d7d7d;
-    --color-light-gray: #bdbdbd;
-    --color-light-gray-15: rgba(189, 189, 189, 0.15);
+    --color-black: 0 0 0; /* Text: Light only */
+    --color-white: 255 255 255; /* Text: Dark only */
+    --color-dark-gray: 61 61 61; /* Text: Light only */
+    --color-gray: 125 125 125;
+    --color-light-gray: 189 189 189;
 
     /* Brand colors (option tokens) from Adobe Color (color.adobe.com)*/
 
-    --color-charcoal: #303030; /* Text: Light only */
-    --color-alabaster: #fafafa; /* Text: Dark only */
+    --color-charcoal: 48 48 48; /* Text: Light only */
+    --color-alabaster: 250 250 250; /* Text: Dark only */
 
     /* Color Harmony Rule: Custom */
-    --color-bright-turquoise: #14e3e3;
-    --color-grapefruit: #e3392b;
-    --color-bright-aqua: #18ffff; /* Text: Dark only */
-    --color-fire-bush: #e3a02b;
-    --color-malachite: #09e368;
+    --color-bright-turquoise: 20 227 227;
+    --color-grapefruit: 227 57 43;
+    --color-bright-aqua: 24 255 255; /* Text: Dark only */
+    --color-fire-bush: 227 160 43;
+    --color-malachite: 9 227 104;
 
     /* Color Harmony Rule: Square */
-    --color-electric-purple: #ac30ff;
-    --color-mango-orange: #ff7d30;
-    --color-neon-yellow: #ddff0a; /* Dark only */
+    --color-electric-purple: 172 48 255;
+    --color-mango-orange: 255 125 48;
+    --color-neon-yellow: 221 255 10; /* Dark only */
 
     /* Color Harmony Rule: Double Split Complementary */
-    --color-bleu-de-france: #248cff;
-    --color-coral-red: #ff4130;
-    --color-cantaloupe: #ffb430; /* Text: Dark only */
-    --color-ocean-green: #0aff74; /* Text: Dark only */
+    --color-bleu-de-france: 36 140 255;
+    --color-coral-red: 255 65 48;
+    --color-cantaloupe: 255 180 48; /* Text: Dark only */
+    --color-ocean-green: 10 255 116; /* Text: Dark only */
 
     /* Theme colors (semantic tokens) */
 
@@ -97,5 +96,9 @@
 
   h1 {
     @apply mb-4 text-3xl text-accent;
+  }
+
+  p {
+    @apply mb-2;
   }
 }
