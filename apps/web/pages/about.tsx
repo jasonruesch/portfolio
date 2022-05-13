@@ -3,17 +3,22 @@ import Layout from '../components/layout';
 const About = () => {
   return (
     <Layout>
-      <div className="sm-max-h:max-w-lg w-full gap-2 md:max-w-screen-sm">
+      <div className="w-full gap-2 md:max-w-screen-sm sm-max-h:max-w-lg">
         <h1>About me</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris est
-          justo, consectetur quis sapien ut, volutpat porttitor magna. Etiam
-          tincidunt orci eu nunc tristique, a finibus leo sagittis. Vestibulum
-          volutpat, dolor id scelerisque aliquet, nulla mauris lacinia est, in
-          ornare massa nisi quis leo. Donec ultricies tellus commodo neque
-          rhoncus euismod. Mauris eu nulla magna. Suspendisse pulvinar magna
-          vitae lacinia pretium. Maecenas at varius risus. Sed ut faucibus
-          ligula.
+          My name is Jason Ruesch, and I strive to create software that is
+          spectacular and easy to use. I have a passion for learning new
+          technologies and building things that are useful to others.
+        </p>
+        {/* 1. 2. 3. Accomplishements */}
+        <p>
+          In my spare time, I enjoy spending time with my family, playing video
+          games, and watching movies and tv shows.
+        </p>
+        <p>
+          I am always open to connect. If you are interested in learning more
+          about me, please reach out to me at{' '}
+          <a href="mailto:jason.ruesch@me.com">jason.ruesch@me.com</a>.
         </p>
       </div>
     </Layout>

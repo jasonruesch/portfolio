@@ -97,4 +97,8 @@
   h1 {
     @apply mb-4 text-3xl text-accent;
   }
+
+  p {
+    @apply mb-2;
+  }
 }

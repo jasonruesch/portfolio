@@ -2,6 +2,8 @@ import { Menu, Transition } from '@headlessui/react';
 import { useTheme } from 'next-themes';
 import { Fragment, useCallback } from 'react';
 
+type Icon = typeof LightIcon | typeof DarkIcon | typeof SystemIcon;
+
 export default function ThemeSelector({ className }: { className?: string }) {
   const { theme, resolvedTheme, setTheme, forcedTheme } = useTheme();
   const activateMode = useCallback(
@@ -12,6 +14,12 @@ export default function ThemeSelector({ className }: { className?: string }) {
   );
   // Theme is forced, we shouldn't allow user to change the theme.
   const disabled = !!forcedTheme;
+
+  const menuItems: [Icon, { type: string; displayName: string }][] = [
+    [LightIcon, { type: 'light', displayName: 'Light' }],
+    [DarkIcon, { type: 'dark', displayName: 'Dark' }],
+    [SystemIcon, { type: 'system', displayName: 'System' }],
+  ];
 
   return (
     <Menu
@@ -27,12 +35,12 @@ export default function ThemeSelector({ className }: { className?: string }) {
         aria-labelledby="theme-selector-label"
         className={`focus:outline-none ${
           theme === 'system' ? 'text-gray' : 'text-brand-bleu-de-france'
-        }`}
+        } h-6 w-6 hover:text-brand-bleu-de-france`}
       >
         {resolvedTheme === 'light' ? (
-          <LightIcon className="h-6 w-6" aria-hidden="true" />
+          <LightIcon aria-hidden="true" />
         ) : (
-          <DarkIcon className="h-6 w-6" aria-hidden="true" />
+          <DarkIcon aria-hidden="true" />
         )}
       </Menu.Button>
       <Transition
@@ -49,51 +57,24 @@ export default function ThemeSelector({ className }: { className?: string }) {
           className="absolute top-full right-0 z-50 mt-2 w-36 overflow-hidden rounded-lg bg-background py-1 text-sm font-semibold shadow-lg ring-1 ring-light-gray/20 focus:outline-none dark:bg-dark-gray dark:ring-0"
           aria-labelledby="theme-selector-label"
         >
-          <Menu.Item
-            as="li"
-            className={`flex cursor-pointer items-center py-1 px-2 ${
-              theme === 'light' ? 'text-brand-bleu-de-france' : ''
-            } hover:bg-light-gray/20`}
-            onClick={() => activateMode('light')}
-          >
-            <LightIcon
-              className={`mr-2 h-6 w-6 ${
-                theme === 'light' ? 'text-brand-bleu-de-france' : 'text-gray'
-              }`}
-              aria-hidden="true"
-            />
-            Light
-          </Menu.Item>
-          <Menu.Item
-            as="li"
-            className={`flex cursor-pointer items-center py-1 px-2 ${
-              theme === 'dark' ? 'text-brand-bleu-de-france' : ''
-            } hover:bg-light-gray/20`}
-            onClick={() => activateMode('dark')}
-          >
-            <DarkIcon
-              className={`mr-2 h-6 w-6 ${
-                theme === 'dark' ? 'text-brand-bleu-de-france' : 'text-gray'
-              }`}
-              aria-hidden="true"
-            />
-            Dark
-          </Menu.Item>
-          <Menu.Item
-            as="li"
-            className={`flex cursor-pointer items-center py-1 px-2 ${
-              theme === 'system' ? 'text-brand-bleu-de-france' : ''
-            } hover:bg-light-gray-15`}
-            onClick={() => activateMode('system')}
-          >
-            <SystemIcon
-              className={`mr-2 h-6 w-6 ${
-                theme === 'system' ? 'text-brand-bleu-de-france' : 'text-gray'
-              }`}
-              aria-hidden="true"
-            />
-            System
-          </Menu.Item>
+          {menuItems.map(([Icon, { type, displayName }], index) => (
+            <Menu.Item
+              key={index}
+              as="li"
+              className={`flex cursor-pointer items-center py-1 px-2 ${
+                theme === type ? 'text-brand-bleu-de-france' : ''
+              } hover:bg-light-gray/20`}
+              onClick={() => activateMode(type)}
+            >
+              <Icon
+                className={`mr-2 h-6 w-6 ${
+                  theme === type ? 'text-brand-bleu-de-france' : 'text-gray'
+                }`}
+                aria-hidden="true"
+              />
+              {displayName}
+            </Menu.Item>
+          ))}
         </Menu.Items>
       </Transition>
     </Menu>

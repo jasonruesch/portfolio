@@ -1,13 +1,38 @@
+import { motion, useAnimation } from 'framer-motion';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import Layout from '../components/layout';
 
 const Index = () => {
+  const variants = {
+    initial: { width: '6rem' },
+    animate: {
+      width: '3rem',
+      transition: {
+        repeat: Infinity,
+        repeatDelay: 0.75,
+      },
+    },
+  };
+  const controls = useAnimation();
+  const [isHovering, setIsHovering] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isHovering) {
+      controls.stop();
+    } else {
+      controls.set('initial');
+      controls.start('animate');
+    }
+  }, [isHovering, controls]);
+
   return (
     <Layout centerPage={true}>
-      <div className="sm-max-h:max-w-lg flex w-full flex-col gap-2 text-xl text-accent md:max-w-screen-sm md:text-3xl">
-        <p className="order-1">
+      <div className="flex w-full flex-col gap-2 text-xl text-accent md:max-w-screen-sm md:text-3xl sm-max-h:max-w-lg">
+        <p className="order-1 mb-0">
           Hi, I&apos;m <span className="sr-only">Jason Ruesch</span>
         </p>
-        <p className="order-3">
+        <p className="order-3 mb-0">
           I am a Software Engineer focusing on Web Development &amp; Design.
         </p>
         <svg
@@ -20,11 +45,11 @@ const Index = () => {
             <g id="Logo_Primary">
               <polygon
                 points="16.7 14.54 1.44 14.98 0 13.54 1.01 0.14 36.29 0.14 36.06 14.33 16.7 14.54"
-                className="stroke-light-gray fill-logo-primary dark:stroke-0"
+                className="fill-logo-primary stroke-light-gray dark:stroke-0"
               />
               <path
                 d="M450.84,14.32a22.2,22.2,0,0,0-5.31-7.19Q437.61,0,423.07,0L387.5.14l.22,14.18Z"
-                className="stroke-light-gray fill-logo-primary dark:stroke-0"
+                className="fill-logo-primary stroke-light-gray dark:stroke-0"
               />
             </g>
             <g id="Logo_Base">
@@ -75,6 +100,37 @@ const Index = () => {
             </g>
           </g>
         </svg>
+        <div className="order-4 mt-4 flex w-full justify-end rounded-lg">
+          <Link href="/about">
+            <a
+              className="block text-foreground hover:text-brand-bleu-de-france"
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              <motion.div
+                initial="initial"
+                animate={controls}
+                variants={variants}
+                className="w-24"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-12 w-12"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </motion.div>
+            </a>
+          </Link>
+        </div>
       </div>
     </Layout>
   );
