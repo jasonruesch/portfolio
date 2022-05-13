@@ -1,11 +1,12 @@
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, Variants } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Layout from '../components/layout';
 
 const Index = () => {
-  const variants = {
+  const variants: Variants = {
     initial: { width: '6rem' },
+    hovering: { width: '3rem' },
     animate: {
       width: '3rem',
       transition: {
@@ -20,6 +21,7 @@ const Index = () => {
   useEffect(() => {
     if (isHovering) {
       controls.stop();
+      controls.set('hovering');
     } else {
       controls.set('initial');
       controls.start('animate');
@@ -101,35 +103,36 @@ const Index = () => {
           </g>
         </svg>
         <div className="order-4 mt-4 flex w-full justify-end rounded-lg">
-          <Link href="/about">
-            <a
-              className="block text-foreground hover:text-brand-bleu-de-france"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-            >
-              <motion.div
-                initial="initial"
-                animate={controls}
-                variants={variants}
-                className="w-24"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+          <motion.div
+            onHoverStart={() => setIsHovering(true)}
+            onHoverEnd={() => setIsHovering(false)}
+          >
+            <Link href="/about">
+              <a className="block text-foreground hover:text-brand-bleu-de-france">
+                <motion.div
+                  initial="initial"
+                  animate={controls}
+                  variants={variants}
+                  className="w-12"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </motion.div>
-            </a>
-          </Link>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </motion.div>
+              </a>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </Layout>
