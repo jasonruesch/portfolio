@@ -107,13 +107,16 @@ const Index = () => {
             </g>
           </svg>
         </div>
-        <div className="order-4 mt-4 flex justify-end rounded-lg">
+        <div className="order-4 mt-4 flex justify-end">
           <motion.div
             onHoverStart={() => setIsHovering(true)}
             onHoverEnd={() => setIsHovering(false)}
           >
             <Link href="/about">
-              <a className="flex w-24 justify-end text-foreground hover:text-brand-bleu-de-france">
+              <a
+                className="flex w-24 justify-end text-foreground hover:text-brand-bleu-de-france"
+                aria-label="Learn more about me."
+              >
                 <motion.div
                   initial="initial"
                   animate={controls}

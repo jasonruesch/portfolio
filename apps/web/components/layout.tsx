@@ -20,7 +20,7 @@ export default function Layout({
         <div className="flex-auto">
           <motion.div layoutId="logo" className={route === '/' ? 'hidden' : ''}>
             <Link href="/">
-              <a className="block w-6 hover:text-brand-bleu-de-france">
+              <a className="block w-6 hover:scale-125 hover:text-brand-bleu-de-france">
                 <svg
                   viewBox="0 0 2560 2298"
                   version="1.1"
