@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Layout from '../components/layout';
 
 const About = () => {
@@ -17,7 +18,12 @@ const About = () => {
         </p>
         <p>
           I am always open to connect. If you are interested in learning more
-          about me, please reach out to me.
+          about me, please{' '}
+          <Link href="/contact">
+            <a className="underline hover:text-brand-bleu-de-france">
+              reach out to me.
+            </a>
+          </Link>
         </p>
       </div>
     </Layout>

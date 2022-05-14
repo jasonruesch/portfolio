@@ -21,7 +21,7 @@ const Contact = () => {
                   name="name"
                   id="name"
                   autoComplete="name"
-                  className="block w-full rounded-md border-light-gray shadow-sm focus:border-brand-electric-purple focus:ring-brand-electric-purple"
+                  className="block w-72 rounded-md border-light-gray shadow-sm focus:border-brand-electric-purple focus:ring-brand-electric-purple sm:w-full"
                 />
               </div>
             </div>
@@ -40,7 +40,7 @@ const Contact = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="block w-full rounded-md border-light-gray shadow-sm focus:border-brand-electric-purple focus:ring-brand-electric-purple"
+                  className="block w-72 rounded-md border-light-gray shadow-sm focus:border-brand-electric-purple focus:ring-brand-electric-purple sm:w-full"
                 />
               </div>
             </div>
@@ -57,7 +57,8 @@ const Contact = () => {
                 <textarea
                   name="message"
                   id="message"
-                  className="block w-full rounded-md border-light-gray shadow-sm focus:border-brand-electric-purple focus:ring-brand-electric-purple"
+                  className="block w-72 rounded-md border-light-gray shadow-sm focus:border-brand-electric-purple focus:ring-brand-electric-purple sm:w-full"
+                  rows={1}
                 />
               </div>
             </div>
