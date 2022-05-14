@@ -17,14 +17,7 @@ const About = () => {
         </p>
         <p>
           I am always open to connect. If you are interested in learning more
-          about me, please reach out to me at{' '}
-          <a
-            className="underline hover:text-brand-bleu-de-france"
-            href="mailto:jason.ruesch@me.com"
-          >
-            jason.ruesch@me.com
-          </a>
-          .
+          about me, please reach out to me.
         </p>
       </div>
     </Layout>
