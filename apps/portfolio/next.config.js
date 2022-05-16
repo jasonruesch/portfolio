@@ -10,6 +10,10 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  images: {
+    domains: ['tailwindui.com', 'images.unsplash.com'],
+  },
+  experimental: { images: { layoutRaw: true } },
 };
 
 module.exports = withNx(nextConfig);

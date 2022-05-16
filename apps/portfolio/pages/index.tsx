@@ -1,415 +1,664 @@
-import styles from './index.module.css';
+import { Fragment, useState } from 'react';
+import { Dialog, Menu, Transition } from '@headlessui/react';
+import {
+  BellIcon,
+  ClockIcon,
+  CogIcon,
+  CreditCardIcon,
+  DocumentReportIcon,
+  HomeIcon,
+  MenuAlt1Icon,
+  QuestionMarkCircleIcon,
+  ScaleIcon,
+  ShieldCheckIcon,
+  UserGroupIcon,
+  XIcon,
+} from '@heroicons/react/outline';
+import {
+  CashIcon,
+  CheckCircleIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+  OfficeBuildingIcon,
+  SearchIcon,
+} from '@heroicons/react/solid';
+import Image from 'next/image';
 
-export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.css file.
-   */
+const navigation = [
+  { name: 'Home', href: '#', icon: HomeIcon, current: true },
+  { name: 'History', href: '#', icon: ClockIcon, current: false },
+  { name: 'Balances', href: '#', icon: ScaleIcon, current: false },
+  { name: 'Cards', href: '#', icon: CreditCardIcon, current: false },
+  { name: 'Recipients', href: '#', icon: UserGroupIcon, current: false },
+  { name: 'Reports', href: '#', icon: DocumentReportIcon, current: false },
+];
+const secondaryNavigation = [
+  { name: 'Settings', href: '#', icon: CogIcon },
+  { name: 'Help', href: '#', icon: QuestionMarkCircleIcon },
+  { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
+];
+const cards = [
+  { name: 'Account balance', href: '#', icon: ScaleIcon, amount: '$30,659.45' },
+  // More items...
+];
+const transactions = [
+  {
+    id: 1,
+    name: 'Payment to Molly Sanders',
+    href: '#',
+    amount: '$20,000',
+    currency: 'USD',
+    status: 'success',
+    date: 'July 11, 2020',
+    datetime: '2020-07-11',
+  },
+  // More transactions...
+];
+const statusStyles = {
+  success: 'bg-green-100 text-green-800',
+  processing: 'bg-yellow-100 text-yellow-800',
+  failed: 'bg-gray-100 text-gray-800',
+};
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
+
+export default function Index() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
-    <div className={styles.page}>
-      <div className="wrapper">
-        <div className="container">
-          <div id="welcome">
-            <h1>
-              <span> Hello there, </span>
-              Welcome portfolio 👋
-            </h1>
-          </div>
+    <div className="min-h-full">
+      <Transition.Root show={sidebarOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          className="relative z-40 lg:hidden"
+          onClose={setSidebarOpen}
+        >
+          <Transition.Child
+            as={Fragment}
+            enter="transition-opacity ease-linear duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity ease-linear duration-300"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-600 bg-opacity-75" />
+          </Transition.Child>
 
-          <div id="hero" className="rounded">
-            <div className="text-container">
-              <h2>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  />
-                </svg>
-                <span>You&apos;re up and running</span>
-              </h2>
-              <a href="#commands"> What&apos;s next? </a>
-            </div>
-            <div className="logo-container">
-              <svg
-                fill="currentColor"
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M11.987 14.138l-3.132 4.923-5.193-8.427-.012 8.822H0V4.544h3.691l5.247 8.833.005-3.998 3.044 4.759zm.601-5.761c.024-.048 0-3.784.008-3.833h-3.65c.002.059-.005 3.776-.003 3.833h3.645zm5.634 4.134a2.061 2.061 0 0 0-1.969 1.336 1.963 1.963 0 0 1 2.343-.739c.396.161.917.422 1.33.283a2.1 2.1 0 0 0-1.704-.88zm3.39 1.061c-.375-.13-.8-.277-1.109-.681-.06-.08-.116-.17-.176-.265a2.143 2.143 0 0 0-.533-.642c-.294-.216-.68-.322-1.18-.322a2.482 2.482 0 0 0-2.294 1.536 2.325 2.325 0 0 1 4.002.388.75.75 0 0 0 .836.334c.493-.105.46.36 1.203.518v-.133c-.003-.446-.246-.55-.75-.733zm2.024 1.266a.723.723 0 0 0 .347-.638c-.01-2.957-2.41-5.487-5.37-5.487a5.364 5.364 0 0 0-4.487 2.418c-.01-.026-1.522-2.39-1.538-2.418H8.943l3.463 5.423-3.379 5.32h3.54l1.54-2.366 1.568 2.366h3.541l-3.21-5.052a.7.7 0 0 1-.084-.32 2.69 2.69 0 0 1 2.69-2.691h.001c1.488 0 1.736.89 2.057 1.308.634.826 1.9.464 1.9 1.541a.707.707 0 0 0 1.066.596zm.35.133c-.173.372-.56.338-.755.639-.176.271.114.412.114.412s.337.156.538-.311c.104-.231.14-.488.103-.74z" />
-              </svg>
-            </div>
-          </div>
-
-          <div id="middle-content">
-            <div id="learning-materials" className="rounded shadow">
-              <h2>Learning materials</h2>
-              <a
-                href="https://nx.dev/getting-started/intro?utm_source=nx-project"
-                target="_blank"
-                rel="noreferrer"
-                className="list-item-link"
-              >
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
-                <span>
-                  Documentation
-                  <span> Everything is in there </span>
-                </span>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://blog.nrwl.io/?utm_source=nx-project"
-                target="_blank"
-                rel="noreferrer"
-                className="list-item-link"
-              >
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                  />
-                </svg>
-                <span>
-                  Blog
-                  <span> Changelog, features & events </span>
-                </span>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://www.youtube.com/c/Nrwl_io/videos?utm_source=nx-project&sub_confirmation=1"
-                target="_blank"
-                rel="noreferrer"
-                className="list-item-link"
-              >
-                <svg
-                  role="img"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>YouTube</title>
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-                <span>
-                  YouTube channel
-                  <span> Nx Show, talks & tutorials </span>
-                </span>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://nx.dev/tutorial/01-create-application?utm_source=nx-project"
-                target="_blank"
-                rel="noreferrer"
-                className="list-item-link"
-              >
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
-                  />
-                </svg>
-                <span>
-                  Interactive tutorials
-                  <span> Create an app, step-by-step </span>
-                </span>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://nxplaybook.com/?utm_source=nx-project"
-                target="_blank"
-                rel="noreferrer"
-                className="list-item-link"
-              >
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                  <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  />
-                </svg>
-                <span>
-                  Video courses
-                  <span> Nx custom courses </span>
-                </span>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
-            <div id="other-links">
-              <a
-                id="nx-console"
-                className="button-pill rounded shadow"
-                href="https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console&utm_source=nx-project"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg
-                  fill="currentColor"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Visual Studio Code</title>
-                  <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z" />
-                </svg>
-                <span>
-                  Install Nx Console
-                  <span>Plugin for VSCode</span>
-                </span>
-              </a>
-              <div id="nx-cloud" className="rounded shadow">
-                <div>
-                  <svg
-                    viewBox="0 0 120 120"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M120 15V30C103.44 30 90 43.44 90 60C90 76.56 76.56 90 60 90C43.44 90 30 103.44 30 120H15C6.72 120 0 113.28 0 105V15C0 6.72 6.72 0 15 0H105C113.28 0 120 6.72 120 15Z"
-                      fill="#0E2039"
-                    />
-                    <path
-                      d="M120 30V105C120 113.28 113.28 120 105 120H30C30 103.44 43.44 90 60 90C76.56 90 90 76.56 90 60C90 43.44 103.44 30 120 30Z"
-                      fill="white"
-                    />
-                  </svg>
-                  <h2>
-                    NxCloud
-                    <span>Enable faster CI & better DX</span>
-                  </h2>
-                </div>
-                <p>
-                  You can activate distributed tasks executions and caching by
-                  running:
-                </p>
-                <pre>nx connect-to-nx-cloud</pre>
-                <a
-                  href="https://nx.app/?utm_source=nx-project"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {' '}
-                  What is Nx Cloud?{' '}
-                </a>
-              </div>
-              <a
-                id="nx-repo"
-                className="button-pill rounded shadow"
-                href="https://github.com/nrwl/nx?utm_source=nx-project"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg
-                  fill="currentColor"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-                <span>
-                  Nx is open source
-                  <span> Love Nx? Give us a star! </span>
-                </span>
-              </a>
-            </div>
-          </div>
-
-          <div id="commands" className="rounded shadow">
-            <h2>Next steps</h2>
-            <p>Here are some things you can do with Nx:</p>
-            <details>
-              <summary>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                Add UI library
-              </summary>
-              <pre>
-                <span># Generate UI lib</span>
-                nx g @nrwl/angular:lib ui
-                <span># Add a component</span>
-                nx g @nrwl/angular:component button --project ui
-              </pre>
-            </details>
-            <details>
-              <summary>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                View interactive project graph
-              </summary>
-              <pre>nx graph</pre>
-            </details>
-            <details>
-              <summary>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                Run affected commands
-              </summary>
-              <pre>
-                <span># see what&apos;s been affected by changes</span>
-                nx affected:graph
-                <span># run tests for current changes</span>
-                nx affected:test
-                <span># run e2e tests for current changes</span>
-                nx affected:e2e
-              </pre>
-            </details>
-          </div>
-
-          <p id="love">
-            Carefully crafted with
-            <svg
-              fill="currentColor"
-              stroke="none"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+          <div className="fixed inset-0 flex z-40">
+            <Transition.Child
+              as={Fragment}
+              enter="transition ease-in-out duration-300 transform"
+              enterFrom="-translate-x-full"
+              enterTo="translate-x-0"
+              leave="transition ease-in-out duration-300 transform"
+              leaveFrom="translate-x-0"
+              leaveTo="-translate-x-full"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              />
-            </svg>
-          </p>
+              <Dialog.Panel className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-cyan-700">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-in-out duration-300"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="ease-in-out duration-300"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <div className="absolute top-0 right-0 -mr-12 pt-2">
+                    <button
+                      type="button"
+                      className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                      onClick={() => setSidebarOpen(false)}
+                    >
+                      <span className="sr-only">Close sidebar</span>
+                      <XIcon
+                        className="h-6 w-6 text-white"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                </Transition.Child>
+                <div className="flex-shrink-0 flex items-center px-4">
+                  <Image
+                    layout="raw"
+                    width="161"
+                    height="32"
+                    className="h-8 w-auto"
+                    src="https://tailwindui.com/img/logos/easywire-logo-cyan-300-mark-white-text.svg"
+                    alt="Easywire logo"
+                  />
+                </div>
+                <nav
+                  className="mt-5 flex-shrink-0 h-full divide-y divide-cyan-800 overflow-y-auto"
+                  aria-label="Sidebar"
+                >
+                  <div className="px-2 space-y-1">
+                    {navigation.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className={classNames(
+                          item.current
+                            ? 'bg-cyan-800 text-white'
+                            : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                          'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                        )}
+                        aria-current={item.current ? 'page' : undefined}
+                      >
+                        <item.icon
+                          className="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200"
+                          aria-hidden="true"
+                        />
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                  <div className="mt-6 pt-6">
+                    <div className="px-2 space-y-1">
+                      {secondaryNavigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600"
+                        >
+                          <item.icon
+                            className="mr-4 h-6 w-6 text-cyan-200"
+                            aria-hidden="true"
+                          />
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </nav>
+              </Dialog.Panel>
+            </Transition.Child>
+            <div className="flex-shrink-0 w-14" aria-hidden="true">
+              {/* Dummy element to force sidebar to shrink to fit close icon */}
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
+
+      {/* Static sidebar for desktop */}
+      <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
+        {/* Sidebar component, swap this element with another sidebar if you like */}
+        <div className="flex flex-col flex-grow bg-cyan-700 pt-5 pb-4 overflow-y-auto">
+          <div className="flex items-center flex-shrink-0 px-4">
+            <Image
+              layout="raw"
+              width="161"
+              height="32"
+              className="h-8 w-auto"
+              src="https://tailwindui.com/img/logos/easywire-logo-cyan-300-mark-white-text.svg"
+              alt="Easywire logo"
+            />
+          </div>
+          <nav
+            className="mt-5 flex-1 flex flex-col divide-y divide-cyan-800 overflow-y-auto"
+            aria-label="Sidebar"
+          >
+            <div className="px-2 space-y-1">
+              {navigation.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={classNames(
+                    item.current
+                      ? 'bg-cyan-800 text-white'
+                      : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                    'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
+                  )}
+                  aria-current={item.current ? 'page' : undefined}
+                >
+                  <item.icon
+                    className="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200"
+                    aria-hidden="true"
+                  />
+                  {item.name}
+                </a>
+              ))}
+            </div>
+            <div className="mt-6 pt-6">
+              <div className="px-2 space-y-1">
+                {secondaryNavigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600"
+                  >
+                    <item.icon
+                      className="mr-4 h-6 w-6 text-cyan-200"
+                      aria-hidden="true"
+                    />
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </nav>
         </div>
+      </div>
+
+      <div className="lg:pl-64 flex flex-col flex-1">
+        <div className="relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:border-none">
+          <button
+            type="button"
+            className="px-4 border-r border-gray-200 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <span className="sr-only">Open sidebar</span>
+            <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
+          </button>
+          {/* Search bar */}
+          <div className="flex-1 px-4 flex justify-between sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
+            <div className="flex-1 flex">
+              <form className="w-full flex md:ml-0" action="#" method="GET">
+                <label htmlFor="search-field" className="sr-only">
+                  Search
+                </label>
+                <div className="relative w-full text-gray-400 focus-within:text-gray-600">
+                  <div
+                    className="absolute inset-y-0 left-0 flex items-center pointer-events-none"
+                    aria-hidden="true"
+                  >
+                    <SearchIcon className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <input
+                    id="search-field"
+                    name="search-field"
+                    className="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-transparent sm:text-sm"
+                    placeholder="Search transactions"
+                    type="search"
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="ml-4 flex items-center md:ml-6">
+              <button
+                type="button"
+                className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+              >
+                <span className="sr-only">View notifications</span>
+                <BellIcon className="h-6 w-6" aria-hidden="true" />
+              </button>
+
+              {/* Profile dropdown */}
+              <Menu as="div" className="ml-3 relative">
+                <div>
+                  <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
+                    <Image
+                      layout="raw"
+                      width="32"
+                      height="32"
+                      className="h-8 w-8 rounded-full"
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt=""
+                    />
+                    <span className="hidden ml-3 text-gray-700 text-sm font-medium lg:block">
+                      <span className="sr-only">Open user menu for </span>
+                      Emilia Birch
+                    </span>
+                    <ChevronDownIcon
+                      className="hidden flex-shrink-0 ml-1 h-5 w-5 text-gray-400 lg:block"
+                      aria-hidden="true"
+                    />
+                  </Menu.Button>
+                </div>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active ? 'bg-gray-100' : '',
+                            'block px-4 py-2 text-sm text-gray-700'
+                          )}
+                        >
+                          Your Profile
+                        </a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active ? 'bg-gray-100' : '',
+                            'block px-4 py-2 text-sm text-gray-700'
+                          )}
+                        >
+                          Settings
+                        </a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active ? 'bg-gray-100' : '',
+                            'block px-4 py-2 text-sm text-gray-700'
+                          )}
+                        >
+                          Logout
+                        </a>
+                      )}
+                    </Menu.Item>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </div>
+          </div>
+        </div>
+        <main className="flex-1 pb-8">
+          {/* Page header */}
+          <div className="bg-white shadow">
+            <div className="px-4 sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
+              <div className="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
+                <div className="flex-1 min-w-0">
+                  {/* Profile */}
+                  <div className="flex items-center">
+                    <Image
+                      layout="raw"
+                      width="64"
+                      height="64"
+                      className="hidden h-16 w-16 rounded-full sm:block"
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
+                      alt=""
+                    />
+                    <div>
+                      <div className="flex items-center">
+                        <Image
+                          layout="raw"
+                          width="64"
+                          height="64"
+                          className="h-16 w-16 rounded-full sm:hidden"
+                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
+                          alt=""
+                        />
+                        <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
+                          Good morning, Emilia Birch
+                        </h1>
+                      </div>
+                      <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
+                        <dt className="sr-only">Company</dt>
+                        <dd className="flex items-center text-sm text-gray-500 font-medium capitalize sm:mr-6">
+                          <OfficeBuildingIcon
+                            className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                          Duke street studio
+                        </dd>
+                        <dt className="sr-only">Account status</dt>
+                        <dd className="mt-3 flex items-center text-sm text-gray-500 font-medium sm:mr-6 sm:mt-0 capitalize">
+                          <CheckCircleIcon
+                            className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                            aria-hidden="true"
+                          />
+                          Verified account
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                  >
+                    Add money
+                  </button>
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                  >
+                    Send money
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-lg leading-6 font-medium text-gray-900">
+                Overview
+              </h2>
+              <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {/* Card */}
+                {cards.map((card) => (
+                  <div
+                    key={card.name}
+                    className="bg-white overflow-hidden shadow rounded-lg"
+                  >
+                    <div className="p-5">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0">
+                          <card.icon
+                            className="h-6 w-6 text-gray-400"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div className="ml-5 w-0 flex-1">
+                          <dl>
+                            <dt className="text-sm font-medium text-gray-500 truncate">
+                              {card.name}
+                            </dt>
+                            <dd>
+                              <div className="text-lg font-medium text-gray-900">
+                                {card.amount}
+                              </div>
+                            </dd>
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-gray-50 px-5 py-3">
+                      <div className="text-sm">
+                        <a
+                          href={card.href}
+                          className="font-medium text-cyan-700 hover:text-cyan-900"
+                        >
+                          View all
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8">
+              Recent activity
+            </h2>
+
+            {/* Activity list (smallest breakpoint only) */}
+            <div className="shadow sm:hidden">
+              <ul
+                role="list"
+                className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden"
+              >
+                {transactions.map((transaction) => (
+                  <li key={transaction.id}>
+                    <a
+                      href={transaction.href}
+                      className="block px-4 py-4 bg-white hover:bg-gray-50"
+                    >
+                      <span className="flex items-center space-x-4">
+                        <span className="flex-1 flex space-x-2 truncate">
+                          <CashIcon
+                            className="flex-shrink-0 h-5 w-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                          <span className="flex flex-col text-gray-500 text-sm truncate">
+                            <span className="truncate">{transaction.name}</span>
+                            <span>
+                              <span className="text-gray-900 font-medium">
+                                {transaction.amount}
+                              </span>{' '}
+                              {transaction.currency}
+                            </span>
+                            <time dateTime={transaction.datetime}>
+                              {transaction.date}
+                            </time>
+                          </span>
+                        </span>
+                        <ChevronRightIcon
+                          className="flex-shrink-0 h-5 w-5 text-gray-400"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              <nav
+                className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200"
+                aria-label="Pagination"
+              >
+                <div className="flex-1 flex justify-between">
+                  <a
+                    href="#"
+                    className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500"
+                  >
+                    Previous
+                  </a>
+                  <a
+                    href="#"
+                    className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500"
+                  >
+                    Next
+                  </a>
+                </div>
+              </nav>
+            </div>
+
+            {/* Activity table (small breakpoint and up) */}
+            <div className="hidden sm:block">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex flex-col mt-2">
+                  <div className="align-middle min-w-full overflow-x-auto shadow overflow-hidden sm:rounded-lg">
+                    <table className="min-w-full divide-y divide-gray-200">
+                      <thead>
+                        <tr>
+                          <th
+                            className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            scope="col"
+                          >
+                            Transaction
+                          </th>
+                          <th
+                            className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            scope="col"
+                          >
+                            Amount
+                          </th>
+                          <th
+                            className="hidden px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider md:block"
+                            scope="col"
+                          >
+                            Status
+                          </th>
+                          <th
+                            className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            scope="col"
+                          >
+                            Date
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {transactions.map((transaction) => (
+                          <tr key={transaction.id} className="bg-white">
+                            <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                              <div className="flex">
+                                <a
+                                  href={transaction.href}
+                                  className="group inline-flex space-x-2 truncate text-sm"
+                                >
+                                  <CashIcon
+                                    className="flex-shrink-0 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                                    aria-hidden="true"
+                                  />
+                                  <p className="text-gray-500 truncate group-hover:text-gray-900">
+                                    {transaction.name}
+                                  </p>
+                                </a>
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                              <span className="text-gray-900 font-medium">
+                                {transaction.amount}{' '}
+                              </span>
+                              {transaction.currency}
+                            </td>
+                            <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 md:block">
+                              <span
+                                className={classNames(
+                                  statusStyles[transaction.status],
+                                  'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize'
+                                )}
+                              >
+                                {transaction.status}
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                              <time dateTime={transaction.datetime}>
+                                {transaction.date}
+                              </time>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    {/* Pagination */}
+                    <nav
+                      className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
+                      aria-label="Pagination"
+                    >
+                      <div className="hidden sm:block">
+                        <p className="text-sm text-gray-700">
+                          Showing <span className="font-medium">1</span> to{' '}
+                          <span className="font-medium">10</span> of{' '}
+                          <span className="font-medium">20</span> results
+                        </p>
+                      </div>
+                      <div className="flex-1 flex justify-between sm:justify-end">
+                        <a
+                          href="#"
+                          className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                        >
+                          Previous
+                        </a>
+                        <a
+                          href="#"
+                          className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                        >
+                          Next
+                        </a>
+                      </div>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   );
 }
-
-export default Index;
