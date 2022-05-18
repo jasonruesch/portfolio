@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Index from '../pages/index';
+import StyleGuide from '../pages/style-guide';
 
-describe('Index', () => {
+describe('StyleGuide', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Index />);
+    const { baseElement } = render(<StyleGuide />);
     expect(baseElement).toBeTruthy();
   });
 });

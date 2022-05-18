@@ -1,0 +1,28 @@
+:root {
+  /* Brand colors (option tokens) from Adobe Color (color.adobe.com)*/
+
+  --color-alabaster: 250 250 250; /* #fafafa, Text: Dark only */
+  --color-charcoal: 48 48 48; /* #303030, Text: Light only */
+  --color-bright-aqua: 24 255 255; /* 18ffff, Text: Dark only */
+  --color-bright-turquoise: 20 227 227; /* #14e3e3 */
+  --color-fire-bush: 227 160 43; /* #e39f2b */
+  --color-grapefruit: 227 57 43; /* #e33b2b */
+  --color-malachite: 9 227 104; /* #09e368 */
+  --color-electric-purple: 172 48 255; /* #ab30ff */
+
+  /* Theme colors (semantic tokens) */
+
+  --color-background: var(--color-alabaster);
+  --color-foreground: var(--color-charcoal);
+  --color-primary: var(--color-bright-turquoise);
+  --color-accent: var(--color-fire-bush);
+  --color-warning: var(--color-grapefruit);
+  --color-success: var(--color-malachite);
+  --color-cta: var(--color-electric-purple);
+}
+
+.dark {
+  --color-background: var(--color-charcoal);
+  --color-foreground: 255 255 255;
+  --color-primary: var(--color-bright-aqua);
+}
