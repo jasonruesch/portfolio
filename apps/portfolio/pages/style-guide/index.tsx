@@ -9,7 +9,7 @@ import {
 import { SearchIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import cn from 'classnames';
-import ThemeSelector from '../components/themeSelector';
+import ThemeSelector from '../../components/themeSelector';
 import Link from 'next/link';
 
 interface ColorItem {
@@ -56,54 +56,54 @@ const navigation = [
 //   { name: 'Icons', href: '#icons', icon: TemplateIcon },
 // ];
 
+const themeColors: ColorGroup = {
+  name: 'Theme colors',
+  items: [
+    {
+      name: 'Background',
+      bgColor: 'bg-background',
+      textColor: 'text-background',
+      description: '-background',
+    },
+    {
+      name: 'Foreground',
+      bgColor: 'bg-foreground',
+      textColor: 'text-foreground',
+      description: '-foreground',
+    },
+    {
+      name: 'Primary',
+      bgColor: 'bg-primary',
+      textColor: 'text-primary',
+      description: '-primary',
+    },
+    {
+      name: 'Accent',
+      bgColor: 'bg-accent',
+      textColor: 'text-accent',
+      description: '-accent',
+    },
+    {
+      name: 'Warning',
+      bgColor: 'bg-warning',
+      textColor: 'text-warning',
+      description: '-warning',
+    },
+    {
+      name: 'Success',
+      bgColor: 'bg-success',
+      textColor: 'text-success',
+      description: '-success',
+    },
+    {
+      name: 'Call to Action',
+      bgColor: 'bg-cta',
+      textColor: 'text-cta',
+      description: '-cta',
+    },
+  ],
+};
 const colorGroups: ColorGroup[] = [
-  {
-    name: 'Theme colors',
-    items: [
-      {
-        name: 'Background',
-        bgColor: 'bg-background',
-        textColor: 'text-background',
-        description: '-background',
-      },
-      {
-        name: 'Foreground',
-        bgColor: 'bg-foreground',
-        textColor: 'text-foreground',
-        description: '-foreground',
-      },
-      {
-        name: 'Primary',
-        bgColor: 'bg-primary',
-        textColor: 'text-primary',
-        description: '-primary',
-      },
-      {
-        name: 'Accent',
-        bgColor: 'bg-accent',
-        textColor: 'text-accent',
-        description: '-accent',
-      },
-      {
-        name: 'Warning',
-        bgColor: 'bg-warning',
-        textColor: 'text-warning',
-        description: '-warning',
-      },
-      {
-        name: 'Success',
-        bgColor: 'bg-success',
-        textColor: 'text-success',
-        description: '-success',
-      },
-      {
-        name: 'Call to Action',
-        bgColor: 'bg-cta',
-        textColor: 'text-cta',
-        description: '-cta',
-      },
-    ],
-  },
   {
     name: 'Neutral colors',
     items: [
@@ -701,9 +701,10 @@ export default function StyleGuide() {
 
         <main id="main" className="flex-1 pt-16 pb-8 print:pt-0 lg:pt-0">
           {/* Page header */}
-          <div className="bg-white px-4 shadow dark:bg-black sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
+          <div className="bg-white px-4 shadow dark:bg-black print:shadow-none sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
             <div className="py-6 lg:border-t lg:border-neutral-300">
-              <h1 className="text-2xl font-bold leading-7 sm:truncate sm:leading-9">
+              <h1 className="text-4xl font-bold sm:truncate sm:leading-9">
+                <span className="hidden print:inline">Jason Ruesch&apos;s</span>{' '}
                 Style Guide
               </h1>
             </div>
@@ -712,18 +713,25 @@ export default function StyleGuide() {
           <div className="mt-8">
             {/* Colors */}
             <section id="colors">
-              <h2 className="mx-auto flex max-w-6xl items-center px-4 pt-8 sm:px-6 lg:px-8">
+              <h2 className="mx-auto flex max-w-6xl items-center px-4 pt-8 print:pt-0 sm:px-6 lg:px-8">
                 <ColorSwatchIcon
                   className="mr-4 h-6 w-6 flex-shrink-0"
                   aria-hidden="true"
                 />
                 Colors
               </h2>
-              <div className="mx-auto max-w-6xl space-y-8 divide-y divide-neutral-300 px-4 sm:px-6 lg:px-8">
-                {colorGroups.map((group) => (
+              <div className="mx-auto max-w-6xl space-y-8 divide-y divide-neutral-300 px-4 print:divide-y-0 sm:px-6 lg:px-8">
+                {[
+                  themeColors,
+                  { ...themeColors, name: 'Dark theme colors' },
+                  ...colorGroups,
+                ].map((group) => (
                   <div
                     key={group.name}
-                    className="pt-8 print:break-inside-avoid"
+                    className={`pt-8 print:break-inside-avoid ${cn({
+                      'dark hidden print:block':
+                        group.name === 'Dark theme colors',
+                    })}`}
                   >
                     <h3>{group.name}</h3>
                     <div className="mt-2 grid grid-cols-1 gap-5 print:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -774,17 +782,20 @@ export default function StyleGuide() {
                 />
                 Typography
               </h2>
-              <div className="mx-auto max-w-6xl space-y-8 divide-y divide-neutral-300 px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-6xl space-y-8 divide-y divide-neutral-300 px-4 print:divide-y-0 sm:px-6 lg:px-8">
                 {typographyGroups.map((group) => (
-                  <div key={group.name} className="space-y-8 pt-8">
+                  <div
+                    key={group.name}
+                    className="space-y-8 pt-8 print:break-inside-avoid"
+                  >
                     <h3>{group.name}</h3>
                     {/* Item */}
                     {group.items.map((item) => (
                       <div
                         key={item.name}
-                        className="grid grid-cols-1 gap-5 print:break-inside-avoid sm:grid-cols-3"
+                        className="grid grid-cols-1 gap-5 print:grid-cols-3 sm:grid-cols-3"
                       >
-                        <div>
+                        <div className="col-span-1">
                           <h4>{item.name}</h4>
                           <p className="text-sm">
                             {item.font} {item.fontWeight}
@@ -797,7 +808,7 @@ export default function StyleGuide() {
                             </small>
                           )}
                         </div>
-                        <div className="col-span-1 sm:col-span-2">
+                        <div className="col-span-1 print:col-span-2 sm:col-span-2">
                           {item.example}
                           <code className="text-accent mt-2 block text-sm">
                             {item.description}
