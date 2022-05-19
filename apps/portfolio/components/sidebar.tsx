@@ -52,7 +52,7 @@ export default function Sidebar() {
           {navigation.map((item) => (
             <ScrollLink
               key={item.id}
-              activeClass="bg-neutral-800 text-white hover:bg-neutral-800"
+              activeClass="bg-neutral-800 text-white"
               to={item.id}
               spy={true}
               smooth={true}

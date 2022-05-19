@@ -386,7 +386,7 @@ export default function StyleGuide() {
             })
           }
         >
-          <ChevronUpIcon className="h-12 w-12" />
+          <ChevronUpIcon className="h-8 w-8 sm:h-12 sm:w-12" />
         </button>
       </Transition>
     </>
