@@ -1,7 +1,7 @@
 import { Group } from '../../models';
 
 const themeColors: Group = {
-  name: 'Theme colors',
+  name: 'Theme Colors',
   items: [
     {
       name: 'Background',
@@ -49,9 +49,9 @@ const themeColors: Group = {
 };
 const colorGroups: Group[] = [
   { ...themeColors },
-  { ...themeColors, name: 'Dark theme colors' },
+  { ...themeColors, name: 'Dark Theme Colors', printOnly: true },
   {
-    name: 'Neutral colors',
+    name: 'Neutral Colors',
     items: [
       {
         name: 'Neutral 900',
@@ -136,7 +136,7 @@ const colorGroups: Group[] = [
     ],
   },
   {
-    name: 'Brand colors',
+    name: 'Brand Colors',
     items: [
       {
         name: 'Alabaster',
@@ -211,36 +211,42 @@ const typographyGroups: Group[] = [
     items: [
       {
         name: 'Heading H1',
-        font: 'Inter',
+        font: 'Alegreya Sans SC',
         fontWeight: 'Bold',
         fontSize: '36px',
         lineHeight: '40px',
         example: (
-          <h1 className="text-4xl font-bold">Etiam nec metus vitae lectus</h1>
+          <h1 className="font-alegreya-sans-sc text-4xl font-bold">
+            Etiam nec metus vitae lectus
+          </h1>
         ),
-        description: 'text-4xl font-bold',
+        description: 'font-alegreya-sans-sc text-4xl font-bold',
       },
       {
         name: 'Heading H2',
-        font: 'Inter',
+        font: 'Alegreya Sans SC',
         fontWeight: 'Bold',
         fontSize: '30px',
         lineHeight: '36px',
         example: (
-          <h2 className="text-3xl font-bold">Etiam nec metus vitae lectus</h2>
+          <h2 className="font-alegreya-sans-sc text-3xl font-bold">
+            Etiam nec metus vitae lectus
+          </h2>
         ),
-        description: 'text-3xl font-bold',
+        description: 'font-alegreya-sans-sc text-3xl font-bold',
       },
       {
         name: 'Heading H3',
-        font: 'Inter',
+        font: 'Alegreya Sans SC',
         fontWeight: 'Bold',
         fontSize: '24px',
         lineHeight: '32px',
         example: (
-          <h3 className="text-2xl font-bold">Etiam nec metus vitae lectus</h3>
+          <h3 className="font-alegreya-sans-sc text-2xl font-bold">
+            Etiam nec metus vitae lectus
+          </h3>
         ),
-        description: 'text-2xl font-bold',
+        description: 'font-alegreya-sans-sc text-2xl font-bold',
       },
       {
         name: 'Heading H4',

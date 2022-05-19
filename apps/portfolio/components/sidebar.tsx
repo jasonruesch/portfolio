@@ -38,8 +38,7 @@ export default function Sidebar() {
               layout="raw"
               width="224"
               height="30"
-              className="h-8 w-auto"
-              src="/logo.svg"
+              src="/logo-dark.svg"
               alt="Jason Ruesch"
             />
           </a>

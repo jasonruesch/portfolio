@@ -16,12 +16,17 @@ module.exports = {
   darkMode: 'class',
   content: [
     join(__dirname, '{components,data,pages}/**/*!(*.spec).{ts,tsx}'),
+    join(__dirname, 'public/**/*.svg'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
     extend: {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        'alegreya-sans-sc': [
+          'Alegreya Sans SC',
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       colors: {
         transparent: colors.transparent,

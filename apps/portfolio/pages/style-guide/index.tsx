@@ -10,6 +10,7 @@ import Sidebar from '../../components/sidebar';
 import { ColorItem, Group, TypographyItem } from '../../models';
 import { debounce, cloneDeep } from 'lodash';
 import { Element, animateScroll as scroll } from 'react-scroll';
+import Image from 'next/image';
 
 export default function StyleGuide() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -43,7 +44,7 @@ export default function StyleGuide() {
         group.items = filteredItems;
       }
       return (
-        group.name !== 'Dark theme colors' &&
+        !group.printOnly &&
         (group.name.toLowerCase().includes(query.toLowerCase()) ||
           filteredItems.length > 0)
       );
@@ -72,7 +73,7 @@ export default function StyleGuide() {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 150) {
+      if (window.scrollY > 180) {
         setShowTopButton(true);
       } else {
         setShowTopButton(false);
@@ -90,7 +91,7 @@ export default function StyleGuide() {
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
             as="div"
-            className="relative z-40 lg:hidden"
+            className="relative z-40 print:hidden lg:hidden"
             onClose={setSidebarOpen}
           >
             <Transition.Child
@@ -150,7 +151,7 @@ export default function StyleGuide() {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
+        <div className="hidden print:hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
           <div className="flex flex-grow flex-col overflow-y-auto bg-neutral-700 pt-5 pb-4">
             <Sidebar />
           </div>
@@ -158,10 +159,10 @@ export default function StyleGuide() {
 
         <div className="flex flex-1 flex-col lg:pl-64">
           {/* Sidebar button, search and theme selector */}
-          <div className="fixed z-10 flex h-16 w-full flex-shrink-0 border-b border-neutral-300 bg-white dark:bg-black print:hidden lg:relative lg:border-none">
+          <div className="fixed z-10 flex h-16 w-full flex-shrink-0 border-b border-neutral-300 bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:relative lg:border-none">
             <button
               type="button"
-              className="border-r border-neutral-300 px-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-neutral-500 lg:hidden"
+              className="border-r border-neutral-300 px-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-neutral-500 dark:border-neutral-400 lg:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
@@ -193,7 +194,7 @@ export default function StyleGuide() {
                   </div>
                 </form>
               </div>
-              <div className="flex items-center border-l border-neutral-300 pl-4 lg:border-none">
+              <div className="flex items-center border-l border-neutral-300 pl-4 dark:border-neutral-400 lg:border-none">
                 <ThemeSelector />
               </div>
             </div>
@@ -203,11 +204,16 @@ export default function StyleGuide() {
             {/* Page header */}
             <div className="bg-white dark:bg-black">
               <div className="px-4 shadow print:shadow-none sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
-                <div className="py-6 lg:border-t lg:border-neutral-300">
-                  <h1 className="text-4xl font-bold sm:truncate sm:leading-9">
-                    <span className="hidden print:inline">
-                      Jason Ruesch&apos;s
-                    </span>{' '}
+                <div className="py-6 lg:border-t lg:border-neutral-300 lg:dark:border-neutral-400">
+                  <Image
+                    layout="raw"
+                    width="224"
+                    height="30"
+                    src="/logo.svg"
+                    alt="Jason Ruesch"
+                    className="mb-4 hidden print:block"
+                  />
+                  <h1 className="font-alegreya-sans-sc text-4xl font-bold sm:truncate sm:leading-9">
                     Style Guide
                   </h1>
                 </div>
@@ -225,7 +231,7 @@ export default function StyleGuide() {
                   'element'
                 )}
               >
-                <h2 className="mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
+                <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
                   <ColorSwatchIcon
                     className="mr-4 h-6 w-6 flex-shrink-0"
                     aria-hidden="true"
@@ -236,14 +242,15 @@ export default function StyleGuide() {
                   {filteredColorGroups.map((group) => (
                     <div
                       key={group.name}
-                      className={`border-b border-b-neutral-300 py-8 last-of-type:border-b-0 print:break-inside-avoid print:border-b-0 ${cn(
+                      className={`border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0 ${cn(
                         {
-                          'dark hidden print:block':
-                            group.name === 'Dark theme colors',
+                          'dark hidden print:block': group.printOnly,
                         }
                       )}`}
                     >
-                      <h3 className="text-2xl font-bold">{group.name}</h3>
+                      <h3 className="font-alegreya-sans-sc text-2xl font-bold">
+                        {group.name}
+                      </h3>
                       <div className="mt-2 grid grid-cols-1 gap-5 print:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4">
                         {group.items.map((item: ColorItem) => (
                           <div
@@ -292,7 +299,7 @@ export default function StyleGuide() {
                   'element print:break-before-page'
                 )}
               >
-                <h2 className="mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold sm:px-6 lg:px-8">
+                <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold sm:px-6 lg:px-8">
                   <span
                     className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
                     aria-hidden="true"
@@ -305,9 +312,11 @@ export default function StyleGuide() {
                   {filteredTypographyGroups.map((group) => (
                     <div
                       key={group.name}
-                      className="space-y-8 border-b border-b-neutral-300 py-8 last-of-type:border-b-0 print:break-inside-avoid print:border-b-0"
+                      className="space-y-8 border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0"
                     >
-                      <h3 className="text-2xl font-bold">{group.name}</h3>
+                      <h3 className="font-alegreya-sans-sc text-2xl font-bold">
+                        {group.name}
+                      </h3>
                       {group.items.map((item: TypographyItem) => (
                         <div
                           key={item.name}
@@ -343,11 +352,14 @@ export default function StyleGuide() {
                 filteredTypographyGroups.length === 0 && (
                   <div className="text-center">
                     <h2
-                      className="text-3xl font-bold
+                      className="font-alegreya-sans-sc text-3xl font-bold
 "
                     >
-                      Searching for &quot;{searchInput}&quot; found no matching
-                      styles.
+                      Searching for{' '}
+                      <span className="text-accent font-sans text-2xl">
+                        &quot;{searchInput}&quot;
+                      </span>{' '}
+                      found no matching styles.
                     </h2>
                   </div>
                 )}
@@ -367,7 +379,7 @@ export default function StyleGuide() {
         leaveTo="opacity-0"
       >
         <button
-          className="bg-cta fixed bottom-8 right-12 z-40 rounded-lg px-4 py-2 text-white ring-1 ring-neutral-800 hover:bg-neutral-600"
+          className="bg-cta fixed bottom-8 right-12 z-40 rounded-lg px-4 py-2 text-white ring-1 ring-neutral-600 hover:bg-neutral-600 print:hidden"
           onClick={() =>
             scroll.scrollToTop({
               smooth: true,
