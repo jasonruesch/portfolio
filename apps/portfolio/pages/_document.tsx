@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html
       lang="en"
-      className="bg-background text-foreground h-full scroll-smooth print:bg-white print:text-black"
+      className="bg-background text-foreground h-full print:bg-white print:text-black"
     >
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

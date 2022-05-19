@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ColorSwatchIcon, MenuAlt1Icon, XIcon } from '@heroicons/react/outline';
-import { SearchIcon } from '@heroicons/react/solid';
+import { SearchIcon, ChevronUpIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
 import ThemeSelector from '../../components/themeSelector';
 import Head from 'next/head';
@@ -9,7 +9,7 @@ import { colorGroups, typographyGroups } from './data';
 import Sidebar from '../../components/sidebar';
 import { ColorItem, Group, TypographyItem } from '../../models';
 import { debounce, cloneDeep } from 'lodash';
-import { Element } from 'react-scroll';
+import { Element, animateScroll as scroll } from 'react-scroll';
 
 export default function StyleGuide() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,6 +18,7 @@ export default function StyleGuide() {
   const [filteredTypographyGroups, setFilteredTypographyGroups] = useState<
     Group[]
   >([]);
+  const [showTopButton, setShowTopButton] = useState(false);
 
   const colorsTitle = 'Colors';
   const typographyTitle = 'Typography';
@@ -68,6 +69,16 @@ export default function StyleGuide() {
     );
     setFilteredTypographyGroups(filteredTypographyGroups);
   }, [searchInput]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 150) {
+        setShowTopButton(true);
+      } else {
+        setShowTopButton(false);
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -327,10 +338,45 @@ export default function StyleGuide() {
                   ))}
                 </div>
               </Element>
+
+              {filteredColorGroups.length === 0 &&
+                filteredTypographyGroups.length === 0 && (
+                  <div className="text-center">
+                    <h2
+                      className="text-3xl font-bold
+"
+                    >
+                      Searching for &quot;{searchInput}&quot; found no matching
+                      styles.
+                    </h2>
+                  </div>
+                )}
             </div>
           </main>
         </div>
       </div>
+      <Transition
+        as={Fragment}
+        appear
+        show={showTopButton}
+        enter="ease-in-out duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="ease-in-out duration-300"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <button
+          className="bg-cta fixed bottom-8 right-12 z-40 rounded-lg px-4 py-2 text-white ring-1 ring-neutral-800 hover:bg-neutral-600"
+          onClick={() =>
+            scroll.scrollToTop({
+              smooth: true,
+            })
+          }
+        >
+          <ChevronUpIcon className="h-12 w-12" />
+        </button>
+      </Transition>
     </>
   );
 }
