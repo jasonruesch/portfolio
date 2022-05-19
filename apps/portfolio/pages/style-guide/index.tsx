@@ -10,10 +10,10 @@ import { SearchIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
 import ThemeSelector from '../../components/themeSelector';
 import Head from 'next/head';
-import { themeColors, colorGroups, typographyGroups } from './data';
+import { colorGroups, typographyGroups } from './data';
 import Sidebar from '../../components/sidebar';
 import { ColorItem, Group, TypographyItem } from '../../models';
-import { debounce } from 'lodash';
+import { debounce, cloneDeep } from 'lodash';
 
 export default function StyleGuide() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -61,15 +61,16 @@ export default function StyleGuide() {
         group.items = filteredItems;
       }
       return (
-        group.name.toLowerCase().includes(query.toLowerCase()) ||
-        filteredItems.length > 0
+        group.name !== 'Dark theme colors' &&
+        (group.name.toLowerCase().includes(query.toLowerCase()) ||
+          filteredItems.length > 0)
       );
     });
   };
 
   useEffect(() => {
     // Deep clone and search color groups
-    const colorGroupsClone = JSON.parse(JSON.stringify(colorGroups));
+    const colorGroupsClone = cloneDeep(colorGroups); // JSON.parse(JSON.stringify(colorGroups));
     const filteredColorGroups = filter(
       searchInput,
       colorGroupsClone,
@@ -78,7 +79,7 @@ export default function StyleGuide() {
     setFilteredColorGroups(filteredColorGroups);
 
     // Deep clone and search typography groups
-    let typographyGroupsClone = JSON.parse(JSON.stringify(typographyGroups));
+    let typographyGroupsClone = cloneDeep(typographyGroups); // JSON.parse(JSON.stringify(typographyGroups));
     typographyGroupsClone = typographyGroupsClone.map(
       (group: Group, i: number) => ({
         ...group,
@@ -231,6 +232,7 @@ export default function StyleGuide() {
                       className="block h-full w-full border-transparent bg-transparent py-2 pl-8 pr-3 placeholder-neutral-500 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                       placeholder="Search styles"
                       onChange={handleSearch}
+                      autoFocus
                     />
                   </div>
                 </form>
@@ -273,13 +275,10 @@ export default function StyleGuide() {
                   {colorsTitle}
                 </h2>
                 <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                  {[
-                    { ...themeColors, name: 'Dark theme colors' },
-                    ...filteredColorGroups,
-                  ].map((group) => (
+                  {filteredColorGroups.map((group) => (
                     <div
                       key={group.name}
-                      className={`border-b border-b-neutral-300 py-8 last-of-type:border-b-0 print:break-inside-avoid ${cn(
+                      className={`border-b border-b-neutral-300 py-8 last-of-type:border-b-0 print:break-inside-avoid print:border-b-0 ${cn(
                         {
                           'dark hidden print:block':
                             group.name === 'Dark theme colors',
@@ -347,7 +346,7 @@ export default function StyleGuide() {
                   {filteredTypographyGroups.map((group) => (
                     <div
                       key={group.name}
-                      className="space-y-8 border-b border-b-neutral-300 py-8 last-of-type:border-b-0 print:break-inside-avoid"
+                      className="space-y-8 border-b border-b-neutral-300 py-8 last-of-type:border-b-0 print:break-inside-avoid print:border-b-0"
                     >
                       <h3>{group.name}</h3>
                       {/* Item */}

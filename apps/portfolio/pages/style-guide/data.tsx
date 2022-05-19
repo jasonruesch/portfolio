@@ -49,6 +49,7 @@ const themeColors: Group = {
 };
 const colorGroups: Group[] = [
   { ...themeColors },
+  { ...themeColors, name: 'Dark theme colors' },
   {
     name: 'Neutral colors',
     items: [
@@ -395,4 +396,4 @@ const typographyGroups: Group[] = [
   },
 ];
 
-export { themeColors, colorGroups, typographyGroups };
+export { colorGroups, typographyGroups };
