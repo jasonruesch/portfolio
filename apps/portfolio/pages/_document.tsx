@@ -7,7 +7,24 @@ export default function Document() {
       className="bg-background text-foreground h-full scroll-smooth print:bg-white print:text-black"
     >
       <Head>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter&amp;display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"
+          rel="stylesheet"
+        />
       </Head>
       <body className="h-full">
         <Main />

@@ -1,11 +1,6 @@
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import {
-  ColorSwatchIcon,
-  DocumentTextIcon,
-  MenuAlt1Icon,
-  XIcon,
-} from '@heroicons/react/outline';
+import { ColorSwatchIcon, MenuAlt1Icon, XIcon } from '@heroicons/react/outline';
 import { SearchIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
 import ThemeSelector from '../../components/themeSelector';
@@ -14,6 +9,7 @@ import { colorGroups, typographyGroups } from './data';
 import Sidebar from '../../components/sidebar';
 import { ColorItem, Group, TypographyItem } from '../../models';
 import { debounce, cloneDeep } from 'lodash';
+import { Element } from 'react-scroll';
 
 export default function StyleGuide() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -25,21 +21,6 @@ export default function StyleGuide() {
 
   const colorsTitle = 'Colors';
   const typographyTitle = 'Typography';
-
-  const handleNavItemClick = useCallback(
-    (e) => {
-      e.preventDefault();
-
-      setSidebarOpen(false);
-
-      const location = e.target.getAttribute('href');
-      const offset = document.querySelector(location)?.offsetTop || 0;
-      window.scrollTo({
-        top: offset - (sidebarOpen ? 64 : 0),
-      });
-    },
-    [sidebarOpen]
-  );
 
   const handleSearch = debounce((e) => {
     const searchValue = e.target.value;
@@ -70,7 +51,7 @@ export default function StyleGuide() {
 
   useEffect(() => {
     // Deep clone and search color groups
-    const colorGroupsClone = cloneDeep(colorGroups); // JSON.parse(JSON.stringify(colorGroups));
+    const colorGroupsClone = cloneDeep(colorGroups);
     const filteredColorGroups = filter(
       searchInput,
       colorGroupsClone,
@@ -79,16 +60,7 @@ export default function StyleGuide() {
     setFilteredColorGroups(filteredColorGroups);
 
     // Deep clone and search typography groups
-    let typographyGroupsClone = cloneDeep(typographyGroups); // JSON.parse(JSON.stringify(typographyGroups));
-    typographyGroupsClone = typographyGroupsClone.map(
-      (group: Group, i: number) => ({
-        ...group,
-        items: group.items.map((item: TypographyItem, j: number) => ({
-          ...item,
-          example: (typographyGroups[i].items[j] as TypographyItem).example,
-        })),
-      })
-    );
+    const typographyGroupsClone = cloneDeep(typographyGroups);
     const filteredTypographyGroups = filter(
       searchInput,
       typographyGroupsClone,
@@ -96,31 +68,6 @@ export default function StyleGuide() {
     );
     setFilteredTypographyGroups(filteredTypographyGroups);
   }, [searchInput]);
-
-  // useEffect(() => {
-  //   const sections = document.querySelectorAll('section[id]');
-  //   Array.from(sections).map((section) => {
-  //     return new Waypoint({
-  //       element: section,
-  //       handler: (direction) => {
-  //         if (direction === 'down') {
-  //           const id = section.getAttribute('id');
-  //           const navItem = document.querySelector(`nav [href="#${id}"]`);
-  //           if (navItem) {
-  //             navItem.classList.add('active');
-  //           }
-  //         } else {
-  //           const id = section.getAttribute('id');
-  //           const navItem = document.querySelector(`nav [href="#${id}"]`);
-  //           if (navItem) {
-  //             navItem.classList.remove('active');
-  //           }
-  //         }
-  //       },
-  //       // offset: 64
-  //     });
-  //   });
-  // }, []);
 
   return (
     <>
@@ -181,7 +128,7 @@ export default function StyleGuide() {
                       </button>
                     </div>
                   </Transition.Child>
-                  <Sidebar handleNavItemClick={handleNavItemClick} />
+                  <Sidebar />
                 </Dialog.Panel>
               </Transition.Child>
               <div className="w-14 flex-shrink-0" aria-hidden="true">
@@ -194,14 +141,13 @@ export default function StyleGuide() {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
           <div className="flex flex-grow flex-col overflow-y-auto bg-neutral-700 pt-5 pb-4">
-            <Sidebar handleNavItemClick={handleNavItemClick} />
+            <Sidebar />
           </div>
         </div>
 
         <div className="flex flex-1 flex-col lg:pl-64">
           {/* Sidebar button, search and theme selector */}
           <div className="fixed z-10 flex h-16 w-full flex-shrink-0 border-b border-neutral-300 bg-white dark:bg-black print:hidden lg:relative lg:border-none">
-            {/* Open sidebar button */}
             <button
               type="button"
               className="border-r border-neutral-300 px-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-neutral-500 lg:hidden"
@@ -213,7 +159,6 @@ export default function StyleGuide() {
 
             <div className="flex flex-1 justify-between px-4 lg:mx-auto lg:max-w-6xl lg:px-8">
               <div className="flex flex-1">
-                {/* Search bar */}
                 <form className="flex w-full" action="#" method="GET">
                   <label htmlFor="search-field" className="sr-only">
                     Search
@@ -238,7 +183,6 @@ export default function StyleGuide() {
                 </form>
               </div>
               <div className="flex items-center border-l border-neutral-300 pl-4 lg:border-none">
-                {/* Theme dropdown */}
                 <ThemeSelector />
               </div>
             </div>
@@ -261,13 +205,16 @@ export default function StyleGuide() {
 
             <div className="mt-8">
               {/* Colors */}
-              <section
-                id="colors"
-                className={cn({
-                  hidden: filteredColorGroups.length === 0,
-                })}
+              <Element
+                name="colors"
+                className={cn(
+                  {
+                    hidden: filteredColorGroups.length === 0,
+                  },
+                  'element'
+                )}
               >
-                <h2 className="mx-auto flex max-w-6xl items-center px-4 pt-8 print:pt-0 sm:px-6 lg:px-8">
+                <h2 className="mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
                   <ColorSwatchIcon
                     className="mr-4 h-6 w-6 flex-shrink-0"
                     aria-hidden="true"
@@ -285,9 +232,8 @@ export default function StyleGuide() {
                         }
                       )}`}
                     >
-                      <h3>{group.name}</h3>
+                      <h3 className="text-2xl font-bold">{group.name}</h3>
                       <div className="mt-2 grid grid-cols-1 gap-5 print:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {/* Item */}
                         {group.items.map((item: ColorItem) => (
                           <div
                             key={item.name}
@@ -297,14 +243,14 @@ export default function StyleGuide() {
                               <div className="absolute top-5 right-5">
                                 {item.allowOnLight && (
                                   <div
-                                    className={`mb-2 rounded-3xl bg-white py-2 px-4 text-sm ${item.textColor}`}
+                                    className={`mb-2 rounded-3xl bg-white py-2 px-4 text-sm print:px-2 ${item.textColor}`}
                                   >
                                     {item.name}
                                   </div>
                                 )}
                                 {item.allowOnDark && (
                                   <div
-                                    className={`rounded-3xl bg-black py-2 px-4 text-sm ${item.textColor}`}
+                                    className={`rounded-3xl bg-black py-2 px-4 text-sm print:px-2 ${item.textColor}`}
                                   >
                                     {item.name}
                                   </div>
@@ -323,23 +269,25 @@ export default function StyleGuide() {
                     </div>
                   ))}
                 </div>
-              </section>
+              </Element>
 
               {/* Typography */}
-              <section
-                id="typography"
+              <Element
+                name="typography"
                 className={cn(
                   {
                     hidden: filteredTypographyGroups.length === 0,
                   },
-                  'print:break-before-page'
+                  'element print:break-before-page'
                 )}
               >
-                <h2 className="mx-auto flex max-w-6xl items-center px-4 pt-8 sm:px-6 lg:px-8">
-                  <DocumentTextIcon
-                    className="mr-4 h-6 w-6 flex-shrink-0"
+                <h2 className="mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold sm:px-6 lg:px-8">
+                  <span
+                    className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
                     aria-hidden="true"
-                  />
+                  >
+                    text_fields
+                  </span>
                   {typographyTitle}
                 </h2>
                 <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -348,15 +296,14 @@ export default function StyleGuide() {
                       key={group.name}
                       className="space-y-8 border-b border-b-neutral-300 py-8 last-of-type:border-b-0 print:break-inside-avoid print:border-b-0"
                     >
-                      <h3>{group.name}</h3>
-                      {/* Item */}
+                      <h3 className="text-2xl font-bold">{group.name}</h3>
                       {group.items.map((item: TypographyItem) => (
                         <div
                           key={item.name}
                           className="grid grid-cols-1 gap-5 print:grid-cols-3 sm:grid-cols-3"
                         >
                           <div className="col-span-1">
-                            <h4>{item.name}</h4>
+                            <h4 className="text-xl font-bold">{item.name}</h4>
                             <p className="text-sm">
                               {item.font} {item.fontWeight}
                             </p>
@@ -379,7 +326,7 @@ export default function StyleGuide() {
                     </div>
                   ))}
                 </div>
-              </section>
+              </Element>
             </div>
           </main>
         </div>

@@ -1,6 +1,5 @@
 :root {
   /* Brand colors (option tokens) from Adobe Color (color.adobe.com)*/
-
   --color-alabaster: 250 250 250; /* #fafafa, Text: Dark only */
   --color-charcoal: 48 48 48; /* #303030, Text: Light only */
   --color-bright-aqua: 24 255 255; /* 18ffff, Text: Dark only */
@@ -11,7 +10,6 @@
   --color-electric-purple: 172 48 255; /* #ab30ff */
 
   /* Theme colors (semantic tokens) */
-
   --color-background: var(--color-alabaster);
   --color-foreground: var(--color-charcoal);
   --color-primary: var(--color-bright-turquoise);

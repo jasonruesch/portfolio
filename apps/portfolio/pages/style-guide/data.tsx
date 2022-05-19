@@ -358,9 +358,9 @@ const typographyGroups: Group[] = [
         font: 'Inter',
         example: (
           <ul className="list-inside list-disc">
-            <li>Lorem ipsum dolor sit amet consectetur</li>
-            <li>Posuere enim mi pharetra neque proin dic</li>
-            <li>Mauris aliquet faucibus iaculis dui vitae ullamco</li>
+            <li key="a">Lorem ipsum dolor sit amet consectetur</li>
+            <li key="b">Posuere enim mi pharetra neque proin dic</li>
+            <li key="c">Mauris aliquet faucibus iaculis dui vitae ullamco</li>
           </ul>
         ),
         description: 'list-inside list-disc',
@@ -370,9 +370,9 @@ const typographyGroups: Group[] = [
         font: 'Inter',
         example: (
           <ol className="list-inside list-decimal">
-            <li>Lorem ipsum dolor sit amet consectetur</li>
-            <li>Posuere enim mi pharetra neque proin dic</li>
-            <li>Mauris aliquet faucibus iaculis dui vitae ullamco</li>
+            <li key="1">Lorem ipsum dolor sit amet consectetur</li>
+            <li key="2">Posuere enim mi pharetra neque proin dic</li>
+            <li key="3">Mauris aliquet faucibus iaculis dui vitae ullamco</li>
           </ol>
         ),
         description: 'list-inside list-decimal',
