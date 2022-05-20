@@ -7,11 +7,10 @@ import ThemeSelector from '../../components/themeSelector';
 import Head from 'next/head';
 import { colorGroups, typographyGroups, shadowGroups } from './data';
 import Sidebar from '../../components/sidebar';
-import { ColorItem, Group, TypographyItem } from '../../models';
+import { ColorItem, Group, TypographyItem, ShadowItem } from './models';
 import { debounce, cloneDeep } from 'lodash';
-import { Element, animateScroll as scroll } from 'react-scroll';
+import { animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';
-import { ShadowItem } from '../../models/shadowItem.model';
 
 export default function StyleGuide() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,6 +30,16 @@ export default function StyleGuide() {
     const searchValue = e.target.value;
     setSearchInput(searchValue);
   }, 300);
+
+  const handleScroll = (e) => {
+    const scrollingElement = e.target.scrollingElement;
+
+    if (scrollingElement.scrollTop > 180) {
+      setShowTopButton(true);
+    } else {
+      setShowTopButton(false);
+    }
+  };
 
   const filter = (query: string, data: Group[], title: string) => {
     const queryParts = query.split(' ').map((part) => part.toLowerCase());
@@ -84,13 +93,11 @@ export default function StyleGuide() {
   }, [searchInput]);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 180) {
-        setShowTopButton(true);
-      } else {
-        setShowTopButton(false);
-      }
-    });
+    document.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -214,8 +221,8 @@ export default function StyleGuide() {
 
           <main id="main" className="flex-1 pt-16 pb-8 print:pt-0 lg:pt-0">
             {/* Page header */}
-            <div className="bg-white dark:bg-black">
-              <div className="px-4 shadow print:shadow-none sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
+            <div className="bg-white shadow dark:bg-black print:shadow-none">
+              <div className="px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
                 <div className="py-6 lg:border-t lg:border-neutral-300 lg:dark:border-neutral-400">
                   <Image
                     layout="raw"
