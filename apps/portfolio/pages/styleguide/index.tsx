@@ -64,7 +64,7 @@ export default function StyleGuide() {
   };
 
   useEffect(() => {
-    // Deep clone and search color groups
+    // Deep clone and filter color groups
     const colorGroupsClone = cloneDeep(colorGroups);
     const filteredColorGroups = filter(
       searchInput,
@@ -73,7 +73,7 @@ export default function StyleGuide() {
     );
     setFilteredColorGroups(filteredColorGroups);
 
-    // Deep clone and search typography groups
+    // Deep clone and filter typography groups
     const typographyGroupsClone = cloneDeep(typographyGroups);
     const filteredTypographyGroups = filter(
       searchInput,
@@ -82,7 +82,7 @@ export default function StyleGuide() {
     );
     setFilteredTypographyGroups(filteredTypographyGroups);
 
-    // Deep clone and search shadow groups
+    // Deep clone and filter shadow groups
     const shadowGroupsClone = cloneDeep(shadowGroups);
     const filteredShadowGroups = filter(
       searchInput,
