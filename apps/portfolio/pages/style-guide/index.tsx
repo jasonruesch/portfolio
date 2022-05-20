@@ -5,12 +5,13 @@ import { SearchIcon, ChevronUpIcon } from '@heroicons/react/solid';
 import cn from 'classnames';
 import ThemeSelector from '../../components/themeSelector';
 import Head from 'next/head';
-import { colorGroups, typographyGroups } from './data';
+import { colorGroups, typographyGroups, shadowGroups } from './data';
 import Sidebar from '../../components/sidebar';
 import { ColorItem, Group, TypographyItem } from '../../models';
 import { debounce, cloneDeep } from 'lodash';
 import { Element, animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';
+import { ShadowItem } from '../../models/shadowItem.model';
 
 export default function StyleGuide() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -19,10 +20,12 @@ export default function StyleGuide() {
   const [filteredTypographyGroups, setFilteredTypographyGroups] = useState<
     Group[]
   >([]);
+  const [filteredShadowGroups, setFilteredShadowGroups] = useState<Group[]>([]);
   const [showTopButton, setShowTopButton] = useState(false);
 
   const colorsTitle = 'Colors';
   const typographyTitle = 'Typography';
+  const shadowsTitle = 'Shadows';
 
   const handleSearch = debounce((e) => {
     const searchValue = e.target.value;
@@ -30,23 +33,23 @@ export default function StyleGuide() {
   }, 300);
 
   const filter = (query: string, data: Group[], title: string) => {
-    if (query === '' || title.toLowerCase().includes(query.toLowerCase())) {
+    const queryParts = query.split(' ').map((part) => part.toLowerCase());
+    const contains = (value) =>
+      queryParts.every((part) => String(value).toLowerCase().includes(part));
+
+    if (query === '' || contains(title)) {
       return data;
     }
 
     return data.filter((group: Group) => {
       const filteredItems = group.items.filter((item) => {
-        return Object.values(item).some((value) =>
-          String(value).toLowerCase().includes(query.toLowerCase())
-        );
+        return Object.values(item).some((value) => contains(value));
       });
       if (filteredItems.length > 0) {
         group.items = filteredItems;
       }
       return (
-        !group.printOnly &&
-        (group.name.toLowerCase().includes(query.toLowerCase()) ||
-          filteredItems.length > 0)
+        !group.printOnly && (contains(group.name) || filteredItems.length > 0)
       );
     });
   };
@@ -69,6 +72,15 @@ export default function StyleGuide() {
       typographyTitle
     );
     setFilteredTypographyGroups(filteredTypographyGroups);
+
+    // Deep clone and search shadow groups
+    const shadowGroupsClone = cloneDeep(shadowGroups);
+    const filteredShadowGroups = filter(
+      searchInput,
+      shadowGroupsClone,
+      shadowsTitle
+    );
+    setFilteredShadowGroups(filteredShadowGroups);
   }, [searchInput]);
 
   useEffect(() => {
@@ -222,14 +234,11 @@ export default function StyleGuide() {
 
             <div className="mt-8">
               {/* Colors */}
-              <Element
-                name="colors"
-                className={cn(
-                  {
-                    hidden: filteredColorGroups.length === 0,
-                  },
-                  'element'
-                )}
+              <section
+                id="colors"
+                className={cn({
+                  hidden: filteredColorGroups.length === 0,
+                })}
               >
                 <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
                   <ColorSwatchIcon
@@ -287,16 +296,16 @@ export default function StyleGuide() {
                     </div>
                   ))}
                 </div>
-              </Element>
+              </section>
 
               {/* Typography */}
-              <Element
-                name="typography"
+              <section
+                id="typography"
                 className={cn(
                   {
                     hidden: filteredTypographyGroups.length === 0,
                   },
-                  'element print:break-before-page'
+                  'print:break-before-page'
                 )}
               >
                 <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold sm:px-6 lg:px-8">
@@ -346,10 +355,62 @@ export default function StyleGuide() {
                     </div>
                   ))}
                 </div>
-              </Element>
+              </section>
+
+              {/* Shadows */}
+              <section
+                id="shadows"
+                className={cn(
+                  {
+                    hidden: filteredShadowGroups.length === 0,
+                  },
+                  'min-h-screen'
+                )}
+              >
+                <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
+                  <span
+                    className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
+                    aria-hidden="true"
+                  >
+                    ev_shadow
+                  </span>
+                  {shadowsTitle}
+                </h2>
+                <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                  {filteredShadowGroups.map((group) => (
+                    <div
+                      key={group.name}
+                      className="border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0"
+                    >
+                      <h3 className="font-alegreya-sans-sc text-2xl font-bold">
+                        {group.name}
+                      </h3>
+                      <div className="mt-2 grid grid-cols-1 gap-5 print:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3">
+                        {group.items.map((item: ShadowItem) => (
+                          <div
+                            key={item.name}
+                            className="ring-foreground/10 overflow-hidden rounded-lg shadow ring-1"
+                          >
+                            <div className="flex h-40 items-center justify-center bg-neutral-200 p-8">
+                              {item.example}
+                            </div>
+                            <div className="border-t-foreground/10 border-t bg-white px-5 py-3 text-black dark:bg-black dark:text-white">
+                              {item.name}
+                              <code className="text-accent mt-2 block text-sm">
+                                {item.description}
+                              </code>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
 
               {filteredColorGroups.length === 0 &&
-                filteredTypographyGroups.length === 0 && (
+                filteredTypographyGroups.length === 0 &&
+                filteredShadowGroups.length === 0 && (
                   <div className="text-center">
                     <h2
                       className="font-alegreya-sans-sc text-3xl font-bold

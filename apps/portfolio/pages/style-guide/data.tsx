@@ -1,4 +1,4 @@
-import { Group } from '../../models';
+import { Group, ColorItem, TypographyItem, ShadowItem } from '../../models';
 
 const themeColors: Group = {
   name: 'Theme Colors',
@@ -45,7 +45,7 @@ const themeColors: Group = {
       textColor: 'text-cta',
       description: '-cta',
     },
-  ],
+  ] as ColorItem[],
 };
 const colorGroups: Group[] = [
   { ...themeColors },
@@ -133,7 +133,7 @@ const colorGroups: Group[] = [
         allowOnLight: false,
         allowOnDark: true,
       },
-    ],
+    ] as ColorItem[],
   },
   {
     name: 'Brand Colors',
@@ -202,7 +202,7 @@ const colorGroups: Group[] = [
         allowOnLight: true,
         allowOnDark: true,
       },
-    ],
+    ] as ColorItem[],
   },
 ];
 const typographyGroups: Group[] = [
@@ -281,11 +281,27 @@ const typographyGroups: Group[] = [
         ),
         description: 'text-base font-bold',
       },
-    ],
+    ] as TypographyItem[],
   },
   {
     name: 'Body',
     items: [
+      {
+        name: 'Body Extra Large',
+        font: 'Inter',
+        fontWeight: 'Regular',
+        fontSize: '20px',
+        lineHeight: '28px',
+        example: (
+          <p className="text-xl">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+            temporibus provident voluptatem corporis tempore! Deleniti sed
+            voluptates repellat laudantium alias optio blanditiis recusandae
+            officiis, sunt dicta quis voluptas provident mollitia.
+          </p>
+        ),
+        description: 'text-xl',
+      },
       {
         name: 'Body Default',
         font: 'Inter',
@@ -334,7 +350,7 @@ const typographyGroups: Group[] = [
         ),
         description: 'text-xs',
       },
-    ],
+    ] as TypographyItem[],
   },
   {
     name: 'Rich Text',
@@ -398,8 +414,60 @@ const typographyGroups: Group[] = [
         description:
           'rounded-lg bg-neutral-300 px-6 py-12 text-center text-2xl font-bold dark:bg-neutral-700',
       },
-    ],
+    ] as TypographyItem[],
+  },
+];
+const shadowGroups: Group[] = [
+  {
+    name: 'Box Shadows',
+    items: [
+      {
+        name: 'Box Shadow Default',
+        example: <div className="h-24 w-24 rounded-lg bg-white shadow"></div>,
+        description: 'shadow',
+      },
+      {
+        name: 'Box Shadow Medium',
+        example: (
+          <div className="h-24 w-24 rounded-lg bg-white shadow-md"></div>
+        ),
+        description: 'shadow-md',
+      },
+      {
+        name: 'Box Shadow Large',
+        example: (
+          <div className="h-24 w-24 rounded-lg bg-white shadow-lg"></div>
+        ),
+        description: 'shadow-lg',
+      },
+    ] as ShadowItem[],
+  },
+  {
+    name: 'Drop Shadows',
+    items: [
+      {
+        name: 'Drop Shadow Default',
+        example: (
+          <div className="h-0 w-0 border-t-0 border-l-[80px] border-r-[80px] border-b-[70px] border-solid border-transparent border-b-white drop-shadow"></div>
+        ),
+        description: 'drop-shadow',
+      },
+      {
+        name: 'Drop Shadow Medium',
+        example: (
+          <div className="h-0 w-0 border-t-0 border-l-[80px] border-r-[80px] border-b-[70px] border-solid border-transparent border-b-white drop-shadow-md"></div>
+        ),
+        description: 'drop-shadow-md',
+      },
+      {
+        name: 'Drop Shadow Large',
+        example: (
+          <div className="h-0 w-0 border-t-0 border-l-[80px] border-r-[80px] border-b-[70px] border-solid border-transparent border-b-white drop-shadow-lg"></div>
+        ),
+        description: 'drop-shadow-lg',
+      },
+    ] as ShadowItem[],
   },
 ];
 
-export { colorGroups, typographyGroups };
+export { colorGroups, typographyGroups, shadowGroups };
