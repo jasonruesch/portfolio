@@ -20,7 +20,7 @@ export default function Index() {
         alt="Jason Ruesch"
         className="hidden dark:block"
       />
-      <Link href="/style-guide">
+      <Link href="/styleguide">
         <a className="hover:text-cta underline">Style Guide</a>
       </Link>
     </div>
