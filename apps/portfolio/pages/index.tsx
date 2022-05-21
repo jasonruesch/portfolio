@@ -138,7 +138,9 @@ export default function Index() {
             <Link href="/styleguide">
               <a className="hover:text-cta hidden lg:block">Style Guide</a>
             </Link>
-
+            <span className="hidden pl-4 text-neutral-300 dark:text-neutral-400 lg:block">
+              |
+            </span>
             <ThemeSelector className="p-4" />
           </div>
         </header>
