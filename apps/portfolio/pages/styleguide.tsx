@@ -7,18 +7,18 @@ import {
   colorGroups,
   typographyGroups,
   shadowGroups,
-} from '../../data/styleguide';
-import Sidebar from '../../components/styleguide/sidebar';
+} from '../data/styleguide';
+import Sidebar from '../components/styleguide/sidebar';
 import {
   ColorItem,
   Group,
   TypographyItem,
   ShadowItem,
-} from '../../models/styleguide';
+} from '../models/styleguide';
 import { debounce, cloneDeep } from 'lodash';
 import { animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';
-import ThemeSelector from '../../components/styleguide/themeSelector';
+import ThemeSelector from '../components/styleguide/themeSelector';
 
 const StyleGuide = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -231,7 +231,7 @@ const StyleGuide = () => {
           {/* Main */}
           <main className="flex-1 pt-16 pb-8 print:pt-0 lg:pt-0">
             {/* Page header */}
-            <div className="bg-white shadow dark:bg-black print:shadow-none">
+            <div className="-mb-16 bg-white shadow dark:bg-black print:shadow-none lg:mb-0">
               <div className="px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
                 <div className="py-6 lg:border-t lg:border-neutral-300 lg:dark:border-neutral-400">
                   <Image
@@ -252,7 +252,7 @@ const StyleGuide = () => {
             <div className="mt-8">
               {/* Colors */}
               {filteredColorGroups.length > 0 && (
-                <section id="colors">
+                <section id="colors" className="-mb-16 pt-16 lg:mb-0 lg:pt-0">
                   <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
                     <ColorSwatchIcon
                       className="mr-4 h-6 w-6 flex-shrink-0"
@@ -295,7 +295,10 @@ const StyleGuide = () => {
 
               {/* Typography */}
               {filteredTypographyGroups.length > 0 && (
-                <section id="typography" className="print:break-before-page">
+                <section
+                  id="typography"
+                  className="-mb-16 pt-16 print:break-before-page lg:mb-0 lg:pt-0"
+                >
                   <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
                     <span
                       className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
@@ -350,7 +353,7 @@ const StyleGuide = () => {
               {filteredShadowGroups.length > 0 && (
                 <section
                   id="shadows"
-                  className="min-h-screen print:break-before-page"
+                  className="-mb-16 min-h-screen pt-16 print:break-before-page lg:mb-0 lg:pt-0"
                 >
                   <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
                     <span

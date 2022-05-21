@@ -15,7 +15,7 @@ function withOpacityValue(variable) {
 module.exports = {
   darkMode: 'class',
   content: [
-    join(__dirname, '{components,pages}/**/*!(*.spec).{ts,tsx}'),
+    join(__dirname, '{components,data,pages}/**/*!(*.spec).{ts,tsx}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {

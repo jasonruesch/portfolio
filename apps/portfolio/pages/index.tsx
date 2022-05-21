@@ -145,10 +145,18 @@ export default function Index() {
           </div>
         </header>
 
-        <main>
+        <main className="p-4 text-center lg:max-w-3xl">
           <h1 className="font-alegreya-sans-sc text-4xl font-bold">
-            Hi! My name is Jason Ruesch, and I am a Software Engineer focusing
-            on Web Development and Design.
+            Hi! My name is
+            <br />
+            Jason Ruesch
+            <br />
+            and I am a<br />
+            Software Engineer
+            <br />
+            focusing on
+            <br />
+            Web Development and Design
           </h1>
         </main>
       </div>
