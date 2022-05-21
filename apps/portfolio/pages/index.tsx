@@ -3,7 +3,7 @@ import { MenuAlt1Icon, TemplateIcon, XIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
-import ThemeSelector from '../components/styleguide/themeSelector';
+import ThemeSelector from '../components/themeSelector';
 
 export default function Index() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -141,7 +141,7 @@ export default function Index() {
             <span className="hidden pl-4 text-neutral-300 dark:text-neutral-400 lg:block">
               |
             </span>
-            <ThemeSelector className="p-4" />
+            <ThemeSelector />
           </div>
         </header>
 

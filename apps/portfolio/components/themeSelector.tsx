@@ -18,8 +18,13 @@ export default function ThemeSelector({ className }: { className?: string }) {
   );
 
   return (
-    <Menu as="div" className={cn(className, 'relative')}>
-      <Menu.Button className="flex max-w-xs items-center rounded-full text-sm focus:outline-none lg:rounded-md">
+    <Menu as="div" className="relative">
+      <Menu.Button
+        className={cn(
+          'flex max-w-xs items-center p-4 text-sm focus:outline-none lg:rounded-md',
+          className
+        )}
+      >
         <span
           className={cn(
             theme === 'system' ? 'text-neutral-500' : 'text-cta',
@@ -43,7 +48,7 @@ export default function ThemeSelector({ className }: { className?: string }) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="bg-background text-foreground absolute right-0 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="bg-background text-foreground absolute right-4 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <Menu.Item>
             {({ active }) => (
               <button
