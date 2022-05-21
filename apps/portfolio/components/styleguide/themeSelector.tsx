@@ -8,7 +8,7 @@ import {
   SunIcon,
 } from '@heroicons/react/outline';
 
-export default function ThemeSelector() {
+export default function ThemeSelector({ className }: { className?: string }) {
   const { theme, resolvedTheme, setTheme } = useTheme();
   const activateMode = useCallback(
     (mode: string) => {
@@ -18,24 +18,22 @@ export default function ThemeSelector() {
   );
 
   return (
-    <Menu as="div" className="relative">
-      <div>
-        <Menu.Button className="lg:focus:ring-cta flex max-w-xs items-center rounded-full text-sm focus:outline-none lg:rounded-md lg:p-2 lg:focus:ring-2 lg:focus:ring-offset-2">
-          <span
-            className={cn(
-              theme === 'system' ? 'text-neutral-500' : 'text-cta',
-              'block text-sm font-medium'
-            )}
-          >
-            <span className="sr-only">Open theme menu</span>
-            {resolvedTheme === 'light' ? (
-              <SunIcon className="h-6 w-6" aria-hidden="true" />
-            ) : (
-              <MoonIcon className="h-6 w-6" aria-hidden="true" />
-            )}
-          </span>
-        </Menu.Button>
-      </div>
+    <Menu as="div" className={cn(className, 'relative')}>
+      <Menu.Button className="flex max-w-xs items-center rounded-full text-sm focus:outline-none lg:rounded-md">
+        <span
+          className={cn(
+            theme === 'system' ? 'text-neutral-500' : 'text-cta',
+            'block text-sm font-medium'
+          )}
+        >
+          <span className="sr-only">Open theme menu</span>
+          {resolvedTheme === 'light' ? (
+            <SunIcon className="h-6 w-6" aria-hidden="true" />
+          ) : (
+            <MoonIcon className="h-6 w-6" aria-hidden="true" />
+          )}
+        </span>
+      </Menu.Button>
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"

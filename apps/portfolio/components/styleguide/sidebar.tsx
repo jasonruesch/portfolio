@@ -31,7 +31,7 @@ const secondaryNavigation = [
 export default function Sidebar() {
   return (
     <>
-      <div className="flex flex-shrink-0 items-center px-4">
+      <div className="flex h-16 flex-shrink-0 items-center px-4">
         <Link href="/">
           <a>
             <Image

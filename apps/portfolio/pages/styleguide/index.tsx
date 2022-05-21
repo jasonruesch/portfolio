@@ -2,17 +2,24 @@ import { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ColorSwatchIcon, MenuAlt1Icon, XIcon } from '@heroicons/react/outline';
 import { SearchIcon, ChevronUpIcon } from '@heroicons/react/solid';
-import cn from 'classnames';
-import ThemeSelector from '../../components/themeSelector';
 import Head from 'next/head';
-import { colorGroups, typographyGroups, shadowGroups } from './data';
-import Sidebar from '../../components/sidebar';
-import { ColorItem, Group, TypographyItem, ShadowItem } from './models';
+import {
+  colorGroups,
+  typographyGroups,
+  shadowGroups,
+} from '../../data/styleguide';
+import Sidebar from '../../components/styleguide/sidebar';
+import {
+  ColorItem,
+  Group,
+  TypographyItem,
+  ShadowItem,
+} from '../../models/styleguide';
 import { debounce, cloneDeep } from 'lodash';
 import { animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';
 
-export default function StyleGuide() {
+const StyleGuide = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [filteredColorGroups, setFilteredColorGroups] = useState<Group[]>([]);
@@ -57,9 +64,7 @@ export default function StyleGuide() {
       if (filteredItems.length > 0) {
         group.items = filteredItems;
       }
-      return (
-        !group.printOnly && (contains(group.name) || filteredItems.length > 0)
-      );
+      return contains(group.name) || filteredItems.length > 0;
     });
   };
 
@@ -135,7 +140,7 @@ export default function StyleGuide() {
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
               >
-                <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-neutral-700 pt-5 pb-4">
+                <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-neutral-700 pb-4">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-in-out duration-300"
@@ -171,17 +176,18 @@ export default function StyleGuide() {
 
         {/* Static sidebar for desktop */}
         <div className="hidden print:hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
-          <div className="flex flex-grow flex-col overflow-y-auto bg-neutral-700 pt-5 pb-4">
+          <div className="flex flex-grow flex-col overflow-y-auto bg-neutral-700 pb-4">
             <Sidebar />
           </div>
         </div>
 
+        {/* Content */}
         <div className="flex flex-1 flex-col lg:pl-64">
-          {/* Sidebar button, search and theme selector */}
-          <div className="fixed z-10 flex h-16 w-full flex-shrink-0 border-b border-neutral-300 bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:relative lg:border-none">
+          {/* Header */}
+          <header className="fixed z-10 flex h-16 w-full flex-shrink-0 border-b border-neutral-300 bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:relative lg:border-none">
             <button
               type="button"
-              className="border-r border-neutral-300 px-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-neutral-500 dark:border-neutral-400 lg:hidden"
+              className="border-r border-neutral-300 px-4 focus:outline-none lg:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
@@ -213,13 +219,11 @@ export default function StyleGuide() {
                   </div>
                 </form>
               </div>
-              <div className="flex items-center border-l border-neutral-300 pl-4 dark:border-neutral-400 lg:border-none">
-                <ThemeSelector />
-              </div>
             </div>
-          </div>
+          </header>
 
-          <main id="main" className="flex-1 pt-16 pb-8 print:pt-0 lg:pt-0">
+          {/* Main */}
+          <main className="flex-1 pt-16 pb-8 print:pt-0 lg:pt-0">
             {/* Page header */}
             <div className="bg-white shadow dark:bg-black print:shadow-none">
               <div className="px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
@@ -241,168 +245,89 @@ export default function StyleGuide() {
 
             <div className="mt-8">
               {/* Colors */}
-              <section
-                id="colors"
-                className={cn({
-                  hidden: filteredColorGroups.length === 0,
-                })}
-              >
-                <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
-                  <ColorSwatchIcon
-                    className="mr-4 h-6 w-6 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  {colorsTitle}
-                </h2>
-                <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                  {filteredColorGroups.map((group) => (
-                    <div
-                      key={group.name}
-                      className={`border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0 ${cn(
-                        {
-                          'dark hidden print:block': group.printOnly,
-                        }
-                      )}`}
-                    >
-                      <h3 className="font-alegreya-sans-sc text-2xl font-bold">
-                        {group.name}
-                      </h3>
-                      <div className="mt-2 grid grid-cols-1 gap-5 print:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {group.items.map((item: ColorItem) => (
-                          <div
-                            key={item.name}
-                            className={`ring-foreground/10 overflow-hidden rounded-lg shadow ring-1 ${item.bgColor}`}
-                          >
-                            <div className="relative h-40">
-                              <div className="absolute top-5 right-5">
-                                {item.allowOnLight && (
-                                  <div
-                                    className={`mb-2 rounded-3xl bg-white py-2 px-4 text-sm print:px-2 ${item.textColor}`}
-                                  >
-                                    {item.name}
-                                  </div>
-                                )}
-                                {item.allowOnDark && (
-                                  <div
-                                    className={`rounded-3xl bg-black py-2 px-4 text-sm print:px-2 ${item.textColor}`}
-                                  >
-                                    {item.name}
-                                  </div>
-                                )}
+              {filteredColorGroups.length > 0 && (
+                <section id="colors">
+                  <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
+                    <ColorSwatchIcon
+                      className="mr-4 h-6 w-6 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                    {colorsTitle}
+                  </h2>
+                  <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                    {filteredColorGroups.map((group: Group, i: number) => (
+                      <div
+                        key={`colors-${i}`}
+                        className="border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0"
+                      >
+                        <h3 className="font-alegreya-sans-sc text-2xl font-bold">
+                          {group.name}
+                        </h3>
+                        <div className="mt-2 grid grid-cols-1 gap-5 text-sm print:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                          {group.items.map((item: ColorItem, j: number) => (
+                            <div
+                              key={`colors-${i}-${j}`}
+                              className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-neutral-800 dark:border-neutral-800"
+                            >
+                              <div className="relative h-40">
+                                {item.example}
+                              </div>
+                              <div className="bg-white px-5 py-3 text-black dark:bg-black dark:text-white">
+                                {item.name}
+                                <code className="text-accent mt-2 block">
+                                  {item.description}
+                                </code>
                               </div>
                             </div>
-                            <div className="border-t-foreground/10 border-t bg-white px-5 py-3 text-black dark:bg-black dark:text-white">
-                              {item.name}
-                              <code className="text-accent mt-2 block text-sm">
-                                {item.description}
-                              </code>
-                            </div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {/* Typography */}
-              <section
-                id="typography"
-                className={cn(
-                  {
-                    hidden: filteredTypographyGroups.length === 0,
-                  },
-                  'print:break-before-page'
-                )}
-              >
-                <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold sm:px-6 lg:px-8">
-                  <span
-                    className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
-                    aria-hidden="true"
-                  >
-                    text_fields
-                  </span>
-                  {typographyTitle}
-                </h2>
-                <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                  {filteredTypographyGroups.map((group) => (
-                    <div
-                      key={group.name}
-                      className="space-y-8 border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0"
+              {filteredTypographyGroups.length > 0 && (
+                <section id="typography" className="print:break-before-page">
+                  <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
+                    <span
+                      className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
+                      aria-hidden="true"
                     >
-                      <h3 className="font-alegreya-sans-sc text-2xl font-bold">
-                        {group.name}
-                      </h3>
-                      {group.items.map((item: TypographyItem) => (
-                        <div
-                          key={item.name}
-                          className="grid grid-cols-1 gap-5 print:grid-cols-3 sm:grid-cols-3"
-                        >
-                          <div className="col-span-1">
-                            <h4 className="text-xl font-bold">{item.name}</h4>
-                            <p className="text-sm">
-                              {item.font} {item.fontWeight}
-                            </p>
-                            {(item.fontSize || item.lineHeight) && (
-                              <small className="text-xs">
-                                {item.fontSize}
-                                {' / '}
-                                {item.lineHeight}
-                              </small>
-                            )}
-                          </div>
-                          <div className="col-span-1 print:col-span-2 sm:col-span-2">
-                            {item.example}
-                            <code className="text-accent mt-2 block text-sm">
-                              {item.description}
-                            </code>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Shadows */}
-              <section
-                id="shadows"
-                className={cn(
-                  {
-                    hidden: filteredShadowGroups.length === 0,
-                  },
-                  'min-h-screen'
-                )}
-              >
-                <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
-                  <span
-                    className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
-                    aria-hidden="true"
-                  >
-                    ev_shadow
-                  </span>
-                  {shadowsTitle}
-                </h2>
-                <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                  {filteredShadowGroups.map((group) => (
-                    <div
-                      key={group.name}
-                      className="border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0"
-                    >
-                      <h3 className="font-alegreya-sans-sc text-2xl font-bold">
-                        {group.name}
-                      </h3>
-                      <div className="mt-2 grid grid-cols-1 gap-5 print:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3">
-                        {group.items.map((item: ShadowItem) => (
+                      text_fields
+                    </span>
+                    {typographyTitle}
+                  </h2>
+                  <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                    {filteredTypographyGroups.map((group: Group, i: number) => (
+                      <div
+                        key={`typography-${i}`}
+                        className="border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0"
+                      >
+                        <h3 className="font-alegreya-sans-sc text-2xl font-bold">
+                          {group.name}
+                        </h3>
+                        {group.items.map((item: TypographyItem, j: number) => (
                           <div
-                            key={item.name}
-                            className="ring-foreground/10 overflow-hidden rounded-lg shadow ring-1"
+                            key={`typography-${i}-${j}`}
+                            className="grid grid-cols-1 gap-5 print:grid-cols-3 sm:grid-cols-3"
                           >
-                            <div className="flex h-40 items-center justify-center bg-neutral-200 p-8">
-                              {item.example}
+                            <div className="col-span-1">
+                              <h4 className="text-xl font-bold">{item.name}</h4>
+                              <p className="text-sm">
+                                {item.font} {item.fontWeight}
+                              </p>
+                              {(item.fontSize || item.lineHeight) && (
+                                <small className="text-xs">
+                                  {item.fontSize}
+                                  {' / '}
+                                  {item.lineHeight}
+                                </small>
+                              )}
                             </div>
-                            <div className="border-t-foreground/10 border-t bg-white px-5 py-3 text-black dark:bg-black dark:text-white">
-                              {item.name}
+                            <div className="col-span-1 print:col-span-2 sm:col-span-2">
+                              {item.example}
                               <code className="text-accent mt-2 block text-sm">
                                 {item.description}
                               </code>
@@ -410,10 +335,58 @@ export default function StyleGuide() {
                           </div>
                         ))}
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Shadows */}
+              {filteredShadowGroups.length > 0 && (
+                <section
+                  id="shadows"
+                  className="min-h-screen print:break-before-page"
+                >
+                  <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
+                    <span
+                      className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
+                      aria-hidden="true"
+                    >
+                      ev_shadow
+                    </span>
+                    {shadowsTitle}
+                  </h2>
+                  <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                    {filteredShadowGroups.map((group: Group, i: number) => (
+                      <div
+                        key={`shadows-${i}`}
+                        className="border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0"
+                      >
+                        <h3 className="font-alegreya-sans-sc text-2xl font-bold">
+                          {group.name}
+                        </h3>
+                        <div className="mt-2 grid grid-cols-1 gap-5 text-sm print:grid-cols-3 sm:grid-cols-2 md:grid-cols-3">
+                          {group.items.map((item: ShadowItem, j: number) => (
+                            <div
+                              key={`shadows-${i}-${j}`}
+                              className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-neutral-800 dark:border-neutral-800"
+                            >
+                              <div className="relative h-40">
+                                {item.example}
+                              </div>
+                              <div className="bg-white px-5 py-3 text-black dark:bg-black dark:text-white">
+                                {item.name}
+                                <code className="text-accent mt-2 block">
+                                  {item.description}
+                                </code>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {filteredColorGroups.length === 0 &&
                 filteredTypographyGroups.length === 0 &&
@@ -459,4 +432,7 @@ export default function StyleGuide() {
       </Transition>
     </>
   );
-}
+};
+
+StyleGuide.theme = 'light';
+export default StyleGuide;

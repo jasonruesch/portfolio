@@ -1,10 +1,9 @@
 import { ThemeProvider } from 'next-themes';
-import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import '../styles/globals.css';
 
-function CustomApp({ Component, pageProps }: AppProps) {
+function CustomApp({ Component, pageProps }) {
   /**
    * Irritation to avoid dev errors with SSR:
    * Server/Client renderings not matching.
@@ -21,7 +20,11 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Jason Ruesch</title>
       </Head>
-      <ThemeProvider defaultTheme="system" attribute="class">
+      <ThemeProvider
+        defaultTheme="system"
+        attribute="class"
+        forcedTheme={Component.theme || null}
+      >
         {isHydrated && <Component {...pageProps} />}
       </ThemeProvider>
     </>

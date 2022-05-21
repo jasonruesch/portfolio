@@ -1,4 +1,4 @@
-import { Group, TypographyItem } from '../models';
+import { Group, TypographyItem } from '../../models/styleguide';
 
 const typographyGroups: Group[] = [
   {
@@ -164,9 +164,14 @@ const typographyGroups: Group[] = [
         name: 'Link',
         font: 'Inter',
         example: (
-          <a href="" className="hover:text-cta underline">
-            Lorem ipsum dolor sit amet consectetur
-          </a>
+          <>
+            <a href="#" className="hover:text-cta block underline">
+              Lorem ipsum dolor sit amet consectetur
+            </a>
+            <a href="#" className="text-cta hidden underline print:block">
+              Lorem ipsum dolor sit amet consectetur
+            </a>
+          </>
         ),
         description: 'hover:text-cta underline',
       },
