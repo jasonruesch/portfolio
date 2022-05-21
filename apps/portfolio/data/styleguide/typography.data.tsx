@@ -165,10 +165,14 @@ const typographyGroups: Group[] = [
         font: 'Inter',
         example: (
           <>
-            <a href="#" className="hover:text-cta block underline">
+            <a key="link" href="#" className="hover:text-cta block underline">
               Lorem ipsum dolor sit amet consectetur
             </a>
-            <a href="#" className="text-cta hidden underline print:block">
+            <a
+              key="link-hover"
+              href="#"
+              className="text-cta hidden underline print:block"
+            >
               Lorem ipsum dolor sit amet consectetur
             </a>
           </>

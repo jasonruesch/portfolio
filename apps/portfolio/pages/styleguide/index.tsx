@@ -18,6 +18,7 @@ import {
 import { debounce, cloneDeep } from 'lodash';
 import { animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';
+import ThemeSelector from '../../components/styleguide/themeSelector';
 
 const StyleGuide = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -46,6 +47,10 @@ const StyleGuide = () => {
     } else {
       setShowTopButton(false);
     }
+  };
+
+  const handleNavItemClick = (e) => {
+    setSidebarOpen(false);
   };
 
   const filter = (query: string, data: Group[], title: string) => {
@@ -164,7 +169,7 @@ const StyleGuide = () => {
                       </button>
                     </div>
                   </Transition.Child>
-                  <Sidebar />
+                  <Sidebar onNavItemClick={handleNavItemClick} />
                 </Dialog.Panel>
               </Transition.Child>
               <div className="w-14 flex-shrink-0" aria-hidden="true">
@@ -177,25 +182,25 @@ const StyleGuide = () => {
         {/* Static sidebar for desktop */}
         <div className="hidden print:hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
           <div className="flex flex-grow flex-col overflow-y-auto bg-neutral-700 pb-4">
-            <Sidebar />
+            <Sidebar onNavItemClick={handleNavItemClick} />
           </div>
         </div>
 
         {/* Content */}
         <div className="flex flex-1 flex-col lg:pl-64">
           {/* Header */}
-          <header className="fixed z-10 flex h-16 w-full flex-shrink-0 border-b border-neutral-300 bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:relative lg:border-none">
+          <header className="fixed z-10 box-content flex h-16 w-full flex-shrink-0 border-b border-neutral-300 bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:relative lg:border-none">
             <button
               type="button"
-              className="border-r border-neutral-300 px-4 focus:outline-none lg:hidden"
+              className="border-r border-neutral-300 px-4 focus:outline-none dark:border-neutral-400 lg:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
               <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
             </button>
 
-            <div className="flex flex-1 justify-between px-4 lg:mx-auto lg:max-w-6xl lg:px-8">
-              <div className="flex flex-1">
+            <div className="flex flex-1 justify-between lg:mx-auto lg:max-w-6xl">
+              <div className="flex flex-1 px-4 lg:px-8">
                 <form className="flex w-full" action="#" method="GET">
                   <label htmlFor="search-field" className="sr-only">
                     Search
@@ -219,6 +224,7 @@ const StyleGuide = () => {
                   </div>
                 </form>
               </div>
+              <ThemeSelector className="border-l border-neutral-300 px-4 py-5 dark:border-neutral-400 lg:mr-8 lg:border-l-0" />
             </div>
           </header>
 
@@ -267,7 +273,7 @@ const StyleGuide = () => {
                           {group.items.map((item: ColorItem, j: number) => (
                             <div
                               key={`colors-${i}-${j}`}
-                              className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-neutral-800 dark:border-neutral-800"
+                              className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-black dark:border-black"
                             >
                               <div className="relative h-40">
                                 {item.example}
@@ -368,7 +374,7 @@ const StyleGuide = () => {
                           {group.items.map((item: ShadowItem, j: number) => (
                             <div
                               key={`shadows-${i}-${j}`}
-                              className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-neutral-800 dark:border-neutral-800"
+                              className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-black dark:border-black"
                             >
                               <div className="relative h-40">
                                 {item.example}
@@ -434,5 +440,5 @@ const StyleGuide = () => {
   );
 };
 
-StyleGuide.theme = 'light';
+// StyleGuide.theme = 'light';
 export default StyleGuide;

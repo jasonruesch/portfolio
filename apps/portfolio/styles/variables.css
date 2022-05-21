@@ -1,4 +1,5 @@
-:root {
+:root,
+.light {
   /* Brand colors (option tokens) from Adobe Color (color.adobe.com)*/
   --color-alabaster: 250 250 250; /* #fafafa, Text: Dark only */
   --color-charcoal: 48 48 48; /* #303030, Text: Light only */
