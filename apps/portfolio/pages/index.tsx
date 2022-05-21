@@ -146,7 +146,10 @@ export default function Index() {
         </header>
 
         <main>
-          <h1 className="font-alegreya-sans-sc text-4xl font-bold">Hi!</h1>
+          <h1 className="font-alegreya-sans-sc text-4xl font-bold">
+            Hi! My name is Jason Ruesch, and I am a Software Engineer focusing
+            on Web Development and Design.
+          </h1>
         </main>
       </div>
     </>
