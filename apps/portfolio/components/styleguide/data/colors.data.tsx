@@ -1,4 +1,4 @@
-import { Group, ColorItem } from '../../models/styleguide';
+import { Group, ColorItem } from '../models';
 
 const themeGroup: Group = {
   name: 'Theme Colors',

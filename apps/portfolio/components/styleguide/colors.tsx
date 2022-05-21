@@ -1,5 +1,5 @@
 import { ColorSwatchIcon } from '@heroicons/react/outline';
-import { Group, ColorItem } from '../../models/styleguide';
+import { Group, ColorItem } from './models';
 
 export default function Colors({ id, title, groups }) {
   return (

@@ -7,9 +7,9 @@ import {
   colorGroups,
   typographyGroups,
   shadowGroups,
-} from '../../data/styleguide';
+} from '../../components/styleguide/data';
 import Sidebar from '../../components/styleguide/sidebar';
-import { Group } from '../../models/styleguide';
+import { Group } from '../../components/styleguide/models';
 import { debounce, cloneDeep } from 'lodash';
 import { animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';

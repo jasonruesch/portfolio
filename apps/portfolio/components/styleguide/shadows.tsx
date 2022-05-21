@@ -1,4 +1,4 @@
-import { Group, ShadowItem } from '../../models/styleguide';
+import { Group, ShadowItem } from './models';
 
 export default function Shadows({ id, title, groups }) {
   return (

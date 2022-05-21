@@ -1,4 +1,4 @@
-import { Group, TypographyItem } from '../../models/styleguide';
+import { Group, TypographyItem } from './models';
 
 export default function Typography({ id, title, groups }) {
   return (
