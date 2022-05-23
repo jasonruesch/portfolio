@@ -1,11 +1,18 @@
 import { Group, TypographyItem } from './models';
 
-export default function Typography({ id, title, groups }) {
+export default function Typography({
+  id,
+  title,
+  groups,
+  className,
+}: {
+  id: string;
+  title: string;
+  groups: Group[];
+  className?: string;
+}) {
   return (
-    <section
-      id={id}
-      className="-mb-16 pt-16 print:break-before-page lg:mb-0 lg:pt-0"
-    >
+    <section id={id} className={className}>
       <h2 className="font-alegreya-sans-sc mx-auto flex max-w-6xl items-center px-4 pt-8 text-3xl font-bold print:pt-0 sm:px-6 lg:px-8">
         <span
           className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"

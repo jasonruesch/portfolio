@@ -1,4 +1,4 @@
-import { Group, ShadowItem } from '../../models/styleguide';
+import { Group, ShadowItem } from '../models';
 
 const shadowGroups: Group[] = [
   {

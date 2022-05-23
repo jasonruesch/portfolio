@@ -76,7 +76,7 @@ export default function Sidebar({ onNavItemClick }) {
               <a
                 key={item.name}
                 href={item.href}
-                className="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-neutral-100 hover:bg-neutral-600 hover:text-white"
+                className="group flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-neutral-100 hover:bg-neutral-600 hover:text-white"
                 onClick={onNavItemClick}
               >
                 <item.icon

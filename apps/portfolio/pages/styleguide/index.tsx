@@ -254,6 +254,7 @@ const StyleGuide = () => {
                   id="colors"
                   title={colorsTitle}
                   groups={filteredColorGroups}
+                  className="-mb-16 pt-16 lg:mb-0 lg:pt-0"
                 />
               )}
 
@@ -263,6 +264,7 @@ const StyleGuide = () => {
                   id="typography"
                   title={typographyTitle}
                   groups={filteredTypographyGroups}
+                  className="-mb-16 pt-16 print:break-before-page lg:mb-0 lg:pt-0"
                 />
               )}
 
@@ -272,6 +274,7 @@ const StyleGuide = () => {
                   id="shadows"
                   title={shadowsTitle}
                   groups={filteredShadowGroups}
+                  className="-mb-16 min-h-screen pt-16 print:break-before-page lg:mb-0 lg:pt-0"
                 />
               )}
 

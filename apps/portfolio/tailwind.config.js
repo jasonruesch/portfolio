@@ -24,8 +24,9 @@ module.exports = {
       'alegreya-sans-sc': ['Alegreya Sans SC', ...defaultTheme.fontFamily.sans],
     },
     colors: {
-      transparent: colors.transparent,
+      inherit: colors.inherit,
       current: colors.current,
+      transparent: colors.transparent,
       black: colors.black,
       white: colors.white,
       background: withOpacityValue('--color-background'),

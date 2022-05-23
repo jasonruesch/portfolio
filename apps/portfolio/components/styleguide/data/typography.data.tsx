@@ -1,4 +1,4 @@
-import { Group, TypographyItem } from '../../models/styleguide';
+import { Group, TypographyItem } from '../models';
 
 const typographyGroups: Group[] = [
   {
