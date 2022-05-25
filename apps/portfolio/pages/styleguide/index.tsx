@@ -13,7 +13,7 @@ const StyleGuide = () => {
   const [searchInput, setSearchInput] = useState('');
   const [showTopButton, setShowTopButton] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [hasSearchResults, setHasSearchResults] = useState(false);
+  const [hasSearchResults, setHasSearchResults] = useState(true);
 
   const handleSearch = debounce((e) => {
     const searchValue: string = e.target.value;
