@@ -1,3 +1,2 @@
 export { Shadows } from './shadows';
-export * from './shadow.model';
-export * from './shadows.data';
+export { shadowSection } from './shadows.data';

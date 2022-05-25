@@ -1,3 +1,2 @@
 export { Colors } from './colors';
-export * from './color.model';
-export * from './colors.data';
+export { colorSection } from './colors.data';

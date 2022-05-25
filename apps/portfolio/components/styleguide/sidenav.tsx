@@ -48,7 +48,7 @@ const secondaryNavigation = [
 export function Sidenav({ onNavItemClick }) {
   return (
     <>
-      <div className="flex h-16 flex-shrink-0 items-end px-4 lg:px-8">
+      <div className="flex h-16 flex-shrink-0 items-center px-4 lg:px-8">
         <Link href="/">
           <a>
             <Image

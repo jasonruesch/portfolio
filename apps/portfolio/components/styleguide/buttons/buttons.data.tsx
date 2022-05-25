@@ -9,7 +9,7 @@ const buttonGroups: Group<Button>[] = [
       {
         name: 'Primary Button States',
         example: (
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 bg-neutral-200 p-4 sm:flex-row">
+          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-4 sm:flex-row">
             <button
               key="primary-default"
               className="bg-cta border-cta/50 rounded-lg border py-2 px-8 text-white hover:bg-opacity-70"
@@ -42,7 +42,7 @@ const buttonGroups: Group<Button>[] = [
       {
         name: 'Secondary Button States',
         example: (
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 bg-neutral-200 p-4 sm:flex-row">
+          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-4 sm:flex-row">
             <button
               key="secondary-default"
               className="rounded-lg border border-neutral-300/50 bg-neutral-300 py-2 px-8 text-black hover:bg-opacity-70"
@@ -75,7 +75,7 @@ const buttonGroups: Group<Button>[] = [
       {
         name: 'Primary Icon Button States',
         example: (
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 bg-neutral-200 p-4 sm:flex-row">
+          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-4 sm:flex-row">
             <div key="primary-icon-default" className="space-y-4 text-center">
               <button
                 key="primary-icon-default-button"

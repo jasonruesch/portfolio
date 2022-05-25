@@ -13,7 +13,6 @@ const StyleGuide = () => {
   const [searchInput, setSearchInput] = useState('');
   const [showTopButton, setShowTopButton] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [hasSearchResults, setHasSearchResults] = useState(true);
 
   const handleSearch = debounce((e) => {
     const searchValue: string = e.target.value;
@@ -23,7 +22,7 @@ const StyleGuide = () => {
   const handleScroll = (e) => {
     const scrollingElement = e.target.scrollingElement;
 
-    if (scrollingElement.scrollTop > 180) {
+    if (scrollingElement.scrollTop >= 136) {
       setShowTopButton(true);
     } else {
       setShowTopButton(false);
@@ -32,10 +31,6 @@ const StyleGuide = () => {
 
   const handleNavItemClick = (e) => {
     setSidebarOpen(false);
-  };
-
-  const handleFilter = (hasResults: boolean) => {
-    setHasSearchResults(hasResults);
   };
 
   useEffect(() => {
@@ -56,10 +51,8 @@ const StyleGuide = () => {
           <Sidenav onNavItemClick={handleNavItemClick} />
         </Sidebar>
 
-        {/* Content */}
-        <div className="flex flex-1 flex-col lg:pl-[288px]">
-          {/* Header */}
-          <header className="fixed z-10 box-content flex h-16 w-full flex-shrink-0 items-center border-b border-neutral-300 bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:relative lg:items-end lg:border-none">
+        <div className="lg:pl-[288px]">
+          <header className="fixed top-0 left-0 right-0 z-10 flex h-16 items-center border-b border-neutral-300 bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:left-[288px]">
             <button
               type="button"
               className="px-4 focus:outline-none lg:hidden"
@@ -69,10 +62,13 @@ const StyleGuide = () => {
               <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
             </button>
 
-            <div className="flex flex-1 justify-between lg:mx-auto lg:max-w-6xl lg:px-8">
+            <div className="flex w-full justify-between lg:px-8">
               <div className="flex flex-1">
-                <form className="flex w-full" action="#" method="GET">
-                  <label htmlFor="search-field" className="sr-only">
+                <form
+                  className="flex w-full"
+                  onSubmit={(e) => e.preventDefault()}
+                >
+                  <label htmlFor="search" className="sr-only">
                     Search
                   </label>
                   <div className="focus-within:text-foreground relative w-full text-neutral-500">
@@ -84,8 +80,8 @@ const StyleGuide = () => {
                     </div>
                     <input
                       type="search"
-                      id="search-field"
-                      name="search-field"
+                      id="search"
+                      name="search"
                       className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-0 placeholder-neutral-500 focus:outline-none focus:ring-0"
                       placeholder="Search styles"
                       onChange={handleSearch}
@@ -98,45 +94,32 @@ const StyleGuide = () => {
             </div>
           </header>
 
-          {/* Main */}
-          <main className="flex-1 pt-16 pb-8 print:pt-0 lg:pt-0">
+          <main className="flex-1 pt-16 print:pt-0">
             {/* Page header */}
-            <div className="-mb-16 bg-white shadow dark:bg-black print:shadow-none lg:mb-0">
-              <div className="px-4 sm:px-6 sm:pt-4 lg:mx-auto lg:max-w-6xl lg:px-8">
-                <div className="py-6 lg:border-t lg:border-neutral-300 lg:dark:border-neutral-400">
-                  <Image
-                    layout="raw"
-                    width="224"
-                    height="30"
-                    src="/logo.svg"
-                    alt="Jason Ruesch"
-                    className="mb-4 hidden print:block"
-                  />
-                  <h1 className="font-alegreya-sans-sc text-4xl font-bold sm:truncate sm:leading-9">
-                    Style Guide
-                  </h1>
-                </div>
+            <div className="bg-white shadow dark:bg-black print:shadow-none">
+              <div className="p-4 lg:mx-auto lg:max-w-screen-lg lg:px-8">
+                <Image
+                  layout="raw"
+                  width="224"
+                  height="30"
+                  src="/logo.svg"
+                  alt="Jason Ruesch"
+                  className="mb-4 hidden print:block"
+                />
+                <h1 className="font-alegreya-sans-sc text-4xl font-bold">
+                  Style Guide
+                </h1>
               </div>
             </div>
 
-            <div className="mt-8">
-              <Sections searchInput={searchInput} onFilter={handleFilter} />
-
-              {!hasSearchResults && (
-                <div className="text-center">
-                  <h2 className="font-alegreya-sans-sc text-3xl font-bold">
-                    Searching for{' '}
-                    <span className="text-accent font-sans text-2xl">
-                      &quot;{searchInput}&quot;
-                    </span>{' '}
-                    found no matching styles.
-                  </h2>
-                </div>
-              )}
+            <div className="px-4 lg:mx-auto lg:max-w-screen-lg lg:px-8">
+              <Sections searchInput={searchInput} />
             </div>
           </main>
         </div>
       </div>
+
+      {/* Back to Top Button */}
       <Transition
         as={Fragment}
         appear

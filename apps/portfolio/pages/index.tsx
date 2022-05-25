@@ -48,7 +48,7 @@ export default function Index() {
           </nav>
         </Sidebar>
 
-        <header className="fixed top-0 flex h-16 w-full items-center justify-between px-4 lg:items-end lg:px-8">
+        <header className="fixed top-0 flex h-16 w-full items-center justify-between px-4 lg:items-center lg:px-8">
           <button
             type="button"
             className="focus:outline-none lg:hidden"
@@ -86,7 +86,7 @@ export default function Index() {
           </div>
         </header>
 
-        <main className="p-4 text-center lg:max-w-3xl">
+        <main className="p-4 text-center lg:max-w-screen-sm">
           <h1 className="font-alegreya-sans-sc text-4xl font-bold">
             Hi! My name is
             <br />

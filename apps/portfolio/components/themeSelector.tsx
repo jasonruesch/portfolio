@@ -21,7 +21,7 @@ export function ThemeSelector({ className }: { className?: string }) {
     <Menu as="div" className="relative">
       <Menu.Button
         className={cn(
-          'flex max-w-xs items-center text-sm focus:outline-none lg:rounded-md',
+          'flex items-center text-sm focus:outline-none lg:rounded-md',
           className
         )}
       >

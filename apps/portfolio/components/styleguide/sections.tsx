@@ -1,22 +1,16 @@
-import { useEffect } from 'react';
-import { Buttons } from './buttons';
-import { buttonSection } from './buttons/buttons.data';
+import { useEffect, useState } from 'react';
+import { Buttons, buttonSection } from './buttons';
 import { Colors, colorSection } from './colors';
 import { useFilterGroups } from './hooks/useFilterGroups';
 import { Shadows, shadowSection } from './shadows';
 import { Typography, typographySection } from './typography';
 
-export function Sections({
-  searchInput,
-  onFilter,
-}: {
-  searchInput: string;
-  onFilter: (hasResults: boolean) => void;
-}) {
+export function Sections({ searchInput }: { searchInput: string }) {
   const colorGroups = useFilterGroups(searchInput, colorSection);
   const typographyGroups = useFilterGroups(searchInput, typographySection);
   const shadowGroups = useFilterGroups(searchInput, shadowSection);
   const buttonGroups = useFilterGroups(searchInput, buttonSection);
+  const [hasResults, setHasResults] = useState(true);
 
   useEffect(() => {
     const hasResults =
@@ -24,27 +18,49 @@ export function Sections({
       typographyGroups?.length > 0 ||
       shadowGroups?.length > 0 ||
       buttonGroups?.length > 0;
-    onFilter(hasResults);
-  }, [onFilter, colorGroups, typographyGroups, shadowGroups, buttonGroups]);
+    setHasResults(hasResults);
+  }, [
+    setHasResults,
+    colorGroups,
+    typographyGroups,
+    shadowGroups,
+    buttonGroups,
+  ]);
+
+  // Each seciton should have top padding to account for fixed header
+  // The last section should have the 'min-h-screen' class
 
   return (
     <>
-      <Colors className="-mb-16 pt-16 lg:mb-0 lg:pt-0" groups={colorGroups} />
+      <Colors className="pt-16" groups={colorGroups} />
 
       <Typography
-        className="-mb-16 pt-16 print:break-before-page lg:mb-0 lg:pt-0"
+        className="pt-16 print:break-before-page"
         groups={typographyGroups}
       />
 
       <Shadows
-        className="-mb-16 pt-16 print:break-before-page lg:mb-0 lg:pt-0"
+        className="pt-16 print:break-before-page"
         groups={shadowGroups}
       />
 
       <Buttons
-        className="-mb-16 min-h-screen pt-16 print:break-before-page lg:mb-0 lg:pt-0"
+        className="min-h-screen pt-16 print:break-before-page"
         groups={buttonGroups}
       />
+
+      {/* No results */}
+      {!hasResults && (
+        <div className="pt-16 text-center">
+          <h2 className="font-alegreya-sans-sc pt-4 text-3xl font-bold">
+            Searching for &quot;
+            <span className="text-accent font-sans text-2xl">
+              {searchInput}
+            </span>
+            &quot; found no matching styles
+          </h2>
+        </div>
+      )}
     </>
   );
 }
