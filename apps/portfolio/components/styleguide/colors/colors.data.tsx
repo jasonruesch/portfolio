@@ -1,6 +1,7 @@
-import { Group, ColorItem } from '../models';
+import { Group, Section } from '../models';
+import { Color } from './color.model';
 
-const themeGroup: Group = {
+const themeGroup: Group<Color> = {
   name: 'Theme Colors',
   items: [
     {
@@ -66,9 +67,9 @@ const themeGroup: Group = {
         </div>
       ),
     },
-  ] as ColorItem[],
+  ],
 };
-const darkThemeGroup: Group = {
+const darkThemeGroup: Group<Color> = {
   name: 'Dark Theme Colors',
   items: [
     {
@@ -134,9 +135,9 @@ const darkThemeGroup: Group = {
         </div>
       ),
     },
-  ] as ColorItem[],
+  ],
 };
-const neutralGroup: Group = {
+const neutralGroup: Group<Color> = {
   name: 'Neutral Colors',
   items: [
     {
@@ -267,9 +268,9 @@ const neutralGroup: Group = {
         </div>
       ),
     },
-  ] as ColorItem[],
+  ],
 };
-const brandGroup: Group = {
+const brandGroup: Group<Color> = {
   name: 'Brand Colors',
   items: [
     {
@@ -405,13 +406,18 @@ const brandGroup: Group = {
         </div>
       ),
     },
-  ] as ColorItem[],
+  ],
 };
-const colorGroups: Group[] = [
+const colorGroups: Group<Color>[] = [
   { ...themeGroup },
   { ...darkThemeGroup },
   { ...neutralGroup },
   { ...brandGroup },
 ];
 
-export { colorGroups };
+const colorSection: Section<Color> = {
+  name: 'Colors',
+  groups: colorGroups,
+};
+
+export { colorSection };

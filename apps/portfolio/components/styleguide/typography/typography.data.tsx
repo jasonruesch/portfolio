@@ -1,6 +1,7 @@
-import { Group, TypographyItem } from '../models';
+import { Group, Section } from '../models';
+import { TypographyItem } from './typography.model';
 
-const typographyGroups: Group[] = [
+const typographyGroups: Group<TypographyItem>[] = [
   {
     name: 'Headings',
     items: [
@@ -76,7 +77,7 @@ const typographyGroups: Group[] = [
         ),
         description: 'text-base font-bold',
       },
-    ] as TypographyItem[],
+    ],
   },
   {
     name: 'Body',
@@ -145,14 +146,26 @@ const typographyGroups: Group[] = [
         ),
         description: 'text-xs',
       },
-    ] as TypographyItem[],
+    ],
   },
   {
     name: 'Rich Text',
     items: [
       {
-        name: 'Bold Text',
+        name: 'Regular',
         font: 'Inter',
+        fontWeight: '400',
+        example: (
+          <span className="font-regular">
+            Lorem ipsum dolor sit amet consectetur
+          </span>
+        ),
+        description: 'font-regular',
+      },
+      {
+        name: 'Bold',
+        font: 'Inter',
+        fontWeight: '600',
         example: (
           <span className="font-bold">
             Lorem ipsum dolor sit amet consectetur
@@ -168,11 +181,7 @@ const typographyGroups: Group[] = [
             <a key="link" href="#" className="hover:text-cta block underline">
               Lorem ipsum dolor sit amet consectetur
             </a>
-            <a
-              key="link-hover"
-              href="#"
-              className="text-cta hidden underline print:block"
-            >
+            <a key="link-hover" href="#" className="text-cta block underline">
               Lorem ipsum dolor sit amet consectetur
             </a>
           </>
@@ -203,23 +212,13 @@ const typographyGroups: Group[] = [
         ),
         description: 'list-inside list-decimal',
       },
-      {
-        name: 'Blockquote',
-        font: 'Inter',
-        fontWeight: 'Bold',
-        fontSize: '24px',
-        lineHeight: '32px',
-        example: (
-          <blockquote className="rounded-lg bg-neutral-300 px-6 py-12 text-center text-2xl font-bold dark:bg-neutral-700">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-            temporibus provident voluptatem corporis tempore!
-          </blockquote>
-        ),
-        description:
-          'rounded-lg bg-neutral-300 px-6 py-12 text-center text-2xl font-bold dark:bg-neutral-700',
-      },
-    ] as TypographyItem[],
+    ],
   },
 ];
 
-export { typographyGroups };
+const typographySection: Section<TypographyItem> = {
+  name: 'Typography',
+  groups: typographyGroups,
+};
+
+export { typographySection };

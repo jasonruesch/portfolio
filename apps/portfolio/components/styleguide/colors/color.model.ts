@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
-export interface ShadowItem {
+export interface Color {
   name: string;
-  example: ReactElement;
   description: string;
+  example: ReactElement;
 }

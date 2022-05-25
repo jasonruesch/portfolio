@@ -1,2 +1,3 @@
 export * from './styleguide';
-export * from './themeSelector';
+export { Sidebar } from './sidebar';
+export { ThemeSelector } from './themeSelector';

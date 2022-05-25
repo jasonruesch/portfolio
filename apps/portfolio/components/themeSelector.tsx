@@ -8,7 +8,7 @@ import {
   SunIcon,
 } from '@heroicons/react/outline';
 
-export default function ThemeSelector({ className }: { className?: string }) {
+export function ThemeSelector({ className }: { className?: string }) {
   const { theme, resolvedTheme, setTheme } = useTheme();
   const activateMode = useCallback(
     (mode: string) => {
@@ -21,7 +21,7 @@ export default function ThemeSelector({ className }: { className?: string }) {
     <Menu as="div" className="relative">
       <Menu.Button
         className={cn(
-          'flex max-w-xs items-center p-4 text-sm focus:outline-none lg:rounded-md',
+          'flex max-w-xs items-center text-sm focus:outline-none lg:rounded-md',
           className
         )}
       >
@@ -48,7 +48,7 @@ export default function ThemeSelector({ className }: { className?: string }) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="bg-background text-foreground absolute right-4 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="bg-background text-foreground absolute right-0 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:ring-opacity-50">
           <Menu.Item>
             {({ active }) => (
               <button

@@ -1,6 +1,7 @@
-import { Group, ShadowItem } from '../models';
+import { Group, Section } from '../models';
+import { Shadow } from './shadow.model';
 
-const shadowGroups: Group[] = [
+const shadowGroups: Group<Shadow>[] = [
   {
     name: 'Box Shadows',
     items: [
@@ -31,7 +32,7 @@ const shadowGroups: Group[] = [
         ),
         description: 'shadow-lg',
       },
-    ] as ShadowItem[],
+    ],
   },
   {
     name: 'Drop Shadows',
@@ -63,8 +64,13 @@ const shadowGroups: Group[] = [
         ),
         description: 'drop-shadow-lg',
       },
-    ] as ShadowItem[],
+    ],
   },
 ];
 
-export { shadowGroups };
+const shadowSection: Section<Shadow> = {
+  name: 'Shadows',
+  groups: shadowGroups,
+};
+
+export { shadowSection };

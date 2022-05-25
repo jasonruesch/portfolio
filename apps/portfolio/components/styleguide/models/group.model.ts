@@ -1,4 +1,4 @@
-export interface Group {
+export interface Group<T> {
   name: string;
-  items: Array<unknown>;
+  items: Array<T>;
 }

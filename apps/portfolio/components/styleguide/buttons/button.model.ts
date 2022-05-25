@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
-export interface ColorItem {
+export interface Button {
   name: string;
-  description: string;
   example: ReactElement;
+  description: string;
 }
