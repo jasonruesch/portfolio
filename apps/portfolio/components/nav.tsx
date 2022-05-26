@@ -1,5 +1,7 @@
 import { HomeIcon, TemplateIcon } from '@heroicons/react/outline';
+import classNames from 'classnames';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const navigation = [
   {
@@ -30,13 +32,15 @@ const externalNavigation = [
 
 export function Nav({
   className,
-  isSidenav,
+  isSidenav = false,
   onNavItemClick,
 }: {
   className?: string;
   isSidenav?: boolean;
   onNavItemClick?: () => void;
 }) {
+  const { route } = useRouter();
+
   return (
     <div className={className}>
       {(isSidenav && (
@@ -47,7 +51,15 @@ export function Nav({
           <div className="space-y-1">
             {navigation.map((item) => (
               <Link key={item.href} href={item.href}>
-                <a className="group flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-neutral-100 hover:bg-neutral-600 hover:text-white">
+                <a
+                  className={classNames(
+                    'group flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-neutral-100 hover:bg-neutral-600 hover:text-white',
+                    {
+                      'bg-neutral-800 !text-white hover:bg-neutral-800':
+                        route === item.href,
+                    }
+                  )}
+                >
                   <div
                     className="mr-4 h-6 w-6 flex-shrink-0 text-neutral-200"
                     aria-hidden="true"
@@ -84,11 +96,13 @@ export function Nav({
         </nav>
       )) || (
         <nav className="space-x-4">
-          {navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
-              <a className="hover:text-cta hidden lg:inline">{item.name}</a>
-            </Link>
-          ))}
+          {navigation
+            .filter((item) => item.href !== '/')
+            .map((item) => (
+              <Link key={item.href} href={item.href}>
+                <a className="hover:text-cta hidden lg:inline">{item.name}</a>
+              </Link>
+            ))}
         </nav>
       )}
     </div>

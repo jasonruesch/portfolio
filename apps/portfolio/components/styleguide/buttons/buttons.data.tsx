@@ -9,7 +9,7 @@ const buttonGroups: Group<Button>[] = [
       {
         name: 'Primary Button States',
         example: (
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-4 sm:flex-row">
+          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-8 sm:flex-row sm:space-y-0">
             <button
               key="primary-default"
               className="bg-cta border-cta/50 rounded-lg border py-2 px-8 text-white hover:bg-opacity-70"
@@ -42,22 +42,22 @@ const buttonGroups: Group<Button>[] = [
       {
         name: 'Secondary Button States',
         example: (
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-4 sm:flex-row">
+          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-8 sm:flex-row sm:space-y-0">
             <button
               key="secondary-default"
-              className="rounded-lg border border-neutral-300/50 bg-neutral-300 py-2 px-8 text-black hover:bg-opacity-70"
+              className="rounded-lg border border-neutral-400 bg-neutral-300 py-2 px-8 text-black hover:bg-neutral-400"
             >
               Default
             </button>
             <button
               key="secondary-hover"
-              className="rounded-lg border border-neutral-300/50 bg-neutral-300 bg-opacity-70 py-2 px-8 text-black"
+              className="rounded-lg border border-neutral-400 bg-neutral-400 py-2 px-8 text-black"
             >
               Hover
             </button>
             <button
               key="secondary-disabled"
-              className="rounded-lg border border-neutral-300/50 bg-neutral-300 py-2 px-8 text-black disabled:bg-opacity-50 disabled:text-neutral-400 disabled:text-opacity-70"
+              className="rounded-lg border border-neutral-400 bg-neutral-300 py-2 px-8 text-black disabled:bg-neutral-400 disabled:text-neutral-500"
               disabled
             >
               Disabled
@@ -65,7 +65,7 @@ const buttonGroups: Group<Button>[] = [
           </div>
         ),
         description:
-          'rounded-lg border border-neutral-300/50 bg-neutral-300 py-2 px-8 text-black hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-neutral-400 disabled:text-opacity-70',
+          'rounded-lg border border-neutral-400 bg-neutral-300 py-2 px-8 text-black hover:bg-neutral-400 disabled:bg-neutral-400 disabled:text-neutral-500',
       },
     ],
   },
@@ -75,7 +75,7 @@ const buttonGroups: Group<Button>[] = [
       {
         name: 'Primary Icon Button States',
         example: (
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-4 sm:flex-row">
+          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-8 sm:flex-row sm:space-y-0">
             <div key="primary-icon-default" className="space-y-4 text-center">
               <button
                 key="primary-icon-default-button"
@@ -83,9 +83,7 @@ const buttonGroups: Group<Button>[] = [
               >
                 <ChevronUpIcon className="h-12 w-12" />
               </button>
-              <p key="primary-icon-default-name" className="text-black">
-                Default
-              </p>
+              <p key="primary-icon-default-name">Default</p>
             </div>
             <div key="primary-icon-hover" className="space-y-4 text-center">
               <button
@@ -94,9 +92,7 @@ const buttonGroups: Group<Button>[] = [
               >
                 <ChevronUpIcon className="h-12 w-12" />
               </button>
-              <p key="primary-icon-hover-name" className="text-black">
-                Hover
-              </p>
+              <p key="primary-icon-hover-name">Hover</p>
             </div>
             <div key="primary-icon-disabled" className="space-y-4 text-center">
               <button
@@ -106,9 +102,7 @@ const buttonGroups: Group<Button>[] = [
               >
                 <ChevronUpIcon className="h-12 w-12" />
               </button>
-              <p key="primary-icon-disabled-name" className="text-black">
-                Disabled
-              </p>
+              <p key="primary-icon-disabled-name">Disabled</p>
             </div>
           </div>
         ),
