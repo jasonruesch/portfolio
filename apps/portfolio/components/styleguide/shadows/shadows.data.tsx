@@ -41,7 +41,7 @@ const shadowGroups: Group<Shadow>[] = [
         name: 'Drop Shadow Default',
         example: (
           <div className="flex h-full items-center justify-center">
-            <div className="dark:border-b-background dark:drop-shadow-black h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow"></div>
+            <div className="dark:drop-shadow-black h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow dark:border-b-neutral-700"></div>
           </div>
         ),
         description: 'drop-shadow',
@@ -50,7 +50,7 @@ const shadowGroups: Group<Shadow>[] = [
         name: 'Drop Shadow Medium',
         example: (
           <div className="flex h-full items-center justify-center">
-            <div className="dark:border-b-background dark:drop-shadow-black h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow-md"></div>
+            <div className="dark:drop-shadow-black h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow-md dark:border-b-neutral-700"></div>
           </div>
         ),
         description: 'drop-shadow-md',
@@ -59,7 +59,7 @@ const shadowGroups: Group<Shadow>[] = [
         name: 'Drop Shadow Large',
         example: (
           <div className="flex h-full items-center justify-center">
-            <div className="dark:border-b-background dark:drop-shadow-black h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow-lg"></div>
+            <div className="h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow-lg dark:border-b-neutral-700"></div>
           </div>
         ),
         description: 'drop-shadow-lg',
