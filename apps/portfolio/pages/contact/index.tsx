@@ -33,13 +33,26 @@ export default function Contact() {
       message: '',
     },
     validationSchema,
-    onSubmit: (values, { setSubmitting, resetForm }) => {
-      setTimeout(() => {
-        console.log(JSON.stringify(values, null, 2));
-        resetForm();
-        setSubmitting(false);
-        setShowSuccess(true);
-      }, 400);
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
+      // console.log(JSON.stringify(values, null, 2));
+      const response = await fetch('/api/sendmail', {
+        body: JSON.stringify(values),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      });
+
+      setSubmitting(false);
+
+      const { error } = await response.json();
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      resetForm();
+      setShowSuccess(true);
     },
   });
 
