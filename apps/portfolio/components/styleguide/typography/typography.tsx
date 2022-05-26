@@ -12,7 +12,7 @@ export function Typography({
   return (
     groups?.length > 0 && (
       <section id="typography" className={className}>
-        <h2 className="font-alegreya-sans-sc flex items-center pt-4 text-3xl font-bold">
+        <h2 className="font-alegreya-sans-sc flex items-center pt-4 text-2xl font-bold lg:text-3xl">
           <span
             className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
             aria-hidden="true"
@@ -41,10 +41,17 @@ export function Typography({
                     {item.font} {item.fontWeight}
                   </p>
                   {(item.fontSize || item.lineHeight) && (
-                    <small className="text-xs">
+                    <small className="block text-xs">
                       {item.fontSize}
                       {' / '}
                       {item.lineHeight}
+                    </small>
+                  )}
+                  {(item.largeFontSize || item.largeLineHeight) && (
+                    <small className="block text-xs">
+                      {item.largeFontSize}
+                      {' / '}
+                      {item.largeLineHeight} (Large Screen)
                     </small>
                   )}
                 </div>

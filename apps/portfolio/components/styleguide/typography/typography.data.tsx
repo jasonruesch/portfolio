@@ -9,27 +9,47 @@ const typographyGroups: Group<TypographyItem>[] = [
         name: 'Heading H1',
         font: 'Alegreya Sans SC',
         fontWeight: 'Bold',
-        fontSize: '36px',
-        lineHeight: '40px',
+        fontSize: '30px',
+        lineHeight: '36px',
+        largeFontSize: '36px',
+        largeLineHeight: '40px',
         example: (
-          <h1 className="font-alegreya-sans-sc text-4xl font-bold">
-            Etiam nec metus vitae lectus
-          </h1>
+          <>
+            <h1 key="h1" className="font-alegreya-sans-sc text-3xl font-bold">
+              Etiam nec metus vitae lectus
+            </h1>
+            <h1
+              key="h1-large"
+              className="font-alegreya-sans-sc text-4xl font-bold"
+            >
+              Etiam nec metus vitae lectus
+            </h1>
+          </>
         ),
-        description: 'font-alegreya-sans-sc text-4xl font-bold',
+        description: 'font-alegreya-sans-sc text-3xl lg:text-4xl font-bold',
       },
       {
         name: 'Heading H2',
         font: 'Alegreya Sans SC',
         fontWeight: 'Bold',
-        fontSize: '30px',
-        lineHeight: '36px',
+        fontSize: '24px',
+        lineHeight: '32px',
+        largeFontSize: '30px',
+        largeLineHeight: '36px',
         example: (
-          <h2 className="font-alegreya-sans-sc text-3xl font-bold">
-            Etiam nec metus vitae lectus
-          </h2>
+          <>
+            <h2 key="h2" className="font-alegreya-sans-sc text-2xl font-bold">
+              Etiam nec metus vitae lectus
+            </h2>
+            <h2
+              key="h2-large"
+              className="font-alegreya-sans-sc text-3xl font-bold"
+            >
+              Etiam nec metus vitae lectus
+            </h2>
+          </>
         ),
-        description: 'font-alegreya-sans-sc text-3xl font-bold',
+        description: 'font-alegreya-sans-sc text-2xl lg:text-3xl font-bold',
       },
       {
         name: 'Heading H3',

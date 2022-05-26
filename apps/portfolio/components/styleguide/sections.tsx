@@ -52,7 +52,7 @@ export function Sections({ searchInput }: { searchInput: string }) {
       {/* No results */}
       {!hasResults && (
         <div className="pt-16 text-center">
-          <h2 className="font-alegreya-sans-sc pt-4 text-3xl font-bold">
+          <h2 className="font-alegreya-sans-sc pt-4 text-2xl font-bold lg:text-3xl">
             Searching for &quot;
             <span className="text-accent font-sans text-2xl">
               {searchInput}

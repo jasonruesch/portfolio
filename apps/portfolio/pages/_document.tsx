@@ -21,6 +21,10 @@ export default function Document() {
           href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"
           rel="stylesheet"
         />
+        <script
+          async
+          src="https://code.iconify.design/2/2.2.1/iconify.min.js"
+        ></script>
       </Head>
       <body className="h-full">
         <Main />

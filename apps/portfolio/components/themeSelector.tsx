@@ -48,7 +48,7 @@ export function ThemeSelector({ className }: { className?: string }) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="bg-background text-foreground absolute right-0 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:ring-opacity-50">
+        <Menu.Items className="bg-background text-foreground absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:ring-opacity-50">
           <Menu.Item>
             {({ active }) => (
               <button

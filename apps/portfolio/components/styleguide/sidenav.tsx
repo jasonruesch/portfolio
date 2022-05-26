@@ -1,6 +1,4 @@
 import { ColorSwatchIcon, TemplateIcon } from '@heroicons/react/outline';
-import Link from 'next/link';
-import Image from 'next/image';
 import { Link as ScrollLink } from 'react-scroll';
 
 const navigation = [
@@ -45,31 +43,24 @@ const secondaryNavigation = [
   { name: 'Icons', id: 'icons', icon: <TemplateIcon /> },
 ];
 
-export function Sidenav({ onNavItemClick }) {
+export function Sidenav({
+  className,
+  onNavItemClick,
+}: {
+  className?: string;
+  onNavItemClick?: () => void;
+}) {
   return (
-    <>
-      <div className="flex h-16 flex-shrink-0 items-center px-4 lg:px-8">
-        <Link href="/">
-          <a>
-            <Image
-              layout="raw"
-              width="224"
-              height="30"
-              src="/logo-dark.svg"
-              alt="Jason Ruesch"
-            />
-          </a>
-        </Link>
-      </div>
+    <div className={className}>
       <nav
-        className="mt-5 flex flex-1 flex-col divide-y divide-neutral-500 overflow-y-auto px-2 lg:px-4"
+        className="flex flex-1 flex-col divide-y divide-neutral-500 overflow-y-auto px-2 lg:px-4"
         aria-label="Sidenav"
       >
         <div className="space-y-1">
           {navigation.map((item) => (
             <ScrollLink
               key={item.id}
-              activeClass="bg-neutral-800 text-white hover:bg-neutral-800"
+              activeClass="bg-neutral-800 !text-white hover:bg-neutral-800"
               to={item.id}
               spy={true}
               hashSpy={true}
@@ -92,7 +83,7 @@ export function Sidenav({ onNavItemClick }) {
             {secondaryNavigation.map((item) => (
               <ScrollLink
                 key={item.id}
-                activeClass="bg-neutral-800 text-white hover:bg-neutral-800"
+                activeClass="bg-neutral-800 !text-white hover:bg-neutral-800"
                 to={item.id}
                 spy={true}
                 hashSpy={true}
@@ -112,6 +103,6 @@ export function Sidenav({ onNavItemClick }) {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 }

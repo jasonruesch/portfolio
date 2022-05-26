@@ -2,14 +2,14 @@ import { MenuAlt1Icon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Nav, Sidebar, ThemeSelector } from '../components';
+import { Sidebar, ThemeSelector, Nav } from '../../components';
 
 export default function Index() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
+      <div className="sm-max-h:pt-0 absolute inset-0 flex min-h-full flex-col items-center justify-start pt-12">
         <Sidebar
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
@@ -55,29 +55,37 @@ export default function Index() {
         </header>
 
         <main className="sm-max-h:h-full sm-max-h:flex-row sm-max-h:justify-between flex flex-col items-center gap-12 p-4 lg:max-w-screen-sm lg:px-8">
-          <div className="border-light-gray relative h-[150px] w-[150px] rounded-full border dark:border-0 md:h-[300px] md:w-[300px]">
-            <Image
-              priority
-              src="/images/profile.png"
-              className="bg-primary rounded-full"
-              layout="fill"
-              alt="Jason Ruesch"
-            />
+          <div>
+            {/* Wrapper div needed for the image to stay unwarped */}
+            <div className="border-light-gray relative h-[150px] w-[150px] rounded-full border dark:border-0 md:h-[300px] md:w-[300px]">
+              <Image
+                priority
+                src="/images/profile.png"
+                className="bg-primary rounded-full"
+                layout="fill"
+                alt="Jason Ruesch"
+              />
+            </div>
           </div>
 
-          <div>
-            <h1 className="font-alegreya-sans-sc text-center text-3xl font-bold lg:text-4xl">
-              Hi! I&apos;m
-              <br />
-              <span className="text-primary">Jason Ruesch</span>
-              <br />
-              and I am a<br />
-              <span className="text-accent">Software Engineer</span>
-              <br />
-              focusing on
-              <br />
-              Web Development and Design
+          <div className="space-y-4">
+            <h1 className="font-alegreya-sans-sc text-accent text-3xl font-bold lg:text-4xl">
+              About Me
             </h1>
+            <p>
+              My name is Jason Ruesch, and I enjoy creating software that looks
+              amazing and is easy to use! I have a passion for learning new
+              technologies and building things that are useful to others.
+            </p>
+            <p>
+              Outside of work, I like to spend time with my family, play video
+              games, and watch movies and tv shows.
+            </p>
+            <p>
+              I am always open to connect. If you are interested in learning
+              more about me or how I can help you with your web needs, please
+              reach out.
+            </p>
           </div>
         </main>
       </div>

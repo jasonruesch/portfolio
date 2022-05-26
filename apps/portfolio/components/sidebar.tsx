@@ -1,12 +1,21 @@
 import { XIcon } from '@heroicons/react/outline';
 import { Transition, Dialog } from '@headlessui/react';
-import { Fragment } from 'react';
+import { Fragment, ReactNode } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export function Sidebar({
   children,
+  className,
   sidebarOpen,
   setSidebarOpen,
   mobileOnly = false,
+}: {
+  children: ReactNode;
+  className?: string;
+  sidebarOpen?: boolean;
+  setSidebarOpen?: (open: boolean) => void;
+  mobileOnly?: boolean;
 }) {
   return (
     <>
@@ -63,7 +72,20 @@ export function Sidebar({
                     </button>
                   </div>
                 </Transition.Child>
-                {children}
+                <div className="flex h-16 flex-shrink-0 items-center px-4 lg:px-8">
+                  <Link href="/">
+                    <a>
+                      <Image
+                        layout="raw"
+                        width="224"
+                        height="30"
+                        src="/logo-dark.svg"
+                        alt="Jason Ruesch"
+                      />
+                    </a>
+                  </Link>
+                </div>
+                <div className={className}>{children}</div>
               </Dialog.Panel>
             </Transition.Child>
             <div className="w-14 flex-shrink-0" aria-hidden="true">
@@ -76,8 +98,21 @@ export function Sidebar({
       {/* Static sidebar for desktop */}
       {!mobileOnly && (
         <div className="fixed inset-y-0 hidden print:hidden lg:flex">
-          <div className="relative flex w-full max-w-xs flex-1 translate-x-0 flex-col bg-neutral-700 pb-4">
-            {children}
+          <div className="relative flex w-[288px] flex-1 translate-x-0 flex-col bg-neutral-700 pb-4">
+            <div className="flex h-16 flex-shrink-0 items-center px-4 lg:px-8">
+              <Link href="/">
+                <a>
+                  <Image
+                    layout="raw"
+                    width="224"
+                    height="30"
+                    src="/logo-dark.svg"
+                    alt="Jason Ruesch"
+                  />
+                </a>
+              </Link>
+            </div>
+            <div className={className}>{children}</div>
           </div>
         </div>
       )}

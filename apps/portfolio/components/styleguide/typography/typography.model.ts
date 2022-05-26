@@ -6,6 +6,8 @@ export interface TypographyItem {
   fontWeight?: string;
   fontSize?: string;
   lineHeight?: string;
+  largeFontSize?: string;
+  largeLineHeight?: string;
   example: ReactElement;
   description: string;
 }

@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { debounce } from 'lodash';
 import { animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';
-import { Sidebar, ThemeSelector } from '../../components';
+import { Nav, Sidebar, ThemeSelector } from '../../components';
 import { Sidenav, Sections } from '../../components/styleguide';
 
 const StyleGuide = () => {
@@ -29,10 +29,6 @@ const StyleGuide = () => {
     }
   };
 
-  const handleNavItemClick = (e) => {
-    setSidebarOpen(false);
-  };
-
   useEffect(() => {
     document.addEventListener('scroll', handleScroll);
 
@@ -47,8 +43,17 @@ const StyleGuide = () => {
         <title>Style Guide - Jason Ruesch</title>
       </Head>
       <div className="min-h-full">
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}>
-          <Sidenav onNavItemClick={handleNavItemClick} />
+        <Sidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          className="divide-y divide-neutral-500"
+        >
+          <Sidenav onNavItemClick={() => setSidebarOpen(false)} />
+          <Nav
+            isSidenav
+            onNavItemClick={() => setSidebarOpen(false)}
+            className="mt-5 pt-6"
+          />
         </Sidebar>
 
         <div className="lg:pl-[288px]">
@@ -106,7 +111,7 @@ const StyleGuide = () => {
                   alt="Jason Ruesch"
                   className="mb-4 hidden print:block"
                 />
-                <h1 className="font-alegreya-sans-sc text-4xl font-bold">
+                <h1 className="font-alegreya-sans-sc text-3xl font-bold lg:text-4xl">
                   Style Guide
                 </h1>
               </div>
