@@ -32,26 +32,26 @@ export function Sections({ searchInput }: { searchInput: string }) {
 
   return (
     <>
-      <Colors className="pt-16" groups={colorGroups} />
+      <Colors className="pt-16 lg:pt-24" groups={colorGroups} />
 
       <Typography
-        className="pt-16 print:break-before-page"
+        className="pt-16 print:break-before-page lg:pt-24"
         groups={typographyGroups}
       />
 
       <Shadows
-        className="pt-16 print:break-before-page"
+        className="pt-16 print:break-before-page lg:pt-24"
         groups={shadowGroups}
       />
 
       <Buttons
-        className="min-h-screen pt-16 print:break-before-page"
+        className="min-h-screen pt-16 print:break-before-page lg:pt-24"
         groups={buttonGroups}
       />
 
       {/* No results */}
       {!hasResults && (
-        <div className="pt-16 text-center">
+        <div className="pt-16 text-center lg:pt-24">
           <h2 className="font-alegreya-sans-sc pt-4 text-2xl font-bold lg:text-3xl">
             Searching for &quot;
             <span className="text-accent font-sans text-2xl">

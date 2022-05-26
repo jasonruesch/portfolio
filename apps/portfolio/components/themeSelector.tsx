@@ -1,7 +1,7 @@
 import { Menu, Transition } from '@headlessui/react';
 import { useTheme } from 'next-themes';
 import { Fragment, useCallback } from 'react';
-import cn from 'classnames';
+import classNames from 'classnames';
 import {
   DesktopComputerIcon,
   MoonIcon,
@@ -20,13 +20,13 @@ export function ThemeSelector({ className }: { className?: string }) {
   return (
     <Menu as="div" className="relative">
       <Menu.Button
-        className={cn(
+        className={classNames(
           'flex items-center text-sm focus:outline-none lg:rounded-md',
           className
         )}
       >
         <span
-          className={cn(
+          className={classNames(
             theme === 'system' ? 'text-neutral-500' : 'text-cta',
             'block text-sm font-medium'
           )}
@@ -52,7 +52,7 @@ export function ThemeSelector({ className }: { className?: string }) {
           <Menu.Item>
             {({ active }) => (
               <button
-                className={cn(
+                className={classNames(
                   active ? 'bg-neutral-800/20 dark:bg-neutral-100/20' : '',
                   'flex w-full items-center px-4 py-2 text-sm'
                 )}
@@ -69,7 +69,7 @@ export function ThemeSelector({ className }: { className?: string }) {
           <Menu.Item>
             {({ active }) => (
               <button
-                className={cn(
+                className={classNames(
                   active ? 'bg-neutral-800/20 dark:bg-neutral-100/20' : '',
                   'flex w-full items-center px-4 py-2 text-sm'
                 )}
@@ -86,7 +86,7 @@ export function ThemeSelector({ className }: { className?: string }) {
           <Menu.Item>
             {({ active }) => (
               <button
-                className={cn(
+                className={classNames(
                   active ? 'bg-neutral-800/20 dark:bg-neutral-100/20' : '',
                   'flex w-full items-center px-4 py-2 text-sm'
                 )}

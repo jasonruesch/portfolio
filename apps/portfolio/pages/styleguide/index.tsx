@@ -23,7 +23,8 @@ const StyleGuide = () => {
   const handleScroll = (e) => {
     const scrollingElement = e.target.scrollingElement;
 
-    if (scrollingElement.scrollTop >= 136) {
+    // Show top button when user scrolls down to the top of the first section
+    if (scrollingElement.scrollTop >= 72) {
       setShowTopButton(true);
     } else {
       setShowTopButton(false);
@@ -50,21 +51,17 @@ const StyleGuide = () => {
         transition={{ ease: 'easeInOut', duration: 0.75 }}
         className="min-h-full"
       >
-        <Sidebar
-          sidebarOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-          className="divide-y divide-neutral-500"
-        >
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}>
           <Sidenav onNavItemClick={() => setSidebarOpen(false)} />
           <Nav
             isSidenav
+            includeTopBorder
             onNavItemClick={() => setSidebarOpen(false)}
-            className="mt-5 pt-6"
           />
         </Sidebar>
 
         <div className="lg:pl-[288px]">
-          <header className="fixed top-0 left-0 right-0 z-10 flex h-16 items-center border-b border-neutral-300 bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:left-[288px]">
+          <header className="fixed top-0 left-0 right-0 z-10 flex h-16 items-center bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:left-[288px] lg:h-24 lg:items-end lg:pb-8">
             <button
               type="button"
               className="px-4 focus:outline-none lg:hidden"
@@ -106,9 +103,9 @@ const StyleGuide = () => {
             </div>
           </header>
 
-          <main className="flex-1 pt-16 print:pt-0">
+          <main className="flex-1 pt-16 print:pt-0 lg:pt-24">
             {/* Page header */}
-            <div className="bg-white shadow dark:bg-black print:shadow-none">
+            <div className="-mb-16 bg-white shadow dark:bg-black dark:shadow-black print:shadow-none lg:-mb-24">
               <div className="p-4 lg:mx-auto lg:max-w-screen-lg lg:px-8">
                 <Image
                   layout="raw"

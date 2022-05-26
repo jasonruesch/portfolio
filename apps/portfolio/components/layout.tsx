@@ -37,7 +37,7 @@ export function Layout({
 
       <motion.header
         layoutId="header"
-        className="fixed top-0 z-40 flex h-16 w-full items-center justify-between px-4 print:hidden lg:items-center lg:px-8"
+        className="fixed top-0 z-40 flex h-16 w-full items-center justify-between px-4 print:hidden lg:items-end lg:px-8"
       >
         <button
           type="button"
@@ -75,7 +75,7 @@ export function Layout({
         </div>
       </motion.header>
 
-      <main className="sm-max-h:h-full sm-max-h:flex-row sm-max-h:justify-between flex flex-col items-center gap-12 p-4 lg:max-w-screen-sm lg:px-8">
+      <main className="sm-max-h:h-full sm-max-h:flex-row sm-max-h:justify-between flex flex-col items-center gap-y-4 gap-x-8 p-4 lg:max-w-screen-sm lg:px-8">
         <div>
           {/* Wrapper div needed for the image to stay unwarped */}
           <motion.div

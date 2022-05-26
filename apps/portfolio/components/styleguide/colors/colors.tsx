@@ -33,7 +33,7 @@ export function Colors({
               {group.items.map((item: Color, j: number) => (
                 <div
                   key={`colors-${i}-${j}`}
-                  className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-black dark:border-black"
+                  className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-black dark:border-black dark:shadow-black"
                 >
                   <div className="relative h-40">{item.example}</div>
                   <div className="h-full bg-white px-5 py-3 text-black dark:bg-black dark:text-white">

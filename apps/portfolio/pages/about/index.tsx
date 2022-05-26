@@ -1,6 +1,7 @@
+import Link from 'next/link';
 import { Layout } from '../../components';
 
-export default function Index() {
+export default function About() {
   return (
     <Layout>
       <div className="space-y-4">
@@ -8,9 +9,9 @@ export default function Index() {
           About Me
         </h1>
         <p>
-          My name is Jason Ruesch, and I enjoy creating software that looks
-          amazing and is easy to use! I have a passion for learning new
-          technologies and building things that are useful to others.
+          My name is Jason Ruesch, and I enjoy creating software that not only
+          looks amazing, but is also easy to use! I have a passion for learning
+          new technologies and building things that are useful to others.
         </p>
         <p>
           Outside of work, I like to spend time with my family, play video
@@ -18,7 +19,11 @@ export default function Index() {
         </p>
         <p>
           I am always open to connect. If you are interested in learning more
-          about me or how I can help you with your web needs, please reach out.
+          about me or how I can help you with your web needs,{' '}
+          <Link href="/contact">
+            <a className="hover:text-cta underline">please reach out</a>
+          </Link>
+          .
         </p>
       </div>
     </Layout>

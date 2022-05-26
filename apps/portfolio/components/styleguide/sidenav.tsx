@@ -56,7 +56,7 @@ export function Sidenav({
         className="flex flex-1 flex-col divide-y divide-neutral-500 overflow-y-auto px-2 lg:px-4"
         aria-label="Sidenav"
       >
-        <div className="space-y-1">
+        <div className="space-y-1 pt-6">
           {navigation.map((item) => (
             <ScrollLink
               key={item.id}

@@ -72,7 +72,7 @@ export function Sidebar({
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="flex h-16 flex-shrink-0 items-center px-4 lg:px-8">
+                <div className="flex h-16 flex-shrink-0 items-center px-4 lg:items-end lg:px-8">
                   <Link href="/">
                     <a>
                       <Image
@@ -99,7 +99,7 @@ export function Sidebar({
       {!mobileOnly && (
         <div className="fixed inset-y-0 hidden print:hidden lg:flex">
           <div className="relative flex w-[288px] flex-1 translate-x-0 flex-col bg-neutral-700 pb-4">
-            <div className="flex h-16 flex-shrink-0 items-center px-4 lg:px-8">
+            <div className="flex h-16 flex-shrink-0 items-center px-4 lg:items-end lg:px-8">
               <Link href="/">
                 <a>
                   <Image

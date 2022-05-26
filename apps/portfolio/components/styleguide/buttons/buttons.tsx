@@ -34,7 +34,7 @@ export function Buttons({
               {group.items.map((item: Button, j: number) => (
                 <div
                   key={`buttons-${i}-${j}`}
-                  className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-neutral-900 dark:border-neutral-900"
+                  className="divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:divide-black dark:border-black dark:shadow-black"
                 >
                   <div className="min-h-40 relative">{item.example}</div>
                   <div className="h-full bg-white px-5 py-3 text-black dark:bg-black dark:text-white">

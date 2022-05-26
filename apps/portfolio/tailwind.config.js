@@ -37,6 +37,7 @@ module.exports = {
       success: withOpacityValue('--color-success'),
       cta: withOpacityValue('--color-cta'),
       neutral: colors.neutral,
+      red: colors.red,
     },
     boxShadow: {
       DEFAULT: defaultTheme.boxShadow.DEFAULT,

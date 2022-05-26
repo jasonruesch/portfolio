@@ -12,7 +12,7 @@ const shadowGroups: Group<Shadow>[] = [
             <div className="dark:bg-background h-24 w-24 rounded-lg bg-white shadow dark:shadow-black"></div>
           </div>
         ),
-        description: 'shadow',
+        description: 'shadow dark:shadow-black',
       },
       {
         name: 'Box Shadow Medium',
@@ -21,7 +21,7 @@ const shadowGroups: Group<Shadow>[] = [
             <div className="dark:bg-background h-24 w-24 rounded-lg bg-white shadow-md dark:shadow-black"></div>
           </div>
         ),
-        description: 'shadow-md',
+        description: 'shadow-md dark:shadow-black',
       },
       {
         name: 'Box Shadow Large',
@@ -30,7 +30,7 @@ const shadowGroups: Group<Shadow>[] = [
             <div className="dark:bg-background h-24 w-24 rounded-lg bg-white shadow-lg dark:shadow-black"></div>
           </div>
         ),
-        description: 'shadow-lg',
+        description: 'shadow-lg dark:shadow-black',
       },
     ],
   },
@@ -41,7 +41,7 @@ const shadowGroups: Group<Shadow>[] = [
         name: 'Drop Shadow Default',
         example: (
           <div className="flex h-full items-center justify-center">
-            <div className="dark:drop-shadow-black h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow dark:border-b-neutral-700"></div>
+            <div className="h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow dark:border-b-neutral-700"></div>
           </div>
         ),
         description: 'drop-shadow',
@@ -50,7 +50,7 @@ const shadowGroups: Group<Shadow>[] = [
         name: 'Drop Shadow Medium',
         example: (
           <div className="flex h-full items-center justify-center">
-            <div className="dark:drop-shadow-black h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow-md dark:border-b-neutral-700"></div>
+            <div className="h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent border-b-white drop-shadow-md dark:border-b-neutral-700"></div>
           </div>
         ),
         description: 'drop-shadow-md',
