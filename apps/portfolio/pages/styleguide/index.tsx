@@ -24,13 +24,13 @@ const StyleGuide = () => {
   const handleScroll = (e) => {
     const scrollingElement = e.target.scrollingElement;
 
-    // Show top button when user scrolls down to the top of the first section
-    if (scrollingElement.scrollTop >= 72) {
-      setShowTopButton(true);
+    // Show top button and resize header when user scrolls down the height of the page header
+    if (scrollingElement.scrollTop >= 96) {
       setResizeHeader(true);
+      setShowTopButton(true);
     } else {
-      setShowTopButton(false);
       setResizeHeader(false);
+      setShowTopButton(false);
     }
   };
 
@@ -70,13 +70,11 @@ const StyleGuide = () => {
             show={resizeHeader}
             unmount={false}
             enter="ease-in-out duration-300"
-            enterFrom="lg:h-24 lg:pb-8 lg:items-start"
-            enterTo="lg:h-16 lg:pb-0 lg:items-center"
+            enterTo="lg:h-16 lg:pb-0 lg:items-center shadow dark:shadow-black"
             leave="ease-in-out duration-300"
-            leaveFrom="lg:h-16 lg:pb-0 lg:items-center"
             leaveTo="lg:h-24 lg:pb-8 lg:items-start"
           >
-            <header className="fixed top-0 left-0 right-0 z-10 !flex h-16 items-center bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:left-[288px] lg:h-24 lg:items-end lg:pb-8">
+            <header className="fixed top-0 left-0 right-0 z-10 !flex h-16 items-center bg-white dark:bg-black print:hidden lg:left-[288px] lg:h-24 lg:items-end lg:pb-8">
               <button
                 type="button"
                 className="px-4 focus:outline-none lg:hidden"
@@ -95,7 +93,7 @@ const StyleGuide = () => {
                     <label htmlFor="search" className="sr-only">
                       Search
                     </label>
-                    <div className="focus-within:text-foreground relative w-full text-neutral-500">
+                    <div className="focus-within:text-foreground text-search-text relative w-full">
                       <div
                         className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
                         aria-hidden="true"
@@ -106,7 +104,7 @@ const StyleGuide = () => {
                         type="search"
                         id="search"
                         name="search"
-                        className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-0 placeholder-neutral-500 focus:outline-none focus:ring-0"
+                        className="placeholder-search-text block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-0 focus:outline-none focus:ring-0"
                         placeholder="Search styles"
                         onChange={handleSearch}
                         autoFocus
@@ -121,8 +119,8 @@ const StyleGuide = () => {
 
           <main className="flex-1">
             {/* Page header */}
-            <div className="-mb-16 bg-white pt-16 shadow dark:bg-black dark:shadow-black print:pt-0 print:shadow-none lg:pt-24">
-              <div className="p-4 lg:mx-auto lg:max-w-screen-lg lg:px-8">
+            <header className="-mb-16 bg-white pt-16 shadow dark:bg-black dark:shadow-black print:pt-0 print:shadow-none lg:pt-24">
+              <div className="p-3 lg:mx-auto lg:max-w-screen-lg lg:px-8">
                 <Image
                   layout="raw"
                   width="224"
@@ -135,7 +133,7 @@ const StyleGuide = () => {
                   Style Guide
                 </h1>
               </div>
-            </div>
+            </header>
 
             <div className="px-4 lg:mx-auto lg:max-w-screen-lg lg:px-8">
               <Sections searchInput={searchInput} />
@@ -157,7 +155,7 @@ const StyleGuide = () => {
         leaveTo="opacity-0"
       >
         <button
-          className="bg-cta border-cta/50 fixed bottom-8 right-12 z-40 rounded-full border py-2 px-2 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70 print:hidden"
+          className="bg-cta border-cta-50 fixed bottom-8 right-12 z-40 rounded-full border py-2 px-2 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70 print:hidden"
           onClick={() =>
             scroll.scrollToTop({
               smooth: true,

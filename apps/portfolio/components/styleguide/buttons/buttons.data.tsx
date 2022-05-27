@@ -12,19 +12,19 @@ const buttonGroups: Group<Button>[] = [
           <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-8 sm:flex-row sm:space-y-0">
             <button
               key="primary-default"
-              className="bg-cta border-cta/50 rounded-lg border py-2 px-8 text-white hover:bg-opacity-70"
+              className="bg-cta border-cta-50 rounded-lg border py-2 px-8 text-white hover:bg-opacity-70"
             >
               Default
             </button>
             <button
               key="primary-hover"
-              className="bg-cta border-cta/50 rounded-lg border bg-opacity-70 py-2 px-8 text-white"
+              className="bg-cta border-cta-50 rounded-lg border bg-opacity-70 py-2 px-8 text-white"
             >
               Hover
             </button>
             <button
               key="primary-disabled"
-              className="bg-cta border-cta/50 rounded-lg border py-2 px-8 text-white disabled:bg-opacity-50 disabled:text-opacity-70"
+              className="bg-cta border-cta-50 rounded-lg border py-2 px-8 text-white disabled:bg-opacity-50 disabled:text-opacity-70"
               disabled
             >
               Disabled
@@ -32,7 +32,7 @@ const buttonGroups: Group<Button>[] = [
           </div>
         ),
         description:
-          'bg-cta border-cta/50 rounded-lg border py-2 px-8 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70',
+          'bg-cta border-cta-50 rounded-lg border py-2 px-8 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70',
       },
       {
         name: 'Secondary Button States',
@@ -74,7 +74,7 @@ const buttonGroups: Group<Button>[] = [
             <div key="primary-icon-default" className="space-y-4 text-center">
               <button
                 key="primary-icon-default-button"
-                className="bg-cta border-cta/50 rounded-full border py-2 px-2 text-white hover:bg-opacity-70"
+                className="bg-cta border-cta-50 rounded-full border py-2 px-2 text-white hover:bg-opacity-70"
               >
                 <ChevronUpIcon className="h-12 w-12" />
               </button>
@@ -83,7 +83,7 @@ const buttonGroups: Group<Button>[] = [
             <div key="primary-icon-hover" className="space-y-4 text-center">
               <button
                 key="primary-icon-hover-button"
-                className="bg-cta border-cta/50 rounded-full border bg-opacity-70 py-2 px-2 text-white"
+                className="bg-cta border-cta-50 rounded-full border bg-opacity-70 py-2 px-2 text-white"
               >
                 <ChevronUpIcon className="h-12 w-12" />
               </button>
@@ -92,7 +92,7 @@ const buttonGroups: Group<Button>[] = [
             <div key="primary-icon-disabled" className="space-y-4 text-center">
               <button
                 key="primary-icon-disabled-button"
-                className="bg-cta border-cta/50 rounded-full border py-2 px-2 text-white disabled:bg-opacity-50 disabled:text-opacity-70"
+                className="bg-cta border-cta-50 rounded-full border py-2 px-2 text-white disabled:bg-opacity-50 disabled:text-opacity-70"
                 disabled
               >
                 <ChevronUpIcon className="h-12 w-12" />
@@ -102,7 +102,7 @@ const buttonGroups: Group<Button>[] = [
           </div>
         ),
         description:
-          'bg-cta border-cta/50 rounded-full border py-2 px-2 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70',
+          'bg-cta border-cta-50 rounded-full border py-2 px-2 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70',
       },
     ],
   },

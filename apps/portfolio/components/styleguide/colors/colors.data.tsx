@@ -67,6 +67,15 @@ const themeGroup: Group<Color> = {
         </div>
       ),
     },
+    {
+      name: 'Call to Action 50',
+      description: '-cta-50',
+      example: (
+        <div className="light h-full">
+          <div className="bg-cta-50 h-full"></div>
+        </div>
+      ),
+    },
   ],
 };
 const darkThemeGroup: Group<Color> = {
@@ -132,6 +141,15 @@ const darkThemeGroup: Group<Color> = {
       example: (
         <div className="dark h-full">
           <div className="bg-cta h-full"></div>
+        </div>
+      ),
+    },
+    {
+      name: 'Call to Action 50',
+      description: '-cta-50',
+      example: (
+        <div className="dark h-full">
+          <div className="bg-cta-50 h-full"></div>
         </div>
       ),
     },
@@ -402,6 +420,17 @@ const brandGroup: Group<Color> = {
             className="mb-2 h-8 rounded-3xl bg-black py-2 px-4 text-[#ab30ff] print:px-2"
           >
             Electric Purple
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: 'Electric Purple 50',
+      description: '#d698ff',
+      example: (
+        <div className="flex h-full justify-end bg-[#d698ff] p-4 text-xs">
+          <div className="mb-2 h-8 rounded-3xl bg-black py-2 px-4 text-[#d698ff] print:px-2">
+            Electric Purple 50
           </div>
         </div>
       ),

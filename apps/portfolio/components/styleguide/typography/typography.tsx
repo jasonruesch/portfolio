@@ -25,7 +25,7 @@ export function Typography({
         {groups.map((group, i: number) => (
           <div
             key={`typography-${i}`}
-            className="border-b border-neutral-300 py-8 last-of-type:border-b-0 dark:border-neutral-400 print:break-inside-avoid print:border-b-0"
+            className="border-divider border-b py-8 last-of-type:border-b-0 print:break-inside-avoid print:border-b-0"
           >
             <h3 className="font-alegreya-sans-sc text-2xl font-bold">
               {group.name}

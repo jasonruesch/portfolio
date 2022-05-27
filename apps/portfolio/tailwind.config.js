@@ -3,15 +3,6 @@ const { join } = require('path');
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
-function withOpacityValue(variable) {
-  return ({ opacityValue }) => {
-    if (opacityValue === undefined) {
-      return `rgb(var(${variable}))`;
-    }
-    return `rgb(var(${variable}) / ${opacityValue})`;
-  };
-}
-
 module.exports = {
   darkMode: 'class',
   content: [
@@ -29,15 +20,34 @@ module.exports = {
       transparent: colors.transparent,
       black: colors.black,
       white: colors.white,
-      background: withOpacityValue('--color-background'),
-      foreground: withOpacityValue('--color-foreground'),
-      primary: withOpacityValue('--color-primary'),
-      accent: withOpacityValue('--color-accent'),
-      warning: withOpacityValue('--color-warning'),
-      success: withOpacityValue('--color-success'),
-      cta: withOpacityValue('--color-cta'),
       neutral: colors.neutral,
       red: colors.red,
+
+      background: 'var(--color-background)',
+      foreground: 'var(--color-foreground)',
+      primary: 'var(--color-primary)',
+      accent: 'var(--color-accent)',
+      warning: 'var(--color-warning)',
+      success: 'var(--color-success)',
+      cta: 'var(--color-cta)',
+      'cta-50': 'var(--color-cta-50)',
+      divider: 'var(--color-divider)',
+      overlay: 'var(--color-overlay)',
+      sidebar: {
+        background: 'var(--color-sidebar-background)',
+        link: {
+          DEFAULT: 'var(--color-sidebar-link)',
+          active: 'var(--color-sidebar-link-active)',
+          hover: 'var(--color-sidebar-link-hover)',
+          icon: 'var(--color-sidebar-link-icon)',
+        },
+      },
+      search: {
+        text: 'var(--color-search-text)',
+      },
+      card: {
+        border: 'var(--color-card-border)',
+      },
     },
     boxShadow: {
       DEFAULT: defaultTheme.boxShadow.DEFAULT,

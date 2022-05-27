@@ -53,23 +53,23 @@ export function Sidenav({
   return (
     <div className={className}>
       <nav
-        className="flex flex-1 flex-col divide-y divide-neutral-500 overflow-y-auto px-2 lg:px-4"
+        className="divide-divider flex flex-1 flex-col divide-y overflow-y-auto px-2 lg:px-4"
         aria-label="Sidenav"
       >
         <div className="space-y-1 pt-6">
           {navigation.map((item) => (
             <ScrollLink
               key={item.id}
-              activeClass="bg-neutral-800 !text-white hover:bg-neutral-800"
+              className="hover:bg-sidebar-link-hover text-sidebar-link flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white"
+              activeClass="!bg-sidebar-link-active !text-white"
               to={item.id}
               spy={true}
               hashSpy={true}
               smooth={true}
-              className="group flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-neutral-100 hover:bg-neutral-600 hover:text-white"
               onClick={onNavItemClick}
             >
               <div
-                className="mr-4 h-6 w-6 flex-shrink-0 text-neutral-200"
+                className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0"
                 aria-hidden="true"
               >
                 {item.icon}
@@ -83,16 +83,16 @@ export function Sidenav({
             {secondaryNavigation.map((item) => (
               <ScrollLink
                 key={item.id}
-                activeClass="bg-neutral-800 !text-white hover:bg-neutral-800"
+                className="hover:bg-sidebar-link-hover text-sidebar-link flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white"
+                activeClass="!bg-sidebar-link-active !text-white"
                 to={item.id}
                 spy={true}
                 hashSpy={true}
                 smooth={true}
-                className="group flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-neutral-100 hover:bg-neutral-600 hover:text-white"
                 onClick={onNavItemClick}
               >
                 <div
-                  className="mr-4 h-6 w-6 flex-shrink-0 text-neutral-200"
+                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0"
                   aria-hidden="true"
                 >
                   {item.icon}

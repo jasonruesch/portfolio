@@ -6,13 +6,11 @@ import Image from 'next/image';
 
 export function Sidebar({
   children,
-  className,
   sidebarOpen,
   setSidebarOpen,
   mobileOnly = false,
 }: {
   children: ReactNode;
-  className?: string;
   sidebarOpen?: boolean;
   setSidebarOpen?: (open: boolean) => void;
   mobileOnly?: boolean;
@@ -35,10 +33,10 @@ export function Sidebar({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-neutral-600 bg-opacity-75" />
+            <div className="bg-overlay fixed inset-0 bg-opacity-75" />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-40 flex">
+          <div className="dark fixed inset-0 z-40 flex">
             <Transition.Child
               as={Fragment}
               enter="transition ease-in-out duration-300 transform"
@@ -48,7 +46,7 @@ export function Sidebar({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-neutral-700 pb-4">
+              <Dialog.Panel className="bg-sidebar-background relative flex w-full max-w-xs flex-1 flex-col pb-4">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -85,7 +83,7 @@ export function Sidebar({
                     </a>
                   </Link>
                 </div>
-                <div className={className}>{children}</div>
+                {children}
               </Dialog.Panel>
             </Transition.Child>
             <div className="w-14 flex-shrink-0" aria-hidden="true">
@@ -97,8 +95,8 @@ export function Sidebar({
 
       {/* Static sidebar for desktop */}
       {!mobileOnly && (
-        <div className="fixed inset-y-0 hidden print:hidden lg:flex">
-          <div className="relative flex w-[288px] flex-1 translate-x-0 flex-col bg-neutral-700 pb-4">
+        <div className="dark fixed inset-y-0 hidden print:hidden lg:flex">
+          <div className="bg-sidebar-background relative flex w-[288px] flex-1 translate-x-0 flex-col pb-4">
             <div className="flex h-16 flex-shrink-0 items-center px-4 lg:items-end lg:px-8">
               <Link href="/">
                 <a>
@@ -112,7 +110,7 @@ export function Sidebar({
                 </a>
               </Link>
             </div>
-            <div className={className}>{children}</div>
+            {children}
           </div>
         </div>
       )}

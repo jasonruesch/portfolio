@@ -59,29 +59,28 @@ export function Nav({
     (isSidenav && (
       <nav
         className={classNames(
-          'flex flex-1 flex-col divide-y divide-neutral-500 overflow-y-auto px-2 lg:px-4',
+          'divide-divider flex flex-1 flex-col divide-y overflow-y-auto px-2 lg:px-4',
           className
         )}
-        aria-label="Sidenav"
+        aria-label="Navigation"
       >
         <div
           className={classNames('space-y-1 pt-6', {
-            'mt-5 border-t border-t-neutral-500': includeTopBorder,
+            'border-t-divider mt-5 border-t': includeTopBorder,
           })}
         >
           {navigation.map((item) => (
             <Link key={item.href} href={item.href}>
               <a
                 className={classNames(
-                  'group flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-neutral-100 hover:bg-neutral-600 hover:text-white',
+                  'hover:bg-sidebar-link-hover text-sidebar-link flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white',
                   {
-                    'bg-neutral-800 !text-white hover:bg-neutral-800':
-                      route === item.href,
+                    '!bg-sidebar-link-active !text-white': route === item.href,
                   }
                 )}
               >
                 <div
-                  className="mr-4 h-6 w-6 flex-shrink-0 text-neutral-200"
+                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0"
                   aria-hidden="true"
                 >
                   {item.icon}
@@ -99,11 +98,11 @@ export function Nav({
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-neutral-100 hover:bg-neutral-600 hover:text-white"
+                className="hover:bg-sidebar-link-hover text-sidebar-link group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white"
                 onClick={onNavItemClick}
               >
                 <div
-                  className="mr-4 h-6 w-6 flex-shrink-0 text-neutral-200"
+                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0"
                   aria-hidden="true"
                 >
                   {item.icon}
@@ -115,7 +114,10 @@ export function Nav({
         </div>
       </nav>
     )) || (
-      <nav className={classNames('space-x-4', className)}>
+      <nav
+        className={classNames('space-x-4', className)}
+        aria-label="Navigation"
+      >
         {navigation
           .filter((item) => item.href !== '/')
           .map((item) => (
