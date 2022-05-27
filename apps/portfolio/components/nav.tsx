@@ -73,14 +73,14 @@ export function Nav({
             <Link key={item.href} href={item.href}>
               <a
                 className={classNames(
-                  'hover:bg-sidebar-link-hover text-sidebar-link flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white',
+                  'hover:bg-sidebar-link-hover text-sidebar-link group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white',
                   {
                     '!bg-sidebar-link-active !text-white': route === item.href,
                   }
                 )}
               >
                 <div
-                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0"
+                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0 group-hover:text-white"
                   aria-hidden="true"
                 >
                   {item.icon}
@@ -98,11 +98,11 @@ export function Nav({
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:bg-sidebar-link-hover text-sidebar-link group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white"
+                className="hover:bg-sidebar-link-hover text-sidebar-link group group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white"
                 onClick={onNavItemClick}
               >
                 <div
-                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0"
+                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0 group-hover:text-white"
                   aria-hidden="true"
                 >
                   {item.icon}
