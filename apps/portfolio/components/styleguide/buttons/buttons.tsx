@@ -30,7 +30,7 @@ export function Buttons({
             <h3 className="font-alegreya-sans-sc text-2xl font-bold">
               {group.name}
             </h3>
-            <div className="mt-2 text-sm">
+            <div className="mt-2 space-y-5 text-sm">
               {group.items.map((item: Button, j: number) => (
                 <div
                   key={`buttons-${i}-${j}`}

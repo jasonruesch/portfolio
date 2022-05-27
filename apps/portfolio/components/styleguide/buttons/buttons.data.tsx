@@ -4,7 +4,7 @@ import { Button } from './Button.model';
 
 const buttonGroups: Group<Button>[] = [
   {
-    name: 'Primary Button',
+    name: 'Buttons',
     items: [
       {
         name: 'Primary Button States',
@@ -34,11 +34,6 @@ const buttonGroups: Group<Button>[] = [
         description:
           'bg-cta border-cta/50 rounded-lg border py-2 px-8 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70',
       },
-    ],
-  },
-  {
-    name: 'Secondary Button',
-    items: [
       {
         name: 'Secondary Button States',
         example: (

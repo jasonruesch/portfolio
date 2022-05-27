@@ -6,14 +6,25 @@ export function useFilterGroups<T>(searchInput, section: Section<T>) {
   const [groups, setGroups] = useState<Group<T>[]>();
 
   useEffect(() => {
+    // Must search for at least 2 characters
+    if (
+      searchInput === '' ||
+      searchInput.length < 2 ||
+      searchInput.trim().toLowerCase() === section.name.toLowerCase()
+    ) {
+      setGroups(section.groups);
+      return;
+    }
+
     const groups = cloneDeep(section.groups);
-    const queryParts = searchInput.split(' ').map((part) => part.toLowerCase());
+    // Split query to words
+    const queryParts = searchInput
+      .trim()
+      .split(' ')
+      .map((part) => part.trim().toLowerCase());
+    // Check if the value contains any of the words
     const contains = (value) =>
       queryParts.every((part) => String(value).toLowerCase().includes(part));
-
-    if (searchInput === '' || contains(section.name)) {
-      setGroups(groups);
-    }
 
     const filteredGroups = groups.filter((group: Group<T>) => {
       const filteredItems = group.items.filter((item) => {
@@ -24,7 +35,14 @@ export function useFilterGroups<T>(searchInput, section: Section<T>) {
       }
       return contains(group.name) || filteredItems.length > 0;
     });
-    setGroups(filteredGroups);
+
+    // If the section name matches the query, only use the filtered groups if they have items, otherwise include the entire section
+    const result = contains(section.name)
+      ? filteredGroups.length > 0
+        ? filteredGroups
+        : groups
+      : filteredGroups;
+    setGroups(result);
   }, [searchInput, section]);
 
   return groups;

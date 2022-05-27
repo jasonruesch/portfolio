@@ -8,16 +8,17 @@ import { debounce } from 'lodash';
 import { animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';
 import { Nav, Sidebar, ThemeSelector } from '../../components';
-import { Sidenav, Sections } from '../../components/Styleguide';
+import { Sidenav, Sections } from '../../components/styleguide';
 
 const StyleGuide = () => {
   const [searchInput, setSearchInput] = useState('');
   const [showTopButton, setShowTopButton] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [resizeHeader, setResizeHeader] = useState(false);
 
   const handleSearch = debounce((e) => {
     const searchValue: string = e.target.value;
-    setSearchInput(searchValue.trim());
+    setSearchInput(searchValue);
   }, 300);
 
   const handleScroll = (e) => {
@@ -26,8 +27,10 @@ const StyleGuide = () => {
     // Show top button when user scrolls down to the top of the first section
     if (scrollingElement.scrollTop >= 72) {
       setShowTopButton(true);
+      setResizeHeader(true);
     } else {
       setShowTopButton(false);
+      setResizeHeader(false);
     }
   };
 
@@ -61,51 +64,64 @@ const StyleGuide = () => {
         </Sidebar>
 
         <div className="lg:pl-[288px]">
-          <header className="fixed top-0 left-0 right-0 z-10 flex h-16 items-center bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:left-[288px] lg:h-24 lg:items-end lg:pb-8">
-            <button
-              type="button"
-              className="px-4 focus:outline-none lg:hidden"
-              onClick={() => setSidebarOpen(true)}
-            >
-              <span className="sr-only">Open sidebar</span>
-              <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
-            </button>
+          <Transition
+            as={Fragment}
+            appear
+            show={resizeHeader}
+            unmount={false}
+            enter="ease-in-out duration-300"
+            enterFrom="lg:h-24 lg:pb-8 lg:items-start"
+            enterTo="lg:h-16 lg:pb-0 lg:items-center"
+            leave="ease-in-out duration-300"
+            leaveFrom="lg:h-16 lg:pb-0 lg:items-center"
+            leaveTo="lg:h-24 lg:pb-8 lg:items-start"
+          >
+            <header className="fixed top-0 left-0 right-0 z-10 !flex h-16 items-center bg-white dark:border-neutral-400 dark:bg-black print:hidden lg:left-[288px] lg:h-24 lg:items-end lg:pb-8">
+              <button
+                type="button"
+                className="px-4 focus:outline-none lg:hidden"
+                onClick={() => setSidebarOpen(true)}
+              >
+                <span className="sr-only">Open sidebar</span>
+                <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
+              </button>
 
-            <div className="flex w-full justify-between lg:px-8">
-              <div className="flex flex-1">
-                <form
-                  className="flex w-full"
-                  onSubmit={(e) => e.preventDefault()}
-                >
-                  <label htmlFor="search" className="sr-only">
-                    Search
-                  </label>
-                  <div className="focus-within:text-foreground relative w-full text-neutral-500">
-                    <div
-                      className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
-                      aria-hidden="true"
-                    >
-                      <SearchIcon className="h-5 w-5" aria-hidden="true" />
+              <div className="flex w-full justify-between lg:px-8">
+                <div className="flex flex-1">
+                  <form
+                    className="flex w-full"
+                    onSubmit={(e) => e.preventDefault()}
+                  >
+                    <label htmlFor="search" className="sr-only">
+                      Search
+                    </label>
+                    <div className="focus-within:text-foreground relative w-full text-neutral-500">
+                      <div
+                        className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
+                        aria-hidden="true"
+                      >
+                        <SearchIcon className="h-5 w-5" aria-hidden="true" />
+                      </div>
+                      <input
+                        type="search"
+                        id="search"
+                        name="search"
+                        className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-0 placeholder-neutral-500 focus:outline-none focus:ring-0"
+                        placeholder="Search styles"
+                        onChange={handleSearch}
+                        autoFocus
+                      />
                     </div>
-                    <input
-                      type="search"
-                      id="search"
-                      name="search"
-                      className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-0 placeholder-neutral-500 focus:outline-none focus:ring-0"
-                      placeholder="Search styles"
-                      onChange={handleSearch}
-                      autoFocus
-                    />
-                  </div>
-                </form>
+                  </form>
+                </div>
+                <ThemeSelector className="px-4 lg:pr-0" />
               </div>
-              <ThemeSelector className="px-4 lg:pr-0" />
-            </div>
-          </header>
+            </header>
+          </Transition>
 
-          <main className="flex-1 pt-16 print:pt-0 lg:pt-24">
+          <main className="flex-1">
             {/* Page header */}
-            <div className="-mb-16 bg-white shadow dark:bg-black dark:shadow-black print:shadow-none lg:-mb-24">
+            <div className="-mb-16 bg-white pt-16 shadow dark:bg-black dark:shadow-black print:pt-0 print:shadow-none lg:pt-24">
               <div className="p-4 lg:mx-auto lg:max-w-screen-lg lg:px-8">
                 <Image
                   layout="raw"
