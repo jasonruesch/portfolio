@@ -84,7 +84,12 @@ export function Layout({
           {/* Wrapper div needed for the image to stay unwarped */}
           <motion.div
             layoutId="profile"
-            className="border-light-gray relative h-[150px] w-[150px] rounded-full border dark:border-0 md:h-[300px] md:w-[300px]"
+            className={classNames(
+              'border-light-gray relative h-[150px] w-[150px] rounded-full border dark:border-0',
+              {
+                'md:h-[300px] md:w-[300px]': isHome,
+              }
+            )}
           >
             <Image
               priority
