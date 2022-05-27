@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { MenuAlt1Icon } from '@heroicons/react/outline';
 import { useState } from 'react';
-import { Nav, Sidebar, ThemeSelector } from '../components';
+import { Nav, Sidebar, ThemeSelector } from '.';
 import classNames from 'classnames';
 
 export function Layout({
@@ -20,12 +20,9 @@ export function Layout({
 
   return (
     <div
-      className={classNames(
-        'absolute inset-0 flex flex-col items-center justify-center',
-        {
-          'sm-max-h:pt-0 !justify-start pt-12 lg:pt-16': !shouldCenterPage,
-        }
-      )}
+      className={classNames('absolute inset-0 flex justify-center lg:pt-16', {
+        'lg:pt-0': shouldCenterPage,
+      })}
     >
       <Sidebar
         sidebarOpen={sidebarOpen}
@@ -75,8 +72,15 @@ export function Layout({
         </div>
       </motion.header>
 
-      <main className="sm-max-h:h-full sm-max-h:flex-row sm-max-h:justify-between flex flex-col items-center gap-y-4 gap-x-8 p-4 lg:max-w-screen-sm lg:px-8">
-        <div>
+      <main
+        className={classNames(
+          'sm-max-h:flex-row sm-max-h:items-center flex h-full w-full flex-col justify-center gap-8 p-4 lg:max-w-screen-sm lg:justify-start lg:px-8',
+          {
+            'lg:justify-center': shouldCenterPage,
+          }
+        )}
+      >
+        <div className="mx-auto">
           {/* Wrapper div needed for the image to stay unwarped */}
           <motion.div
             layoutId="profile"
@@ -97,6 +101,7 @@ export function Layout({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ ease: 'easeInOut' }}
+          // className="sm-max-h:w-96 sm:w-96"
         >
           {children}
         </motion.div>

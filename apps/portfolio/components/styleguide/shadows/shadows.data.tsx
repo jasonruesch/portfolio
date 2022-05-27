@@ -1,5 +1,5 @@
 import { Group, Section } from '../models';
-import { Shadow } from './shadow.model';
+import { Shadow } from './Shadow.model';
 
 const shadowGroups: Group<Shadow>[] = [
   {

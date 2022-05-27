@@ -1,2 +1,2 @@
-export * from './group.model';
-export * from './section.model';
+export * from './Group.model';
+export * from './Section.model';

@@ -1,5 +1,5 @@
 import { Group, Section } from '../models';
-import { TypographyItem } from './typography.model';
+import { TypographyItem } from './TypographyItem.model';
 
 const typographyGroups: Group<TypographyItem>[] = [
   {

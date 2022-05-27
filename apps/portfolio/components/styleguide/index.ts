@@ -1,2 +1,2 @@
-export { Sidenav } from './sidenav';
-export { Sections } from './sections';
+export { Sidenav } from './Sidenav';
+export { Sections } from './Sections';

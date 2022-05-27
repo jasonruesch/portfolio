@@ -1,6 +1,6 @@
 import { Group } from '../models';
-import { TypographyItem } from './typography.model';
-import { typographySection } from './typography.data';
+import { TypographyItem } from './TypographyItem.model';
+import { typographySection } from './Typography.data';
 
 export function Typography({
   className,

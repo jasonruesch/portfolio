@@ -1,6 +1,6 @@
 import { Group } from '../models';
-import { Button } from './button.model';
-import { buttonSection } from './buttons.data';
+import { Button } from './Button.model';
+import { buttonSection } from './Buttons.data';
 
 export function Buttons({
   className,

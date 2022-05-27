@@ -1,2 +1,2 @@
-export { Buttons } from './buttons';
-export { buttonSection } from './buttons.data';
+export { Buttons } from './Buttons';
+export { buttonSection } from './Buttons.data';

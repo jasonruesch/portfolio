@@ -1,5 +1,5 @@
 import { Group, Section } from '../models';
-import { Color } from './color.model';
+import { Color } from './Color.model';
 
 const themeGroup: Group<Color> = {
   name: 'Theme Colors',

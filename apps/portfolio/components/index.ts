@@ -1,5 +1,5 @@
-export { Sidebar } from './sidebar';
-export { ThemeSelector } from './themeSelector';
-export { Nav } from './nav';
-export { Layout } from './layout';
-export { Notification } from './notification';
+export { Sidebar } from './Sidebar';
+export { ThemeSelector } from './ThemeSelector';
+export { Nav } from './Nav';
+export { Layout } from './Layout';
+export { Notification } from './Notification';

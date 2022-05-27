@@ -1,2 +1,2 @@
-export { Typography } from './typography';
-export { typographySection } from './typography.data';
+export { Typography } from './Typography';
+export { typographySection } from './Typography.data';

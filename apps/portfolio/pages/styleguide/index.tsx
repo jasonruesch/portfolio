@@ -8,7 +8,7 @@ import { debounce } from 'lodash';
 import { animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';
 import { Nav, Sidebar, ThemeSelector } from '../../components';
-import { Sidenav, Sections } from '../../components/styleguide';
+import { Sidenav, Sections } from '../../components/Styleguide';
 
 const StyleGuide = () => {
   const [searchInput, setSearchInput] = useState('');

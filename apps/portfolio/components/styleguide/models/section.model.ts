@@ -1,4 +1,4 @@
-import { Group } from './group.model';
+import { Group } from './Group.model';
 
 export interface Section<T> {
   name: string;

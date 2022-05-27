@@ -1,2 +1,2 @@
-export { Colors } from './colors';
-export { colorSection } from './colors.data';
+export { Colors } from './Colors';
+export { colorSection } from './Colors.data';

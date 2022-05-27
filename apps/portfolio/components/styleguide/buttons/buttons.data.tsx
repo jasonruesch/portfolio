@@ -1,6 +1,6 @@
 import { ChevronUpIcon } from '@heroicons/react/solid';
 import { Group, Section } from '../models';
-import { Button } from './button.model';
+import { Button } from './Button.model';
 
 const buttonGroups: Group<Button>[] = [
   {

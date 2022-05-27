@@ -17,7 +17,6 @@ export default async function handler(
       },
       ignoreTLS: Boolean(process.env.SMTP_IGNORE_TLS || false),
     });
-
     const mailOptions = {
       from: `${body.name} <${body.email}>`,
       to: ['jason.ruesch@me.com'],
@@ -26,20 +25,13 @@ export default async function handler(
       html: `<p>${body.message}</p>`,
     };
 
-    transport.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error);
-        throw error;
-      }
-      console.log('Message sent: %s', info.messageId);
-    });
+    const info = await transport.sendMail(mailOptions);
+    console.log('Message sent: %s', info.messageId);
+    return response.status(200).json({ error: '' });
   } catch (error) {
-    // logs any error
     console.log(error);
     return response
       .status(error.statusCode || 500)
       .json({ error: error.message });
   }
-
-  return response.status(200).json({ error: '' });
 }

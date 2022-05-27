@@ -1,6 +1,6 @@
 import { Group } from '../models';
-import { Shadow } from './shadow.model';
-import { shadowSection } from './shadows.data';
+import { Shadow } from './Shadow.model';
+import { shadowSection } from './Shadows.data';
 
 export function Shadows({
   className,

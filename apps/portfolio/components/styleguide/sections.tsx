@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Buttons, buttonSection } from './buttons';
-import { Colors, colorSection } from './colors';
+import { Buttons, buttonSection } from './Buttons';
+import { Colors, colorSection } from './Colors';
 import { useFilterGroups } from './hooks/useFilterGroups';
-import { Shadows, shadowSection } from './shadows';
-import { Typography, typographySection } from './typography';
+import { Shadows, shadowSection } from './Shadows';
+import { Typography, typographySection } from './Typography';
 
 export function Sections({ searchInput }: { searchInput: string }) {
   const colorGroups = useFilterGroups(searchInput, colorSection);

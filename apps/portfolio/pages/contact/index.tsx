@@ -15,6 +15,7 @@ export default function Contact() {
     message: Yup.string().required('Your message is required.'),
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
 
   const {
     handleSubmit,
@@ -48,6 +49,7 @@ export default function Contact() {
       const { error } = await response.json();
       if (error) {
         console.log(error);
+        setShowWarning(true);
         return;
       }
 
@@ -59,7 +61,7 @@ export default function Contact() {
   return (
     <>
       <Layout>
-        <div className="min-w-[300px] space-y-4 sm:min-w-[453px]">
+        <div className="space-y-4">
           <h1 className="font-alegreya-sans-sc text-accent text-3xl font-bold lg:text-4xl">
             Get In Touch
           </h1>
@@ -229,6 +231,13 @@ export default function Contact() {
         onHide={() => setShowSuccess(false)}
       >
         Thank you for your message!
+      </Notification>
+      <Notification
+        className="bg-warning"
+        show={showWarning}
+        onHide={() => setShowWarning(false)}
+      >
+        Something went wrong. Please try again.
       </Notification>
     </>
   );

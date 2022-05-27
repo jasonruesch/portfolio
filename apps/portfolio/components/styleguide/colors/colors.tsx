@@ -1,7 +1,7 @@
 import { ColorSwatchIcon } from '@heroicons/react/outline';
 import { Group } from '../models';
-import { Color } from './color.model';
-import { colorSection } from './colors.data';
+import { Color } from './Color.model';
+import { colorSection } from './Colors.data';
 
 export function Colors({
   className,
