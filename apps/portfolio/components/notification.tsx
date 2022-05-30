@@ -31,19 +31,19 @@ export function Notification({
     >
       <div
         className={classNames(
-          'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5',
+          'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-opacity-50',
           className
         )}
       >
         <div className="p-4">
           <div className="flex items-center">
-            <p className="w-0 flex-1 text-sm font-medium text-gray-900">
+            <p className="w-0 flex-1 text-sm font-medium text-neutral-900">
               {children}
             </p>
             <div className="ml-4 flex flex-shrink-0">
               <button
                 type="button"
-                className="focus:ring-cta inline-flex rounded-md bg-inherit text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                className="focus:ring-primary inline-flex rounded-md bg-inherit text-neutral-400 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-offset-2"
                 onClick={() => {
                   onHide();
                 }}

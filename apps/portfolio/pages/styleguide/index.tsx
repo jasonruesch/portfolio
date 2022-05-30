@@ -9,6 +9,7 @@ import { animateScroll as scroll } from 'react-scroll';
 import Image from 'next/image';
 import { Nav, Sidebar, ThemeSelector } from '../../components';
 import { Sidenav, Sections } from '../../components/styleguide';
+import classNames from 'classnames';
 
 const StyleGuide = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -155,7 +156,10 @@ const StyleGuide = () => {
         leaveTo="opacity-0"
       >
         <button
-          className="bg-secondary hover:bg-secondary-600 disabled:bg-secondary-300 fixed bottom-8 right-12 z-40 rounded-full border border-transparent py-2 px-2 text-white disabled:text-opacity-70 print:hidden"
+          className={classNames(
+            'bg-secondary text-on-secondary hover:bg-secondary-600 active:bg-secondary-500 focus:ring-secondary disabled:bg-secondary-300 rounded-full p-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white disabled:text-neutral-600 dark:focus:ring-offset-black',
+            'fixed bottom-8 right-12 z-40 print:hidden'
+          )}
           onClick={() =>
             scroll.scrollToTop({
               smooth: true,

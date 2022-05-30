@@ -199,13 +199,23 @@ export default function Contact() {
             <div>
               <div className="flex justify-end">
                 <Link href="/">
-                  <a className="cursor-pointer rounded-md border border-neutral-300 bg-white py-2 px-4 text-sm font-bold text-neutral-700 shadow-sm hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2">
+                  <a
+                    className="text-secondary hover:text-secondary-600 active:text-secondary-500 focus:ring-secondary rounded-md border-transparent bg-transparent py-2
+                    px-4 text-sm
+                    font-bold hover:bg-neutral-300
+                    focus:bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white active:bg-neutral-200 disabled:bg-neutral-100
+                    disabled:text-neutral-400 dark:focus:ring-offset-black"
+                  >
                     Cancel
                   </a>
                 </Link>
                 <button
                   type="submit"
-                  className="bg-primary focus:ring-primary hover:bg-primary-600 disabled:bg-primary-300 text-on-primary ml-3 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:text-neutral-500"
+                  className="bg-primary text-on-primary hover:bg-primary-600 active:bg-primary-500 focus:ring-primary disabled:bg-primary-300 ml-3 inline-block rounded-md border-transparent
+                  py-2
+                  px-4
+                  text-sm font-bold focus:outline-none focus:ring-2 focus:ring-offset-1
+                  focus:ring-offset-white disabled:text-neutral-600 dark:focus:ring-offset-black"
                   disabled={!dirty || !isValid || isSubmitting}
                 >
                   Send

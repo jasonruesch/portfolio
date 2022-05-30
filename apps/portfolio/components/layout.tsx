@@ -66,7 +66,7 @@ export function Layout({
           </a>
         </Link>
 
-        <div className="lg:divide-x-foreground lg:flex lg:gap-4 lg:divide-x">
+        <div className="divide-black divide-opacity-20 dark:divide-white dark:divide-opacity-20 lg:flex lg:gap-4 lg:divide-x">
           <Nav />
           <ThemeSelector className="lg:pl-4" />
         </div>
@@ -106,7 +106,9 @@ export function Layout({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ ease: 'easeInOut' }}
-          // className="sm-max-h:w-96 sm:w-96"
+          className={classNames({
+            'bg-surface text-on-surface rounded-md p-4': !isHome,
+          })}
         >
           {children}
         </motion.div>

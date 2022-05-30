@@ -36,7 +36,7 @@ export function Sidebar({
             <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
           </Transition.Child>
 
-          <div className="dark fixed inset-0 z-40 flex">
+          <div className="fixed inset-0 z-40 flex">
             <Transition.Child
               as={Fragment}
               enter="transition ease-in-out duration-300 transform"
@@ -77,8 +77,17 @@ export function Sidebar({
                         layout="raw"
                         width="224"
                         height="30"
+                        src="/logo.svg"
+                        alt="Jason Ruesch"
+                        className="block dark:hidden"
+                      />
+                      <Image
+                        layout="raw"
+                        width="224"
+                        height="30"
                         src="/logo-dark.svg"
                         alt="Jason Ruesch"
+                        className="hidden dark:block"
                       />
                     </a>
                   </Link>
@@ -95,7 +104,7 @@ export function Sidebar({
 
       {/* Static sidebar for desktop */}
       {!mobileOnly && (
-        <div className="dark fixed inset-y-0 hidden print:hidden lg:flex">
+        <div className="fixed inset-y-0 z-20 hidden print:hidden lg:flex">
           <div className="bg-surface text-on-surface relative flex w-[288px] flex-1 translate-x-0 flex-col pb-4">
             <div className="flex h-16 flex-shrink-0 items-center px-4 lg:items-end lg:px-8">
               <Link href="/">
@@ -104,8 +113,17 @@ export function Sidebar({
                     layout="raw"
                     width="224"
                     height="30"
+                    src="/logo.svg"
+                    alt="Jason Ruesch"
+                    className="block dark:hidden"
+                  />
+                  <Image
+                    layout="raw"
+                    width="224"
+                    height="30"
                     src="/logo-dark.svg"
                     alt="Jason Ruesch"
+                    className="hidden dark:block"
                   />
                 </a>
               </Link>

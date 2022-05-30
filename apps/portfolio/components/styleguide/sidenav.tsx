@@ -45,7 +45,7 @@ const secondaryNavigation = [
 
 const SidebarLink = ({ name, id, icon, onNavItemClick }) => (
   <ScrollLink
-    className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:bg-neutral-100/20"
+    className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:bg-neutral-400/20 dark:hover:bg-neutral-100/20"
     activeClass="!bg-primary !text-on-primary"
     to={id}
     spy={true}
@@ -70,7 +70,7 @@ export function Sidenav({
   return (
     <div className={className}>
       <nav
-        className="flex flex-1 flex-col divide-y divide-black divide-opacity-5 overflow-y-auto px-2 dark:divide-opacity-50 lg:px-4"
+        className="flex flex-1 flex-col divide-y divide-black divide-opacity-20 overflow-y-auto px-2 dark:divide-white dark:divide-opacity-20 lg:px-4"
         aria-label="Sidenav"
       >
         <div className="space-y-1 pt-6">

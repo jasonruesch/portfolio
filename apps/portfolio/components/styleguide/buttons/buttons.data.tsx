@@ -1,114 +1,71 @@
 import { ChevronUpIcon } from '@heroicons/react/solid';
-import { Group, Section } from '../models';
-import { Button } from './Button.model';
+import { Group } from '../models';
+import { ButtonCard } from './ButtonCard';
 
-const buttonGroups: Group<Button>[] = [
+const buttonGroups: Group[] = [
   {
     name: 'Buttons',
     items: [
-      {
-        name: 'Primary Button States',
-        example: (
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-8 sm:flex-row sm:space-y-0">
-            <button
-              key="primary-default"
-              className="bg-cta-50 hover:bg-cta inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-            >
-              Default
-            </button>
-            <button
-              key="primary-hover"
-              className="bg-cta border-cta-50 rounded-lg border bg-opacity-70 py-2 px-8 text-white"
-            >
-              Hover
-            </button>
-            <button
-              key="primary-disabled"
-              className="bg-cta border-cta-50 rounded-lg border py-2 px-8 text-white disabled:bg-opacity-50 disabled:text-opacity-70"
-              disabled
-            >
-              Disabled
-            </button>
-          </div>
-        ),
-        description:
-          'bg-cta border-cta-50 rounded-lg border py-2 px-8 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70',
-      },
-      {
-        name: 'Secondary Button States',
-        example: (
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-8 sm:flex-row sm:space-y-0">
-            <button
-              key="secondary-default"
-              className="rounded-lg border border-neutral-400 bg-neutral-300 py-2 px-8 text-black hover:bg-neutral-400"
-            >
-              Default
-            </button>
-            <button
-              key="secondary-hover"
-              className="rounded-lg border border-neutral-400 bg-neutral-400 py-2 px-8 text-black"
-            >
-              Hover
-            </button>
-            <button
-              key="secondary-disabled"
-              className="rounded-lg border border-neutral-400 bg-neutral-300 py-2 px-8 text-black disabled:bg-neutral-400 disabled:text-neutral-500"
-              disabled
-            >
-              Disabled
-            </button>
-          </div>
-        ),
-        description:
-          'rounded-lg border border-neutral-400 bg-neutral-300 py-2 px-8 text-black hover:bg-neutral-400 disabled:bg-neutral-400 disabled:text-neutral-500',
-      },
+      <ButtonCard
+        key="primary-button"
+        name="Primary Buttons"
+        className="bg-primary text-on-primary rounded-md border-transparent py-2 px-4 text-sm font-bold"
+        hoverClassName="hover:bg-primary-600"
+        hoverWithoutStateClassName="bg-primary-600"
+        activeClassName="active:bg-primary-500"
+        activeWithoutStateClassName="bg-primary-500"
+        focusClassName="focus:ring-primary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
+        focusWithoutStateClassName="ring-primary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
+        disabledClassName="disabled:bg-primary-300 disabled:text-neutral-600"
+      />,
+      <ButtonCard
+        key="secondar-button"
+        name="Secondary Buttons"
+        className="bg-secondary text-on-secondary rounded-md border-transparent py-2 px-4 text-sm font-bold"
+        hoverClassName="hover:bg-secondary-600"
+        hoverWithoutStateClassName="bg-secondary-600"
+        activeClassName="active:bg-secondary-500"
+        activeWithoutStateClassName="bg-secondary-500"
+        focusClassName="focus:ring-secondary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
+        focusWithoutStateClassName="ring-secondary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
+        disabledClassName="disabled:bg-secondary-300 disabled:text-neutral-600"
+      />,
+      <ButtonCard
+        key="tertiary-button"
+        name="Tertiary Buttons"
+        className="text-secondary rounded-md border-transparent bg-transparent py-2 px-4 text-sm font-bold"
+        hoverClassName="hover:bg-neutral-300 hover:text-secondary-600"
+        hoverWithoutStateClassName="bg-neutral-300 text-secondary-600"
+        activeClassName="active:bg-neutral-200 active:text-secondary-500"
+        activeWithoutStateClassName="bg-neutral-200 text-secondary-500"
+        focusClassName="focus:bg-transparent focus:ring-secondary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
+        focusWithoutStateClassName="ring-secondary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
+        disabledClassName="disabled:bg-neutral-100 disabled:text-neutral-400"
+      />,
     ],
   },
   {
     name: 'Icon Buttons',
     items: [
-      {
-        name: 'Primary Icon Button States',
-        example: (
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-8 sm:flex-row sm:space-y-0">
-            <div key="primary-icon-default" className="space-y-4 text-center">
-              <button
-                key="primary-icon-default-button"
-                className="bg-cta border-cta-50 rounded-full border py-2 px-2 text-white hover:bg-opacity-70"
-              >
-                <ChevronUpIcon className="h-12 w-12" />
-              </button>
-              <p key="primary-icon-default-name">Default</p>
-            </div>
-            <div key="primary-icon-hover" className="space-y-4 text-center">
-              <button
-                key="primary-icon-hover-button"
-                className="bg-cta border-cta-50 rounded-full border bg-opacity-70 py-2 px-2 text-white"
-              >
-                <ChevronUpIcon className="h-12 w-12" />
-              </button>
-              <p key="primary-icon-hover-name">Hover</p>
-            </div>
-            <div key="primary-icon-disabled" className="space-y-4 text-center">
-              <button
-                key="primary-icon-disabled-button"
-                className="bg-cta border-cta-50 rounded-full border py-2 px-2 text-white disabled:bg-opacity-50 disabled:text-opacity-70"
-                disabled
-              >
-                <ChevronUpIcon className="h-12 w-12" />
-              </button>
-              <p key="primary-icon-disabled-name">Disabled</p>
-            </div>
-          </div>
-        ),
-        description:
-          'bg-cta border-cta-50 rounded-full border py-2 px-2 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70',
-      },
+      <ButtonCard
+        key="primary-icon-button"
+        name="Primary Icon Buttons"
+        className="bg-primary text-on-primary rounded-full border-transparent p-2 text-sm font-bold"
+        hoverClassName="hover:bg-primary-600"
+        hoverWithoutStateClassName="bg-primary-600"
+        activeClassName="active:bg-primary-500"
+        activeWithoutStateClassName="bg-primary-500"
+        focusClassName="focus:ring-primary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
+        focusWithoutStateClassName="ring-primary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
+        disabledClassName="disabled:bg-primary-300 disabled:text-neutral-600"
+      >
+        <ChevronUpIcon className="h-12 w-12" />
+      </ButtonCard>,
     ],
   },
 ];
 
-const buttonSection: Section<Button> = {
+const buttonSection = {
   name: 'Buttons',
   groups: buttonGroups,
 };
