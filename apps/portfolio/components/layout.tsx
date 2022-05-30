@@ -6,6 +6,7 @@ import { MenuAlt1Icon } from '@heroicons/react/outline';
 import { useState } from 'react';
 import { Nav, Sidebar, ThemeSelector } from '.';
 import classNames from 'classnames';
+import { Logo } from './Logo';
 
 export function Layout({
   children,
@@ -47,22 +48,7 @@ export function Layout({
 
         <Link href="/">
           <a className="hidden lg:block">
-            <Image
-              layout="raw"
-              width="224"
-              height="30"
-              src="/logo.svg"
-              alt="Jason Ruesch"
-              className="block dark:hidden"
-            />
-            <Image
-              layout="raw"
-              width="224"
-              height="30"
-              src="/logo-dark.svg"
-              alt="Jason Ruesch"
-              className="hidden dark:block"
-            />
+            <Logo className="h-[30px] w-[224px]" />
           </a>
         </Link>
 
@@ -84,12 +70,9 @@ export function Layout({
           {/* Wrapper div needed for the image to stay unwarped */}
           <motion.div
             layoutId="profile"
-            className={classNames(
-              'border-light-gray relative h-[150px] w-[150px] rounded-full border dark:border-0',
-              {
-                'md:h-[300px] md:w-[300px]': isHome,
-              }
-            )}
+            className={classNames('relative h-[150px] w-[150px] rounded-full', {
+              'md:h-[300px] md:w-[300px]': isHome,
+            })}
           >
             <Image
               priority

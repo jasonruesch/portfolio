@@ -2,7 +2,7 @@ import { XIcon } from '@heroicons/react/outline';
 import { Transition, Dialog } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { Logo } from './Logo';
 
 export function Sidebar({
   children,
@@ -73,22 +73,7 @@ export function Sidebar({
                 <div className="flex h-16 flex-shrink-0 items-center px-4 lg:items-end lg:px-8">
                   <Link href="/">
                     <a>
-                      <Image
-                        layout="raw"
-                        width="224"
-                        height="30"
-                        src="/logo.svg"
-                        alt="Jason Ruesch"
-                        className="block dark:hidden"
-                      />
-                      <Image
-                        layout="raw"
-                        width="224"
-                        height="30"
-                        src="/logo-dark.svg"
-                        alt="Jason Ruesch"
-                        className="hidden dark:block"
-                      />
+                      <Logo className="h-[30px] w-[224px]" />
                     </a>
                   </Link>
                 </div>
@@ -109,22 +94,7 @@ export function Sidebar({
             <div className="flex h-16 flex-shrink-0 items-center px-4 lg:items-end lg:px-8">
               <Link href="/">
                 <a>
-                  <Image
-                    layout="raw"
-                    width="224"
-                    height="30"
-                    src="/logo.svg"
-                    alt="Jason Ruesch"
-                    className="block dark:hidden"
-                  />
-                  <Image
-                    layout="raw"
-                    width="224"
-                    height="30"
-                    src="/logo-dark.svg"
-                    alt="Jason Ruesch"
-                    className="hidden dark:block"
-                  />
+                  <Logo className="h-[30px] w-[224px]" />
                 </a>
               </Link>
             </div>

@@ -24,12 +24,14 @@ export function Buttons({
         {groups.map((group: Group, i: number) => (
           <div
             key={`buttons-${i}`}
-            className="border-divide border-b py-8 last-of-type:border-b-0 print:break-inside-avoid print:border-b-0"
+            className="border-b border-black border-opacity-20 py-8 last-of-type:border-b-0 dark:border-white dark:border-opacity-20 print:border-b-0"
           >
             <h3 className="font-heading text-2xl font-bold">{group.name}</h3>
             <div className="mt-2 space-y-5 text-sm">
               {group.items.map((item) => (
-                <div key={item.key}>{item}</div>
+                <div key={item.key} className="print:break-inside-avoid">
+                  {item}
+                </div>
               ))}
             </div>
           </div>

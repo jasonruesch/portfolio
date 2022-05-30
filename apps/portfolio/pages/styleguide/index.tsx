@@ -6,8 +6,7 @@ import { SearchIcon, ChevronUpIcon } from '@heroicons/react/solid';
 import Head from 'next/head';
 import { debounce } from 'lodash';
 import { animateScroll as scroll } from 'react-scroll';
-import Image from 'next/image';
-import { Nav, Sidebar, ThemeSelector } from '../../components';
+import { Logo, Nav, Sidebar, ThemeSelector } from '../../components';
 import { Sidenav, Sections } from '../../components/styleguide';
 import classNames from 'classnames';
 
@@ -75,7 +74,7 @@ const StyleGuide = () => {
             leave="ease-in-out duration-300"
             leaveTo="lg:h-24 lg:pb-8 lg:items-start"
           >
-            <header className="fixed top-0 left-0 right-0 z-10 !flex h-16 items-center bg-white dark:bg-black print:hidden lg:left-[288px] lg:h-24 lg:items-end lg:pb-8">
+            <header className="fixed top-0 left-0 right-0 z-10 !flex h-16 items-center bg-white dark:bg-black print:!hidden lg:left-[288px] lg:h-24 lg:items-end lg:pb-8">
               <button
                 type="button"
                 className="px-4 focus:outline-none lg:hidden"
@@ -122,14 +121,7 @@ const StyleGuide = () => {
             {/* Page header */}
             <header className="-mb-16 bg-white pt-16 shadow dark:bg-black dark:shadow-black print:pt-0 print:shadow-none lg:pt-24">
               <div className="p-3 lg:mx-auto lg:max-w-screen-lg lg:px-8">
-                <Image
-                  layout="raw"
-                  width="224"
-                  height="30"
-                  src="/logo.svg"
-                  alt="Jason Ruesch"
-                  className="mb-4 hidden print:block"
-                />
+                <Logo className="mb-4 hidden h-[30px] w-[224px] print:block" />
                 <h1 className="font-heading text-3xl font-bold lg:text-4xl">
                   Style Guide
                 </h1>
