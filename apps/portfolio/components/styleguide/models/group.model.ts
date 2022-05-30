@@ -1,4 +1,6 @@
-export interface Group<T> {
+import { ReactElement } from 'react';
+
+export interface Group {
   name: string;
-  items: Array<T>;
+  items: Array<ReactElement>;
 }

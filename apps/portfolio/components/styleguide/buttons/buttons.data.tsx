@@ -12,7 +12,7 @@ const buttonGroups: Group<Button>[] = [
           <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-8 sm:flex-row sm:space-y-0">
             <button
               key="primary-default"
-              className="bg-cta border-cta-50 rounded-lg border py-2 px-8 text-white hover:bg-opacity-70"
+              className="bg-cta-50 hover:bg-cta inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               Default
             </button>

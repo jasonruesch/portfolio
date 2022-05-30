@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Group, Section } from '../models';
 
 export function useFilterGroups<T>(searchInput, section: Section<T>) {
-  const [groups, setGroups] = useState<Group<T>[]>();
+  const [groups, setGroups] = useState<Group[]>();
 
   useEffect(() => {
     // Must search for at least 2 characters
@@ -23,13 +23,16 @@ export function useFilterGroups<T>(searchInput, section: Section<T>) {
       .split(' ')
       .map((part) => part.trim().toLowerCase());
     // Check if the value contains any of the words
-    const contains = (value) =>
-      queryParts.every((part) => String(value).toLowerCase().includes(part));
+    const contains = (value) => {
+      return queryParts.every((part) =>
+        String(value).toLowerCase().includes(part)
+      );
+    };
 
-    const filteredGroups = groups.filter((group: Group<T>) => {
-      const filteredItems = group.items.filter((item) => {
-        return Object.values(item).some((value) => contains(value));
-      });
+    const filteredGroups = groups.filter((group: Group) => {
+      const filteredItems = group.items.filter((item) =>
+        Object.values(item).some((value) => contains(value))
+      );
       if (filteredItems.length > 0) {
         group.items = filteredItems;
       }

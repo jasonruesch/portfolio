@@ -93,7 +93,7 @@ const StyleGuide = () => {
                     <label htmlFor="search" className="sr-only">
                       Search
                     </label>
-                    <div className="focus-within:text-foreground text-search-text relative w-full">
+                    <div className="focus-within:text-on-background relative w-full text-neutral-500">
                       <div
                         className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
                         aria-hidden="true"
@@ -104,7 +104,7 @@ const StyleGuide = () => {
                         type="search"
                         id="search"
                         name="search"
-                        className="placeholder-search-text block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-0 focus:outline-none focus:ring-0"
+                        className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-0 placeholder-neutral-500 focus:outline-none focus:ring-0"
                         placeholder="Search styles"
                         onChange={handleSearch}
                         autoFocus
@@ -129,7 +129,7 @@ const StyleGuide = () => {
                   alt="Jason Ruesch"
                   className="mb-4 hidden print:block"
                 />
-                <h1 className="font-alegreya-sans-sc text-3xl font-bold lg:text-4xl">
+                <h1 className="font-heading text-3xl font-bold lg:text-4xl">
                   Style Guide
                 </h1>
               </div>
@@ -155,7 +155,7 @@ const StyleGuide = () => {
         leaveTo="opacity-0"
       >
         <button
-          className="bg-cta border-cta-50 fixed bottom-8 right-12 z-40 rounded-full border py-2 px-2 text-white hover:bg-opacity-70 disabled:bg-opacity-50 disabled:text-opacity-70 print:hidden"
+          className="bg-secondary hover:bg-secondary-600 disabled:bg-secondary-300 fixed bottom-8 right-12 z-40 rounded-full border border-transparent py-2 px-2 text-white disabled:text-opacity-70 print:hidden"
           onClick={() =>
             scroll.scrollToTop({
               smooth: true,

@@ -59,30 +59,28 @@ export function Nav({
     (isSidenav && (
       <nav
         className={classNames(
-          'divide-divider flex flex-1 flex-col divide-y overflow-y-auto px-2 lg:px-4',
+          'flex flex-1 flex-col divide-y divide-black divide-opacity-5 overflow-y-auto px-2 dark:divide-opacity-50 lg:px-4',
           className
         )}
         aria-label="Navigation"
       >
         <div
           className={classNames('space-y-1 pt-6', {
-            'border-t-divider mt-5 border-t': includeTopBorder,
+            'mt-5 border-t border-black border-opacity-5 dark:border-opacity-50':
+              includeTopBorder,
           })}
         >
           {navigation.map((item) => (
             <Link key={item.href} href={item.href}>
               <a
                 className={classNames(
-                  'hover:bg-sidebar-link-hover text-sidebar-link group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white',
+                  'flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:bg-neutral-100/20',
                   {
-                    '!bg-sidebar-link-active !text-white': route === item.href,
+                    '!bg-sidebar-active': route === item.href,
                   }
                 )}
               >
-                <div
-                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0 group-hover:text-white"
-                  aria-hidden="true"
-                >
+                <div className="mr-4 h-6 w-6 flex-shrink-0" aria-hidden="true">
                   {item.icon}
                 </div>
                 {item.name}
@@ -98,13 +96,10 @@ export function Nav({
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:bg-sidebar-link-hover text-sidebar-link group group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white"
+                className="flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:bg-neutral-100/20"
                 onClick={onNavItemClick}
               >
-                <div
-                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0 group-hover:text-white"
-                  aria-hidden="true"
-                >
+                <div className="mr-4 h-6 w-6 flex-shrink-0" aria-hidden="true">
                   {item.icon}
                 </div>
                 {item.name}
@@ -122,7 +117,7 @@ export function Nav({
           .filter((item) => item.href !== '/')
           .map((item) => (
             <Link key={item.href} href={item.href}>
-              <a className="hover:text-cta hidden lg:inline">{item.name}</a>
+              <a className="hover:text-primary hidden lg:inline">{item.name}</a>
             </Link>
           ))}
       </nav>

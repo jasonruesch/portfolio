@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html
       lang="en"
-      className="bg-background text-foreground h-full print:bg-white print:text-black"
+      className="bg-background text-on-background h-full print:bg-white print:text-black"
     >
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,17 +30,17 @@ export default function Document() {
         <Main />
         <NextScript />
 
-        {/* Global notification live region, render this permanently at the end of the document */}
+        {/* Global notification live region rendered permanently at the end of the document */}
         <div
           aria-live="assertive"
-          className="sm-max-h:items-end sm-max-h:px-4 sm-max-h:py-6 pointer-events-none fixed inset-0 z-50 flex items-end px-4 py-6 text-black
+          className="sm-max-h:items-end sm-max-h:px-4 sm-max-h:py-6 pointer-events-none fixed inset-0 z-50 flex items-end px-4 py-6
           sm:items-start sm:px-6 sm:py-20"
         >
           <div
             id="live"
             className="sm-max-h:items-center flex w-full flex-col items-center space-y-4 sm:items-end"
           >
-            {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
+            {/* Notification panel is dynamically inserted into this live region when it needs to be displayed */}
           </div>
         </div>
       </body>

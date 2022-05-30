@@ -43,6 +43,23 @@ const secondaryNavigation = [
   { name: 'Icons', id: 'icons', icon: <TemplateIcon /> },
 ];
 
+const SidebarLink = ({ name, id, icon, onNavItemClick }) => (
+  <ScrollLink
+    className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:bg-neutral-100/20"
+    activeClass="!bg-primary !text-on-primary"
+    to={id}
+    spy={true}
+    hashSpy={true}
+    smooth={true}
+    onClick={onNavItemClick}
+  >
+    <div className="mr-4 h-6 w-6 flex-shrink-0" aria-hidden="true">
+      {icon}
+    </div>
+    {name}
+  </ScrollLink>
+);
+
 export function Sidenav({
   className,
   onNavItemClick,
@@ -53,52 +70,30 @@ export function Sidenav({
   return (
     <div className={className}>
       <nav
-        className="divide-divider flex flex-1 flex-col divide-y overflow-y-auto px-2 lg:px-4"
+        className="flex flex-1 flex-col divide-y divide-black divide-opacity-5 overflow-y-auto px-2 dark:divide-opacity-50 lg:px-4"
         aria-label="Sidenav"
       >
         <div className="space-y-1 pt-6">
           {navigation.map((item) => (
-            <ScrollLink
+            <SidebarLink
               key={item.id}
-              className="hover:bg-sidebar-link-hover text-sidebar-link group flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white"
-              activeClass="!bg-sidebar-link-active !text-white"
-              to={item.id}
-              spy={true}
-              hashSpy={true}
-              smooth={true}
-              onClick={onNavItemClick}
-            >
-              <div
-                className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0 group-hover:text-white"
-                aria-hidden="true"
-              >
-                {item.icon}
-              </div>
-              {item.name}
-            </ScrollLink>
+              id={item.id}
+              name={item.name}
+              icon={item.icon}
+              onNavItemClick={onNavItemClick}
+            />
           ))}
         </div>
         <div className="mt-5 pt-6">
           <div className="space-y-1">
             {secondaryNavigation.map((item) => (
-              <ScrollLink
+              <SidebarLink
                 key={item.id}
-                className="hover:bg-sidebar-link-hover text-sidebar-link group flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:text-white"
-                activeClass="!bg-sidebar-link-active !text-white"
-                to={item.id}
-                spy={true}
-                hashSpy={true}
-                smooth={true}
-                onClick={onNavItemClick}
-              >
-                <div
-                  className="text-sidebar-link-icon mr-4 h-6 w-6 flex-shrink-0 group-hover:text-white"
-                  aria-hidden="true"
-                >
-                  {item.icon}
-                </div>
-                {item.name}
-              </ScrollLink>
+                id={item.id}
+                name={item.name}
+                icon={item.icon}
+                onNavItemClick={onNavItemClick}
+              />
             ))}
           </div>
         </div>
