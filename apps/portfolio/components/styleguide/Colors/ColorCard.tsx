@@ -20,9 +20,7 @@ export const ColorCard = ({
   <Card>
     {{
       content: (
-        <div
-          className={classNames('relative h-full p-4', theme, backgroundColor)}
-        >
+        <div className={classNames('h-40 p-4', theme, backgroundColor)}>
           {textOnColor && (
             <div
               className={classNames('absolute bottom-4 left-4', textOnColor)}
@@ -33,7 +31,7 @@ export const ColorCard = ({
           {textColorOnSurface && (
             <div
               className={classNames(
-                'bg-surface absolute top-4 right-4 rounded-3xl py-2 px-4 print:px-2',
+                'bg-surface absolute top-4 right-4 rounded-3xl py-2 px-4',
                 textColorOnSurface
               )}
             >

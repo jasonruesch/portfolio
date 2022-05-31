@@ -27,7 +27,7 @@ export function Buttons({
             className="border-b border-black border-opacity-20 py-8 last-of-type:border-b-0 dark:border-white dark:border-opacity-20 print:border-b-0"
           >
             <h3 className="font-heading text-2xl font-bold">{group.name}</h3>
-            <div className="mt-2 space-y-5 text-sm print:break-inside-avoid">
+            <div className="mt-2 space-y-5 text-sm">
               {group.items.map((item) => item)}
             </div>
           </div>

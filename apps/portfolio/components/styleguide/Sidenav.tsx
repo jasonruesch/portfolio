@@ -43,7 +43,7 @@ const secondaryNavigation = [
   { name: 'Icons', id: 'icons', icon: <TemplateIcon /> },
 ];
 
-const SidebarLink = ({ name, id, icon, onNavItemClick }) => (
+const SidebarLink = ({ name, id, icon, onNavItemClick, offset }) => (
   <ScrollLink
     className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:bg-neutral-400/20 dark:hover:bg-neutral-100/20"
     activeClass="!bg-primary !text-on-primary"
@@ -52,6 +52,7 @@ const SidebarLink = ({ name, id, icon, onNavItemClick }) => (
     hashSpy={true}
     smooth={true}
     onClick={onNavItemClick}
+    offset={offset}
   >
     <div className="mr-4 h-6 w-6 flex-shrink-0" aria-hidden="true">
       {icon}
@@ -74,13 +75,14 @@ export function Sidenav({
         aria-label="Sidenav"
       >
         <div className="space-y-1 pt-6">
-          {navigation.map((item) => (
+          {navigation.map((item, index) => (
             <SidebarLink
               key={item.id}
               id={item.id}
               name={item.name}
               icon={item.icon}
               onNavItemClick={onNavItemClick}
+              offset={index > 0 ? -32 : 0}
             />
           ))}
         </div>
@@ -93,6 +95,7 @@ export function Sidenav({
                 name={item.name}
                 icon={item.icon}
                 onNavItemClick={onNavItemClick}
+                offset={-32}
               />
             ))}
           </div>

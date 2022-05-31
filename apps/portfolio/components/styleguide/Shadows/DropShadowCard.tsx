@@ -11,8 +11,8 @@ export const DropShadowCard = ({
   <Card>
     {{
       content: (
-        <div className="bg-background relative h-40">
-          <div className="flex h-full items-center justify-center">
+        <div className="bg-background p-4">
+          <div className="flex h-full items-center justify-center p-8">
             <div
               className={classNames(
                 'border-b-surface h-0 w-0 border-t-0 border-l-[48px] border-r-[48px] border-b-[72px] border-solid border-transparent',

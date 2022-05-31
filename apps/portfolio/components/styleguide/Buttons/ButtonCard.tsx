@@ -28,8 +28,8 @@ export const ButtonCard = ({
   <Card>
     {{
       content: (
-        <div className="bg-surface relative h-full p-4">
-          <div className="flex h-full flex-col items-center justify-evenly space-y-4 p-8 sm:flex-row sm:space-y-0">
+        <div className="bg-surface p-4">
+          <div className="flex h-full flex-wrap items-center justify-evenly gap-4 p-8">
             <button
               key="default"
               className={classNames(

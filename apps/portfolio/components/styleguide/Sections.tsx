@@ -40,22 +40,24 @@ export function Sections({ searchInput }: { searchInput: string }) {
 
   return (
     <>
-      <Colors className="pt-16" groups={colorGroups} />
+      <div className="divide-y-4 divide-black divide-opacity-20 dark:divide-white dark:divide-opacity-20 print:divide-none">
+        <Colors className="pt-16" groups={colorGroups} />
 
-      <Typography
-        className="pt-16 print:break-before-page"
-        groups={typographyGroups}
-      />
+        <Typography
+          className="mt-8 pt-8 print:break-before-page"
+          groups={typographyGroups}
+        />
 
-      <Shadows
-        className="pt-16 print:break-before-page"
-        groups={shadowGroups}
-      />
+        <Shadows
+          className="mt-8 pt-8 print:break-before-page"
+          groups={shadowGroups}
+        />
 
-      <Buttons
-        className="pt-16 print:break-before-page"
-        groups={buttonGroups}
-      />
+        <Buttons
+          className="mt-8 pt-8 print:break-before-page"
+          groups={buttonGroups}
+        />
+      </div>
 
       {/* No results */}
       {!hasResults && (
