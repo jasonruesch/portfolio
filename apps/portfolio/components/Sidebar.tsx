@@ -46,7 +46,7 @@ export function Sidebar({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="bg-surface text-on-surface relative flex w-full max-w-xs flex-1 flex-col pb-4">
+              <Dialog.Panel className="bg-surface text-on-surface relative flex w-full max-w-xs flex-1 flex-col pb-4 shadow ring-1 ring-black ring-opacity-5 dark:shadow-black dark:ring-opacity-50">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -90,7 +90,7 @@ export function Sidebar({
       {/* Static sidebar for desktop */}
       {!mobileOnly && (
         <div className="fixed inset-y-0 z-20 hidden print:hidden lg:flex">
-          <div className="bg-surface text-on-surface relative flex w-[288px] flex-1 translate-x-0 flex-col pb-4">
+          <div className="bg-surface text-on-surface relative flex w-[288px] flex-1 translate-x-0 flex-col pb-4 shadow ring-1 ring-black ring-opacity-5 dark:shadow-black dark:ring-opacity-50">
             <div className="flex h-16 flex-shrink-0 items-center px-4 lg:items-end lg:px-8">
               <Link href="/">
                 <a>

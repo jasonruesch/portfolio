@@ -9,9 +9,9 @@ export default function About() {
           About Me
         </h1>
         <p>
-          My name is Jason Ruesch, and I enjoy creating software that not only
-          looks amazing, but is also easy to use! I have a passion for learning
-          new technologies and building things that are useful to others.
+          My name is Jason Ruesch. I enjoy creating software that not only looks
+          amazing, but is also easy to use! I have a passion for learning new
+          technologies and building things that are useful to others.
         </p>
         <p>
           Outside of work, I like to spend time with my family, play video

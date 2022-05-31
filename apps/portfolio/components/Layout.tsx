@@ -90,7 +90,8 @@ export function Layout({
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ ease: 'easeInOut' }}
           className={classNames({
-            'bg-surface text-on-surface rounded-md p-4': !isHome,
+            'bg-surface text-on-surface rounded-md p-4 shadow ring-1 ring-black ring-opacity-5 dark:shadow-black dark:ring-opacity-50':
+              !isHome,
           })}
         >
           {children}
