@@ -12,7 +12,7 @@ export const BoxShadowCard = ({
     {{
       content: (
         <div className="bg-background p-4">
-          <div className="flex h-full items-center justify-center p-8">
+          <div className="flex h-40 items-center justify-center p-8">
             <div
               className={classNames(
                 'bg-surface h-24 w-24 rounded-lg dark:shadow-black',

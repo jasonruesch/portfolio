@@ -57,7 +57,21 @@ const buttonGroups: Group[] = [
         activeWithoutStateClassName="bg-primary-500"
         focusClassName="focus:ring-primary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
         focusWithoutStateClassName="ring-primary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
-        disabledClassName="disabled:bg-primary-300 disabled:text-neutral-600"
+        disabledClassName="disabled:bg-primary-300 disabled:text-neutral-500"
+      >
+        <ChevronUpIcon className="h-12 w-12" />
+      </ButtonCard>,
+      <ButtonCard
+        key="secondary-icon-button"
+        name="Secondary Icon Buttons"
+        className="bg-secondary text-on-secondary rounded-full border-transparent p-2 text-sm font-bold"
+        hoverClassName="hover:bg-secondary-600"
+        hoverWithoutStateClassName="bg-secondary-600"
+        activeClassName="active:bg-secondary-500"
+        activeWithoutStateClassName="bg-secondary-500"
+        focusClassName="focus:ring-secondary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
+        focusWithoutStateClassName="ring-secondary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
+        disabledClassName="disabled:bg-secondary-300 disabled:text-neutral-500"
       >
         <ChevronUpIcon className="h-12 w-12" />
       </ButtonCard>,

@@ -26,10 +26,10 @@ export function ThemeSelector({ className }: { className?: string }) {
         )}
       >
         <span
-          className={classNames(
-            theme === 'system' ? 'text-neutral-500' : 'text-primary',
-            'block text-sm font-medium'
-          )}
+          className={classNames('block text-sm font-medium', {
+            'hover:text-on-background text-neutral-500': theme === 'system',
+            'text-primary': theme !== 'system',
+          })}
         >
           <span className="sr-only">Open theme menu</span>
           {resolvedTheme === 'light' ? (
