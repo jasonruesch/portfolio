@@ -31,7 +31,6 @@ export const ButtonCard = ({
         <div className="bg-surface p-4">
           <div className="flex h-full flex-wrap items-center justify-evenly gap-4 p-8">
             <button
-              key="default"
               className={classNames(
                 className,
                 hoverClassName,
@@ -43,25 +42,21 @@ export const ButtonCard = ({
               {children ? children : 'Default'}
             </button>
             <button
-              key="hover"
               className={classNames(className, hoverWithoutStateClassName)}
             >
               {children ? children : 'Hover'}
             </button>
             <button
-              key="active"
               className={classNames(className, activeWithoutStateClassName)}
             >
               {children ? children : 'Active'}
             </button>
             <button
-              key="focus"
               className={classNames(className, focusWithoutStateClassName)}
             >
               {children ? children : 'Focus'}
             </button>
             <button
-              key="inactive"
               className={classNames(className, disabledClassName)}
               disabled
             >

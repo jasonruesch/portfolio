@@ -15,17 +15,21 @@ const typographyGroups: Group[] = [
         largeFontSize="36px"
         largeLineHeight="40px"
       >
-        <>
-          <h1 className="font-heading text-3xl font-bold">
-            Etiam nec metus vitae lectus
-          </h1>
-          <h1 className="font-heading text-4xl font-bold">
-            Etiam nec metus vitae lectus
-          </h1>
-          <code className="text-secondary mt-2 block text-sm">
-            font-heading text-3xl lg:text-4xl font-bold
-          </code>
-        </>
+        <h1
+          key="heading-h1-example"
+          className="font-heading text-3xl font-bold"
+        >
+          Etiam nec metus vitae lectus
+        </h1>
+        <h1 key="heading-h1-large" className="font-heading text-4xl font-bold">
+          Etiam nec metus vitae lectus
+        </h1>
+        <code
+          key="heading-h1-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          font-heading text-3xl lg:text-4xl font-bold
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="heading-h2"
@@ -37,17 +41,21 @@ const typographyGroups: Group[] = [
         largeFontSize="30px"
         largeLineHeight="36px"
       >
-        <>
-          <h2 key="h2" className="font-heading text-2xl font-bold">
-            Etiam nec metus vitae lectus
-          </h2>
-          <h2 key="h2-large" className="font-heading text-3xl font-bold">
-            Etiam nec metus vitae lectus
-          </h2>
-          <code className="text-secondary mt-2 block text-sm">
-            font-heading text-2xl lg:text-3xl font-bold
-          </code>
-        </>
+        <h2
+          key="heading-h2-example"
+          className="font-heading text-2xl font-bold"
+        >
+          Etiam nec metus vitae lectus
+        </h2>
+        <h2 key="heading-h2-large" className="font-heading text-3xl font-bold">
+          Etiam nec metus vitae lectus
+        </h2>
+        <code
+          key="heading-h2-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          font-heading text-2xl lg:text-3xl font-bold
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="heading-h3"
@@ -57,14 +65,18 @@ const typographyGroups: Group[] = [
         fontSize="24px"
         lineHeight="32px"
       >
-        <>
-          <h3 className="font-heading text-2xl font-bold">
-            Etiam nec metus vitae lectus
-          </h3>
-          <code className="text-secondary mt-2 block text-sm">
-            font-heading text-2xl font-bold
-          </code>
-        </>
+        <h3
+          key="heading-h3-example"
+          className="font-heading text-2xl font-bold"
+        >
+          Etiam nec metus vitae lectus
+        </h3>
+        <code
+          key="heading-h3-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          font-heading text-2xl font-bold
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="heading-h4"
@@ -74,12 +86,15 @@ const typographyGroups: Group[] = [
         fontSize="20px"
         lineHeight="28px"
       >
-        <>
-          <h4 className="text-xl font-bold">Etiam nec metus vitae lectus</h4>
-          <code className="text-secondary mt-2 block text-sm">
-            text-xl font-bold
-          </code>
-        </>
+        <h4 key="heading-h4-example" className="text-xl font-bold">
+          Etiam nec metus vitae lectus
+        </h4>
+        <code
+          key="heading-h4-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          text-xl font-bold
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="heading-h5"
@@ -89,12 +104,15 @@ const typographyGroups: Group[] = [
         fontSize="18px"
         lineHeight="28px"
       >
-        <>
-          <h5 className="text-lg font-bold">Etiam nec metus vitae lectus</h5>
-          <code className="text-secondary mt-2 block text-sm">
-            text-lg font-bold
-          </code>
-        </>
+        <h5 key="heading-h5-example" className="text-lg font-bold">
+          Etiam nec metus vitae lectus
+        </h5>
+        <code
+          key="heading-h5-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          text-lg font-bold
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="heading-h6"
@@ -104,12 +122,15 @@ const typographyGroups: Group[] = [
         fontSize="16px"
         lineHeight="24px"
       >
-        <>
-          <h6 className="text-base font-bold">Etiam nec metus vitae lectus</h6>
-          <code className="text-secondary mt-2 block text-sm">
-            text-base font-bold
-          </code>
-        </>
+        <h6 key="heading-h6-example" className="text-base font-bold">
+          Etiam nec metus vitae lectus
+        </h6>
+        <code
+          key="heading-h6-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          text-base font-bold
+        </code>
       </TypographyItem>,
     ],
   },
@@ -124,33 +145,39 @@ const typographyGroups: Group[] = [
         fontSize="20px"
         lineHeight="28px"
       >
-        <>
-          <p className="text-xl">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-            temporibus provident voluptatem corporis tempore! Deleniti sed
-            voluptates repellat laudantium alias optio blanditiis recusandae
-            officiis, sunt dicta quis voluptas provident mollitia.
-          </p>
-          <code className="text-secondary mt-2 block text-sm">text-xl</code>
-        </>
+        <p key="body-extra-large-example" className="text-xl">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+          temporibus provident voluptatem corporis tempore! Deleniti sed
+          voluptates repellat laudantium alias optio blanditiis recusandae
+          officiis, sunt dicta quis voluptas provident mollitia.
+        </p>
+        <code
+          key="body-extra-large-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          text-xl
+        </code>
       </TypographyItem>,
       <TypographyItem
-        key="body-default"
+        key="body-example"
         name="Body Default"
         fontName="Inter"
         fontWeight="Regular"
         fontSize="16px"
         lineHeight="24px"
       >
-        <>
-          <p className="text-base">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-            temporibus provident voluptatem corporis tempore! Deleniti sed
-            voluptates repellat laudantium alias optio blanditiis recusandae
-            officiis, sunt dicta quis voluptas provident mollitia.
-          </p>
-          <code className="text-secondary mt-2 block text-sm">text-base</code>
-        </>
+        <p key="body-example-example" className="text-base">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+          temporibus provident voluptatem corporis tempore! Deleniti sed
+          voluptates repellat laudantium alias optio blanditiis recusandae
+          officiis, sunt dicta quis voluptas provident mollitia.
+        </p>
+        <code
+          key="body-example-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          text-base
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="body-small"
@@ -160,15 +187,18 @@ const typographyGroups: Group[] = [
         fontSize="14px"
         lineHeight="20px"
       >
-        <>
-          <p className="text-sm">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-            temporibus provident voluptatem corporis tempore! Deleniti sed
-            voluptates repellat laudantium alias optio blanditiis recusandae
-            officiis, sunt dicta quis voluptas provident mollitia.
-          </p>
-          <code className="text-secondary mt-2 block text-sm">text-sm</code>
-        </>
+        <p key="body-small-example" className="text-sm">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+          temporibus provident voluptatem corporis tempore! Deleniti sed
+          voluptates repellat laudantium alias optio blanditiis recusandae
+          officiis, sunt dicta quis voluptas provident mollitia.
+        </p>
+        <code
+          key="body-small-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          text-sm
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="body-extra-small"
@@ -178,15 +208,18 @@ const typographyGroups: Group[] = [
         fontSize="12px"
         lineHeight="16px"
       >
-        <>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-            temporibus provident voluptatem corporis tempore! Deleniti sed
-            voluptates repellat laudantium alias optio blanditiis recusandae
-            officiis, sunt dicta quis voluptas provident mollitia.
-          </p>
-          <code className="text-secondary mt-2 block text-sm">text-xs</code>
-        </>
+        <p key="body-extra-small-example" className="text-xs">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+          temporibus provident voluptatem corporis tempore! Deleniti sed
+          voluptates repellat laudantium alias optio blanditiis recusandae
+          officiis, sunt dicta quis voluptas provident mollitia.
+        </p>
+        <code
+          key="body-extra-small-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          text-xs
+        </code>
       </TypographyItem>,
     ],
   },
@@ -199,14 +232,15 @@ const typographyGroups: Group[] = [
         fontName="Inter"
         fontWeight="400"
       >
-        <>
-          <span className="font-regular">
-            Lorem ipsum dolor sit amet consectetur
-          </span>
-          <code className="text-secondary mt-2 block text-sm">
-            font-regular
-          </code>
-        </>
+        <span key="rich-text-regular-example" className="font-regular">
+          Lorem ipsum dolor sit amet consectetur
+        </span>
+        <code
+          key="rich-text-regular-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          font-regular
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="rich-text-bold"
@@ -214,57 +248,69 @@ const typographyGroups: Group[] = [
         fontName="Inter"
         fontWeight="600"
       >
-        <>
-          <span className="font-bold">
-            Lorem ipsum dolor sit amet consectetur
-          </span>
-          <code className="text-secondary mt-2 block text-sm">font-bold</code>
-        </>
+        <span key="rich-text-bold-example" className="font-bold">
+          Lorem ipsum dolor sit amet consectetur
+        </span>
+        <code
+          key="rich-text-bold-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          font-bold
+        </code>
       </TypographyItem>,
       <TypographyItem key="rich-text-link" name="Link" fontName="Inter">
-        <>
-          <a key="link" href="#" className="hover:text-cta block underline">
-            Lorem ipsum dolor sit amet consectetur
-          </a>
-          <a key="link-hover" href="#" className="text-cta block underline">
-            Lorem ipsum dolor sit amet consectetur
-          </a>
-          <code className="text-secondary mt-2 block text-sm">
-            hover:text-cta underline
-          </code>
-        </>
+        <a key="link" href="#" className="hover:text-cta block underline">
+          Lorem ipsum dolor sit amet consectetur
+        </a>
+        <a key="link-hover" href="#" className="text-cta block underline">
+          Lorem ipsum dolor sit amet consectetur
+        </a>
+        <code
+          key="link-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          hover:text-cta underline
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="rich-text-bullet-list"
         name="Bullet List"
         fontName="Inter"
       >
-        <>
-          <ul className="list-inside list-disc">
-            <li key="a">Lorem ipsum dolor sit amet consectetur</li>
-            <li key="b">Posuere enim mi pharetra neque proin dic</li>
-            <li key="c">Mauris aliquet faucibus iaculis dui vitae ullamco</li>
-          </ul>
-          <code className="text-secondary mt-2 block text-sm">
-            list-inside list-disc
-          </code>
-        </>
+        <ul
+          key="rich-text-bullet-list-example"
+          className="list-inside list-disc"
+        >
+          <li key="a">Lorem ipsum dolor sit amet consectetur</li>
+          <li key="b">Posuere enim mi pharetra neque proin dic</li>
+          <li key="c">Mauris aliquet faucibus iaculis dui vitae ullamco</li>
+        </ul>
+        <code
+          key="rich-text-bullet-list-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          list-inside list-disc
+        </code>
       </TypographyItem>,
       <TypographyItem
         key="rich-text-ordered-list"
         name="Ordered List"
         fontName="Inter"
       >
-        <>
-          <ol className="list-inside list-decimal">
-            <li key="1">Lorem ipsum dolor sit amet consectetur</li>
-            <li key="2">Posuere enim mi pharetra neque proin dic</li>
-            <li key="3">Mauris aliquet faucibus iaculis dui vitae ullamco</li>
-          </ol>
-          <code className="text-secondary mt-2 block text-sm">
-            list-inside list-decimal
-          </code>
-        </>
+        <ol
+          key="rich-text-ordered-list-example"
+          className="list-inside list-decimal"
+        >
+          <li key="1">Lorem ipsum dolor sit amet consectetur</li>
+          <li key="2">Posuere enim mi pharetra neque proin dic</li>
+          <li key="3">Mauris aliquet faucibus iaculis dui vitae ullamco</li>
+        </ol>
+        <code
+          key="rich-text-ordered-list-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          list-inside list-decimal
+        </code>
       </TypographyItem>,
     ],
   },
