@@ -2,7 +2,7 @@ import { cloneDeep } from 'lodash';
 import { useState, useEffect } from 'react';
 import { Group, Section } from '../models';
 
-export function useFilterGroups<T>(searchInput, section: Section<T>) {
+export function useFilterGroups(searchInput, section: Section) {
   const [groups, setGroups] = useState<Group[]>();
 
   useEffect(() => {

@@ -13,7 +13,6 @@ const nextConfig = {
   images: {
     domains: [],
   },
-  experimental: { images: { layoutRaw: true } },
 };
 
 module.exports = withNx(nextConfig);
