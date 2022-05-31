@@ -44,10 +44,10 @@ const typographyGroups: Group[] = [
           <h2 key="h2-large" className="font-heading text-3xl font-bold">
             Etiam nec metus vitae lectus
           </h2>
+          <code className="text-secondary mt-2 block text-sm">
+            font-heading text-2xl lg:text-3xl font-bold
+          </code>
         </>
-        <code className="text-secondary mt-2 block text-sm">
-          font-heading text-2xl lg:text-3xl font-bold
-        </code>
       </TypographyItem>,
       <TypographyItem
         key="heading-h3"
@@ -117,7 +117,7 @@ const typographyGroups: Group[] = [
     name: 'Body',
     items: [
       <TypographyItem
-        key="body-extra-larg"
+        key="body-extra-large"
         name="Body Extra Large"
         fontName="Inter"
         fontWeight="Regular"

@@ -7,17 +7,17 @@ const shadowGroups: Group[] = [
     name: 'Box Shadows',
     items: [
       <BoxShadowCard
-        key="box-shadow"
+        key="box-shadow-default"
         name="Box Shadow Default"
         shadow="shadow"
       />,
       <BoxShadowCard
-        key="box-shadow"
+        key="box-shadow-medium"
         name="Box Shadow Medium"
         shadow="shadow-md"
       />,
       <BoxShadowCard
-        key="box-shadow"
+        key="box-shadow-large"
         name="Box Shadow Large"
         shadow="shadow-lg"
       />,
@@ -27,17 +27,17 @@ const shadowGroups: Group[] = [
     name: 'Drop Shadows',
     items: [
       <DropShadowCard
-        key="drop-shadow"
+        key="drop-shadow-default"
         name="Drop Shadow Default"
         shadow="drop-shadow"
       />,
       <DropShadowCard
-        key="drop-shadow"
+        key="drop-shadow-medium"
         name="Drop Shadow Medium"
         shadow="drop-shadow-md"
       />,
       <DropShadowCard
-        key="drop-shadow"
+        key="drop-shadow-large"
         name="Drop Shadow Large"
         shadow="drop-shadow-lg"
       />,

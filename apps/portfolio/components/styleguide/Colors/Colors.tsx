@@ -27,9 +27,7 @@ export function Colors({
           >
             <h3 className="font-heading text-2xl font-bold">{group.name}</h3>
             <div className="mt-2 grid grid-cols-1 gap-5 text-sm print:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {group.items.map((item) => (
-                <div key={item.key}>{item}</div>
-              ))}
+              {group.items.map((item) => item)}
             </div>
           </div>
         ))}

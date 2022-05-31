@@ -48,7 +48,7 @@ const darkThemeColorGroup: Group = {
   name: 'Dark Theme Colors',
   items: [
     <ColorCard
-      key="primary-color"
+      key="dark-primary-color"
       name="Primary"
       backgroundColor="bg-primary"
       textOnColor="text-on-primary"
@@ -56,7 +56,7 @@ const darkThemeColorGroup: Group = {
       theme="dark"
     />,
     <ColorCard
-      key="secondary-color"
+      key="dark-secondary-color"
       name="Secondary"
       backgroundColor="bg-secondary"
       textOnColor="text-on-secondary"
@@ -64,21 +64,21 @@ const darkThemeColorGroup: Group = {
       theme="dark"
     />,
     <ColorCard
-      key="background-color"
+      key="dark-background-color"
       name="Background"
       backgroundColor="bg-background"
       textOnColor="text-on-background"
       theme="dark"
     />,
     <ColorCard
-      key="surface-color"
+      key="dark-surface-color"
       name="Surface"
       backgroundColor="bg-surface"
       textOnColor="text-on-surface"
       theme="dark"
     />,
     <ColorCard
-      key="error-color"
+      key="dark-error-color"
       name="Error"
       backgroundColor="bg-error"
       textOnColor="text-on-error"
