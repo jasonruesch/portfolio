@@ -25,13 +25,13 @@ export const ColorCard = ({
       content: (
         <div
           className={classNames(
-            'bg-[length:15px_15px] bg-center',
+            'bg-[length:1rem_1rem] bg-center',
             transparencyGridBackgroundColor
           )}
           style={{
             backgroundImage: `
-              linear-gradient(to right, #808080 3px, transparent 3px),
-              linear-gradient(to bottom, #808080 3px, transparent 3px)
+              linear-gradient(to right, #808080 2px, transparent 2px),
+              linear-gradient(to bottom, #808080 2px, transparent 2px)
             `,
           }}
         >
