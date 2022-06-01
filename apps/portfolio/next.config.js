@@ -11,9 +11,8 @@ const nextConfig = {
     svgr: false,
   },
   images: {
-    domains: ['tailwindui.com', 'images.unsplash.com'],
+    domains: [],
   },
-  experimental: { images: { layoutRaw: true } },
 };
 
 module.exports = withNx(nextConfig);

@@ -1,72 +1,64 @@
 const { createGlobPatternsForDependencies } = require('@nrwl/react/tailwind');
 const { join } = require('path');
 const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
-
-function withOpacityValue(variable) {
-  return ({ opacityValue }) => {
-    if (opacityValue === undefined) {
-      return `rgb(var(${variable}))`;
-    }
-    return `rgb(var(${variable}) / ${opacityValue})`;
-  };
-}
+const globalConfig = require('../../tailwind-workspace.js');
 
 module.exports = {
-  darkMode: 'class',
+  presets: [globalConfig],
   content: [
     join(__dirname, '{components,pages}/**/*!(*.spec).{ts,tsx}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    fontFamily: {
-      sans: ['Inter', ...defaultTheme.fontFamily.sans],
-      'alegreya-sans-sc': ['Alegreya Sans SC', ...defaultTheme.fontFamily.sans],
-    },
     colors: {
-      inherit: colors.inherit,
-      current: colors.current,
-      transparent: colors.transparent,
-      black: colors.black,
-      white: colors.white,
-      background: withOpacityValue('--color-background'),
-      foreground: withOpacityValue('--color-foreground'),
-      primary: withOpacityValue('--color-primary'),
-      accent: withOpacityValue('--color-accent'),
-      warning: withOpacityValue('--color-warning'),
-      success: withOpacityValue('--color-success'),
-      cta: withOpacityValue('--color-cta'),
-      neutral: colors.neutral,
-    },
-    boxShadow: {
-      DEFAULT: defaultTheme.boxShadow.DEFAULT,
-      md: defaultTheme.boxShadow.md,
-      lg: defaultTheme.boxShadow.lg,
-    },
-    dropShadow: {
-      DEFAULT: defaultTheme.dropShadow.DEFAULT,
-      md: defaultTheme.dropShadow.md,
-      lg: defaultTheme.dropShadow.lg,
-    },
-    fontSize: {
-      xs: defaultTheme.fontSize.xs,
-      sm: defaultTheme.fontSize.sm,
-      base: defaultTheme.fontSize.base,
-      lg: defaultTheme.fontSize.lg,
-      xl: defaultTheme.fontSize.xl,
-      '2xl': defaultTheme.fontSize['2xl'],
-      '3xl': defaultTheme.fontSize['3xl'],
-      '4xl': defaultTheme.fontSize['4xl'],
-    },
-    fontWeight: {
-      normal: defaultTheme.fontWeight.normal,
-      bold: defaultTheme.fontWeight.bold,
+      // Explicity include global config colors here for the stylesheet to recognize
+      ...globalConfig.theme.colors,
+      // Theme colors
+      primary: {
+        50: 'var(--color-primary-50)',
+        100: 'var(--color-primary-100)',
+        200: 'var(--color-primary-200)',
+        300: 'var(--color-primary-300)',
+        400: 'var(--color-primary-400)',
+        500: 'var(--color-primary-500)',
+        600: 'var(--color-primary-600)',
+        700: 'var(--color-primary-700)',
+        800: 'var(--color-primary-800)',
+        900: 'var(--color-primary-900)',
+        DEFAULT: 'var(--color-primary)',
+      },
+      secondary: {
+        50: 'var(--color-secondary-50)',
+        100: 'var(--color-secondary-100)',
+        200: 'var(--color-secondary-200)',
+        300: 'var(--color-secondary-300)',
+        400: 'var(--color-secondary-400)',
+        500: 'var(--color-secondary-500)',
+        600: 'var(--color-secondary-600)',
+        700: 'var(--color-secondary-700)',
+        800: 'var(--color-secondary-800)',
+        900: 'var(--color-secondary-900)',
+        DEFAULT: 'var(--color-secondary)',
+      },
     },
     extend: {
-      screens: {
-        'sm-max-h': {
-          raw: `(max-height: ${defaultTheme.screens.sm})`,
+      textColor: {
+        on: {
+          primary: 'var(--color-on-primary)',
+          secondary: 'var(--color-on-secondary)',
+          background: 'var(--color-on-background)',
+          surface: 'var(--color-on-surface)',
+          error: 'var(--color-on-error)',
         },
+      },
+      backgroundColor: {
+        background: 'var(--color-background)',
+        surface: 'var(--color-surface)',
+        error: 'var(--color-error)',
+      },
+      borderColor: {
+        ...defaultTheme.borderColor,
+        surface: 'var(--color-surface)',
       },
     },
   },
