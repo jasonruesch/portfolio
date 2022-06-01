@@ -45,6 +45,7 @@ module.exports = {
     },
     fontWeight: {
       normal: defaultTheme.fontWeight.normal,
+      medium: defaultTheme.fontWeight.medium,
       bold: defaultTheme.fontWeight.bold,
     },
     extend: {

@@ -9,8 +9,10 @@ import { animateScroll as scroll } from 'react-scroll';
 import { Logo, Nav, Sidebar, ThemeSelector } from '../../components';
 import { Sidenav, Sections } from '../../components/styleguide';
 import classNames from 'classnames';
+import { useActionKey } from '../../components/styleguide/hooks/useActionKey';
 
 const StyleGuide = () => {
+  const actionKey = useActionKey();
   const [searchInput, setSearchInput] = useState('');
   const [showTopButton, setShowTopButton] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -34,11 +36,22 @@ const StyleGuide = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+
+      const input = document.querySelector('#search');
+      (input as HTMLElement).focus();
+    }
+  };
+
   useEffect(() => {
     document.addEventListener('scroll', handleScroll);
+    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
@@ -93,7 +106,7 @@ const StyleGuide = () => {
                     <label htmlFor="search" className="sr-only">
                       Search
                     </label>
-                    <div className="focus-within:text-on-background relative w-full text-neutral-500">
+                    <div className="focus-within:text-on-background relative w-full max-w-sm text-neutral-500">
                       <div
                         className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
                         aria-hidden="true"
@@ -104,11 +117,25 @@ const StyleGuide = () => {
                         type="search"
                         id="search"
                         name="search"
-                        className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-0 placeholder-neutral-500 focus:outline-none focus:ring-0"
-                        placeholder="Search styles"
+                        className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-11 placeholder-neutral-500 focus:outline-none focus:ring-0"
+                        placeholder="Quick search..."
                         onChange={handleSearch}
                         autoFocus
                       />
+                      <div
+                        className="pointer-events-none absolute inset-y-0 right-0"
+                        aria-hidden="true"
+                      >
+                        <kbd className="font-sans font-semibold text-neutral-500">
+                          <abbr
+                            title={actionKey[1]}
+                            className="text-neutral-500 no-underline"
+                          >
+                            {actionKey[0]}
+                          </abbr>{' '}
+                          K
+                        </kbd>
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -149,11 +176,10 @@ const StyleGuide = () => {
       >
         <button
           className={classNames(
-            `bg-secondary text-on-secondary hover:bg-secondary-600 active:bg-secondary-500 focus:ring-secondary disabled:bg-secondary-300 rounded-full
-            border-transparent
-            p-2
-            text-sm font-bold focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white
-            disabled:text-neutral-500 dark:focus:ring-offset-black`,
+            `bg-button-primary text-button-primary border-button-primary hover:bg-button-primary-hover hover:text-button-primary-hover focus:ring-offset-button-primary-focus focus:ring-button-primary-focus disabled:bg-button-primary-disabled disabled:text-button-primary-disabled inline-flex
+            items-center rounded-full
+            border p-2 font-medium shadow-sm focus:outline-none
+            focus:ring-2 focus:ring-offset-2`,
             'fixed bottom-8 right-12 z-40 print:hidden'
           )}
           onClick={() =>

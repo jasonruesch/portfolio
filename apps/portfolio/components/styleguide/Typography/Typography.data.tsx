@@ -19,6 +19,7 @@ const typographyGroups: Group[] = [
           key="heading-h1-example"
           className="font-heading text-3xl font-bold"
         >
+          {/* <h1 className="font-heading text-3xl font-bold"> */}
           Etiam nec metus vitae lectus
         </h1>
         <h1 key="heading-h1-large" className="font-heading text-4xl font-bold">
@@ -141,7 +142,6 @@ const typographyGroups: Group[] = [
         key="body-extra-large"
         name="Extra Large"
         fontName="Inter"
-        fontWeight="Regular"
         fontSize="20px"
         lineHeight="28px"
       >
@@ -162,7 +162,6 @@ const typographyGroups: Group[] = [
         key="body-example"
         name="Default"
         fontName="Inter"
-        fontWeight="Regular"
         fontSize="16px"
         lineHeight="24px"
       >
@@ -183,7 +182,6 @@ const typographyGroups: Group[] = [
         key="body-small"
         name="Small"
         fontName="Inter"
-        fontWeight="Regular"
         fontSize="14px"
         lineHeight="20px"
       >
@@ -204,7 +202,6 @@ const typographyGroups: Group[] = [
         key="body-extra-small"
         name="Extra Small"
         fontName="Inter"
-        fontWeight="Regular"
         fontSize="12px"
         lineHeight="16px"
       >
@@ -227,26 +224,42 @@ const typographyGroups: Group[] = [
     name: 'Rich Text',
     items: [
       <TypographyItem
-        key="rich-text-regular"
-        name="Regular"
+        key="rich-text-normal"
+        name="Normal"
         fontName="Inter"
         fontWeight="400"
       >
-        <span key="rich-text-regular-example" className="font-regular">
+        <span key="rich-text-normal-example" className="font-normal">
           Lorem ipsum dolor sit amet consectetur
         </span>
         <code
-          key="rich-text-regular-description"
+          key="rich-text-normal-description"
           className="text-secondary mt-2 block text-sm"
         >
-          font-regular
+          font-normal
+        </code>
+      </TypographyItem>,
+      <TypographyItem
+        key="rich-text-medium"
+        name="Medium"
+        fontName="Inter"
+        fontWeight="500"
+      >
+        <span key="rich-text-medium-example" className="font-medium">
+          Lorem ipsum dolor sit amet consectetur
+        </span>
+        <code
+          key="rich-text-medium-description"
+          className="text-secondary mt-2 block text-sm"
+        >
+          font-medium
         </code>
       </TypographyItem>,
       <TypographyItem
         key="rich-text-bold"
         name="Bold"
         fontName="Inter"
-        fontWeight="600"
+        fontWeight="700"
       >
         <span key="rich-text-bold-example" className="font-bold">
           Lorem ipsum dolor sit amet consectetur
@@ -259,17 +272,38 @@ const typographyGroups: Group[] = [
         </code>
       </TypographyItem>,
       <TypographyItem key="rich-text-link" name="Link" fontName="Inter">
-        <a key="link" href="#" className="hover:text-cta block underline">
-          Lorem ipsum dolor sit amet consectetur
-        </a>
-        <a key="link-hover" href="#" className="text-cta block underline">
-          Lorem ipsum dolor sit amet consectetur
-        </a>
+        <div key="rich-text-link-example">
+          <a
+            key="rich-text-link-example-a"
+            href="#"
+            className="text-primary-600 hover:text-primary-500 dark:text-primary-500 dark:hover:text-primary-400 text-sm font-medium"
+          >
+            Lorem ipsum dolor sit amet consectetur
+            <span key="rich-text-link-example-span" aria-hidden="true">
+              {' '}
+              &rarr;
+            </span>
+          </a>
+        </div>
+        <div key="rich-text-link-example-hover">
+          <a
+            key="rich-text-link-example-hover-a"
+            href="#"
+            className="text-primary-500 dark:text-primary-400 text-sm font-medium"
+          >
+            Lorem ipsum dolor sit amet consectetur
+            <span key="rich-text-link-example-hover-span" aria-hidden="true">
+              {' '}
+              &rarr;
+            </span>
+          </a>
+        </div>
         <code
-          key="link-description"
+          key="rich-text-link-description"
           className="text-secondary mt-2 block text-sm"
         >
-          hover:text-cta underline
+          text-sm font-medium text-primary-600 hover:text-primary-500
+          dark:text-primary-500 dark:hover:text-primary-400
         </code>
       </TypographyItem>,
       <TypographyItem

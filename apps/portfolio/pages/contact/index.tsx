@@ -82,9 +82,9 @@ export default function Contact() {
                       onBlur={handleBlur}
                       autoComplete="name"
                       className={classNames(
-                        'focus:border-primary focus:ring-primary block w-full rounded-md border-neutral-300 text-black shadow-sm sm:text-sm',
+                        'bg-input focus:bg-input-focus focus:text-input-focus placeholder-input focus:placeholder-input-focus border-input focus:border-input-focus focus:ring-input-focus block w-full rounded-md shadow-sm focus:outline-none focus:ring-1 dark:shadow-black dark:focus:ring-0 sm:text-sm',
                         {
-                          'border-red-300 pr-10 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500':
+                          '!border-input-error !text-input-error !placeholder-input-error focus:!border-input-error-focus focus:!ring-input-error-focus pr-10':
                             !!errors.name && touched.name,
                         }
                       )}
@@ -98,13 +98,16 @@ export default function Contact() {
                     {!!errors.name && touched.name && (
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                         <ExclamationCircleIcon
-                          className="h-5 w-5 text-red-500"
+                          className="text-input-error-icon h-5 w-5"
                           aria-hidden="true"
                         />
                       </div>
                     )}
                   </div>
-                  <p className="mt-1 h-5 text-sm text-red-600" id="name-error">
+                  <p
+                    className="text-input-error-message mt-1 h-5 text-sm"
+                    id="name-error"
+                  >
                     {!!errors.name && touched.name && errors.name}
                   </p>
                 </div>
@@ -123,9 +126,9 @@ export default function Contact() {
                       onBlur={handleBlur}
                       autoComplete="email"
                       className={classNames(
-                        'focus:border-primary focus:ring-primary block w-full rounded-md border-neutral-300 text-black shadow-sm sm:text-sm',
+                        'bg-input focus:bg-input-focus focus:text-input-focus placeholder-input focus:placeholder-input-focus border-input focus:border-input-focus focus:ring-input-focus block w-full rounded-md shadow-sm focus:outline-none focus:ring-1 dark:shadow-black dark:focus:ring-0 sm:text-sm',
                         {
-                          'border-red-300 pr-10 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500':
+                          '!border-input-error !text-input-error !placeholder-input-error focus:!border-input-error-focus focus:!ring-input-error-focus pr-10':
                             !!errors.email && touched.email,
                         }
                       )}
@@ -139,13 +142,16 @@ export default function Contact() {
                     {!!errors.email && touched.email && (
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                         <ExclamationCircleIcon
-                          className="h-5 w-5 text-red-500"
+                          className="text-input-error-icon h-5 w-5"
                           aria-hidden="true"
                         />
                       </div>
                     )}
                   </div>
-                  <p className="mt-1 h-5 text-sm text-red-600" id="email-error">
+                  <p
+                    className="text-input-error-message mt-1 h-5 text-sm"
+                    id="email-error"
+                  >
                     {!!errors.email && touched.email && errors.email}
                   </p>
                 </div>
@@ -162,9 +168,9 @@ export default function Contact() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={classNames(
-                        'focus:border-primary focus:ring-primary block w-full rounded-md border-neutral-300 text-black shadow-sm sm:text-sm',
+                        'bg-input focus:bg-input-focus focus:text-input-focus placeholder-input focus:placeholder-input-focus border-input focus:border-input-focus focus:ring-input-focus block w-full rounded-md shadow-sm focus:outline-none focus:ring-1 dark:shadow-black dark:focus:ring-0 sm:text-sm',
                         {
-                          'border-red-300 pr-10 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500':
+                          '!border-input-error !text-input-error !placeholder-input-error focus:!border-input-error-focus focus:!ring-input-error-focus pr-10':
                             !!errors.message && touched.message,
                         }
                       )}
@@ -180,14 +186,14 @@ export default function Contact() {
                     {!!errors.message && touched.message && (
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                         <ExclamationCircleIcon
-                          className="h-5 w-5 text-red-500"
+                          className="text-input-error-icon h-5 w-5"
                           aria-hidden="true"
                         />
                       </div>
                     )}
                   </div>
                   <p
-                    className="mt-1 h-5 text-sm text-red-600"
+                    className="text-input-error-message mt-1 h-5 text-sm"
                     id="message-error"
                   >
                     {!!errors.message && touched.message && errors.message}
@@ -200,22 +206,23 @@ export default function Contact() {
               <div className="flex justify-end">
                 <Link href="/">
                   <a
-                    className="text-secondary hover:text-secondary-600 active:text-secondary-500 focus:ring-secondary rounded-md border-transparent bg-transparent py-2
-                    px-4 text-sm
-                    font-bold hover:bg-neutral-300
-                    focus:bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white active:bg-neutral-200 disabled:bg-neutral-100
-                    disabled:text-neutral-400 dark:focus:ring-offset-black"
+                    className="bg-button-secondary text-button-secondary border-button-secondary hover:bg-button-secondary-hover hover:text-button-secondary-hover focus:ring-offset-button-secondary-focus focus:ring-button-secondary-focus disabled:bg-button-secondary-disabled disabled:text-button-secondary-disabled inline-flex items-center rounded-md
+                    border px-4
+                    py-2 text-sm font-medium shadow-sm focus:outline-none
+                    focus:ring-2 focus:ring-offset-2"
                   >
                     Cancel
                   </a>
                 </Link>
                 <button
                   type="submit"
-                  className="bg-primary text-on-primary hover:bg-primary-600 active:bg-primary-500 focus:ring-primary disabled:bg-primary-300 ml-3 inline-block
-                  rounded-md
-                  border-transparent
-                  py-2 px-4 text-sm font-bold focus:outline-none focus:ring-2
-                  focus:ring-offset-1 focus:ring-offset-white disabled:text-neutral-600 dark:focus:ring-offset-black"
+                  className={classNames(
+                    `bg-button-primary text-button-primary border-button-primary hover:bg-button-primary-hover hover:text-button-primary-hover focus:ring-offset-button-primary-focus focus:ring-button-primary-focus disabled:bg-button-primary-disabled disabled:text-button-primary-disabled inline-flex items-center rounded-md
+                    border px-4
+                    py-2 text-sm font-medium shadow-sm focus:outline-none
+                    focus:ring-2 focus:ring-offset-2`,
+                    'ml-3'
+                  )}
                   disabled={!dirty || !isValid || isSubmitting}
                 >
                   Send

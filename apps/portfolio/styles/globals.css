@@ -17,7 +17,7 @@
     --color-primary-700: theme('colors.cyan.700'); /* White */
     --color-primary-800: theme('colors.cyan.800'); /* White */
     --color-primary-900: theme('colors.cyan.900'); /* White */
-    --color-primary: var(--color-primary-400);
+    --color-primary: var(--color-primary-500);
     /* Secondary */
     --color-secondary-50: theme('colors.amber.50'); /* Black */
     --color-secondary-100: theme('colors.amber.100'); /* Black */
@@ -29,17 +29,59 @@
     --color-secondary-700: theme('colors.amber.700'); /* White */
     --color-secondary-800: theme('colors.amber.800'); /* White */
     --color-secondary-900: theme('colors.amber.900'); /* White */
-    --color-secondary: var(--color-secondary-400);
+    --color-secondary: var(--color-secondary-500);
     /* Surface, Background and Error */
     --color-background: theme('colors.neutral.100'); /* Black */
     --color-surface: theme('colors.neutral.50'); /* Black */
     --color-error: theme('colors.red.500'); /* White */
     /* "On" Colors */
     --color-on-primary: theme('colors.black');
+    --color-on-primary-inverse: theme('colors.white');
     --color-on-secondary: theme('colors.black');
+    --color-on-secondary-inverse: theme('colors.white');
     --color-on-background: theme('colors.black');
     --color-on-surface: theme('colors.black');
     --color-on-error: theme('colors.white');
+
+    /*** Buttons ***/
+    /* Primary button */
+    --color-button-primary: theme('colors.cyan.600');
+    --color-button-primary-hover: theme('colors.cyan.700');
+    --color-button-primary-disabled: theme('colors.cyan.300');
+    --color-text-button-primary: theme('colors.black');
+    --color-text-button-primary-hover: theme('colors.white');
+    --color-text-button-primary-disabled: theme('colors.neutral.600');
+    --color-border-button-primary: theme('colors.transparent');
+    --color-ring-offset-button-primary-focus: theme('colors.white');
+    --color-ring-button-primary-focus: theme('colors.cyan.500');
+    /* Secondary button */
+    --color-button-secondary: theme('colors.white');
+    --color-button-secondary-hover: theme('colors.neutral.50');
+    --color-button-secondary-disabled: theme('colors.neutral.300');
+    --color-text-button-secondary: theme('colors.neutral.700');
+    --color-text-button-secondary-hover: theme('colors.neutral.700');
+    --color-text-button-secondary-disabled: theme('colors.neutral.600');
+    --color-border-button-secondary: theme('colors.neutral.300');
+    --color-ring-offset-button-secondary-focus: theme('colors.white');
+    --color-ring-button-secondary-focus: theme('colors.cyan.500');
+
+    /*** Inputs ***/
+    --color-input: theme('colors.white');
+    --color-input-focus: theme('colors.white');
+    --color-text-input-focus: theme('colors.neutral.900');
+    --color-placeholder-input: theme('colors.neutral.500');
+    --color-placeholder-input-focus: theme('colors.neutral.400');
+    --color-border-input: theme('colors.neutral.300');
+    --color-border-input-focus: theme('colors.primary.500');
+    --color-ring-input-focus: theme('colors.primary.500');
+    /* Error */
+    --color-text-input-error: theme('colors.red.500');
+    --color-text-input-error-icon: theme('colors.red.500');
+    --color-text-input-error-message: theme('colors.red.600');
+    --color-placeholder-input-error: theme('colors.red.300');
+    --color-border-input-error: theme('colors.red.300');
+    --color-border-input-error-focus: theme('colors.red.500');
+    --color-ring-input-error-focus: theme('colors.red.500');
   }
 
   .dark {
@@ -73,10 +115,43 @@
     --color-surface: theme('colors.neutral.800'); /* White */
     --color-error: theme('colors.red.400'); /* Black */
     /* "On" Colors */
-    --color-on-primary: theme('colors.black');
-    --color-on-secondary: theme('colors.black');
     --color-on-background: theme('colors.white');
     --color-on-surface: theme('colors.white');
     --color-on-error: theme('colors.black');
+
+    /*** Buttons ***/
+    /* Primary button */
+    --color-button-primary: theme('colors.violet.500');
+    --color-button-primary-hover: theme('colors.violet.600');
+    --color-button-primary-disabled: theme('colors.violet.300');
+    --color-text-button-primary: theme('colors.black');
+    --color-text-button-primary-hover: theme('colors.white');
+    --color-text-button-primary-disabled: theme('colors.neutral.600');
+    --color-border-button-primary: theme('colors.transparent');
+    --color-ring-offset-button-primary-focus: theme('colors.neutral.800');
+    --color-ring-button-primary-focus: theme('colors.violet.500');
+    /* Secondary button */
+    --color-button-secondary: theme('colors.neutral.600');
+    --color-button-secondary-hover: theme('colors.neutral.700');
+    --color-button-secondary-disabled: theme('colors.neutral.300');
+    --color-text-button-secondary: theme('colors.white');
+    --color-text-button-secondary-hover: theme('colors.white');
+    --color-text-button-secondary-disabled: theme('colors.neutral.600');
+    --color-border-button-secondary: theme('colors.transparent');
+    --color-ring-offset-button-secondary-focus: theme('colors.neutral.800');
+    --color-ring-button-secondary-focus: theme('colors.violet.500');
+
+    /*** Inputs ***/
+    --color-input: theme('colors.neutral.700');
+    --color-placeholder-input: theme('colors.neutral.400');
+    --color-placeholder-input-focus: theme('colors.neutral.500');
+    --color-border-input: theme('colors.transparent');
+    --color-border-input-focus: theme('colors.white');
+    --color-ring-input-focus: theme('colors.white');
+    /* Error */
+    --color-text-input-error-icon: theme('colors.red.400');
+    --color-text-input-error-message: theme('colors.red.500');
+    --color-border-input-error-focus: theme('colors.red.400');
+    --color-ring-input-error-focus: theme('colors.red.400');
   }
 }

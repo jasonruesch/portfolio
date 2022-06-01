@@ -19,12 +19,16 @@ export default function About() {
         </p>
         <p>
           I am always open to connect. If you are interested in learning more
-          about me or how I can help you with your web needs,{' '}
-          <Link href="/contact">
-            <a className="hover:text-primary underline">please reach out</a>
-          </Link>
-          .
+          about me or how I can help you with your web needs, please reach out.
         </p>
+        <div>
+          <Link href="/contact">
+            <a className="text-primary-600 hover:text-primary-500 text-sm font-medium">
+              Get in touch
+              <span aria-hidden="true"> &rarr;</span>
+            </a>
+          </Link>
+        </div>
       </div>
     </Layout>
   );

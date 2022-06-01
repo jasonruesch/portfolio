@@ -1,4 +1,5 @@
 import { ChevronUpIcon } from '@heroicons/react/solid';
+import classNames from 'classnames';
 import { Group } from '../models';
 import { ButtonCard } from './ButtonCard';
 
@@ -9,38 +10,40 @@ const buttonGroups: Group[] = [
       <ButtonCard
         key="primary-button"
         name="Primary Buttons"
-        className="bg-primary text-on-primary rounded-md border-transparent py-2 px-4 text-sm font-bold"
-        hoverClassName="hover:bg-primary-600"
-        hoverWithoutStateClassName="bg-primary-600"
-        activeClassName="active:bg-primary-500"
-        activeWithoutStateClassName="bg-primary-500"
-        focusClassName="focus:ring-primary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
-        focusWithoutStateClassName="ring-primary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
-        disabledClassName="disabled:bg-primary-300 disabled:text-neutral-600"
+        className={classNames(
+          'inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm',
+          'bg-button-primary text-button-primary border-button-primary'
+        )}
+        hoverClassName="hover:bg-button-primary-hover hover:text-button-primary-hover"
+        hoverWithoutStateClassName="bg-button-primary-hover text-button-primary-hover"
+        focusClassName={classNames(
+          'focus:outline-none focus:ring-2 focus:ring-offset-2',
+          'focus:ring-offset-button-primary-focus focus:ring-button-primary-focus'
+        )}
+        focusWithoutStateClassName={classNames(
+          'outline-none ring-2 ring-offset-2',
+          'ring-offset-button-primary-focus ring-button-primary-focus'
+        )}
+        disabledClassName="disabled:bg-button-primary-disabled disabled:text-button-primary-disabled"
       />,
       <ButtonCard
-        key="secondar-button"
+        key="secondary-button"
         name="Secondary Buttons"
-        className="bg-secondary text-on-secondary rounded-md border-transparent py-2 px-4 text-sm font-bold"
-        hoverClassName="hover:bg-secondary-600"
-        hoverWithoutStateClassName="bg-secondary-600"
-        activeClassName="active:bg-secondary-500"
-        activeWithoutStateClassName="bg-secondary-500"
-        focusClassName="focus:ring-secondary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
-        focusWithoutStateClassName="ring-secondary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
-        disabledClassName="disabled:bg-secondary-300 disabled:text-neutral-600"
-      />,
-      <ButtonCard
-        key="tertiary-button"
-        name="Tertiary Buttons"
-        className="text-secondary rounded-md border-transparent bg-transparent py-2 px-4 text-sm font-bold"
-        hoverClassName="hover:bg-neutral-300 hover:text-secondary-600"
-        hoverWithoutStateClassName="bg-neutral-300 text-secondary-600"
-        activeClassName="active:bg-neutral-200 active:text-secondary-500"
-        activeWithoutStateClassName="bg-neutral-200 text-secondary-500"
-        focusClassName="focus:bg-transparent focus:ring-secondary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
-        focusWithoutStateClassName="ring-secondary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
-        disabledClassName="disabled:bg-neutral-100 disabled:text-neutral-400"
+        className={classNames(
+          'inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm',
+          'bg-button-secondary text-button-secondary border-button-secondary'
+        )}
+        hoverClassName="hover:bg-button-secondary-hover hover:text-button-secondary-hover"
+        hoverWithoutStateClassName="bg-button-secondary-hover text-button-secondary-hover"
+        focusClassName={classNames(
+          'focus:outline-none focus:ring-2 focus:ring-offset-2',
+          'focus:ring-offset-button-secondary-focus focus:ring-button-secondary-focus'
+        )}
+        focusWithoutStateClassName={classNames(
+          'outline-none ring-2 ring-offset-2',
+          'ring-offset-button-secondary-focus ring-button-secondary-focus'
+        )}
+        disabledClassName="disabled:bg-button-secondary-disabled disabled:text-button-secondary-disabled"
       />,
     ],
   },
@@ -48,30 +51,44 @@ const buttonGroups: Group[] = [
     name: 'Icon Buttons',
     items: [
       <ButtonCard
-        key="primary-icon-button"
-        name="Primary Icon Buttons"
-        className="bg-primary text-on-primary rounded-full border-transparent p-2 text-sm font-bold"
-        hoverClassName="hover:bg-primary-600"
-        hoverWithoutStateClassName="bg-primary-600"
-        activeClassName="active:bg-primary-500"
-        activeWithoutStateClassName="bg-primary-500"
-        focusClassName="focus:ring-primary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
-        focusWithoutStateClassName="ring-primary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
-        disabledClassName="disabled:bg-primary-300 disabled:text-neutral-500"
+        key="primary-button"
+        name="Primary Buttons"
+        className={classNames(
+          'inline-flex items-center rounded-full border p-2 font-medium shadow-sm',
+          'bg-button-primary text-button-primary border-button-primary'
+        )}
+        hoverClassName="hover:bg-button-primary-hover hover:text-button-primary-hover"
+        hoverWithoutStateClassName="bg-button-primary-hover text-button-primary-hover"
+        focusClassName={classNames(
+          'focus:outline-none focus:ring-2 focus:ring-offset-2',
+          'focus:ring-offset-button-primary-focus focus:ring-button-primary-focus'
+        )}
+        focusWithoutStateClassName={classNames(
+          'outline-none ring-2 ring-offset-2',
+          'ring-offset-button-primary-focus ring-button-primary-focus'
+        )}
+        disabledClassName="disabled:bg-button-primary-disabled disabled:text-button-primary-disabled"
       >
         <ChevronUpIcon className="h-12 w-12" />
       </ButtonCard>,
       <ButtonCard
-        key="secondary-icon-button"
-        name="Secondary Icon Buttons"
-        className="bg-secondary text-on-secondary rounded-full border-transparent p-2 text-sm font-bold"
-        hoverClassName="hover:bg-secondary-600"
-        hoverWithoutStateClassName="bg-secondary-600"
-        activeClassName="active:bg-secondary-500"
-        activeWithoutStateClassName="bg-secondary-500"
-        focusClassName="focus:ring-secondary focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-black"
-        focusWithoutStateClassName="ring-secondary outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-black"
-        disabledClassName="disabled:bg-secondary-300 disabled:text-neutral-500"
+        key="secondary-button"
+        name="Secondary Buttons"
+        className={classNames(
+          'inline-flex items-center rounded-full border p-2 font-medium shadow-sm',
+          'bg-button-secondary text-button-secondary border-button-secondary'
+        )}
+        hoverClassName="hover:bg-button-secondary-hover hover:text-button-secondary-hover"
+        hoverWithoutStateClassName="bg-button-secondary-hover text-button-secondary-hover"
+        focusClassName={classNames(
+          'focus:outline-none focus:ring-2 focus:ring-offset-2',
+          'focus:ring-offset-button-secondary-focus focus:ring-button-secondary-focus'
+        )}
+        focusWithoutStateClassName={classNames(
+          'outline-none ring-2 ring-offset-2',
+          'ring-offset-button-secondary-focus ring-button-secondary-focus'
+        )}
+        disabledClassName="disabled:bg-button-secondary-disabled disabled:text-button-secondary-disabled"
       >
         <ChevronUpIcon className="h-12 w-12" />
       </ButtonCard>,

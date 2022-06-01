@@ -42,6 +42,27 @@ module.exports = {
       },
     },
     extend: {
+      backgroundColor: {
+        background: 'var(--color-background)',
+        surface: 'var(--color-surface)',
+        error: 'var(--color-error)',
+        button: {
+          primary: {
+            DEFAULT: 'var(--color-button-primary)',
+            hover: 'var(--color-button-primary-hover)',
+            disabled: 'var(--color-button-primary-disabled)',
+          },
+          secondary: {
+            DEFAULT: 'var(--color-button-secondary)',
+            hover: 'var(--color-button-secondary-hover)',
+            disabled: 'var(--color-button-secondary-disabled)',
+          },
+        },
+        input: {
+          DEFAULT: 'var(--color-input)',
+          focus: 'var(--color-input-focus)',
+        },
+      },
       textColor: {
         on: {
           primary: 'var(--color-on-primary)',
@@ -50,15 +71,75 @@ module.exports = {
           surface: 'var(--color-on-surface)',
           error: 'var(--color-on-error)',
         },
+        button: {
+          primary: {
+            DEFAULT: 'var(--color-text-button-primary)',
+            hover: 'var(--color-text-button-primary-hover)',
+            disabled: 'var(--color-text-button-primary-disabled)',
+          },
+          secondary: {
+            DEFAULT: 'var(--color-text-button-secondary)',
+            hover: 'var(--color-text-button-secondary-hover)',
+            disabled: 'var(--color-text-button-secondary-disabled)',
+          },
+        },
+        input: {
+          focus: 'var(--color-text-input-focus)',
+          error: {
+            DEFAULT: 'var(--color-text-input-error)',
+            icon: 'var(--color-text-input-error-icon)',
+            message: 'var(--color-text-input-error-message)',
+          },
+        },
       },
-      backgroundColor: {
-        background: 'var(--color-background)',
-        surface: 'var(--color-surface)',
-        error: 'var(--color-error)',
+      placeholderColor: {
+        input: {
+          DEFAULT: 'var(--color-placeholder-input)',
+          focus: 'var(--color-placeholder-input-focus)',
+          error: 'var(--color-placeholder-input-error)',
+        },
       },
       borderColor: {
         ...defaultTheme.borderColor,
         surface: 'var(--color-surface)',
+        button: {
+          primary: 'var(--color-border-button-primary)',
+          secondary: 'var(--color-border-button-secondary)',
+        },
+        input: {
+          DEFAULT: 'var(--color-border-input)',
+          focus: 'var(--color-border-input-focus)',
+          error: {
+            DEFAULT: 'var(--color-border-input-error)',
+            focus: 'var(--color-border-input-error-focus)',
+          },
+        },
+      },
+      ringOffsetColor: {
+        button: {
+          primary: {
+            focus: 'var(--color-ring-offset-button-primary-focus)',
+          },
+          secondary: {
+            focus: 'var(--color-ring-offset-button-secondary-focus)',
+          },
+        },
+      },
+      ringColor: {
+        button: {
+          primary: {
+            focus: 'var(--color-ring-button-primary-focus)',
+          },
+          secondary: {
+            focus: 'var(--color-ring-button-secondary-focus)',
+          },
+        },
+        input: {
+          focus: 'var(--color-ring-input-focus)',
+          error: {
+            focus: 'var(--color-ring-input-error-focus)',
+          },
+        },
       },
     },
   },

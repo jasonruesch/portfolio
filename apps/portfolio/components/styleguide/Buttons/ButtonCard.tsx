@@ -8,8 +8,6 @@ export const ButtonCard = ({
   className,
   hoverClassName,
   hoverWithoutStateClassName,
-  activeClassName,
-  activeWithoutStateClassName,
   focusClassName,
   focusWithoutStateClassName,
   disabledClassName,
@@ -19,8 +17,6 @@ export const ButtonCard = ({
   className: string;
   hoverClassName?: string;
   hoverWithoutStateClassName?: string;
-  activeClassName?: string;
-  activeWithoutStateClassName?: string;
   focusClassName?: string;
   focusWithoutStateClassName?: string;
   disabledClassName?: string;
@@ -34,7 +30,6 @@ export const ButtonCard = ({
               className={classNames(
                 className,
                 hoverClassName,
-                activeClassName,
                 focusClassName,
                 disabledClassName
               )}
@@ -45,11 +40,6 @@ export const ButtonCard = ({
               className={classNames(className, hoverWithoutStateClassName)}
             >
               {children ? children : 'Hover'}
-            </button>
-            <button
-              className={classNames(className, activeWithoutStateClassName)}
-            >
-              {children ? children : 'Active'}
             </button>
             <button
               className={classNames(className, focusWithoutStateClassName)}
@@ -71,9 +61,6 @@ export const ButtonCard = ({
           <div className="text-secondary mt-2 space-y-1 text-xs">
             <code className="block">{className}</code>
             {hoverClassName && <code className="block">{hoverClassName}</code>}
-            {activeClassName && (
-              <code className="block">{activeClassName}</code>
-            )}
             {focusClassName && <code className="block">{focusClassName}</code>}
             {disabledClassName && (
               <code className="block">{disabledClassName}</code>

@@ -87,7 +87,7 @@ export function ThemeSelector({ className }: { className?: string }) {
             {({ active }) => (
               <button
                 className={classNames(
-                  active ? 'bg-neutral-800/20 dark:bg-neutral-100/20' : '',
+                  active ? 'bg-neutral-400/20 dark:bg-neutral-100/20' : '',
                   'flex w-full items-center px-4 py-2 text-sm'
                 )}
                 onClick={() => activateMode('system')}
