@@ -139,7 +139,7 @@ const typographyGroups: Group[] = [
     items: [
       <TypographyItem
         key="body-extra-large"
-        name="Body Extra Large"
+        name="Extra Large"
         fontName="Inter"
         fontWeight="Regular"
         fontSize="20px"
@@ -160,7 +160,7 @@ const typographyGroups: Group[] = [
       </TypographyItem>,
       <TypographyItem
         key="body-example"
-        name="Body Default"
+        name="Default"
         fontName="Inter"
         fontWeight="Regular"
         fontSize="16px"
@@ -181,7 +181,7 @@ const typographyGroups: Group[] = [
       </TypographyItem>,
       <TypographyItem
         key="body-small"
-        name="Body Small"
+        name="Small"
         fontName="Inter"
         fontWeight="Regular"
         fontSize="14px"
@@ -202,7 +202,7 @@ const typographyGroups: Group[] = [
       </TypographyItem>,
       <TypographyItem
         key="body-extra-small"
-        name="Body Extra Small"
+        name="Extra Small"
         fontName="Inter"
         fontWeight="Regular"
         fontSize="12px"

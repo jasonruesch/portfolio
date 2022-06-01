@@ -211,11 +211,11 @@ export default function Contact() {
                 </Link>
                 <button
                   type="submit"
-                  className="bg-primary text-on-primary hover:bg-primary-600 active:bg-primary-500 focus:ring-primary disabled:bg-primary-300 rounded-md border-transparent
-                  py-2
-                  px-4
-                  text-sm font-bold focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white
-                  disabled:text-neutral-600 dark:focus:ring-offset-black"
+                  className="bg-primary text-on-primary hover:bg-primary-600 active:bg-primary-500 focus:ring-primary disabled:bg-primary-300 ml-3 inline-block
+                  rounded-md
+                  border-transparent
+                  py-2 px-4 text-sm font-bold focus:outline-none focus:ring-2
+                  focus:ring-offset-1 focus:ring-offset-white disabled:text-neutral-600 dark:focus:ring-offset-black"
                   disabled={!dirty || !isValid || isSubmitting}
                 >
                   Send
