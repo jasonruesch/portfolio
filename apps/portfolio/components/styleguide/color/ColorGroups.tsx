@@ -248,7 +248,7 @@ const greenColorGroup: Group = {
   )),
 };
 
-const colorSection = {
+const colorGroups = {
   name: 'Colors',
   groups: [
     themeColorGroup,
@@ -263,4 +263,4 @@ const colorSection = {
   ],
 };
 
-export { colorSection };
+export { colorGroups };

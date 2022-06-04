@@ -3,14 +3,15 @@ import classNames from 'classnames';
 import { Group } from '../models';
 import { ButtonCard } from './ButtonCard';
 
-const buttonGroups: Group[] = [
+const groups: Group[] = [
   {
     name: 'Buttons',
     items: [
       <ButtonCard
         key="primary-button"
-        name="Primary Buttons"
-        className={classNames(
+        name="Primary Button"
+        className="button-primary"
+        baseClassName={classNames(
           'inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm',
           'bg-button-primary text-button-primary border-button-primary'
         )}
@@ -28,8 +29,9 @@ const buttonGroups: Group[] = [
       />,
       <ButtonCard
         key="secondary-button"
-        name="Secondary Buttons"
-        className={classNames(
+        name="Secondary Button"
+        className="button-secondary"
+        baseClassName={classNames(
           'inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm',
           'bg-button-secondary text-button-secondary border-button-secondary'
         )}
@@ -51,9 +53,10 @@ const buttonGroups: Group[] = [
     name: 'Icon Buttons',
     items: [
       <ButtonCard
-        key="primary-button"
-        name="Primary Buttons"
-        className={classNames(
+        key="primary-icon-button"
+        name="Primary Icon Button"
+        className="icon-button-primary"
+        baseClassName={classNames(
           'inline-flex items-center rounded-full border p-2 font-medium shadow-sm',
           'bg-button-primary text-button-primary border-button-primary'
         )}
@@ -72,9 +75,10 @@ const buttonGroups: Group[] = [
         <ChevronUpIcon className="h-12 w-12" />
       </ButtonCard>,
       <ButtonCard
-        key="secondary-button"
-        name="Secondary Buttons"
-        className={classNames(
+        key="secondary-icon-button"
+        name="Secondary Icon Button"
+        className="icon-button-secondary"
+        baseClassName={classNames(
           'inline-flex items-center rounded-full border p-2 font-medium shadow-sm',
           'bg-button-secondary text-button-secondary border-button-secondary'
         )}
@@ -96,9 +100,9 @@ const buttonGroups: Group[] = [
   },
 ];
 
-const buttonSection = {
+const buttonGroups = {
   name: 'Buttons',
-  groups: buttonGroups,
+  groups: groups,
 };
 
-export { buttonSection };
+export { buttonGroups };

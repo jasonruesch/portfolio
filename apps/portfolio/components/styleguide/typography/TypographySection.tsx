@@ -1,8 +1,7 @@
-import { ColorSwatchIcon } from '@heroicons/react/outline';
 import { Group } from '../models';
-import { colorSection } from './Colors.data';
+import { typographyGroups } from './TypographyGroups';
 
-export function Colors({
+export function TypographySection({
   className,
   groups,
 }: {
@@ -11,22 +10,24 @@ export function Colors({
 }) {
   return (
     groups?.length > 0 && (
-      <section id="colors" className={className}>
+      <section id="typography" className={className}>
         <h2 className="font-heading flex items-center pt-4 text-2xl font-bold lg:text-3xl">
-          <ColorSwatchIcon
-            className="mr-4 h-6 w-6 flex-shrink-0"
+          <span
+            className="material-symbols-outlined mr-4 h-6 w-6 flex-shrink-0"
             aria-hidden="true"
-          />
-          {colorSection.name}
+          >
+            text_fields
+          </span>
+          {typographyGroups.name}
         </h2>
 
         {groups.map((group: Group, i: number) => (
           <div
-            key={`colors-${i}`}
+            key={`typography-${i}`}
             className="border-b border-black border-opacity-20 py-8 last-of-type:border-b-0 dark:border-white dark:border-opacity-20 print:break-inside-avoid print:border-b-0"
           >
-            <h3 className="font-heading text-2xl font-bold">{group.name}</h3>
-            <div className="mt-2 grid grid-cols-1 gap-5 text-sm print:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="bg-surface text-on-surface rounded-md p-4">
+              <h3 className="font-heading text-2xl font-bold">{group.name}</h3>
               {group.items.map((item) => item)}
             </div>
           </div>

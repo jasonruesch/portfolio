@@ -1,7 +1,7 @@
 import { Group } from '../models';
 import { TypographyItem } from './TypographyItem';
 
-const typographyGroups: Group[] = [
+const groups: Group[] = [
   {
     name: 'Headings',
     items: [
@@ -350,9 +350,9 @@ const typographyGroups: Group[] = [
   },
 ];
 
-const typographySection = {
+const typographyGroups = {
   name: 'Typography',
-  groups: typographyGroups,
+  groups: groups,
 };
 
-export { typographySection };
+export { typographyGroups };

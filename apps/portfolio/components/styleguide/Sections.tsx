@@ -1,23 +1,26 @@
 import { useEffect, useState } from 'react';
-import { Buttons, buttonSection } from './Buttons';
-import { Colors, colorSection } from './Colors';
+import { ButtonSection, buttonGroups } from './button';
+import { ColorSection, colorGroups } from './color';
 import { useFilterGroups } from './hooks/useFilterGroups';
-import { Shadows, shadowSection } from './Shadows';
-import { Typography, typographySection } from './Typography';
+import { ShadowSection, shadowGroups } from './shadow';
+import { TypographySection, typographyGroups } from './typography';
 
 export function Sections({ searchInput }: { searchInput: string }) {
-  const colorGroups = useFilterGroups(searchInput, colorSection);
-  const typographyGroups = useFilterGroups(searchInput, typographySection);
-  const shadowGroups = useFilterGroups(searchInput, shadowSection);
-  const buttonGroups = useFilterGroups(searchInput, buttonSection);
+  const colorFilteredGroups = useFilterGroups(searchInput, colorGroups);
+  const typographyFilteredGroups = useFilterGroups(
+    searchInput,
+    typographyGroups
+  );
+  const shadowFilteredGroups = useFilterGroups(searchInput, shadowGroups);
+  const buttonFilteredGroups = useFilterGroups(searchInput, buttonGroups);
   const [hasResults, setHasResults] = useState(true);
 
   useEffect(() => {
     const hasResults =
-      colorGroups?.length > 0 ||
-      typographyGroups?.length > 0 ||
-      shadowGroups?.length > 0 ||
-      buttonGroups?.length > 0;
+      colorFilteredGroups?.length > 0 ||
+      typographyFilteredGroups?.length > 0 ||
+      shadowFilteredGroups?.length > 0 ||
+      buttonFilteredGroups?.length > 0;
     setHasResults(hasResults);
 
     // Apply the min-h-screen class to the last section
@@ -29,10 +32,10 @@ export function Sections({ searchInput }: { searchInput: string }) {
       ?.classList.toggle('min-h-screen', true);
   }, [
     setHasResults,
-    colorGroups,
-    typographyGroups,
-    shadowGroups,
-    buttonGroups,
+    colorFilteredGroups,
+    typographyFilteredGroups,
+    shadowFilteredGroups,
+    buttonFilteredGroups,
   ]);
 
   // Each seciton should have top padding to account for fixed header
@@ -41,21 +44,21 @@ export function Sections({ searchInput }: { searchInput: string }) {
   return (
     <>
       <div className="divide-y-4 divide-black divide-opacity-20 dark:divide-white dark:divide-opacity-20 print:divide-none">
-        <Colors className="pt-16" groups={colorGroups} />
+        <ColorSection className="pt-16" groups={colorFilteredGroups} />
 
-        <Typography
+        <TypographySection
           className="mt-8 pt-8 print:break-before-page"
-          groups={typographyGroups}
+          groups={typographyFilteredGroups}
         />
 
-        <Shadows
+        <ShadowSection
           className="mt-8 pt-8 print:break-before-page"
-          groups={shadowGroups}
+          groups={shadowFilteredGroups}
         />
 
-        <Buttons
+        <ButtonSection
           className="mt-8 pt-8 print:break-before-page"
-          groups={buttonGroups}
+          groups={buttonFilteredGroups}
         />
       </div>
 

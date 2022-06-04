@@ -24,6 +24,7 @@ module.exports = {
       teal: colors.teal,
     },
     boxShadow: {
+      sm: defaultTheme.boxShadow.sm,
       DEFAULT: defaultTheme.boxShadow.DEFAULT,
       md: defaultTheme.boxShadow.md,
       lg: defaultTheme.boxShadow.lg,
