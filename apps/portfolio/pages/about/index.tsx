@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import Link from 'next/link';
 import { Layout } from '../../components';
 
@@ -5,7 +6,12 @@ export default function About() {
   return (
     <Layout>
       <div className="space-y-4">
-        <h1 className="font-heading text-secondary text-3xl font-bold lg:text-4xl">
+        <h1
+          className={classNames(
+            'font-heading text-secondary text-3xl font-bold',
+            'lg:text-4xl',
+          )}
+        >
           About Me
         </h1>
         <p>
@@ -24,7 +30,12 @@ export default function About() {
 
         <div>
           <Link href="/contact">
-            <a className="text-primary-600 hover:text-primary-500 text-sm font-medium">
+            <a
+              className={classNames(
+                'text-primary-600 text-sm font-medium',
+                'hover:text-primary-500',
+              )}
+            >
               Get in touch
               <span aria-hidden="true"> &rarr;</span>
             </a>

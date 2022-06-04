@@ -79,26 +79,43 @@ const StyleGuide = () => {
             show={resizeHeader}
             unmount={false}
             enter="ease-in-out duration-300"
-            enterTo="lg:h-16 lg:pb-0 lg:items-center shadow dark:shadow-black"
+            enterTo={classNames(
+              'shadow',
+              'dark:shadow-black',
+              'lg:h-16 lg:pb-0 lg:items-center',
+            )}
             leave="ease-in-out duration-300"
             leaveTo="lg:h-24 lg:pb-8 lg:items-start"
           >
-            <header className="fixed top-0 left-0 right-0 z-10 !flex h-16 items-center bg-white dark:bg-black print:!hidden lg:left-[288px] lg:h-24 lg:items-end lg:pb-8">
+            <header
+              className={classNames(
+                'fixed top-0 left-0 right-0 z-10 !flex h-16 items-center bg-white',
+                'dark:bg-black',
+                'lg:left-[288px] lg:h-24 lg:items-end lg:pb-8',
+                'print:!hidden',
+              )}
+            >
               <button
                 type="button"
-                className="px-4 focus:outline-none lg:hidden"
+                className={classNames(
+                  'px-4',
+                  'focus:outline-none',
+                  'lg:hidden',
+                )}
                 onClick={() => setSidebarOpen(true)}
               >
                 <span className="sr-only">Open sidebar</span>
                 <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
               </button>
 
-              <div className="flex w-full lg:px-8">
+              <div className={classNames('flex w-full', 'lg:px-8')}>
                 <div className="flex-1">
                   <Link href="/">
-                    <a className="hover:text-primary mr-4">
+                    <a className={classNames('mr-4', 'hover:text-primary')}>
                       &larr;{' '}
-                      <span className="hidden sm:inline">Back to Home</span>
+                      <span className={classNames('hidden', 'sm:inline')}>
+                        Back to Home
+                      </span>
                     </a>
                   </Link>
                 </div>
@@ -107,7 +124,12 @@ const StyleGuide = () => {
                   <label htmlFor="search" className="sr-only">
                     Search
                   </label>
-                  <div className="focus-within:text-on-background relative w-full max-w-sm text-neutral-500">
+                  <div
+                    className={classNames(
+                      'relative w-full max-w-sm text-neutral-500',
+                      'focus-within:text-on-background',
+                    )}
+                  >
                     <div
                       className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
                       aria-hidden="true"
@@ -118,7 +140,10 @@ const StyleGuide = () => {
                       type="search"
                       id="search"
                       name="search"
-                      className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-11 placeholder-neutral-500 focus:outline-none focus:ring-0"
+                      className={classNames(
+                        'block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-11 placeholder-neutral-500',
+                        'focus:outline-none focus:ring-0',
+                      )}
                       placeholder="Quick search..."
                       onChange={handleSearch}
                       autoFocus
@@ -146,16 +171,43 @@ const StyleGuide = () => {
 
           <main className="flex-1">
             {/* Page header */}
-            <header className="-mb-16 bg-white pt-16 shadow dark:bg-black dark:shadow-black print:pt-0 print:shadow-none lg:pt-24">
-              <div className="p-3 lg:mx-auto lg:max-w-screen-lg lg:px-8">
-                <Logo className="mb-4 hidden h-[30px] w-[224px] print:block" />
-                <h1 className="font-heading text-3xl font-bold lg:text-4xl">
+            <header
+              className={classNames(
+                '-mb-16 bg-white pt-16 shadow',
+                'dark:bg-black dark:shadow-black',
+                'lg:pt-24',
+                'print:pt-0 print:shadow-none',
+              )}
+            >
+              <div
+                className={classNames(
+                  'p-3',
+                  'lg:mx-auto lg:max-w-screen-lg lg:px-8',
+                )}
+              >
+                <Logo
+                  className={classNames(
+                    'mb-4 hidden h-[30px] w-[224px]',
+                    'print:block',
+                  )}
+                />
+                <h1
+                  className={classNames(
+                    'font-heading text-3xl font-bold',
+                    'lg:text-4xl',
+                  )}
+                >
                   Style Guide
                 </h1>
               </div>
             </header>
 
-            <div className="px-4 lg:mx-auto lg:max-w-screen-lg lg:px-8">
+            <div
+              className={classNames(
+                'px-4',
+                'lg:mx-auto lg:max-w-screen-lg lg:px-8',
+              )}
+            >
               <Sections searchInput={searchInput} />
             </div>
           </main>
@@ -176,11 +228,8 @@ const StyleGuide = () => {
       >
         <button
           className={classNames(
-            `bg-button-primary text-button-primary border-button-primary hover:bg-button-primary-hover hover:text-button-primary-hover focus:ring-offset-button-primary-focus focus:ring-button-primary-focus disabled:bg-button-primary-disabled disabled:text-button-primary-disabled inline-flex
-            items-center rounded-full
-            border p-2 font-medium shadow-sm focus:outline-none
-            focus:ring-2 focus:ring-offset-2`,
-            'fixed bottom-8 right-12 z-40 print:hidden'
+            'icon-button-primary fixed bottom-8 right-12 z-40',
+            'print:hidden',
           )}
           onClick={() =>
             scroll.scrollToTop({

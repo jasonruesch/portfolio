@@ -57,8 +57,10 @@ export function Nav({
     (isSidenav && (
       <nav
         className={classNames(
-          'flex flex-1 flex-col divide-y divide-black divide-opacity-20 overflow-y-auto px-2 dark:divide-white dark:divide-opacity-20 lg:px-4',
-          className
+          'flex flex-1 flex-col divide-y divide-black divide-opacity-20 overflow-y-auto px-2',
+          'dark:divide-white dark:divide-opacity-20',
+          'lg:px-4',
+          className,
         )}
         aria-label="Navigation"
       >
@@ -67,10 +69,12 @@ export function Nav({
             <Link key={item.href} href={item.href}>
               <a
                 className={classNames(
-                  'flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:bg-neutral-400/20 dark:hover:bg-neutral-100/20',
+                  'flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6',
+                  'hover:bg-neutral-400/20',
+                  'dark:hover:bg-neutral-100/20',
                   {
                     '!bg-sidebar-active': route === item.href,
-                  }
+                  },
                 )}
               >
                 <div className="mr-4 h-6 w-6 flex-shrink-0" aria-hidden="true">
@@ -89,7 +93,11 @@ export function Nav({
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:bg-neutral-400/20 dark:hover:bg-neutral-100/20"
+                className={classNames(
+                  'flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6',
+                  'hover:bg-neutral-400/20',
+                  'dark:hover:bg-neutral-100/20',
+                )}
                 onClick={onNavItemClick}
               >
                 <div className="mr-4 h-6 w-6 flex-shrink-0" aria-hidden="true">
@@ -110,7 +118,7 @@ export function Nav({
           .filter((item) => item.href !== '/')
           .map((item) => (
             <Link key={item.href} href={item.href}>
-              <a className="hover:text-primary hidden lg:inline">{item.name}</a>
+              <a className="hover:text-primary">{item.name}</a>
             </Link>
           ))}
       </nav>

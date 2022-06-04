@@ -23,16 +23,25 @@ export function Notification({
       show={show}
       as={Fragment}
       enter="transform ease-out duration-300 transition"
-      enterFrom="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 sm-max-h:translate-y-2 sm-max-h:translate-x-auto"
-      enterTo="translate-y-0 opacity-100 sm:translate-x-0 sm-max-h:translate-x-auto"
+      enterFrom={classNames(
+        'translate-y-2 opacity-0',
+        'sm:translate-y-0 sm:translate-x-2',
+        'sm-max-h:translate-y-2 sm-max-h:translate-x-auto',
+      )}
+      enterTo={classNames(
+        'translate-y-0 opacity-100',
+        'sm:translate-x-0',
+        'sm-max-h:translate-x-auto',
+      )}
       leave="transition ease-in duration-100"
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
       <div
         className={classNames(
-          'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-opacity-50',
-          className
+          'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5',
+          'dark:ring-opacity-50',
+          className,
         )}
       >
         <div className="p-4">
@@ -43,7 +52,11 @@ export function Notification({
             <div className="ml-4 flex flex-shrink-0">
               <button
                 type="button"
-                className="focus:ring-primary inline-flex rounded-md bg-inherit text-neutral-400 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                className={classNames(
+                  'inline-flex rounded-md bg-inherit text-neutral-400',
+                  'hover:text-neutral-500',
+                  'focus:ring-primary focus:outline-none focus:ring-2 focus:ring-offset-2',
+                )}
                 onClick={() => {
                   onHide();
                 }}
@@ -56,6 +69,6 @@ export function Notification({
         </div>
       </div>
     </Transition>,
-    live
+    live,
   );
 }

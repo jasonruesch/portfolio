@@ -31,11 +31,15 @@ export function Layout({
 
       <motion.header
         layoutId="header"
-        className="fixed top-0 z-40 flex h-16 w-full items-center justify-between px-4 print:hidden lg:items-end lg:px-8"
+        className={classNames(
+          'fixed top-0 z-40 flex h-16 w-full items-center justify-between px-4',
+          'lg:items-end lg:px-8',
+          'print:hidden',
+        )}
       >
         <button
           type="button"
-          className="focus:outline-none lg:hidden"
+          className={classNames('focus:outline-none', 'lg:hidden')}
           onClick={() => setSidebarOpen(true)}
         >
           <span className="sr-only">Open sidebar</span>
@@ -43,26 +47,36 @@ export function Layout({
         </button>
 
         <Link href="/">
-          <a className="hidden lg:block">
+          <a className={classNames('hidden', 'lg:block')}>
             <Logo className="h-[30px] w-[224px]" />
           </a>
         </Link>
 
-        <div className="divide-black divide-opacity-20 dark:divide-white dark:divide-opacity-20 lg:flex lg:gap-4 lg:divide-x">
-          <Nav />
+        <div
+          className={classNames(
+            'divide-black divide-opacity-20',
+            'dark:divide-white dark:divide-opacity-20',
+            'lg:flex lg:gap-4 lg:divide-x',
+          )}
+        >
+          <Nav className={classNames('hidden', 'lg:block')} />
           <ThemeSelector className="lg:pl-4" />
         </div>
       </motion.header>
 
       <main
         className={classNames(
-          'sm-max-h:flex-row sm-max-h:items-center absolute inset-0 mx-auto flex h-full w-full flex-col justify-center gap-8 overflow-hidden p-4 lg:max-w-screen-sm lg:justify-start lg:px-8 lg:pt-16',
+          'absolute inset-0 mx-auto flex h-full w-full flex-col justify-center gap-8 overflow-hidden p-4',
+          'sm-max-h:flex-row sm-max-h:items-center',
+          'lg:max-w-screen-sm lg:justify-start lg:px-8 lg:pt-16',
           {
             'lg:justify-center lg:pt-0': shouldCenterPage,
-          }
+          },
         )}
       >
-        <div className="sm-max-h:absolute sm-max-h:left-8 mx-auto">
+        <div
+          className={classNames('mx-auto', 'sm-max-h:absolute sm-max-h:left-8')}
+        >
           {/* Wrapper div needed for the image to stay unwarped */}
           <motion.div
             layoutId="profile"
@@ -86,12 +100,15 @@ export function Layout({
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ ease: 'easeInOut' }}
           className={classNames(
-            'sm-max-h:absolute sm-max-h:top-4 sm-max-h:bottom-4 sm-max-h:right-4 sm-max-h:ml-[182px] left-8',
+            'mx-auto',
+            'sm-max-h:absolute sm-max-h:top-4 sm-max-h:bottom-4 sm-max-h:right-4 sm-max-h:ml-[182px] sm-max-h:left-8 sm-max-h:w-auto',
             {
-              'sm-max-h:!top-16 bg-surface text-on-surface overflow-y-auto rounded-md p-4 shadow ring-1 ring-black ring-opacity-5 dark:shadow-black dark:ring-opacity-50':
+              'bg-surface text-on-surface w-full overflow-y-auto rounded-md p-4 shadow ring-1 ring-black ring-opacity-5':
                 !isHome,
+              'dark:shadow-black dark:ring-opacity-50': !isHome,
+              'sm-max-h:!top-16': !isHome,
               'flex items-center': shouldCenterPage,
-            }
+            },
           )}
         >
           {children}

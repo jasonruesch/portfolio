@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { ButtonSection, buttonGroups } from './button';
 import { ColorSection, colorGroups } from './color';
@@ -9,7 +10,7 @@ export function Sections({ searchInput }: { searchInput: string }) {
   const colorFilteredGroups = useFilterGroups(searchInput, colorGroups);
   const typographyFilteredGroups = useFilterGroups(
     searchInput,
-    typographyGroups
+    typographyGroups,
   );
   const shadowFilteredGroups = useFilterGroups(searchInput, shadowGroups);
   const buttonFilteredGroups = useFilterGroups(searchInput, buttonGroups);
@@ -43,21 +44,27 @@ export function Sections({ searchInput }: { searchInput: string }) {
 
   return (
     <>
-      <div className="divide-y-4 divide-black divide-opacity-20 dark:divide-white dark:divide-opacity-20 print:divide-none">
+      <div
+        className={classNames(
+          'divide-y-4 divide-black divide-opacity-20',
+          'dark:divide-white dark:divide-opacity-20',
+          'print:divide-none',
+        )}
+      >
         <ColorSection className="pt-16" groups={colorFilteredGroups} />
 
         <TypographySection
-          className="mt-8 pt-8 print:break-before-page"
+          className={classNames('mt-8 pt-8', 'print:break-before-page')}
           groups={typographyFilteredGroups}
         />
 
         <ShadowSection
-          className="mt-8 pt-8 print:break-before-page"
+          className={classNames('mt-8 pt-8', 'print:break-before-page')}
           groups={shadowFilteredGroups}
         />
 
         <ButtonSection
-          className="mt-8 pt-8 print:break-before-page"
+          className={classNames('mt-8 pt-8', 'print:break-before-page')}
           groups={buttonFilteredGroups}
         />
       </div>
@@ -65,7 +72,12 @@ export function Sections({ searchInput }: { searchInput: string }) {
       {/* No results */}
       {!hasResults && (
         <div className="pt-16 text-center">
-          <h2 className="font-heading pt-4 text-2xl font-bold lg:text-3xl">
+          <h2
+            className={classNames(
+              'font-heading pt-4 text-2xl font-bold',
+              'lg:text-3xl',
+            )}
+          >
             Searching for &quot;
             <span className="text-secondary font-sans text-2xl">
               {searchInput}

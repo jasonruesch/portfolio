@@ -3,6 +3,7 @@ import { Transition, Dialog } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 import Link from 'next/link';
 import { Logo } from './Logo';
+import classNames from 'classnames';
 
 export function Sidebar({
   children,
@@ -21,7 +22,7 @@ export function Sidebar({
       <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-40 print:hidden lg:hidden"
+          className={classNames('relative z-40', 'lg:hidden', 'print:hidden')}
           onClose={setSidebarOpen}
         >
           <Transition.Child
@@ -46,7 +47,12 @@ export function Sidebar({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="bg-surface text-on-surface relative flex w-full max-w-xs flex-1 flex-col pb-4 shadow ring-1 ring-black ring-opacity-5 dark:shadow-black dark:ring-opacity-50">
+              <Dialog.Panel
+                className={classNames(
+                  'bg-surface text-on-surface relative flex w-full max-w-xs flex-1 flex-col pb-4 shadow ring-1 ring-black ring-opacity-5',
+                  'dark:shadow-black dark:ring-opacity-50',
+                )}
+              >
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -59,7 +65,10 @@ export function Sidebar({
                   <div className="absolute top-0 right-0 -mr-12 pt-2">
                     <button
                       type="button"
-                      className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                      className={classNames(
+                        'ml-1 flex h-10 w-10 items-center justify-center rounded-full',
+                        'focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white',
+                      )}
                       onClick={() => setSidebarOpen(false)}
                     >
                       <span className="sr-only">Close sidebar</span>
@@ -70,7 +79,12 @@ export function Sidebar({
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="flex h-16 flex-shrink-0 items-center px-4 lg:items-end lg:px-8">
+                <div
+                  className={classNames(
+                    'flex h-16 flex-shrink-0 items-center px-4',
+                    'lg:items-end lg:px-8',
+                  )}
+                >
                   <Link href="/">
                     <a>
                       <Logo className="h-[30px] w-[224px]" />
@@ -89,9 +103,25 @@ export function Sidebar({
 
       {/* Static sidebar for desktop */}
       {!mobileOnly && (
-        <div className="fixed inset-y-0 z-20 hidden print:hidden lg:flex">
-          <div className="bg-surface text-on-surface relative flex w-[288px] flex-1 translate-x-0 flex-col pb-4 shadow ring-1 ring-black ring-opacity-5 dark:shadow-black dark:ring-opacity-50">
-            <div className="flex h-16 flex-shrink-0 items-center px-4 lg:items-end lg:px-8">
+        <div
+          className={classNames(
+            'fixed inset-y-0 z-20 hidden',
+            'lg:flex',
+            'print:hidden',
+          )}
+        >
+          <div
+            className={classNames(
+              'bg-surface text-on-surface relative flex w-[288px] flex-1 translate-x-0 flex-col pb-4 shadow ring-1 ring-black ring-opacity-5',
+              'dark:shadow-black dark:ring-opacity-50',
+            )}
+          >
+            <div
+              className={classNames(
+                'flex h-16 flex-shrink-0 items-center px-4',
+                'lg:items-end lg:px-8',
+              )}
+            >
               <Link href="/">
                 <a>
                   <Logo className="h-[30px] w-[224px]" />

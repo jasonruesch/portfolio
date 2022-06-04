@@ -1,10 +1,14 @@
+import classNames from 'classnames';
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
     <Html
       lang="en"
-      className="bg-background text-on-background h-full print:bg-white print:text-black"
+      className={classNames(
+        'bg-background text-on-background h-full',
+        'print:bg-white print:text-black',
+      )}
     >
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,12 +37,19 @@ export default function Document() {
         {/* Global notification live region rendered permanently at the end of the document */}
         <div
           aria-live="assertive"
-          className="sm-max-h:items-end sm-max-h:px-4 sm-max-h:py-6 pointer-events-none fixed inset-0 z-50 flex items-end px-4 py-6
-          sm:items-start sm:px-6 sm:py-20"
+          className={classNames(
+            'pointer-events-none fixed inset-0 z-50 flex items-end px-4 py-6',
+            'sm:items-start sm:px-6 sm:py-20',
+            'sm-max-h:items-end sm-max-h:px-4 sm-max-h:py-6',
+          )}
         >
           <div
             id="live"
-            className="sm-max-h:items-center flex w-full flex-col items-center space-y-4 sm:items-end"
+            className={classNames(
+              'flex w-full flex-col items-center space-y-4',
+              'sm:items-end',
+              'sm-max-h:items-center',
+            )}
           >
             {/* Notification panel is dynamically inserted into this live region when it needs to be displayed */}
           </div>

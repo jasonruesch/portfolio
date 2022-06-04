@@ -44,9 +44,13 @@ const secondaryNavigation = [
   { name: 'Icons', id: 'icons', icon: <TemplateIcon /> },
 ];
 
-const SidebarLink = ({ name, id, icon, onNavItemClick, offset }) => (
+const SidenavLink = ({ name, id, icon, onNavItemClick, offset }) => (
   <ScrollLink
-    className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6 hover:bg-neutral-400/20 dark:hover:bg-neutral-100/20"
+    className={classNames(
+      'flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6',
+      'hover:bg-neutral-400/20',
+      'dark:hover:bg-neutral-100/20',
+    )}
     activeClass="!bg-primary !text-on-primary"
     to={id}
     spy={true}
@@ -72,14 +76,16 @@ export function Sidenav({
   return (
     <nav
       className={classNames(
-        'flex flex-1 flex-col divide-y divide-black divide-opacity-20 overflow-y-auto px-2 dark:divide-white dark:divide-opacity-20 lg:px-4',
-        className
+        'flex flex-1 flex-col divide-y divide-black divide-opacity-20 overflow-y-auto px-2',
+        'dark:divide-white dark:divide-opacity-20',
+        'lg:px-4',
+        className,
       )}
       aria-label="Side Navigation"
     >
       <div className="space-y-1 pt-6">
         {navigation.map((item, index) => (
-          <SidebarLink
+          <SidenavLink
             key={item.id}
             id={item.id}
             name={item.name}
@@ -92,7 +98,7 @@ export function Sidenav({
       <div className="mt-5 pt-6">
         <div className="space-y-1">
           {secondaryNavigation.map((item) => (
-            <SidebarLink
+            <SidenavLink
               key={item.id}
               id={item.id}
               name={item.name}

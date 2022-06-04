@@ -62,12 +62,22 @@ export default function Contact() {
     <>
       <Layout>
         <div className="space-y-4">
-          <h1 className="font-heading text-secondary text-3xl font-bold lg:text-4xl">
+          <h1
+            className={classNames(
+              'font-heading text-secondary text-3xl font-bold',
+              'lg:text-4xl',
+            )}
+          >
             Get In Touch
           </h1>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
-              <div className="grid grid-cols-1 gap-y-1 gap-x-4 sm:grid-cols-6">
+              <div
+                className={classNames(
+                  'grid grid-cols-1 gap-y-1 gap-x-4',
+                  'sm:grid-cols-6',
+                )}
+              >
                 <div className="sm:col-span-3">
                   <label htmlFor="name" className="block text-sm font-bold">
                     Name
@@ -82,11 +92,16 @@ export default function Contact() {
                       onBlur={handleBlur}
                       autoComplete="name"
                       className={classNames(
-                        'bg-input focus:bg-input-focus focus:text-input-focus placeholder-input focus:placeholder-input-focus border-input focus:border-input-focus focus:ring-input-focus block w-full rounded-md shadow-sm focus:outline-none focus:ring-1 dark:shadow-black dark:focus:ring-0 sm:text-sm',
+                        'bg-input placeholder-input border-input block w-full rounded-md shadow-sm',
+                        'focus:bg-input-focus focus:text-input-focus focus:placeholder-input-focus focus:border-input-focus focus:ring-input-focus focus:outline-none focus:ring-1',
+                        'dark:shadow-black dark:focus:ring-0',
+                        'sm:text-sm',
                         {
-                          '!border-input-error !text-input-error !placeholder-input-error focus:!border-input-error-focus focus:!ring-input-error-focus pr-10':
+                          '!border-input-error !text-input-error !placeholder-input-error pr-10':
                             !!errors.name && touched.name,
-                        }
+                          'focus:!border-input-error-focus focus:!ring-input-error-focus':
+                            !!errors.name && touched.name,
+                        },
                       )}
                       placeholder="Jane Doe"
                       required
@@ -126,11 +141,16 @@ export default function Contact() {
                       onBlur={handleBlur}
                       autoComplete="email"
                       className={classNames(
-                        'bg-input focus:bg-input-focus focus:text-input-focus placeholder-input focus:placeholder-input-focus border-input focus:border-input-focus focus:ring-input-focus block w-full rounded-md shadow-sm focus:outline-none focus:ring-1 dark:shadow-black dark:focus:ring-0 sm:text-sm',
+                        'bg-input placeholder-input border-input block w-full rounded-md shadow-sm',
+                        'focus:bg-input-focus focus:text-input-focus focus:placeholder-input-focus focus:border-input-focus focus:ring-input-focus focus:outline-none focus:ring-1',
+                        'dark:shadow-black dark:focus:ring-0',
+                        'sm:text-sm',
                         {
-                          '!border-input-error !text-input-error !placeholder-input-error focus:!border-input-error-focus focus:!ring-input-error-focus pr-10':
+                          '!border-input-error !text-input-error !placeholder-input-error pr-10':
                             !!errors.email && touched.email,
-                        }
+                          'focus:!border-input-error-focus focus:!ring-input-error-focus':
+                            !!errors.email && touched.email,
+                        },
                       )}
                       placeholder="you@example.com"
                       required
@@ -168,11 +188,16 @@ export default function Contact() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={classNames(
-                        'bg-input focus:bg-input-focus focus:text-input-focus placeholder-input focus:placeholder-input-focus border-input focus:border-input-focus focus:ring-input-focus block w-full rounded-md shadow-sm focus:outline-none focus:ring-1 dark:shadow-black dark:focus:ring-0 sm:text-sm',
+                        'bg-input placeholder-input border-input block w-full rounded-md shadow-sm',
+                        'focus:bg-input-focus focus:text-input-focus focus:placeholder-input-focus focus:border-input-focus focus:ring-input-focus focus:outline-none focus:ring-1',
+                        'dark:shadow-black dark:focus:ring-0',
+                        'sm:text-sm',
                         {
-                          '!border-input-error !text-input-error !placeholder-input-error focus:!border-input-error-focus focus:!ring-input-error-focus pr-10':
+                          '!border-input-error !text-input-error !placeholder-input-error pr-10':
                             !!errors.message && touched.message,
-                        }
+                          'focus:!border-input-error-focus focus:!ring-input-error-focus':
+                            !!errors.message && touched.message,
+                        },
                       )}
                       placeholder="Your message"
                       required
@@ -205,24 +230,11 @@ export default function Contact() {
             <div>
               <div className="flex justify-end">
                 <Link href="/">
-                  <a
-                    className="bg-button-secondary text-button-secondary border-button-secondary hover:bg-button-secondary-hover hover:text-button-secondary-hover focus:ring-offset-button-secondary-focus focus:ring-button-secondary-focus disabled:bg-button-secondary-disabled disabled:text-button-secondary-disabled inline-flex items-center rounded-md
-                    border px-4
-                    py-2 text-sm font-medium shadow-sm focus:outline-none
-                    focus:ring-2 focus:ring-offset-2"
-                  >
-                    Cancel
-                  </a>
+                  <a className="button-secondary">Cancel</a>
                 </Link>
                 <button
                   type="submit"
-                  className={classNames(
-                    `bg-button-primary text-button-primary border-button-primary hover:bg-button-primary-hover hover:text-button-primary-hover focus:ring-offset-button-primary-focus focus:ring-button-primary-focus disabled:bg-button-primary-disabled disabled:text-button-primary-disabled inline-flex items-center rounded-md
-                    border px-4
-                    py-2 text-sm font-medium shadow-sm focus:outline-none
-                    focus:ring-2 focus:ring-offset-2`,
-                    'ml-3'
-                  )}
+                  className="button-primary ml-3"
                   disabled={!dirty || !isValid || isSubmitting}
                 >
                   Send
