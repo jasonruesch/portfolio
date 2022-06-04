@@ -20,11 +20,7 @@ export function Layout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div
-      className={classNames('absolute inset-0 flex justify-center lg:pt-16', {
-        'lg:pt-0': shouldCenterPage,
-      })}
-    >
+    <div className={classNames('absolute inset-0')}>
       <Sidebar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
@@ -60,13 +56,13 @@ export function Layout({
 
       <main
         className={classNames(
-          'sm-max-h:flex-row sm-max-h:items-center flex h-full w-full flex-col justify-center gap-8 p-4 lg:max-w-screen-sm lg:justify-start lg:px-8',
+          'sm-max-h:flex-row sm-max-h:items-center absolute inset-0 mx-auto flex h-full w-full flex-col justify-center gap-8 overflow-hidden p-4 lg:max-w-screen-sm lg:justify-start lg:px-8 lg:pt-16',
           {
-            'lg:justify-center': shouldCenterPage,
+            'lg:justify-center lg:pt-0': shouldCenterPage,
           }
         )}
       >
-        <div className="mx-auto">
+        <div className="sm-max-h:absolute sm-max-h:left-8 mx-auto">
           {/* Wrapper div needed for the image to stay unwarped */}
           <motion.div
             layoutId="profile"
@@ -89,10 +85,14 @@ export function Layout({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ ease: 'easeInOut' }}
-          className={classNames({
-            'bg-surface text-on-surface rounded-md p-4 shadow ring-1 ring-black ring-opacity-5 dark:shadow-black dark:ring-opacity-50':
-              !isHome,
-          })}
+          className={classNames(
+            'sm-max-h:absolute sm-max-h:top-4 sm-max-h:bottom-4 sm-max-h:right-4 sm-max-h:ml-[182px] left-8',
+            {
+              'sm-max-h:!top-16 bg-surface text-on-surface overflow-y-auto rounded-md p-4 shadow ring-1 ring-black ring-opacity-5 dark:shadow-black dark:ring-opacity-50':
+                !isHome,
+              'flex items-center': shouldCenterPage,
+            }
+          )}
         >
           {children}
         </motion.div>

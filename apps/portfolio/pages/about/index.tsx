@@ -21,6 +21,7 @@ export default function About() {
           I am always open to connect. If you are interested in learning more
           about me or how I can help you with your web needs, please reach out.
         </p>
+
         <div>
           <Link href="/contact">
             <a className="text-primary-600 hover:text-primary-500 text-sm font-medium">
