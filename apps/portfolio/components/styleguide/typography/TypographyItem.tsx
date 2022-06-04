@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ReactNode } from 'react';
 
 export const TypographyItem = ({
@@ -19,7 +20,14 @@ export const TypographyItem = ({
   largeFontSize?: string;
   largeLineHeight?: string;
 }) => (
-  <div className="mt-2 mb-4 grid grid-cols-1 gap-5 last-of-type:mb-0 print:grid-cols-3 sm:grid-cols-3">
+  <div
+    className={classNames(
+      'mt-2 mb-4 grid grid-cols-1 gap-5',
+      'last-of-type:mb-0',
+      'sm:grid-cols-3',
+      'print:grid-cols-3',
+    )}
+  >
     <div className="col-span-1">
       <h4 className="text-xl font-bold">{name}</h4>
       <p className="text-sm">
@@ -40,6 +48,10 @@ export const TypographyItem = ({
         </small>
       )}
     </div>
-    <div className="col-span-1 print:col-span-2 sm:col-span-2">{children}</div>
+    <div
+      className={classNames('col-span-1', 'sm:col-span-2', 'print:col-span-2')}
+    >
+      {children}
+    </div>
   </div>
 );

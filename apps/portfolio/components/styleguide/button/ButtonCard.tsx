@@ -29,8 +29,10 @@ export const ButtonCard = ({
         <div className="bg-surface p-4">
           <div className="flex h-full items-stretch justify-center">
             <div
-              className="flex items-center border-r border-dashed border-black border-opacity-20 p-8
-              dark:border-white dark:border-opacity-20"
+              className={classNames(
+                'flex items-center border-r border-dashed border-black border-opacity-20 p-8',
+                'dark:border-white dark:border-opacity-20',
+              )}
             >
               <button className={className}>
                 {children ? children : 'Default'}
@@ -40,7 +42,7 @@ export const ButtonCard = ({
               <button
                 className={classNames(
                   baseClassName,
-                  hoverWithoutStateClassName
+                  hoverWithoutStateClassName,
                 )}
               >
                 {children ? children : 'Hover'}
@@ -48,7 +50,7 @@ export const ButtonCard = ({
               <button
                 className={classNames(
                   baseClassName,
-                  focusWithoutStateClassName
+                  focusWithoutStateClassName,
                 )}
               >
                 {children ? children : 'Focus'}

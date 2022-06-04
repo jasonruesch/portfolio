@@ -15,8 +15,9 @@ export const BoxShadowCard = ({
           <div className="flex h-40 items-center justify-center p-8">
             <div
               className={classNames(
-                'bg-surface h-24 w-24 rounded-lg dark:shadow-black',
-                shadow
+                'bg-surface h-24 w-24 rounded-lg',
+                'dark:shadow-black',
+                shadow,
               )}
             ></div>
           </div>

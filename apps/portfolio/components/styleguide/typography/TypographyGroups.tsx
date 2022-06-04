@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Group } from '../models';
 import { TypographyItem } from './TypographyItem';
 
@@ -276,7 +277,12 @@ const groups: Group[] = [
           <a
             key="rich-text-link-example-a"
             href="#"
-            className="text-primary-600 hover:text-primary-500 dark:text-primary-500 dark:hover:text-primary-400 text-sm font-medium"
+            className={classNames(
+              'text-primary-600 text-sm font-medium',
+              'hover:text-primary-500',
+              'dark:text-primary-500',
+              'dark:hover:text-primary-400',
+            )}
           >
             Lorem ipsum dolor sit amet consectetur
             <span key="rich-text-link-example-span" aria-hidden="true">
@@ -289,7 +295,10 @@ const groups: Group[] = [
           <a
             key="rich-text-link-example-hover-a"
             href="#"
-            className="text-primary-500 dark:text-primary-400 text-sm font-medium"
+            className={classNames(
+              'text-primary-500 text-sm font-medium',
+              'dark:text-primary-400',
+            )}
           >
             Lorem ipsum dolor sit amet consectetur
             <span key="rich-text-link-example-hover-span" aria-hidden="true">
