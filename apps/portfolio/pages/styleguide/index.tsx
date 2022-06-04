@@ -6,10 +6,11 @@ import { SearchIcon, ChevronUpIcon } from '@heroicons/react/solid';
 import Head from 'next/head';
 import { debounce } from 'lodash';
 import { animateScroll as scroll } from 'react-scroll';
-import { Logo, Nav, Sidebar, ThemeSelector } from '../../components';
+import { Logo, Sidebar, ThemeSelector } from '../../components';
 import { Sidenav, Sections } from '../../components/styleguide';
 import classNames from 'classnames';
 import { useActionKey } from '../../components/styleguide/hooks/useActionKey';
+import Link from 'next/link';
 
 const StyleGuide = () => {
   const actionKey = useActionKey();
@@ -69,11 +70,6 @@ const StyleGuide = () => {
       >
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}>
           <Sidenav onNavItemClick={() => setSidebarOpen(false)} />
-          <Nav
-            isSidenav
-            includeTopBorder
-            onNavItemClick={() => setSidebarOpen(false)}
-          />
         </Sidebar>
 
         <div className="lg:pl-[288px]">
@@ -97,48 +93,52 @@ const StyleGuide = () => {
                 <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
               </button>
 
-              <div className="flex w-full justify-between lg:px-8">
-                <div className="flex flex-1">
-                  <form
-                    className="flex w-full"
-                    onSubmit={(e) => e.preventDefault()}
-                  >
-                    <label htmlFor="search" className="sr-only">
-                      Search
-                    </label>
-                    <div className="focus-within:text-on-background relative w-full max-w-sm text-neutral-500">
-                      <div
-                        className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
-                        aria-hidden="true"
-                      >
-                        <SearchIcon className="h-5 w-5" aria-hidden="true" />
-                      </div>
-                      <input
-                        type="search"
-                        id="search"
-                        name="search"
-                        className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-11 placeholder-neutral-500 focus:outline-none focus:ring-0"
-                        placeholder="Quick search..."
-                        onChange={handleSearch}
-                        autoFocus
-                      />
-                      <div
-                        className="pointer-events-none absolute inset-y-0 right-0"
-                        aria-hidden="true"
-                      >
-                        <kbd className="font-sans font-semibold text-neutral-500">
-                          <abbr
-                            title={actionKey[1]}
-                            className="text-neutral-500 no-underline"
-                          >
-                            {actionKey[0]}
-                          </abbr>{' '}
-                          K
-                        </kbd>
-                      </div>
-                    </div>
-                  </form>
+              <div className="flex w-full lg:px-8">
+                <div className="flex-1">
+                  <Link href="/">
+                    <a className="hover:text-primary mr-4">
+                      &larr;{' '}
+                      <span className="hidden sm:inline">Back to Home</span>
+                    </a>
+                  </Link>
                 </div>
+
+                <form onSubmit={(e) => e.preventDefault()}>
+                  <label htmlFor="search" className="sr-only">
+                    Search
+                  </label>
+                  <div className="focus-within:text-on-background relative w-full max-w-sm text-neutral-500">
+                    <div
+                      className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
+                      aria-hidden="true"
+                    >
+                      <SearchIcon className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <input
+                      type="search"
+                      id="search"
+                      name="search"
+                      className="block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-11 placeholder-neutral-500 focus:outline-none focus:ring-0"
+                      placeholder="Quick search..."
+                      onChange={handleSearch}
+                      autoFocus
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-y-0 right-0"
+                      aria-hidden="true"
+                    >
+                      <kbd className="font-sans font-semibold text-neutral-500">
+                        <abbr
+                          title={actionKey[1]}
+                          className="text-neutral-500 no-underline"
+                        >
+                          {actionKey[0]}
+                        </abbr>{' '}
+                        K
+                      </kbd>
+                    </div>
+                  </div>
+                </form>
                 <ThemeSelector className="px-4 lg:pr-0" />
               </div>
             </header>

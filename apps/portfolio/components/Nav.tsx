@@ -45,12 +45,10 @@ const externalNavigation = [
 export function Nav({
   className,
   isSidenav = false,
-  includeTopBorder = false,
   onNavItemClick,
 }: {
   className?: string;
   isSidenav?: boolean;
-  includeTopBorder?: boolean;
   onNavItemClick?: () => void;
 }) {
   const { route } = useRouter();
@@ -64,12 +62,7 @@ export function Nav({
         )}
         aria-label="Navigation"
       >
-        <div
-          className={classNames('space-y-1 pt-6', {
-            'mt-5 border-t border-black border-opacity-20 dark:border-white dark:border-opacity-20':
-              includeTopBorder,
-          })}
-        >
+        <div className="space-y-1 pt-6">
           {navigation.map((item) => (
             <Link key={item.href} href={item.href}>
               <a

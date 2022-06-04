@@ -1,4 +1,5 @@
 import { ColorSwatchIcon, TemplateIcon } from '@heroicons/react/outline';
+import classNames from 'classnames';
 import { Link as ScrollLink } from 'react-scroll';
 
 const navigation = [
@@ -69,38 +70,39 @@ export function Sidenav({
   onNavItemClick?: () => void;
 }) {
   return (
-    <div className={className}>
-      <nav
-        className="flex flex-1 flex-col divide-y divide-black divide-opacity-20 overflow-y-auto px-2 dark:divide-white dark:divide-opacity-20 lg:px-4"
-        aria-label="Sidenav"
-      >
-        <div className="space-y-1 pt-6">
-          {navigation.map((item, index) => (
+    <nav
+      className={classNames(
+        'flex flex-1 flex-col divide-y divide-black divide-opacity-20 overflow-y-auto px-2 dark:divide-white dark:divide-opacity-20 lg:px-4',
+        className
+      )}
+      aria-label="Side Navigation"
+    >
+      <div className="space-y-1 pt-6">
+        {navigation.map((item, index) => (
+          <SidebarLink
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            icon={item.icon}
+            onNavItemClick={onNavItemClick}
+            offset={index > 0 ? -32 : 0}
+          />
+        ))}
+      </div>
+      <div className="mt-5 pt-6">
+        <div className="space-y-1">
+          {secondaryNavigation.map((item) => (
             <SidebarLink
               key={item.id}
               id={item.id}
               name={item.name}
               icon={item.icon}
               onNavItemClick={onNavItemClick}
-              offset={index > 0 ? -32 : 0}
+              offset={-32}
             />
           ))}
         </div>
-        <div className="mt-5 pt-6">
-          <div className="space-y-1">
-            {secondaryNavigation.map((item) => (
-              <SidebarLink
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                icon={item.icon}
-                onNavItemClick={onNavItemClick}
-                offset={-32}
-              />
-            ))}
-          </div>
-        </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }

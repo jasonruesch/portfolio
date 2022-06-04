@@ -27,7 +27,6 @@ export const ButtonCard = ({
     {{
       content: (
         <div className="bg-surface p-4">
-          {/* <div className="flex h-full flex-wrap items-center justify-evenly gap-4 p-8"> */}
           <div className="flex h-full items-stretch justify-center">
             <div
               className="flex items-center border-r border-dashed border-black border-opacity-20 p-8
