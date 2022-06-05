@@ -163,7 +163,7 @@ const StyleGuide = () => {
                     </div>
                   </div>
                 </form>
-                <ThemeSelector className="px-4 lg:pr-0" />
+                <ThemeSelector />
               </div>
             </header>
           </Transition>
@@ -226,7 +226,7 @@ const StyleGuide = () => {
       >
         <button
           className={classNames(
-            'icon-button-primary fixed bottom-8 right-12 z-40',
+            'circular-button-primary fixed bottom-8 right-12 z-40',
             'print:hidden',
           )}
           onClick={() =>
@@ -235,7 +235,7 @@ const StyleGuide = () => {
             })
           }
         >
-          <ChevronUpIcon className="h-12 w-12" />
+          <ChevronUpIcon className="h-6 w-6" />
         </button>
       </Transition>
     </>

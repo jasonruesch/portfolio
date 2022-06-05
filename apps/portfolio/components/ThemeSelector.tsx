@@ -22,14 +22,16 @@ export function ThemeSelector({ className }: { className?: string }) {
       <Menu as="div" className="relative">
         <Menu.Button
           className={classNames(
-            'flex items-center text-sm focus:outline-none lg:rounded-md',
+            'flex items-center px-4 text-sm',
+            'focus:outline-none',
+            'lg:rounded-md lg:pr-0',
             className,
           )}
         >
           <span
-            className={classNames('block text-sm font-medium', {
-              'hover:text-on-background text-neutral-500': theme === 'system',
-              'text-primary': theme !== 'system',
+            className={classNames('text-primary block text-sm font-medium', {
+              '!text-neutral-500': theme === 'system',
+              'hover:!text-on-background': theme === 'system',
             })}
           >
             <span className="sr-only">Open theme menu</span>
@@ -49,13 +51,23 @@ export function ThemeSelector({ className }: { className?: string }) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="bg-surface absolute right-2 z-50 mt-2 w-48 origin-top-right rounded-md py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:shadow-black dark:ring-opacity-50">
+          <Menu.Items
+            className={classNames(
+              'bg-surface absolute right-4 z-50 mt-2 w-48 origin-top-right rounded-md py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5',
+              'focus:outline-none',
+              'dark:shadow-black dark:ring-opacity-50',
+              'lg:right-0',
+            )}
+          >
             <Menu.Item>
               {({ active }) => (
                 <button
                   className={classNames(
-                    active ? 'bg-neutral-400/20 dark:bg-neutral-100/20' : '',
                     'flex w-full items-center px-4 py-2 text-sm',
+                    {
+                      'bg-neutral-400/20': active,
+                      'dark:bg-neutral-100/20': active,
+                    },
                   )}
                   onClick={() => activateMode('light')}
                 >
@@ -71,8 +83,11 @@ export function ThemeSelector({ className }: { className?: string }) {
               {({ active }) => (
                 <button
                   className={classNames(
-                    active ? 'bg-neutral-400/20 dark:bg-neutral-100/20' : '',
                     'flex w-full items-center px-4 py-2 text-sm',
+                    {
+                      'bg-neutral-400/20': active,
+                      'dark:bg-neutral-100/20': active,
+                    },
                   )}
                   onClick={() => activateMode('dark')}
                 >
@@ -88,8 +103,11 @@ export function ThemeSelector({ className }: { className?: string }) {
               {({ active }) => (
                 <button
                   className={classNames(
-                    active ? 'bg-neutral-400/20 dark:bg-neutral-100/20' : '',
                     'flex w-full items-center px-4 py-2 text-sm',
+                    {
+                      'bg-neutral-400/20': active,
+                      'dark:bg-neutral-100/20': active,
+                    },
                   )}
                   onClick={() => activateMode('system')}
                 >

@@ -60,7 +60,7 @@ export function Layout({
           )}
         >
           <Nav className={classNames('hidden', 'lg:block')} />
-          <ThemeSelector className="lg:pl-4" />
+          <ThemeSelector className="pr-0" />
         </div>
       </motion.header>
 

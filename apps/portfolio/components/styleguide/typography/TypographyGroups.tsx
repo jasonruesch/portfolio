@@ -278,7 +278,7 @@ const groups: Group[] = [
             key="rich-text-link-example-a"
             href="#"
             className={classNames(
-              'text-primary-600 text-sm font-medium',
+              'text-primary-600 font-medium',
               'hover:text-primary-500',
               'dark:text-primary-500',
               'dark:hover:text-primary-400',
@@ -297,7 +297,7 @@ const groups: Group[] = [
             key="rich-text-link-example-hover-a"
             href="#"
             className={classNames(
-              'text-primary-500 text-sm font-medium',
+              'text-primary-500 font-medium',
               'dark:text-primary-400',
             )}
             onClick={(e) => e.preventDefault()}

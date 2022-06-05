@@ -50,14 +50,14 @@ const groups: Group[] = [
     ],
   },
   {
-    name: 'Icon Buttons',
+    name: 'Circular Buttons',
     items: [
       <ButtonCard
-        key="primary-icon-button"
-        name="Primary Icon Button"
-        className="icon-button-primary"
+        key="primary-circular-button"
+        name="Primary Circular Button"
+        className="circular-button-primary"
         baseClassName={classNames(
-          'inline-flex items-center rounded-full border p-2 font-medium shadow-sm',
+          'inline-flex items-center rounded-full border p-3 font-medium shadow-sm',
           'bg-button-primary text-button-primary border-button-primary',
         )}
         hoverClassName="hover:bg-button-primary-hover hover:text-button-primary-hover"
@@ -72,29 +72,7 @@ const groups: Group[] = [
         )}
         disabledClassName="disabled:bg-button-primary-disabled disabled:text-button-primary-disabled"
       >
-        <ChevronUpIcon className="h-12 w-12" />
-      </ButtonCard>,
-      <ButtonCard
-        key="secondary-icon-button"
-        name="Secondary Icon Button"
-        className="icon-button-secondary"
-        baseClassName={classNames(
-          'inline-flex items-center rounded-full border p-2 font-medium shadow-sm',
-          'bg-button-secondary text-button-secondary border-button-secondary',
-        )}
-        hoverClassName="hover:bg-button-secondary-hover hover:text-button-secondary-hover"
-        hoverWithoutStateClassName="bg-button-secondary-hover text-button-secondary-hover"
-        focusClassName={classNames(
-          'focus:outline-none focus:ring-2 focus:ring-offset-2',
-          'focus:ring-offset-button-secondary-focus focus:ring-button-secondary-focus',
-        )}
-        focusWithoutStateClassName={classNames(
-          'outline-none ring-2 ring-offset-2',
-          'ring-offset-button-secondary-focus ring-button-secondary-focus',
-        )}
-        disabledClassName="disabled:bg-button-secondary-disabled disabled:text-button-secondary-disabled"
-      >
-        <ChevronUpIcon className="h-12 w-12" />
+        <ChevronUpIcon className="h-6 w-6" />
       </ButtonCard>,
     ],
   },

@@ -171,17 +171,10 @@
     @apply disabled:bg-button-secondary-disabled disabled:text-button-secondary-disabled;
   }
 
-  .icon-button-primary {
-    @apply bg-button-primary text-button-primary inline-flex items-center rounded-full border border-transparent p-2 font-medium shadow-sm;
+  .circular-button-primary {
+    @apply bg-button-primary text-button-primary inline-flex items-center rounded-full border border-transparent p-3 font-medium shadow-sm;
     @apply hover:bg-button-primary-hover hover:text-button-primary-hover;
     @apply focus:ring-offset-button-primary-focus focus:ring-button-primary-focus focus:outline-none focus:ring-2 focus:ring-offset-2;
     @apply disabled:bg-button-primary-disabled disabled:text-button-primary-disabled;
-  }
-
-  .icon-button-secondary {
-    @apply bg-button-secondary text-button-secondary border-button-secondary inline-flex items-center rounded-full border p-2 font-medium shadow-sm;
-    @apply hover:bg-button-secondary-hover hover:text-button-secondary-hover;
-    @apply focus:ring-offset-button-secondary-focus focus:ring-button-secondary-focus focus:outline-none focus:ring-2 focus:ring-offset-2;
-    @apply disabled:bg-button-secondary-disabled disabled:text-button-secondary-disabled;
   }
 }
