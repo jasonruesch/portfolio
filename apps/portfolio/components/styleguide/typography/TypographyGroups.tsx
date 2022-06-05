@@ -283,8 +283,9 @@ const groups: Group[] = [
               'dark:text-primary-500',
               'dark:hover:text-primary-400',
             )}
+            onClick={(e) => e.preventDefault()}
           >
-            Lorem ipsum dolor sit amet consectetur
+            Default Link
             <span key="rich-text-link-example-span" aria-hidden="true">
               {' '}
               &rarr;
@@ -299,8 +300,9 @@ const groups: Group[] = [
               'text-primary-500 text-sm font-medium',
               'dark:text-primary-400',
             )}
+            onClick={(e) => e.preventDefault()}
           >
-            Lorem ipsum dolor sit amet consectetur
+            Hover Link
             <span key="rich-text-link-example-hover-span" aria-hidden="true">
               {' '}
               &rarr;
