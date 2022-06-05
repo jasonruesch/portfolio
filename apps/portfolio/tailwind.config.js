@@ -91,6 +91,10 @@ module.exports = {
             message: 'var(--color-text-input-error-message)',
           },
         },
+        link: {
+          DEFAULT: 'var(--color-text-link)',
+          hover: 'var(--color-text-link-hover)',
+        },
       },
       placeholderColor: {
         input: {

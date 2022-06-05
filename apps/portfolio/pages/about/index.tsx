@@ -32,8 +32,8 @@ export default function About() {
           <Link href="/contact">
             <a
               className={classNames(
-                'text-primary-600 font-medium',
-                'hover:text-primary-500',
+                'text-link font-medium',
+                'hover:text-link-hover',
               )}
             >
               Get in touch

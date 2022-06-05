@@ -48,7 +48,7 @@ export function Layout({
 
         <Link href="/">
           <a className={classNames('hidden', 'lg:block')}>
-            <Logo className="h-[30px] w-[224px]" />
+            <Logo className="w-72" />
           </a>
         </Link>
 

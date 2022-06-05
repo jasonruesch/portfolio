@@ -87,7 +87,7 @@ export function Sidebar({
                 >
                   <Link href="/">
                     <a>
-                      <Logo className="h-[30px] w-[224px]" />
+                      <Logo className="w-56" />
                     </a>
                   </Link>
                 </div>
@@ -124,7 +124,7 @@ export function Sidebar({
             >
               <Link href="/">
                 <a>
-                  <Logo className="h-[30px] w-[224px]" />
+                  <Logo className="w-56" />
                 </a>
               </Link>
             </div>

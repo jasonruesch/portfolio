@@ -82,6 +82,10 @@
     --color-border-input-error: theme('colors.red.300');
     --color-border-input-error-focus: theme('colors.red.500');
     --color-ring-input-error-focus: theme('colors.red.500');
+
+    /*** Links ***/
+    --color-text-link: theme('colors.cyan.500');
+    --color-text-link-hover: theme('colors.cyan.600');
   }
 
   .dark {
@@ -153,6 +157,10 @@
     --color-text-input-error-message: theme('colors.red.500');
     --color-border-input-error-focus: theme('colors.red.400');
     --color-ring-input-error-focus: theme('colors.red.400');
+
+    /*** Links ***/
+    --color-text-link: theme('colors.violet.400');
+    --color-text-link-hover: theme('colors.violet.500');
   }
 }
 

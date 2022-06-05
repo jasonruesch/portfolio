@@ -72,7 +72,7 @@ const StyleGuide = () => {
           <Sidenav onNavItemClick={() => setSidebarOpen(false)} />
         </Sidebar>
 
-        <div className="lg:pl-[288px]">
+        <div className="lg:pl-72">
           <Transition
             as={Fragment}
             appear
@@ -110,7 +110,12 @@ const StyleGuide = () => {
               <div className={classNames('flex w-full', 'lg:px-8')}>
                 <div className="flex-1">
                   <Link href="/">
-                    <a className={classNames('mr-4', 'hover:text-primary')}>
+                    <a
+                      className={classNames(
+                        'text-link mr-4',
+                        'hover:text-link-hover',
+                      )}
+                    >
                       &larr;{' '}
                       <span className={classNames('hidden', 'sm:inline')}>
                         Back to Home
@@ -184,10 +189,7 @@ const StyleGuide = () => {
                 )}
               >
                 <Logo
-                  className={classNames(
-                    'mb-4 hidden h-[30px] w-[224px]',
-                    'print:block',
-                  )}
+                  className={classNames('mb-4 hidden w-72', 'print:block')}
                 />
                 <h1
                   className={classNames(

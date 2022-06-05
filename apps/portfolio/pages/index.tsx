@@ -61,8 +61,8 @@ export default function Home() {
           <Link href="/about">
             <a
               className={classNames(
-                'text-primary-600 flex w-24 justify-end text-sm font-medium',
-                'hover:text-primary-500',
+                'text-link flex w-24 justify-end text-sm font-medium',
+                'hover:text-link-hover',
               )}
               aria-label="Learn more about me"
             >
