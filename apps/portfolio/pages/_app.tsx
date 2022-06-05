@@ -2,6 +2,7 @@ import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 import '../styles/globals.css';
 
 function CustomApp({ Component, pageProps, router }) {
@@ -30,7 +31,11 @@ function CustomApp({ Component, pageProps, router }) {
           <AnimatePresence
             exitBeforeEnter
             initial={false}
-            onExitComplete={() => window.scrollTo(0, 0)}
+            onExitComplete={() =>
+              scroll.scrollToTop({
+                smooth: true,
+              })
+            }
           >
             <Component {...pageProps} key={router.route} />
           </AnimatePresence>

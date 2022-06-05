@@ -39,8 +39,8 @@ export function Sections({ searchInput }: { searchInput: string }) {
     buttonFilteredGroups,
   ]);
 
-  // Each seciton should have top padding to account for fixed header
-  // The last section should have the 'min-h-screen' class, applied above after filtering
+  // Each seciton should have top margin and padding to account for fixed header
+  // The last section should have the 'min-h-screen' class, which is applied above after filtering
 
   return (
     <>
@@ -71,7 +71,7 @@ export function Sections({ searchInput }: { searchInput: string }) {
 
       {/* No results */}
       {!hasResults && (
-        <div className="pt-16 text-center">
+        <div className="mt-8 pt-8">
           <h2
             className={classNames(
               'font-heading pt-4 text-2xl font-bold',
