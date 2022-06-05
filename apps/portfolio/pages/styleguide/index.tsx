@@ -89,8 +89,7 @@ const StyleGuide = () => {
           >
             <header
               className={classNames(
-                'fixed top-0 left-0 right-0 z-10 !flex h-16 items-center bg-white',
-                'dark:bg-black',
+                'bg-background fixed top-0 left-0 right-0 z-10 !flex h-16 items-center',
                 'lg:left-[288px] lg:h-24 lg:items-end lg:pb-8',
                 'print:!hidden',
               )}
@@ -173,8 +172,7 @@ const StyleGuide = () => {
             {/* Page header */}
             <header
               className={classNames(
-                '-mb-16 bg-white pt-16 shadow',
-                'dark:bg-black dark:shadow-black',
+                '-mb-16 pt-16',
                 'lg:pt-24',
                 'print:pt-0 print:shadow-none',
               )}

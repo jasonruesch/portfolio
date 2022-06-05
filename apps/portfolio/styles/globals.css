@@ -158,7 +158,7 @@
 
 @layer components {
   .button-primary {
-    @apply bg-button-primary text-button-primary inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm;
+    @apply bg-button-primary text-button-primary inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium shadow-sm;
     @apply hover:bg-button-primary-hover hover:text-button-primary-hover;
     @apply focus:ring-offset-button-primary-focus focus:ring-button-primary-focus focus:outline-none focus:ring-2 focus:ring-offset-2;
     @apply disabled:bg-button-primary-disabled disabled:text-button-primary-disabled;
@@ -172,7 +172,7 @@
   }
 
   .icon-button-primary {
-    @apply bg-button-primary text-button-primary border-button-primary inline-flex items-center rounded-full border p-2 font-medium shadow-sm;
+    @apply bg-button-primary text-button-primary inline-flex items-center rounded-full border border-transparent p-2 font-medium shadow-sm;
     @apply hover:bg-button-primary-hover hover:text-button-primary-hover;
     @apply focus:ring-offset-button-primary-focus focus:ring-button-primary-focus focus:outline-none focus:ring-2 focus:ring-offset-2;
     @apply disabled:bg-button-primary-disabled disabled:text-button-primary-disabled;
