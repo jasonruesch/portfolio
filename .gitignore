@@ -42,3 +42,5 @@ Thumbs.db
 .env.preview
 .env.prod
 .env
+
+.angular
