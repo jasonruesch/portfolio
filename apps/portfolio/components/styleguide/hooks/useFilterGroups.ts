@@ -7,7 +7,7 @@ import {
   Children,
   cloneElement,
 } from 'react';
-import { Group, Section } from '../models';
+import { Group, GroupCollection } from '../models';
 
 type Options = Partial<{
   maxDepth: number;
@@ -18,7 +18,7 @@ function _map<T, C extends ReactNode>(
   children: C | C[],
   fn: (element: ReactNode) => T,
   maxDepth: number,
-  depth: number
+  depth: number,
 ) {
   return Children.map(children, (child) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -36,13 +36,13 @@ function _map<T, C extends ReactNode>(
 function map<T, C extends ReactNode>(
   children: C | C[],
   fn: (element: ReactNode) => T,
-  options: Omit<Options, 'visit'> = {}
+  options: Omit<Options, 'visit'> = {},
 ) {
   const maxDepth = options['maxDepth'] ?? -1;
   return _map(children, fn, maxDepth, 0);
 }
 
-export function useFilterGroups(searchInput, section: Section) {
+export function useFilterGroups(searchInput, collection: GroupCollection) {
   const [groups, setGroups] = useState<Group[]>();
 
   useEffect(() => {
@@ -51,13 +51,13 @@ export function useFilterGroups(searchInput, section: Section) {
     if (
       searchInput === '' ||
       searchInput.length < 2 ||
-      searchInput.trim().toLowerCase() === section.name.toLowerCase()
+      searchInput.trim().toLowerCase() === collection.name.toLowerCase()
     ) {
-      setGroups(section.groups);
+      setGroups(collection.groups);
       return;
     }
 
-    const groups = cloneDeep(section.groups);
+    const groups = cloneDeep(collection.groups);
     // Split query to words
     const queryParts = searchInput
       .trim()
@@ -74,14 +74,14 @@ export function useFilterGroups(searchInput, section: Section) {
     const toString = (value) => {
       if (typeof value === 'object') {
         let values = Object.values(value).filter(
-          (v) => v && typeof v === 'string'
+          (v) => v && typeof v === 'string',
         );
         values = values.concat(
           Object.values(value)
             .filter((v) => v && typeof v === 'object')
             .map((v) => {
               return toString(v);
-            })
+            }),
         );
         return values.join(' ').trim();
       }
@@ -101,13 +101,13 @@ export function useFilterGroups(searchInput, section: Section) {
     });
 
     // If the section name matches the query, only use the filtered groups if they have items, otherwise include the entire section
-    const result = contains(section.name)
+    const result = contains(collection.name)
       ? filteredGroups.length > 0
         ? filteredGroups
         : groups
       : filteredGroups;
     setGroups(result);
-  }, [searchInput, section]);
+  }, [searchInput, collection]);
 
   return groups;
 }

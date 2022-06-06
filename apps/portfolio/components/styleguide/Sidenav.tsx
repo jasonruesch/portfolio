@@ -58,6 +58,7 @@ const SidenavLink = ({ name, id, icon, onNavItemClick, offset }) => (
     smooth={true}
     onClick={onNavItemClick}
     offset={offset}
+    isDynamic={true}
   >
     <div className="mr-4 h-6 w-6 flex-shrink-0" aria-hidden="true">
       {icon}

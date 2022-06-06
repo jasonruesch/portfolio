@@ -1,6 +1,6 @@
 import { Group } from './Group.model';
 
-export interface Section {
+export interface GroupCollection {
   name: string;
   groups: Array<Group>;
 }

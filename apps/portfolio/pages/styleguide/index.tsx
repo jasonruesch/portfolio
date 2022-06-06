@@ -72,7 +72,7 @@ const StyleGuide = () => {
           <Sidenav onNavItemClick={() => setSidebarOpen(false)} />
         </Sidebar>
 
-        <div className="lg:pl-72">
+        <div id="top" className="lg:pl-72">
           <Transition
             as={Fragment}
             appear
@@ -108,11 +108,11 @@ const StyleGuide = () => {
               </button>
 
               <div className={classNames('flex w-full', 'lg:px-8')}>
-                <div className="flex-1">
+                <div className="mr-4 flex-1">
                   <Link href="/">
                     <a
                       className={classNames(
-                        'text-link mr-4',
+                        'text-link',
                         'hover:text-link-hover',
                       )}
                     >

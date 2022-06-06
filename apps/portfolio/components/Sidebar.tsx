@@ -34,7 +34,10 @@ export function Sidebar({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+            <div
+              className="fixed inset-0 bg-neutral-600 bg-opacity-75"
+              aria-hidden="true"
+            />
           </Transition.Child>
 
           <div className="fixed inset-0 z-40 flex">
