@@ -11,17 +11,25 @@ import { Sidenav, Sections } from '../../components/styleguide';
 import classNames from 'classnames';
 import { useActionKey } from '../../components/styleguide/hooks/useActionKey';
 import Link from 'next/link';
+import { withRouter } from 'next/router';
 
-const StyleGuide = () => {
+const StyleGuide = ({ router }) => {
   const actionKey = useActionKey();
-  const [searchInput, setSearchInput] = useState('');
   const [showTopButton, setShowTopButton] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [resizeHeader, setResizeHeader] = useState(false);
+  const searchInput = router.query.q || '';
 
   const handleSearch = debounce((e) => {
     const searchValue: string = e.target.value;
-    setSearchInput(searchValue);
+    // Set the query parameter 'q' to the search value
+    router.push({
+      pathname: router.pathname,
+      query: !!searchValue && {
+        q: searchValue,
+      },
+      shallow: true,
+    });
   }, 300);
 
   const handleScroll = (e) => {
@@ -149,8 +157,9 @@ const StyleGuide = () => {
                         'focus:outline-none focus:ring-0',
                       )}
                       placeholder="Quick search..."
+                      defaultValue={searchInput}
+                      onInput={handleSearch}
                       onChange={handleSearch}
-                      autoFocus
                     />
                     <div
                       className="pointer-events-none absolute inset-y-0 right-0"
@@ -245,4 +254,4 @@ const StyleGuide = () => {
 };
 
 // StyleGuide.theme = 'light';
-export default StyleGuide;
+export default withRouter(StyleGuide);

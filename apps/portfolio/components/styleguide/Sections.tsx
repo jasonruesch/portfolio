@@ -44,30 +44,22 @@ export function Sections({ searchInput }: { searchInput: string }) {
 
   return (
     <>
-      <div
-        className={classNames(
-          'divide-y-4 divide-black divide-opacity-20',
-          'dark:divide-white dark:divide-opacity-20',
-          'print:divide-none',
-        )}
-      >
-        <ColorSection className="pt-16" groups={colorFilteredGroups} />
+      <ColorSection className="pt-16" groups={colorFilteredGroups} />
 
-        <TypographySection
-          className={classNames('mt-8 pt-8', 'print:break-before-page')}
-          groups={typographyFilteredGroups}
-        />
+      <TypographySection
+        className={classNames('pt-16', 'print:break-before-page')}
+        groups={typographyFilteredGroups}
+      />
 
-        <ShadowSection
-          className={classNames('mt-8 pt-8', 'print:break-before-page')}
-          groups={shadowFilteredGroups}
-        />
+      <ShadowSection
+        className={classNames('pt-16', 'print:break-before-page')}
+        groups={shadowFilteredGroups}
+      />
 
-        <ButtonSection
-          className={classNames('mt-8 pt-8', 'print:break-before-page')}
-          groups={buttonFilteredGroups}
-        />
-      </div>
+      <ButtonSection
+        className={classNames('pt-16', 'print:break-before-page')}
+        groups={buttonFilteredGroups}
+      />
 
       {/* No results */}
       {!hasResults && (

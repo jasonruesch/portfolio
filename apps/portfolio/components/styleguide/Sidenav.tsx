@@ -1,5 +1,6 @@
 import { ColorSwatchIcon, TemplateIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
+import { ReactNode } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 
 const navigation = [
@@ -44,7 +45,19 @@ const secondaryNavigation = [
   { name: 'Icons', id: 'icons', icon: <TemplateIcon /> },
 ];
 
-const SidenavLink = ({ name, id, icon, onNavItemClick, offset }) => (
+const SidenavLink = ({
+  name,
+  id,
+  icon,
+  onNavItemClick,
+  offset,
+}: {
+  name: string;
+  id: string;
+  icon: ReactNode;
+  onNavItemClick: () => void;
+  offset?: number;
+}) => (
   <ScrollLink
     className={classNames(
       'flex cursor-pointer items-center rounded-md px-2 py-2 text-sm font-medium leading-6',
@@ -92,7 +105,6 @@ export function Sidenav({
             name={item.name}
             icon={item.icon}
             onNavItemClick={onNavItemClick}
-            offset={index > 0 ? -32 : 0}
           />
         ))}
       </div>
@@ -105,7 +117,6 @@ export function Sidenav({
               name={item.name}
               icon={item.icon}
               onNavItemClick={onNavItemClick}
-              offset={-32}
             />
           ))}
         </div>
