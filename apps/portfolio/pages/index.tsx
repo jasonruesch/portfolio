@@ -56,7 +56,7 @@ export default function Home() {
         <motion.div
           onHoverStart={() => setIsHovering(true)}
           onHoverEnd={() => setIsHovering(false)}
-          className="mt-4 flex justify-center"
+          className="mx-auto mt-4 flex w-24 justify-center"
         >
           <Link href="/about">
             <a

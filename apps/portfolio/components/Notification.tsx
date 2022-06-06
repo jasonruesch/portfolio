@@ -5,14 +5,18 @@ import { XIcon } from '@heroicons/react/solid';
 import classNames from 'classnames';
 import { createPortal } from 'react-dom';
 
+export type NotificatonType = 'success' | 'error';
+
 export function Notification({
   children,
   className,
+  type = 'error',
   show = false,
   onHide,
 }: {
   children: React.ReactNode;
   className?: string;
+  type?: NotificatonType;
   show: boolean;
   onHide: () => void;
 }) {
@@ -39,23 +43,28 @@ export function Notification({
     >
       <div
         className={classNames(
-          'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5',
+          'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5',
           'dark:ring-opacity-50',
+          {
+            'bg-error text-on-error': type === 'error',
+            'bg-green-500 text-white': type === 'success',
+          },
           className,
         )}
       >
         <div className="p-4">
           <div className="flex items-center">
-            <p className="w-0 flex-1 text-sm font-medium text-neutral-900">
-              {children}
-            </p>
+            <p className="w-0 flex-1 text-sm font-medium">{children}</p>
             <div className="ml-4 flex flex-shrink-0">
               <button
                 type="button"
                 className={classNames(
-                  'inline-flex rounded-md bg-inherit text-neutral-400',
-                  'hover:text-neutral-500',
-                  'focus:ring-primary focus:outline-none focus:ring-2 focus:ring-offset-2',
+                  'inline-flex rounded-md',
+                  'focus:outline-none focus:ring-2 focus:ring-current focus:ring-offset-2',
+                  {
+                    'focus:ring-offset-error': type === 'error',
+                    'focus:ring-offset-green-500': type === 'success',
+                  },
                 )}
                 onClick={() => {
                   onHide();
