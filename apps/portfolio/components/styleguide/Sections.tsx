@@ -5,7 +5,6 @@ import { ColorSection, colorGroups } from './color';
 import { useFilterGroups } from './hooks/useFilterGroups';
 import { ShadowSection, shadowGroups } from './shadow';
 import { TypographySection, typographyGroups } from './typography';
-import { scroller } from 'react-scroll';
 
 export function Sections({ searchInput }: { searchInput: string }) {
   const colorFilteredGroups = useFilterGroups(searchInput, colorGroups);
@@ -32,8 +31,6 @@ export function Sections({ searchInput }: { searchInput: string }) {
     document
       .querySelector('section:last-of-type')
       ?.classList.toggle('min-h-screen', true);
-
-    // scroller.setActiveLink(scroller.getActiveLink());
   }, [
     setHasResults,
     colorFilteredGroups,
@@ -42,7 +39,7 @@ export function Sections({ searchInput }: { searchInput: string }) {
     buttonFilteredGroups,
   ]);
 
-  // Each seciton should have top margin and padding to account for fixed header
+  // Each section should have top margin and padding to account for fixed header
   // The last section should have the 'min-h-screen' class, which is applied above after filtering
 
   return (
