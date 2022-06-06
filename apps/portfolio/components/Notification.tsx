@@ -47,7 +47,7 @@ export function Notification({
           'dark:ring-opacity-50',
           {
             'bg-error text-on-error': type === 'error',
-            'bg-green-500 text-white': type === 'success',
+            'bg-success text-on-success': type === 'success',
           },
           className,
         )}
@@ -63,7 +63,7 @@ export function Notification({
                   'focus:outline-none focus:ring-2 focus:ring-current focus:ring-offset-2',
                   {
                     'focus:ring-offset-error': type === 'error',
-                    'focus:ring-offset-green-500': type === 'success',
+                    'focus:ring-offset-success': type === 'success',
                   },
                 )}
                 onClick={() => {

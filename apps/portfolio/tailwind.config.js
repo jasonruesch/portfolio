@@ -46,6 +46,7 @@ module.exports = {
         background: 'var(--color-background)',
         surface: 'var(--color-surface)',
         error: 'var(--color-error)',
+        success: 'var(--color-success)',
         button: {
           primary: {
             DEFAULT: 'var(--color-button-primary)',
@@ -70,6 +71,7 @@ module.exports = {
           background: 'var(--color-on-background)',
           surface: 'var(--color-on-surface)',
           error: 'var(--color-on-error)',
+          success: 'var(--color-on-success)',
         },
         button: {
           primary: {
@@ -121,6 +123,7 @@ module.exports = {
       },
       ringOffsetColor: {
         error: 'var(--color-error)',
+        success: 'var(--color-success)',
         button: {
           primary: {
             focus: 'var(--color-ring-offset-button-primary-focus)',
@@ -131,13 +134,6 @@ module.exports = {
         },
       },
       ringColor: {
-        on: {
-          primary: 'var(--color-on-primary)',
-          secondary: 'var(--color-on-secondary)',
-          background: 'var(--color-on-background)',
-          surface: 'var(--color-on-surface)',
-          error: 'var(--color-on-error)',
-        },
         button: {
           primary: {
             focus: 'var(--color-ring-button-primary-focus)',

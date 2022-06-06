@@ -34,6 +34,7 @@
     --color-background: theme('colors.neutral.100'); /* Black */
     --color-surface: theme('colors.neutral.50'); /* Black */
     --color-error: theme('colors.red.500'); /* White */
+    --color-success: theme('colors.green.500'); /* Black */
     /* "On" Colors */
     --color-on-primary: theme('colors.black');
     --color-on-primary-inverse: theme('colors.white');
@@ -42,6 +43,7 @@
     --color-on-background: theme('colors.black');
     --color-on-surface: theme('colors.black');
     --color-on-error: theme('colors.white');
+    --color-on-success: theme('colors.black');
 
     /*** Buttons ***/
     /* Primary button */
@@ -118,10 +120,12 @@
     --color-background: theme('colors.neutral.900'); /* White */
     --color-surface: theme('colors.neutral.800'); /* White */
     --color-error: theme('colors.red.400'); /* Black */
+    --color-success: theme('colors.green.400'); /* Black */
     /* "On" Colors */
     --color-on-background: theme('colors.white');
     --color-on-surface: theme('colors.white');
     --color-on-error: theme('colors.black');
+    --color-on-success: theme('colors.black');
 
     /*** Buttons ***/
     /* Primary button */

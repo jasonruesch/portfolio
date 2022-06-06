@@ -32,7 +32,7 @@ export function Layout({
       <motion.header
         layoutId="header"
         className={classNames(
-          'fixed top-0 z-40 flex h-16 w-full items-center justify-between px-4',
+          'fixed top-0 z-30 flex h-16 w-full items-center justify-between px-4',
           'lg:items-end lg:px-8',
           'print:hidden',
         )}

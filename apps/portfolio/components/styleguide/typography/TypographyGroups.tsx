@@ -308,8 +308,7 @@ const groups: Group[] = [
           key="rich-text-link-description"
           className="text-secondary mt-2 block text-sm"
         >
-          text-sm font-medium text-primary-600 hover:text-primary-500
-          dark:text-primary-500 dark:hover:text-primary-400
+          text-link-hover font-medium hover:text-link-hover
         </code>
       </TypographyItem>,
       <TypographyItem
