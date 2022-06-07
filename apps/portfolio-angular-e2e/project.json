@@ -17,12 +17,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/portfolio-angular-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/portfolio-angular-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["portfolio-angular"]
+  "implicitDependencies": [
+    "portfolio-angular"
+  ]
 }

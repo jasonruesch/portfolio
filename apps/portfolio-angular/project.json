@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/portfolio-angular",
         "index": "apps/portfolio-angular/src/index.html",
@@ -16,7 +18,10 @@
           "apps/portfolio-angular/src/favicon.ico",
           "apps/portfolio-angular/src/assets"
         ],
-        "styles": ["apps/portfolio-angular/src/styles.css"],
+        "styles": [
+          "apps/portfolio-angular/src/custom-theme.scss",
+          "apps/portfolio-angular/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -81,7 +86,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/portfolio-angular"],
+      "outputs": [
+        "coverage/apps/portfolio-angular"
+      ],
       "options": {
         "jestConfig": "apps/portfolio-angular/jest.config.ts",
         "passWithNoTests": true

@@ -1,0 +1,47 @@
+<div>
+  <h1 class="font-heading text-center text-3xl font-bold lg:text-4xl">
+    Hi! I&apos;m
+    <br />
+    <span class="text-primary">Jason Ruesch</span>
+    <br />
+    and I am a<br />
+    <span class="text-secondary">Software Engineer</span>
+    <br />
+    focusing on
+    <br />
+    Web Development and Design
+  </h1>
+
+  <!-- onHoverStart={() => setIsHovering(true)}
+  onHoverEnd={() => setIsHovering(false)} -->
+  <div class="mx-auto mt-4 flex w-24 justify-center">
+    <a
+      routerLink="/about"
+      class="text-link hover:text-link-hover flex w-24 justify-end text-sm font-medium"
+      aria-label="Learn more about me"
+    >
+      <!-- initial: { x: -24 },
+      hovering: { x: -24 },
+      animate: {
+        x: [-24, -48, 0, -24],
+        transition: {
+          repeat: Infinity,
+          repeatDelay: 0.75,
+          ease: 'backOut',
+          delay: 0.8,
+          duration: 0.5,
+        },
+      }, -->
+      <!-- initial="initial"
+        animate={controls}
+        variants={variants} -->
+      <div
+        class="w-12 animate-[notice-me_0.75s_ease-out_infinite] delay-[800ms] duration-500"
+      >
+        <mat-icon class="!h-12 !w-12 text-[length:3rem]" aria-hidden="true"
+          >chevron_right</mat-icon
+        >
+      </div>
+    </a>
+  </div>
+</div>
