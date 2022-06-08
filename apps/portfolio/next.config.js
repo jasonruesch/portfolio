@@ -10,8 +10,8 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-  images: {
-    domains: [],
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname,
   },
 };
 

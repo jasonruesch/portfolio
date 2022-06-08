@@ -9,6 +9,7 @@ module.exports = {
     join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
+  darkMode: 'class',
   theme: {
     colors: {
       // Explicity include global config colors here for the stylesheet to recognize

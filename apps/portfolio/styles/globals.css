@@ -74,8 +74,8 @@
     --color-placeholder-input: theme('colors.neutral.500');
     --color-placeholder-input-focus: theme('colors.neutral.400');
     --color-border-input: theme('colors.neutral.300');
-    --color-border-input-focus: theme('colors.primary.500');
-    --color-ring-input-focus: theme('colors.primary.500');
+    --color-border-input-focus: theme('colors.cyan.500');
+    --color-ring-input-focus: theme('colors.cyan.500');
     /* Error */
     --color-text-input-error: theme('colors.red.500');
     --color-text-input-error-icon: theme('colors.red.500');
@@ -135,7 +135,6 @@
     --color-text-button-primary: theme('colors.black');
     --color-text-button-primary-hover: theme('colors.white');
     --color-text-button-primary-disabled: theme('colors.neutral.600');
-    --color-border-button-primary: theme('colors.transparent');
     --color-ring-offset-button-primary-focus: theme('colors.neutral.800');
     --color-ring-button-primary-focus: theme('colors.violet.500');
     /* Secondary button */

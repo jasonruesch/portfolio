@@ -2,6 +2,8 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "emails": "apps/emails",
+    "emails-e2e": "apps/emails-e2e",
     "portfolio": "apps/portfolio",
     "portfolio-angular": "apps/portfolio-angular",
     "portfolio-angular-e2e": "apps/portfolio-angular-e2e",
