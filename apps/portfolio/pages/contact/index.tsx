@@ -41,8 +41,8 @@ export default function Contact() {
 
       await sleep(500);
 
-      const response = await fetch('/api/sendmail', {
-        body: JSON.stringify(values),
+      const response = await fetch('/api/email', {
+        body: JSON.stringify({ ...values, template: 'contact' }),
         headers: {
           'Content-Type': 'application/json',
         },

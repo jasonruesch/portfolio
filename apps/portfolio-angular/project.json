@@ -1,0 +1,99 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/portfolio-angular/src",
+  "prefix": "jr",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/portfolio-angular",
+        "index": "apps/portfolio-angular/src/index.html",
+        "main": "apps/portfolio-angular/src/main.ts",
+        "polyfills": "apps/portfolio-angular/src/polyfills.ts",
+        "tsConfig": "apps/portfolio-angular/tsconfig.app.json",
+        "assets": [
+          "apps/portfolio-angular/src/favicon.ico",
+          "apps/portfolio-angular/src/assets"
+        ],
+        "styles": [
+          "apps/portfolio-angular/src/custom-theme.scss",
+          "apps/portfolio-angular/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/portfolio-angular/src/environments/environment.ts",
+              "with": "apps/portfolio-angular/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "portfolio-angular:build:production"
+        },
+        "development": {
+          "browserTarget": "portfolio-angular:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "portfolio-angular:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/portfolio-angular/**/*.ts",
+          "apps/portfolio-angular/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/portfolio-angular"
+      ],
+      "options": {
+        "jestConfig": "apps/portfolio-angular/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

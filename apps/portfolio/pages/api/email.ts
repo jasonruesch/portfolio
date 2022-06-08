@@ -1,9 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
+import { resolve } from 'path';
+import { readFileSync } from 'fs';
+import handlebars from 'handlebars';
+import getConfig from 'next/config';
+const { serverRuntimeConfig } = getConfig();
 
 export default async function handler(
   request: NextApiRequest,
-  response: NextApiResponse
+  response: NextApiResponse,
 ) {
   const body = request.body;
 
@@ -17,12 +22,27 @@ export default async function handler(
       },
       ignoreTLS: Boolean(process.env.SMTP_IGNORE_TLS || false),
     });
+
+    const templateName = body.template;
+    const templateFile = resolve(
+      serverRuntimeConfig.PROJECT_ROOT,
+      'templates/email',
+      `${templateName.toLowerCase()}.html`,
+    );
+    const templateSource = readFileSync(templateFile, 'utf8');
+    const template = handlebars.compile(templateSource);
+    const html = template({
+      name: body.name,
+      email: body.email,
+      message: body.message,
+    });
+
     const mailOptions = {
       from: `${body.name} <${body.email}>`,
       to: ['jason.ruesch@me.com'],
-      subject: '[Contact] from Portfolio',
+      subject: `[${templateName.toUpperCase()}] Portfolio`,
       text: body.message,
-      html: `<p>${body.message}</p>`,
+      html,
     };
 
     const info = await transport.sendMail(mailOptions);
@@ -35,3 +55,7 @@ export default async function handler(
       .json({ error: error.message });
   }
 }
+
+export const config = {
+  unstable_includeFiles: ['templates/email'],
+};

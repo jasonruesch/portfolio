@@ -1,6 +1,5 @@
 const { createGlobPatternsForDependencies } = require('@nrwl/react/tailwind');
 const { join } = require('path');
-const defaultTheme = require('tailwindcss/defaultTheme');
 const globalConfig = require('../../tailwind-workspace.js');
 
 module.exports = {
@@ -9,6 +8,7 @@ module.exports = {
     join(__dirname, '{components,pages}/**/*!(*.spec).{ts,tsx}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
+  darkMode: 'class',
   theme: {
     colors: {
       // Explicity include global config colors here for the stylesheet to recognize
@@ -106,7 +106,6 @@ module.exports = {
         },
       },
       borderColor: {
-        ...defaultTheme.borderColor,
         surface: 'var(--color-surface)',
         button: {
           primary: 'var(--color-border-button-primary)',

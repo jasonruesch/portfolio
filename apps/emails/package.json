@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "maizzle serve",
+    "build": "maizzle build production",
+    "copy": "cp -R build_production/* ../portfolio/templates/email"
+  },
+  "dependencies": {
+    "@maizzle/framework": "^4.0.0",
+    "tailwindcss-box-shadow": "^1.0.0",
+    "tailwindcss-email-variants": "^1.1.0",
+    "tailwindcss-mso": "^1.2.0"
+  }
+}

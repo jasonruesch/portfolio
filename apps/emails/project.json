@@ -1,0 +1,67 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/emails/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/emails",
+        "compiler": "babel",
+        "index": "apps/emails/src/index.html",
+        "baseHref": "/",
+        "main": "apps/emails/src/main.ts",
+        "polyfills": "apps/emails/src/polyfills.ts",
+        "tsConfig": "apps/emails/tsconfig.app.json",
+        "assets": ["apps/emails/src/favicon.ico", "apps/emails/src/assets"],
+        "styles": ["apps/emails/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/emails/src/environments/environment.ts",
+              "with": "apps/emails/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "emails:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "emails:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/emails/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/emails"],
+      "options": {
+        "jestConfig": "apps/emails/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
