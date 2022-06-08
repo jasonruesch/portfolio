@@ -39,44 +39,41 @@ export function Sections({ searchInput }: { searchInput: string }) {
     buttonFilteredGroups,
   ]);
 
-  // Each section should have top margin and padding to account for fixed header
   // The last section should have the 'min-h-screen' class, which is applied above after filtering
 
   return (
     <>
-      <ColorSection className="pt-16" groups={colorFilteredGroups} />
+      <ColorSection groups={colorFilteredGroups} />
 
       <TypographySection
-        className={classNames('pt-16', 'print:break-before-page')}
+        className="print:break-before-page"
         groups={typographyFilteredGroups}
       />
 
       <ShadowSection
-        className={classNames('pt-16', 'print:break-before-page')}
+        className="print:break-before-page"
         groups={shadowFilteredGroups}
       />
 
       <ButtonSection
-        className={classNames('pt-16', 'print:break-before-page')}
+        className="print:break-before-page"
         groups={buttonFilteredGroups}
       />
 
       {/* No results */}
       {!hasResults && (
-        <div className="mt-8 pt-8">
-          <h2
-            className={classNames(
-              'font-heading pt-4 text-2xl font-bold',
-              'lg:text-3xl',
-            )}
-          >
-            Searching for &quot;
-            <span className="text-secondary font-sans text-2xl">
-              {searchInput}
-            </span>
-            &quot; found no matching styles
-          </h2>
-        </div>
+        <h2
+          className={classNames(
+            'font-heading pt-4 text-2xl font-bold',
+            'lg:text-3xl',
+          )}
+        >
+          Searching for &quot;
+          <span className="text-secondary font-sans text-2xl">
+            {searchInput}
+          </span>
+          &quot; found no matching styles
+        </h2>
       )}
     </>
   );

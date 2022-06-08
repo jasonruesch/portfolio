@@ -17,8 +17,8 @@ const StyleGuide = ({ router }) => {
   const actionKey = useActionKey();
   const [showTopButton, setShowTopButton] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [resizeHeader, setResizeHeader] = useState(false);
   const searchInput = router.query.q || '';
+  const pageTitleHeight = 40;
 
   const handleSearch = debounce((e) => {
     const searchValue: string = e.target.value;
@@ -28,19 +28,14 @@ const StyleGuide = ({ router }) => {
       query: !!searchValue && {
         q: searchValue,
       },
-      shallow: true,
     });
   }, 300);
 
-  const handleScroll = (e) => {
-    const scrollingElement = e.target.scrollingElement;
-
-    // Show top button and resize header when user scrolls down the height of the page header
-    if (scrollingElement.scrollTop >= 96) {
-      setResizeHeader(true);
+  const handleScroll = () => {
+    // Show top button when the user scrolls down the height of the page title
+    if (document.documentElement.scrollTop > pageTitleHeight) {
       setShowTopButton(true);
     } else {
-      setResizeHeader(false);
       setShowTopButton(false);
     }
   };
@@ -57,6 +52,8 @@ const StyleGuide = ({ router }) => {
   useEffect(() => {
     document.addEventListener('scroll', handleScroll);
     document.addEventListener('keydown', handleKeyDown);
+
+    handleScroll();
 
     return () => {
       document.removeEventListener('scroll', handleScroll);
@@ -81,135 +78,104 @@ const StyleGuide = ({ router }) => {
         </Sidebar>
 
         <div id="top" className="lg:pl-72">
-          <Transition
-            as={Fragment}
-            appear
-            show={resizeHeader}
-            unmount={false}
-            enter="ease-in-out duration-300"
-            enterTo={classNames(
-              'shadow',
-              'dark:shadow-black',
-              'lg:h-16 lg:pb-0 lg:items-center',
+          <header
+            className={classNames(
+              'supports-backdrop-blur:bg-white/60 sticky top-0 z-10 flex h-16 w-full items-center bg-white/95 backdrop-blur transition-colors duration-500',
+              'dark:border-neutral-50/[0.06] dark:bg-black/75',
+              'lg:left-[288px] lg:border-b lg:border-neutral-900/10',
+              'print:!hidden',
             )}
-            leave="ease-in-out duration-300"
-            leaveTo="lg:h-24 lg:pb-8 lg:items-start"
           >
-            <header
-              className={classNames(
-                'bg-background fixed top-0 left-0 right-0 z-10 !flex h-16 items-center',
-                'lg:left-[288px] lg:h-24 lg:items-end lg:pb-8',
-                'print:!hidden',
-              )}
+            <button
+              type="button"
+              className={classNames('px-4', 'focus:outline-none', 'lg:hidden')}
+              onClick={() => setSidebarOpen(true)}
             >
-              <button
-                type="button"
-                className={classNames(
-                  'px-4',
-                  'focus:outline-none',
-                  'lg:hidden',
-                )}
-                onClick={() => setSidebarOpen(true)}
-              >
-                <span className="sr-only">Open sidebar</span>
-                <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
-              </button>
+              <span className="sr-only">Open sidebar</span>
+              <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
+            </button>
 
-              <div className={classNames('flex w-full', 'lg:px-8')}>
-                <div className="mr-4 flex-1">
-                  <Link href="/">
-                    <a
-                      className={classNames(
-                        'text-link',
-                        'hover:text-link-hover',
-                      )}
-                    >
-                      &larr;{' '}
-                      <span className={classNames('hidden', 'sm:inline')}>
-                        Back to Home
-                      </span>
-                    </a>
-                  </Link>
-                </div>
-
-                <form onSubmit={(e) => e.preventDefault()}>
-                  <label htmlFor="search" className="sr-only">
-                    Search
-                  </label>
-                  <div
-                    className={classNames(
-                      'relative w-full max-w-sm text-neutral-500',
-                      'focus-within:text-on-background',
-                    )}
+            <div className={classNames('flex w-full', 'lg:px-8')}>
+              <div className="mr-4 flex-1">
+                <Link href="/">
+                  <a
+                    className={classNames('text-link', 'hover:text-link-hover')}
                   >
-                    <div
-                      className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
-                      aria-hidden="true"
-                    >
-                      <SearchIcon className="h-5 w-5" aria-hidden="true" />
-                    </div>
-                    <input
-                      type="search"
-                      id="search"
-                      name="search"
-                      className={classNames(
-                        'block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-11 placeholder-neutral-500',
-                        'focus:outline-none focus:ring-0',
-                      )}
-                      placeholder="Quick search..."
-                      defaultValue={searchInput}
-                      onInput={handleSearch}
-                      onChange={handleSearch}
-                    />
-                    <div
-                      className="pointer-events-none absolute inset-y-0 right-0"
-                      aria-hidden="true"
-                    >
-                      <kbd className="font-sans font-semibold text-neutral-500">
-                        <abbr
-                          title={actionKey[1]}
-                          className="text-neutral-500 no-underline"
-                        >
-                          {actionKey[0]}
-                        </abbr>{' '}
-                        K
-                      </kbd>
-                    </div>
-                  </div>
-                </form>
-                <ThemeSelector />
+                    &larr;{' '}
+                    <span className={classNames('hidden', 'sm:inline')}>
+                      Back to Home
+                    </span>
+                  </a>
+                </Link>
               </div>
-            </header>
-          </Transition>
+
+              <form onSubmit={(e) => e.preventDefault()}>
+                <label htmlFor="search" className="sr-only">
+                  Search
+                </label>
+                <div
+                  className={classNames(
+                    'relative w-full max-w-sm text-neutral-500',
+                    'focus-within:text-on-background',
+                  )}
+                >
+                  <div
+                    className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
+                    aria-hidden="true"
+                  >
+                    <SearchIcon className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <input
+                    type="search"
+                    id="search"
+                    name="search"
+                    className={classNames(
+                      'block h-full w-full border-none bg-transparent py-0.5 pl-8 pr-11 placeholder-neutral-500',
+                      'focus:outline-none focus:ring-0',
+                    )}
+                    placeholder="Quick search..."
+                    defaultValue={searchInput}
+                    onInput={handleSearch}
+                    onChange={handleSearch}
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-y-0 right-0"
+                    aria-hidden="true"
+                  >
+                    <kbd className="font-sans font-semibold text-neutral-500">
+                      <abbr
+                        title={actionKey[1]}
+                        className="text-neutral-500 no-underline"
+                      >
+                        {actionKey[0]}
+                      </abbr>{' '}
+                      K
+                    </kbd>
+                  </div>
+                </div>
+              </form>
+              <ThemeSelector />
+            </div>
+          </header>
 
           <main className="flex-1">
             {/* Page header */}
-            <header
+            <div
               className={classNames(
-                '-mb-16 pt-16',
-                'lg:pt-24',
-                'print:pt-0 print:shadow-none',
+                'p-3',
+                'lg:mx-auto lg:max-w-screen-lg lg:px-8',
               )}
             >
-              <div
+              <Logo className={classNames('mb-4 hidden w-72', 'print:block')} />
+              <h1
                 className={classNames(
-                  'p-3',
-                  'lg:mx-auto lg:max-w-screen-lg lg:px-8',
+                  'font-heading text-3xl font-bold',
+                  'lg:text-4xl',
                 )}
               >
-                <Logo
-                  className={classNames('mb-4 hidden w-72', 'print:block')}
-                />
-                <h1
-                  className={classNames(
-                    'font-heading text-3xl font-bold',
-                    'lg:text-4xl',
-                  )}
-                >
-                  Style Guide
-                </h1>
-              </div>
-            </header>
+                Style Guide
+              </h1>
+            </div>
 
             <div
               className={classNames(

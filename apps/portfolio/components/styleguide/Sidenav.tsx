@@ -50,13 +50,11 @@ const SidenavLink = ({
   id,
   icon,
   onNavItemClick,
-  offset,
 }: {
   name: string;
   id: string;
   icon: ReactNode;
   onNavItemClick: () => void;
-  offset?: number;
 }) => (
   <ScrollLink
     className={classNames(
@@ -70,7 +68,7 @@ const SidenavLink = ({
     hashSpy={true}
     smooth={true}
     onClick={onNavItemClick}
-    offset={offset}
+    offset={-64}
     isDynamic={true}
   >
     <div className="mr-4 h-6 w-6 flex-shrink-0" aria-hidden="true">
