@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,6 +8,7 @@ import { useState } from 'react';
 import { Nav, Sidebar, ThemeSelector } from '.';
 import classNames from 'classnames';
 import { Logo } from './Logo';
+// import styles from './Layout.module.css';
 
 export function Layout({
   children,
@@ -21,33 +23,37 @@ export function Layout({
 
   return (
     <>
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-center overflow-hidden">
+      <div
+        className={classNames(
+          'pointer-events-none absolute inset-x-0 top-0 z-10 flex h-full justify-center overflow-hidden',
+          {
+            // [styles.beams]: isHome,
+          },
+        )}
+      >
+        {/* {!isHome && ( */}
         <div className="flex w-[108rem] flex-none justify-end">
           <picture>
-            <source
-              srcSet="/images/docs@30.beeb08605f12f699c5abc3814763b65e.avif"
-              type="image/avif"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <source srcSet="/images/beams/docs@30.avif" type="image/avif" />
             <img
-              src="/images/docs@tinypng.61f4d3334a6d245fc2297517c87ae044.png"
+              src="/images/beams/docs@tinypng.png"
               alt=""
               className="w-[71.75rem] max-w-none flex-none dark:hidden"
             />
           </picture>
           <picture>
             <source
-              srcSet="/images/docs-dark@30.77f062b5fd90f0d2cd4752cd9a8649c8.avif"
+              srcSet="/images/beams/docs-dark@30.avif"
               type="image/avif"
             />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/docs-dark@tinypng.a8984b7fb44a4f8232d04de50220ab31.png"
+              src="/images/beams/docs-dark@tinypng.png"
               alt=""
               className="hidden w-[90rem] max-w-none flex-none dark:block"
             />
           </picture>
         </div>
+        {/* )} */}
       </div>
       <div className={classNames('absolute inset-0')}>
         <Sidebar
