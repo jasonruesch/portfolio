@@ -25,8 +25,10 @@ export default async function handler(
 
     const templateName = body.template;
     const templateFile = resolve(
-      serverRuntimeConfig.PROJECT_ROOT,
-      'templates/email',
+      process.env.NODE_ENV === 'production'
+        ? process.cwd()
+        : serverRuntimeConfig.PROJECT_ROOT,
+      'public/templates/email',
       `${templateName.toLowerCase()}.html`,
     );
     const templateSource = readFileSync(templateFile, 'utf8');
@@ -55,7 +57,3 @@ export default async function handler(
       .json({ error: error.message });
   }
 }
-
-export const config = {
-  unstable_includeFiles: ['templates/email'],
-};

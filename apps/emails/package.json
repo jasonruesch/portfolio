@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "maizzle serve",
     "build": "maizzle build production",
-    "copy": "cp -R build_production/* ../portfolio/templates/email"
+    "copy": "cp -R build_production/* ../portfolio/public/templates/email"
   },
   "dependencies": {
     "@maizzle/framework": "^4.0.0",
