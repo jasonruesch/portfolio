@@ -231,7 +231,7 @@ export default function Contact() {
 
             <div>
               <div className="flex justify-end">
-                <Link href="/">
+                <Link href="/" scroll={false}>
                   <a className="button-secondary">Cancel</a>
                 </Link>
                 <button

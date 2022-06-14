@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Fragment, useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import { MenuAlt1Icon } from '@heroicons/react/outline';
@@ -66,13 +65,7 @@ const StyleGuide = ({ router }) => {
       <Head>
         <title>Style Guide - Jason Ruesch</title>
       </Head>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ ease: 'easeInOut', duration: 0.75 }}
-        className="min-h-full"
-      >
+      <div className="min-h-full">
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}>
           <Sidenav onNavItemClick={() => setSidebarOpen(false)} />
         </Sidebar>
@@ -97,7 +90,7 @@ const StyleGuide = ({ router }) => {
 
             <div className={classNames('flex w-full', 'lg:px-8')}>
               <div className="mr-4 flex-1">
-                <Link href="/">
+                <Link href="/" scroll={false}>
                   <a
                     className={classNames('text-link', 'hover:text-link-hover')}
                   >
@@ -187,7 +180,7 @@ const StyleGuide = ({ router }) => {
             </div>
           </main>
         </div>
-      </motion.div>
+      </div>
 
       {/* Back to Top Button */}
       <Transition

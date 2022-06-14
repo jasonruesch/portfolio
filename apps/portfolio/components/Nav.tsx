@@ -66,7 +66,7 @@ export function Nav({
       >
         <div className="space-y-1 pt-6">
           {navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
+            <Link key={item.href} href={item.href} scroll={false}>
               <a
                 className={classNames(
                   'flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6',
@@ -117,7 +117,7 @@ export function Nav({
         {navigation
           .filter((item) => item.href !== '/')
           .map((item) => (
-            <Link key={item.href} href={item.href}>
+            <Link key={item.href} href={item.href} scroll={false}>
               <a className="hover:text-primary">{item.name}</a>
             </Link>
           ))}

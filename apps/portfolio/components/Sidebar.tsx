@@ -88,7 +88,7 @@ export function Sidebar({
                     'lg:items-end lg:px-8',
                   )}
                 >
-                  <Link href="/">
+                  <Link href="/" scroll={false}>
                     <a>
                       <Logo className="w-56" />
                     </a>
@@ -125,7 +125,7 @@ export function Sidebar({
                 'lg:items-end lg:px-8',
               )}
             >
-              <Link href="/">
+              <Link href="/" scroll={false}>
                 <a>
                   <Logo className="w-56" />
                 </a>

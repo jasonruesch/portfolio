@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -8,7 +7,6 @@ import { useState } from 'react';
 import { Nav, Sidebar, ThemeSelector } from '.';
 import classNames from 'classnames';
 import { Logo } from './Logo';
-// import styles from './Layout.module.css';
 
 export function Layout({
   children,
@@ -27,7 +25,7 @@ export function Layout({
         className={classNames(
           'pointer-events-none absolute inset-x-0 top-0 z-10 flex h-full justify-center overflow-hidden',
           {
-            // [styles.beams]: isHome,
+            // beams: isHome,
           },
         )}
       >
@@ -55,7 +53,8 @@ export function Layout({
         </div>
         {/* )} */}
       </div>
-      <div className={classNames('absolute inset-0')}>
+
+      <div className="absolute inset-0">
         <Sidebar
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
@@ -64,8 +63,7 @@ export function Layout({
           <Nav isSidenav onNavItemClick={() => setSidebarOpen(false)} />
         </Sidebar>
 
-        <motion.header
-          layoutId="header"
+        <header
           className={classNames(
             'fixed top-0 z-30 flex h-16 w-full items-center justify-between px-4',
             'lg:items-end lg:px-8',
@@ -81,7 +79,7 @@ export function Layout({
             <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
           </button>
 
-          <Link href="/">
+          <Link href="/" scroll={false}>
             <a className={classNames('hidden', 'lg:block')}>
               <Logo className="w-72" />
             </a>
@@ -97,7 +95,7 @@ export function Layout({
             <Nav className={classNames('hidden', 'lg:block')} />
             <ThemeSelector className="pr-0" />
           </div>
-        </motion.header>
+        </header>
 
         <main
           className={classNames(
@@ -116,8 +114,7 @@ export function Layout({
             )}
           >
             {/* Wrapper div needed for the image to stay unwarped */}
-            <motion.div
-              layoutId="profile"
+            <div
               className={classNames(
                 'relative h-[150px] w-[150px] rounded-full',
                 {
@@ -132,14 +129,10 @@ export function Layout({
                 layout="fill"
                 alt="Jason Ruesch"
               />
-            </motion.div>
+            </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            transition={{ ease: 'easeInOut' }}
+          <div
             className={classNames(
               'mx-auto',
               'sm-max-h:absolute sm-max-h:top-4 sm-max-h:bottom-4 sm-max-h:right-4 sm-max-h:ml-[182px] sm-max-h:left-8 sm-max-h:w-auto',
@@ -153,9 +146,21 @@ export function Layout({
             )}
           >
             {children}
-          </motion.div>
+          </div>
         </main>
       </div>
+
+      <style jsx>{`
+        .beams {
+          background-image: url('/images/beams/hero@75.jpg');
+          background-size: 150rem;
+        }
+
+        :global(.dark) .beams {
+          background-image: url('/images/beams/hero-dark@90.jpg');
+          background-size: 86.125rem;
+        }
+      `}</style>
     </>
   );
 }

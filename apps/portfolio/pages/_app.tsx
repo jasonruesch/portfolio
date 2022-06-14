@@ -1,7 +1,7 @@
-import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import PageTransitions from '../components/PageTransitions';
 import '../styles/globals.css';
 
 function CustomApp({ Component, pageProps, router }) {
@@ -16,6 +16,14 @@ function CustomApp({ Component, pageProps, router }) {
     setIsHydrated(true);
   }, []);
 
+  const [routingPageOffset, setRoutingPageOffset] = useState(0);
+  useEffect(() => {
+    const pageChange = () => {
+      setRoutingPageOffset(window.scrollY);
+    };
+    router.events.on('routeChangeComplete', pageChange);
+  }, [router.events]);
+
   return (
     <>
       <Head>
@@ -27,13 +35,12 @@ function CustomApp({ Component, pageProps, router }) {
         forcedTheme={Component.theme || null}
       >
         {isHydrated && (
-          <AnimatePresence
-            exitBeforeEnter
-            initial={false}
-            onExitComplete={() => window.scrollTo(0, 0)}
+          <PageTransitions
+            route={router.route}
+            routingPageOffset={routingPageOffset}
           >
             <Component {...pageProps} key={router.route} />
-          </AnimatePresence>
+          </PageTransitions>
         )}
       </ThemeProvider>
     </>

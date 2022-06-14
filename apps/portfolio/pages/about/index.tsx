@@ -29,7 +29,7 @@ export default function About() {
         </p>
 
         <div>
-          <Link href="/contact">
+          <Link href="/contact" scroll={false}>
             <a
               className={classNames(
                 'text-link font-medium',
