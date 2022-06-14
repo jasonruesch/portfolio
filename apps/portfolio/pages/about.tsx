@@ -1,14 +1,16 @@
-const Home = () => (
+import React from 'react';
+import Link from 'next/link';
+
+const About = () => (
   <main>
-    <section className="relative grid h-[90vh] w-full place-content-center bg-[#333333] text-white">
-      <h1 className="relative z-[2]">
-        Let&apos;s explore some page transitions!
-      </h1>
+    <section className=" grid place-content-center bg-[#777777] px-4 pt-[200px] pb-[120px] text-center text-white">
       <img
-        className="filter-[saturate-0.7_contrast-1.2_brightness-1.2] absolute top-0 left-0 h-full w-full object-cover opacity-[0.7]"
-        src="https://source.unsplash.com/user/erondu/1600x900"
-        alt="placeholder"
+        className="mx-auto mt-0 mb-[50px] h-[300px] w-[300px] rounded-full"
+        src="https://source.unsplash.com/user/erondu/600x600"
+        alt=""
       />
+      <h1>This is the &quot;About&quot; page</h1>
+      <Link href="/">Oh go back!</Link>
     </section>
     <section className="my-0 mx-auto w-full max-w-[684px] py-20 px-4">
       <p>
@@ -41,4 +43,5 @@ const Home = () => (
     </section>
   </main>
 );
-export default Home;
+
+export default About;
