@@ -1,9 +1,9 @@
 const { createGlobPatternsForDependencies } = require('@nrwl/react/tailwind');
 const { join } = require('path');
-const globalConfig = require('../../tailwind-workspace.js');
+const sharedTailwindConfig = require('../../tailwind-workspace.js');
 
 module.exports = {
-  presets: [globalConfig],
+  presets: [sharedTailwindConfig],
   content: [
     join(__dirname, '{components,pages}/**/*!(*.spec).{ts,tsx}'),
     ...createGlobPatternsForDependencies(__dirname),
@@ -11,8 +11,8 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: {
-      // Explicity include global config colors here for the stylesheet to recognize
-      ...globalConfig.theme.colors,
+      // Explicity include shared config colors here for the stylesheet to recognize
+      ...sharedTailwindConfig.theme.colors,
       // Theme colors
       primary: {
         50: 'var(--color-primary-50)',

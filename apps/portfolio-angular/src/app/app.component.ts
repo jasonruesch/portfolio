@@ -9,5 +9,8 @@ export class AppComponent {
   shouldCenterPage = true;
   isHome = true;
 
-  setSidebarOpen(open: boolean) {}
+  setSidebarOpen(open: boolean) {
+    console.log(open);
+    // TODO: Handle open sidebar
+  }
 }

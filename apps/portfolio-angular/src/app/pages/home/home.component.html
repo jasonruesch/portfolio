@@ -15,9 +15,12 @@
   <!-- onHoverStart={() => setIsHovering(true)}
   onHoverEnd={() => setIsHovering(false)} -->
   <div class="mx-auto mt-4 flex w-24 justify-center">
+    <!-- Add temporary relative and h-12 classes while animation is broken -->
     <a
       routerLink="/about"
       class="text-link hover:text-link-hover flex w-24 justify-end text-sm font-medium"
+      [class.relative]="true"
+      [class.h-12]="true"
       aria-label="Learn more about me"
     >
       <!-- initial: { x: -24 },
@@ -35,12 +38,27 @@
       <!-- initial="initial"
         animate={controls}
         variants={variants} -->
-      <div
-        class="w-12 animate-[notice-me_0.75s_ease-out_infinite] delay-[800ms] duration-500"
-      >
-        <mat-icon class="!h-12 !w-12 text-[length:3rem]" aria-hidden="true"
+      <!-- Add temporary absolute and left-6 classes while animation is broken -->
+      <div class="absolute left-6">
+        <!-- class="w-12 animate-[notice-me_0.5s_ease-out_0.75s_infinite] delay-[800ms]" -->
+        <!-- <mat-icon class="!h-12 !w-12 text-[length:3rem]" aria-hidden="true"
           >chevron_right</mat-icon
+        > -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          aria-hidden="true"
+          class="h-12 w-12"
         >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 5l7 7-7 7"
+          ></path>
+        </svg>
       </div>
     </a>
   </div>

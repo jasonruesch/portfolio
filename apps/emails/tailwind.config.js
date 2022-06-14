@@ -1,14 +1,14 @@
 const defaultColors = require('tailwindcss/colors');
-const globalConfig = require('../../tailwind-workspace.js');
+const sharedTailwindConfig = require('../../tailwind-workspace.js');
 
 module.exports = {
-  presets: [globalConfig],
+  presets: [sharedTailwindConfig],
   content: ['src/**/*.html'],
   darkMode: 'media',
   theme: {
     colors: {
-      // Explicity include global config colors here for the stylesheet to recognize
-      ...globalConfig.theme.colors,
+      // Explicity include shared config colors here for the stylesheet to recognize
+      ...sharedTailwindConfig.theme.colors,
       // Theme colors
       primary: defaultColors.cyan,
       secondary: defaultColors.amber,

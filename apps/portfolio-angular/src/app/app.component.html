@@ -1,3 +1,31 @@
+<div
+  class="pointer-events-none absolute inset-x-0 top-0 z-10 flex h-full justify-center overflow-hidden"
+>
+  <!-- { [styles.beams]: isHome }, -->
+  <!-- {/* {!isHome && ( */} -->
+  <div class="flex w-[108rem] flex-none justify-end">
+    <picture>
+      <source srcSet="assets/images/beams/docs@30.avif" type="image/avif" />
+      <img
+        src="assets/images/beams/docs@tinypng.png"
+        alt=""
+        class="w-[71.75rem] max-w-none flex-none dark:hidden"
+      />
+    </picture>
+    <picture>
+      <source
+        srcSet="assets/images/beams/docs-dark@30.avif"
+        type="image/avif"
+      />
+      <img
+        src="assets/images/beams/docs-dark@tinypng.png"
+        alt=""
+        class="hidden w-[90rem] max-w-none flex-none dark:block"
+      />
+    </picture>
+  </div>
+  <!-- {/* )} */} -->
+</div>
 <div class="absolute inset-0">
   <!-- <Sidebar
     sidebarOpen={sidebarOpen}
@@ -16,11 +44,12 @@
       (click)="setSidebarOpen(true)"
     >
       <span class="sr-only">Open sidebar</span>
-      <!-- <MenuAlt1Icon class="h-6 w-6" aria-hidden="true" /> -->
+      <mat-icon class="h-6 w-6" aria-hidden="true">menu</mat-icon>
     </button>
 
     <a routerLink="/" class="hidden lg:block">
       <!-- <Logo class="w-72" /> -->
+      <jr-logo class="w-72"></jr-logo>
     </a>
 
     <div
@@ -28,6 +57,7 @@
     >
       <!-- <Nav class="hidden lg:block" /> -->
       <!-- <ThemeSelector class="pr-0" /> -->
+      <jr-theme-selector class="pr-0"></jr-theme-selector>
     </div>
   </header>
 
