@@ -7,6 +7,8 @@
     "portfolio": "apps/portfolio",
     "portfolio-angular": "apps/portfolio-angular",
     "portfolio-angular-e2e": "apps/portfolio-angular-e2e",
-    "portfolio-e2e": "apps/portfolio-e2e"
+    "portfolio-e2e": "apps/portfolio-e2e",
+    "portfolio-e2e.bak": "apps/portfolio-e2e.bak",
+    "portfolio.bak": "apps/portfolio.bak"
   }
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/portfolio",
+  "sourceRoot": "apps/portfolio.bak",
   "projectType": "application",
   "targets": {
     "build": {
@@ -8,8 +8,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/portfolio",
-        "outputPath": "dist/apps/portfolio"
+        "root": "apps/portfolio.bak",
+        "outputPath": "dist/apps/portfolio.bak"
       },
       "configurations": {
         "development": {},
@@ -42,9 +42,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/portfolio"],
+      "outputs": ["coverage/apps/portfolio.bak"],
       "options": {
-        "jestConfig": "apps/portfolio/jest.config.ts",
+        "jestConfig": "apps/portfolio.bak/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -52,7 +52,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/portfolio/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/portfolio.bak/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

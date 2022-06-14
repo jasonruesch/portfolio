@@ -1,12 +1,12 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/portfolio-e2e/src",
+  "sourceRoot": "apps/portfolio-e2e.bak/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/portfolio-e2e/cypress.json",
+        "cypressConfig": "apps/portfolio-e2e.bak/cypress.json",
         "devServerTarget": "portfolio:serve:development"
       },
       "configurations": {
@@ -19,7 +19,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/portfolio-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": ["apps/portfolio-e2e.bak/**/*.{js,ts}"]
       }
     }
   },
