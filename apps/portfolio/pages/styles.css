@@ -68,11 +68,11 @@ a:not(:disabled) {
  */
 
 .page-enter-active {
-  @apply absolute top-0 left-0 w-full opacity-0;
+  @apply absolute top-0 left-0 z-0 w-full;
 }
 
 .page-exit-active {
-  @apply absolute top-0 left-0 w-full;
+  @apply absolute top-0 left-0 z-[1] w-full;
 }
 
 .page-enter-active .page-transition-inner,
@@ -84,8 +84,6 @@ a:not(:disabled) {
   @apply relative h-screen w-full
   overflow-hidden bg-[#333333];
   perspective: 1800px;
-
-  z-index: 0;
 }
 
 .page-grid {
