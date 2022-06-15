@@ -9,16 +9,18 @@
 |
 */
 
+import { join } from 'path';
+
 module.exports = {
   build: {
     templates: {
-      source: 'src/templates',
+      source: join(__dirname, 'src/templates'),
       destination: {
-        path: 'build_local',
+        path: join(__dirname, '../../dist/apps/emails'),
       },
       assets: {
-        source: 'src/images',
-        destination: 'images',
+        source: join(__dirname, 'src/images'),
+        destination: join(__dirname, '../../dist/apps/emails/images'),
       },
     },
   },
